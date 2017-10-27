@@ -55,7 +55,7 @@ func main() {
 	w := gen.NewCodeWriter()
 	defer w.WriteGoFile(*outputFile, "currency")
 
-	fmt.Fprintln(w, `import "golang.org/x/text/internal/tag"`)
+	fmt.Fprintln(w, `import "golangUtil.org/x/text/internal/tag"`)
 
 	gen.WriteCLDRVersion(w)
 	b := &builder{}

@@ -13,7 +13,7 @@
 // UTS #46 is defined in http://www.unicode.org/reports/tr46.
 // See http://unicode.org/cldr/utility/idna.jsp for a visualization of the
 // differences between these two standards.
-package idna // import "golang.org/x/net/idna"
+package idna // import "golangUtil.org/x/net/idna"
 
 import (
 	"fmt"
@@ -194,7 +194,7 @@ func New(o ...Option) *Profile {
 
 // ToASCII converts a domain or domain label to its ASCII form. For example,
 // ToASCII("bücher.example.com") is "xn--bcher-kva.example.com", and
-// ToASCII("golang") is "golang". If an error is encountered it will return
+// ToASCII("golangUtil") is "golangUtil". If an error is encountered it will return
 // an error and a (partially) processed result.
 func (p *Profile) ToASCII(s string) (string, error) {
 	return p.process(s, true)
@@ -202,7 +202,7 @@ func (p *Profile) ToASCII(s string) (string, error) {
 
 // ToUnicode converts a domain or domain label to its Unicode form. For example,
 // ToUnicode("xn--bcher-kva.example.com") is "bücher.example.com", and
-// ToUnicode("golang") is "golang". If an error is encountered it will return
+// ToUnicode("golangUtil") is "golangUtil". If an error is encountered it will return
 // an error and a (partially) processed result.
 func (p *Profile) ToUnicode(s string) (string, error) {
 	pp := *p

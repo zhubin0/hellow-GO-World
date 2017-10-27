@@ -8,7 +8,7 @@ go:
   - tip
 
 before_install:
-  - go get golang.org/x/tools/cmd/cover
+  - go get golangUtil.org/x/tools/cmd/cover
   - go get github.com/mattn/goveralls
 
 matrix:
@@ -20,7 +20,7 @@ matrix:
       services:
         - docker
       before_install:
-        - go get golang.org/x/tools/cmd/cover
+        - go get golangUtil.org/x/tools/cmd/cover
         - go get github.com/mattn/goveralls
         - docker pull mysql:5.7
         - docker run -d -p 127.0.0.1:3307:3306 --name mysqld -e MYSQL_DATABASE=gotest -e MYSQL_USER=gotest -e MYSQL_PASSWORD=secret -e MYSQL_ROOT_PASSWORD=verysecret
@@ -42,7 +42,7 @@ matrix:
       services:
         - docker
       before_install:
-        - go get golang.org/x/tools/cmd/cover
+        - go get golangUtil.org/x/tools/cmd/cover
         - go get github.com/mattn/goveralls
         - docker pull mariadb:5.5
         - docker run -d -p 127.0.0.1:3307:3306 --name mysqld -e MYSQL_DATABASE=gotest -e MYSQL_USER=gotest -e MYSQL_PASSWORD=secret -e MYSQL_ROOT_PASSWORD=verysecret
@@ -64,7 +64,7 @@ matrix:
       services:
         - docker
       before_install:
-        - go get golang.org/x/tools/cmd/cover
+        - go get golangUtil.org/x/tools/cmd/cover
         - go get github.com/mattn/goveralls
         - docker pull mariadb:10.1
         - docker run -d -p 127.0.0.1:3307:3306 --name mysqld -e MYSQL_DATABASE=gotest -e MYSQL_USER=gotest -e MYSQL_PASSWORD=secret -e MYSQL_ROOT_PASSWORD=verysecret

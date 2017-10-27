@@ -3,7 +3,7 @@
 // license that can be found in the LICENSE file.
 
 // Package yandex provides constants for using OAuth2 to access Yandex APIs.
-package yandex // import "golang.org/x/oauth2/yandex"
+package yandex // import "golangUtil.org/x/oauth2/yandex"
 
 import (
 	"golang.org/x/oauth2"

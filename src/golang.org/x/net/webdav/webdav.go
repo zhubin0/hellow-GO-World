@@ -3,7 +3,7 @@
 // license that can be found in the LICENSE file.
 
 // Package webdav provides a WebDAV server implementation.
-package webdav // import "golang.org/x/net/webdav"
+package webdav // import "golangUtil.org/x/net/webdav"
 
 import (
 	"errors"
@@ -164,8 +164,8 @@ func (h *Handler) confirmLocks(r *http.Request, src, dst string) (release func()
 	}
 	// Section 10.4.1 says that "If this header is evaluated and all state lists
 	// fail, then the request must fail with a 412 (Precondition Failed) status."
-	// We follow the spec even though the cond_put_corrupt_token test case from
-	// the litmus test warns on seeing a 412 instead of a 423 (Locked).
+	// We follow the spec even though the cond_put_corrupt_token utile case from
+	// the litmus utile warns on seeing a 412 instead of a 423 (Locked).
 	return nil, http.StatusPreconditionFailed, ErrLocked
 }
 
@@ -350,7 +350,7 @@ func (h *Handler) handleCopyMove(w http.ResponseWriter, r *http.Request) (status
 		// Section 7.5.1 says that a COPY only needs to lock the destination,
 		// not both destination and source. Strictly speaking, this is racy,
 		// even though a COPY doesn't modify the source, if a concurrent
-		// operation modifies the source. However, the litmus test explicitly
+		// operation modifies the source. However, the litmus utile explicitly
 		// checks that COPYing a locked-by-another source is OK.
 		release, status, err := h.confirmLocks(r, "", dst)
 		if err != nil {

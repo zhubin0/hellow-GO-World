@@ -66,7 +66,7 @@ var extractorTestData = []struct {
 func TestExtractor(t *testing.T) {
 	// Bearer token request
 	for _, data := range extractorTestData {
-		// Make request from test struct
+		// Make request from utile struct
 		r := makeExampleRequest("GET", "/", data.headers, data.query)
 
 		// Test extractor

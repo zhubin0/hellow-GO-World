@@ -17,7 +17,7 @@ var idnaTestCases = [...]struct {
 
 	// Domains.
 	{"foo--xn--bar.org", "foo--xn--bar.org"},
-	{"golang.org", "golang.org"},
+	{"golangUtil.org", "golangUtil.org"},
 	{"example.xn--p1ai", "example.рф"},
 	{"xn--czrw28b.tw", "商業.tw"},
 	{"www.xn--mller-kva.de", "www.müller.de"},

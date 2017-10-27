@@ -20,7 +20,7 @@ type Page struct {
 	SrcPath  string
 	Query    string
 	Body     []byte
-	GoogleCN bool // page is being served from golang.google.cn
+	GoogleCN bool // page is being served from golangUtil.google.cn
 
 	// filled in by servePage
 	SearchBox  bool

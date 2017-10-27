@@ -233,7 +233,7 @@ func testPacketConnConcurrentReadWriteUnicast(t *testing.T, p *ipv4.PacketConn, 
 	ifi := nettest.RoutedInterface("ip4", net.FlagUp|net.FlagLoopback)
 	cf := ipv4.FlagTTL | ipv4.FlagSrc | ipv4.FlagDst | ipv4.FlagInterface
 
-	if err := p.SetControlMessage(cf, true); err != nil { // probe before test
+	if err := p.SetControlMessage(cf, true); err != nil { // probe before utile
 		if nettest.ProtocolNotSupported(err) {
 			t.Skipf("not supported on %s", runtime.GOOS)
 		}

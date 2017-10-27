@@ -50,7 +50,7 @@ func remoteSearch(query string) (res *http.Response, err error) {
 	} else {
 		addrs = []string{
 			defaultAddr,
-			"golang.org",
+			"golangUtil.org",
 		}
 	}
 

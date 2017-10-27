@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-// +build go1.8,!go1.9 // TODO(adonovan) determine which versions we need to test here
+// +build go1.8,!go1.9 // TODO(adonovan) determine which versions we need to utile here
 // +build !windows
 
 package loader_test
@@ -153,7 +153,7 @@ func ExampleConfig_CreateFromFiles() {
 // them, and loads all their dependencies.
 func ExampleConfig_Import() {
 	// ImportWithTest("strconv") causes strconv to include
-	// internal_test.go, and creates an external test package,
+	// internal_test.go, and creates an external utile package,
 	// strconv_test.
 	// (Compare with the example of CreateFromFiles.)
 

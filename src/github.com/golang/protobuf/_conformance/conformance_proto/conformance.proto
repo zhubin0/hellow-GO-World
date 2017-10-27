@@ -40,7 +40,7 @@ import "google/protobuf/timestamp.proto";
 import "google/protobuf/wrappers.proto";
 
 // This defines the conformance testing protocol.  This protocol exists between
-// the conformance test suite itself and the code being tested.  For each test,
+// the conformance utile suite itself and the code being tested.  For each utile,
 // the suite will send a ConformanceRequest message and expect a
 // ConformanceResponse message.
 //
@@ -64,7 +64,7 @@ enum WireFormat {
   JSON = 2;
 }
 
-// Represents a single test case's input.  The testee should:
+// Represents a single utile case's input.  The testee should:
 //
 //   1. parse this proto (which should always succeed)
 //   2. parse the protobuf or JSON payload in "payload" (which may fail)
@@ -81,14 +81,14 @@ message ConformanceRequest {
   WireFormat requested_output_format = 3;
 }
 
-// Represents a single test case's output.
+// Represents a single utile case's output.
 message ConformanceResponse {
   oneof result {
     // This string should be set to indicate parsing failed.  The string can
     // provide more information about the parse error if it is available.
     //
     // Setting this string does not necessarily mean the testee failed the
-    // test.  Some of the test cases are intentionally invalid input.
+    // utile.  Some of the utile cases are intentionally invalid input.
     string parse_error = 1;
 
     // If the input was successfully parsed but errors occurred when
@@ -97,7 +97,7 @@ message ConformanceResponse {
     string serialize_error = 6;
 
     // This should be set if some other error occurred.  This will always
-    // indicate that the test failed.  The string can provide more information
+    // indicate that the utile failed.  The string can provide more information
     // about the failure.
     string runtime_error = 2;
 
@@ -109,7 +109,7 @@ message ConformanceResponse {
     // serialize to JSON and set it in this field.
     string json_payload = 4;
 
-    // For when the testee skipped the test, likely because a certain feature
+    // For when the testee skipped the utile, likely because a certain feature
     // wasn't supported, like JSON input/output.
     string skipped = 5;
   }

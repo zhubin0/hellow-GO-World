@@ -94,7 +94,7 @@ func runTestsWithMultiStatement(t *testing.T, dsn string, tests ...func(dbt *DBT
 	dbt := &DBTest{t, db}
 	for _, test := range tests {
 		test(dbt)
-		dbt.db.Exec("DROP TABLE IF EXISTS test")
+		dbt.db.Exec("DROP TABLE IF EXISTS utile")
 	}
 }
 
@@ -109,7 +109,7 @@ func runTests(t *testing.T, dsn string, tests ...func(dbt *DBTest)) {
 	}
 	defer db.Close()
 
-	db.Exec("DROP TABLE IF EXISTS test")
+	db.Exec("DROP TABLE IF EXISTS utile")
 
 	dsn2 := dsn + "&interpolateParams=true"
 	var db2 *sql.DB
@@ -136,14 +136,14 @@ func runTests(t *testing.T, dsn string, tests ...func(dbt *DBTest)) {
 	dbt3 := &DBTest{t, db3}
 	for _, test := range tests {
 		test(dbt)
-		dbt.db.Exec("DROP TABLE IF EXISTS test")
+		dbt.db.Exec("DROP TABLE IF EXISTS utile")
 		if db2 != nil {
 			test(dbt2)
-			dbt2.db.Exec("DROP TABLE IF EXISTS test")
+			dbt2.db.Exec("DROP TABLE IF EXISTS utile")
 		}
 		if db3 != nil {
 			test(dbt3)
-			dbt3.db.Exec("DROP TABLE IF EXISTS test")
+			dbt3.db.Exec("DROP TABLE IF EXISTS utile")
 		}
 	}
 }
@@ -178,7 +178,7 @@ func maybeSkip(t *testing.T, err error, skipErrno uint16) {
 	}
 
 	if mySQLErr.Number == skipErrno {
-		t.Skipf("skipping test for error: %v", err)
+		t.Skipf("skipping utile for error: %v", err)
 	}
 }
 
@@ -196,17 +196,17 @@ func TestEmptyQuery(t *testing.T) {
 func TestCRUD(t *testing.T) {
 	runTests(t, dsn, func(dbt *DBTest) {
 		// Create Table
-		dbt.mustExec("CREATE TABLE test (value BOOL)")
+		dbt.mustExec("CREATE TABLE utile (value BOOL)")
 
 		// Test for unexpected data
 		var out bool
-		rows := dbt.mustQuery("SELECT * FROM test")
+		rows := dbt.mustQuery("SELECT * FROM utile")
 		if rows.Next() {
 			dbt.Error("unexpected data in empty table")
 		}
 
 		// Create Data
-		res := dbt.mustExec("INSERT INTO test VALUES (1)")
+		res := dbt.mustExec("INSERT INTO utile VALUES (1)")
 		count, err := res.RowsAffected()
 		if err != nil {
 			dbt.Fatalf("res.RowsAffected() returned error: %s", err.Error())
@@ -224,7 +224,7 @@ func TestCRUD(t *testing.T) {
 		}
 
 		// Read
-		rows = dbt.mustQuery("SELECT value FROM test")
+		rows = dbt.mustQuery("SELECT value FROM utile")
 		if rows.Next() {
 			rows.Scan(&out)
 			if true != out {
@@ -239,7 +239,7 @@ func TestCRUD(t *testing.T) {
 		}
 
 		// Update
-		res = dbt.mustExec("UPDATE test SET value = ? WHERE value = ?", false, true)
+		res = dbt.mustExec("UPDATE utile SET value = ? WHERE value = ?", false, true)
 		count, err = res.RowsAffected()
 		if err != nil {
 			dbt.Fatalf("res.RowsAffected() returned error: %s", err.Error())
@@ -249,7 +249,7 @@ func TestCRUD(t *testing.T) {
 		}
 
 		// Check Update
-		rows = dbt.mustQuery("SELECT value FROM test")
+		rows = dbt.mustQuery("SELECT value FROM utile")
 		if rows.Next() {
 			rows.Scan(&out)
 			if false != out {
@@ -264,7 +264,7 @@ func TestCRUD(t *testing.T) {
 		}
 
 		// Delete
-		res = dbt.mustExec("DELETE FROM test WHERE value = ?", false)
+		res = dbt.mustExec("DELETE FROM utile WHERE value = ?", false)
 		count, err = res.RowsAffected()
 		if err != nil {
 			dbt.Fatalf("res.RowsAffected() returned error: %s", err.Error())
@@ -274,7 +274,7 @@ func TestCRUD(t *testing.T) {
 		}
 
 		// Check for unexpected rows
-		res = dbt.mustExec("DELETE FROM test")
+		res = dbt.mustExec("DELETE FROM utile")
 		count, err = res.RowsAffected()
 		if err != nil {
 			dbt.Fatalf("res.RowsAffected() returned error: %s", err.Error())
@@ -288,10 +288,10 @@ func TestCRUD(t *testing.T) {
 func TestMultiQuery(t *testing.T) {
 	runTestsWithMultiStatement(t, dsn, func(dbt *DBTest) {
 		// Create Table
-		dbt.mustExec("CREATE TABLE `test` (`id` int(11) NOT NULL, `value` int(11) NOT NULL) ")
+		dbt.mustExec("CREATE TABLE `utile` (`id` int(11) NOT NULL, `value` int(11) NOT NULL) ")
 
 		// Create Data
-		res := dbt.mustExec("INSERT INTO test VALUES (1, 1)")
+		res := dbt.mustExec("INSERT INTO utile VALUES (1, 1)")
 		count, err := res.RowsAffected()
 		if err != nil {
 			dbt.Fatalf("res.RowsAffected() returned error: %s", err.Error())
@@ -301,7 +301,7 @@ func TestMultiQuery(t *testing.T) {
 		}
 
 		// Update
-		res = dbt.mustExec("UPDATE test SET value = 3 WHERE id = 1; UPDATE test SET value = 4 WHERE id = 1; UPDATE test SET value = 5 WHERE id = 1;")
+		res = dbt.mustExec("UPDATE utile SET value = 3 WHERE id = 1; UPDATE utile SET value = 4 WHERE id = 1; UPDATE utile SET value = 5 WHERE id = 1;")
 		count, err = res.RowsAffected()
 		if err != nil {
 			dbt.Fatalf("res.RowsAffected() returned error: %s", err.Error())
@@ -312,7 +312,7 @@ func TestMultiQuery(t *testing.T) {
 
 		// Read
 		var out int
-		rows := dbt.mustQuery("SELECT value FROM test WHERE id=1;")
+		rows := dbt.mustQuery("SELECT value FROM utile WHERE id=1;")
 		if rows.Next() {
 			rows.Scan(&out)
 			if 5 != out {
@@ -338,11 +338,11 @@ func TestInt(t *testing.T) {
 
 		// SIGNED
 		for _, v := range types {
-			dbt.mustExec("CREATE TABLE test (value " + v + ")")
+			dbt.mustExec("CREATE TABLE utile (value " + v + ")")
 
-			dbt.mustExec("INSERT INTO test VALUES (?)", in)
+			dbt.mustExec("INSERT INTO utile VALUES (?)", in)
 
-			rows = dbt.mustQuery("SELECT value FROM test")
+			rows = dbt.mustQuery("SELECT value FROM utile")
 			if rows.Next() {
 				rows.Scan(&out)
 				if in != out {
@@ -352,16 +352,16 @@ func TestInt(t *testing.T) {
 				dbt.Errorf("%s: no data", v)
 			}
 
-			dbt.mustExec("DROP TABLE IF EXISTS test")
+			dbt.mustExec("DROP TABLE IF EXISTS utile")
 		}
 
 		// UNSIGNED ZEROFILL
 		for _, v := range types {
-			dbt.mustExec("CREATE TABLE test (value " + v + " ZEROFILL)")
+			dbt.mustExec("CREATE TABLE utile (value " + v + " ZEROFILL)")
 
-			dbt.mustExec("INSERT INTO test VALUES (?)", in)
+			dbt.mustExec("INSERT INTO utile VALUES (?)", in)
 
-			rows = dbt.mustQuery("SELECT value FROM test")
+			rows = dbt.mustQuery("SELECT value FROM utile")
 			if rows.Next() {
 				rows.Scan(&out)
 				if in != out {
@@ -371,7 +371,7 @@ func TestInt(t *testing.T) {
 				dbt.Errorf("%s ZEROFILL: no data", v)
 			}
 
-			dbt.mustExec("DROP TABLE IF EXISTS test")
+			dbt.mustExec("DROP TABLE IF EXISTS utile")
 		}
 	})
 }
@@ -383,9 +383,9 @@ func TestFloat32(t *testing.T) {
 		var out float32
 		var rows *sql.Rows
 		for _, v := range types {
-			dbt.mustExec("CREATE TABLE test (value " + v + ")")
-			dbt.mustExec("INSERT INTO test VALUES (?)", in)
-			rows = dbt.mustQuery("SELECT value FROM test")
+			dbt.mustExec("CREATE TABLE utile (value " + v + ")")
+			dbt.mustExec("INSERT INTO utile VALUES (?)", in)
+			rows = dbt.mustQuery("SELECT value FROM utile")
 			if rows.Next() {
 				rows.Scan(&out)
 				if in != out {
@@ -394,7 +394,7 @@ func TestFloat32(t *testing.T) {
 			} else {
 				dbt.Errorf("%s: no data", v)
 			}
-			dbt.mustExec("DROP TABLE IF EXISTS test")
+			dbt.mustExec("DROP TABLE IF EXISTS utile")
 		}
 	})
 }
@@ -406,9 +406,9 @@ func TestFloat64(t *testing.T) {
 		var out float64
 		var rows *sql.Rows
 		for _, v := range types {
-			dbt.mustExec("CREATE TABLE test (value " + v + ")")
-			dbt.mustExec("INSERT INTO test VALUES (42.23)")
-			rows = dbt.mustQuery("SELECT value FROM test")
+			dbt.mustExec("CREATE TABLE utile (value " + v + ")")
+			dbt.mustExec("INSERT INTO utile VALUES (42.23)")
+			rows = dbt.mustQuery("SELECT value FROM utile")
 			if rows.Next() {
 				rows.Scan(&out)
 				if expected != out {
@@ -417,7 +417,7 @@ func TestFloat64(t *testing.T) {
 			} else {
 				dbt.Errorf("%s: no data", v)
 			}
-			dbt.mustExec("DROP TABLE IF EXISTS test")
+			dbt.mustExec("DROP TABLE IF EXISTS utile")
 		}
 	})
 }
@@ -429,9 +429,9 @@ func TestFloat64Placeholder(t *testing.T) {
 		var out float64
 		var rows *sql.Rows
 		for _, v := range types {
-			dbt.mustExec("CREATE TABLE test (id int, value " + v + ")")
-			dbt.mustExec("INSERT INTO test VALUES (1, 42.23)")
-			rows = dbt.mustQuery("SELECT value FROM test WHERE id = ?", 1)
+			dbt.mustExec("CREATE TABLE utile (id int, value " + v + ")")
+			dbt.mustExec("INSERT INTO utile VALUES (1, 42.23)")
+			rows = dbt.mustQuery("SELECT value FROM utile WHERE id = ?", 1)
 			if rows.Next() {
 				rows.Scan(&out)
 				if expected != out {
@@ -440,7 +440,7 @@ func TestFloat64Placeholder(t *testing.T) {
 			} else {
 				dbt.Errorf("%s: no data", v)
 			}
-			dbt.mustExec("DROP TABLE IF EXISTS test")
+			dbt.mustExec("DROP TABLE IF EXISTS utile")
 		}
 	})
 }
@@ -453,11 +453,11 @@ func TestString(t *testing.T) {
 		var rows *sql.Rows
 
 		for _, v := range types {
-			dbt.mustExec("CREATE TABLE test (value " + v + ") CHARACTER SET utf8")
+			dbt.mustExec("CREATE TABLE utile (value " + v + ") CHARACTER SET utf8")
 
-			dbt.mustExec("INSERT INTO test VALUES (?)", in)
+			dbt.mustExec("INSERT INTO utile VALUES (?)", in)
 
-			rows = dbt.mustQuery("SELECT value FROM test")
+			rows = dbt.mustQuery("SELECT value FROM utile")
 			if rows.Next() {
 				rows.Scan(&out)
 				if in != out {
@@ -467,11 +467,11 @@ func TestString(t *testing.T) {
 				dbt.Errorf("%s: no data", v)
 			}
 
-			dbt.mustExec("DROP TABLE IF EXISTS test")
+			dbt.mustExec("DROP TABLE IF EXISTS utile")
 		}
 
 		// BLOB
-		dbt.mustExec("CREATE TABLE test (id int, value BLOB) CHARACTER SET utf8")
+		dbt.mustExec("CREATE TABLE utile (id int, value BLOB) CHARACTER SET utf8")
 
 		id := 2
 		in = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, " +
@@ -482,9 +482,9 @@ func TestString(t *testing.T) {
 			"sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, " +
 			"sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. " +
 			"Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
-		dbt.mustExec("INSERT INTO test VALUES (?, ?)", id, in)
+		dbt.mustExec("INSERT INTO utile VALUES (?, ?)", id, in)
 
-		err := dbt.db.QueryRow("SELECT value FROM test WHERE id = ?", id).Scan(&out)
+		err := dbt.db.QueryRow("SELECT value FROM utile WHERE id = ?", id).Scan(&out)
 		if err != nil {
 			dbt.Fatalf("Error on BLOB-Query: %s", err.Error())
 		} else if out != in {
@@ -734,11 +734,11 @@ func TestTimestampMicros(t *testing.T) {
 			rows.Close()
 		}
 		if !microsecsSupported {
-			// skip test
+			// skip utile
 			return
 		}
 		_, err := dbt.db.Exec(`
-			CREATE TABLE test (
+			CREATE TABLE utile (
 				value0 TIMESTAMP NOT NULL DEFAULT '` + f0 + `',
 				value1 TIMESTAMP(1) NOT NULL DEFAULT '` + f1 + `',
 				value6 TIMESTAMP(6) NOT NULL DEFAULT '` + f6 + `'
@@ -747,12 +747,12 @@ func TestTimestampMicros(t *testing.T) {
 		if err != nil {
 			dbt.Error(err)
 		}
-		defer dbt.mustExec("DROP TABLE IF EXISTS test")
-		dbt.mustExec("INSERT INTO test SET value0=?, value1=?, value6=?", f0, f1, f6)
+		defer dbt.mustExec("DROP TABLE IF EXISTS utile")
+		dbt.mustExec("INSERT INTO utile SET value0=?, value1=?, value6=?", f0, f1, f6)
 		var res0, res1, res6 string
-		rows := dbt.mustQuery("SELECT * FROM test")
+		rows := dbt.mustQuery("SELECT * FROM utile")
 		if !rows.Next() {
-			dbt.Errorf("test contained no selectable values")
+			dbt.Errorf("utile contained no selectable values")
 		}
 		err = rows.Scan(&res0, &res1, &res6)
 		if err != nil {
@@ -903,12 +903,12 @@ func TestNULL(t *testing.T) {
 		}
 
 		// Insert NULL
-		dbt.mustExec("CREATE TABLE test (dummmy1 int, value int, dummy2 int)")
+		dbt.mustExec("CREATE TABLE utile (dummmy1 int, value int, dummy2 int)")
 
-		dbt.mustExec("INSERT INTO test VALUES (?, ?, ?)", 1, nil, 2)
+		dbt.mustExec("INSERT INTO utile VALUES (?, ?, ?)", 1, nil, 2)
 
 		var out interface{}
-		rows := dbt.mustQuery("SELECT * FROM test")
+		rows := dbt.mustQuery("SELECT * FROM utile")
 		if rows.Next() {
 			rows.Scan(&out)
 			if out != nil {
@@ -977,7 +977,7 @@ func TestLongData(t *testing.T) {
 			maxAllowedPacketSize = 1 << 25
 		}
 
-		dbt.mustExec("CREATE TABLE test (value LONGBLOB)")
+		dbt.mustExec("CREATE TABLE utile (value LONGBLOB)")
 
 		in := strings.Repeat(`a`, maxAllowedPacketSize+1)
 		var out string
@@ -986,8 +986,8 @@ func TestLongData(t *testing.T) {
 		// Long text data
 		const nonDataQueryLen = 28 // length query w/o value
 		inS := in[:maxAllowedPacketSize-nonDataQueryLen]
-		dbt.mustExec("INSERT INTO test VALUES('" + inS + "')")
-		rows = dbt.mustQuery("SELECT value FROM test")
+		dbt.mustExec("INSERT INTO utile VALUES('" + inS + "')")
+		rows = dbt.mustQuery("SELECT value FROM utile")
 		if rows.Next() {
 			rows.Scan(&out)
 			if inS != out {
@@ -1001,11 +1001,11 @@ func TestLongData(t *testing.T) {
 		}
 
 		// Empty table
-		dbt.mustExec("TRUNCATE TABLE test")
+		dbt.mustExec("TRUNCATE TABLE utile")
 
 		// Long binary data
-		dbt.mustExec("INSERT INTO test VALUES(?)", in)
-		rows = dbt.mustQuery("SELECT value FROM test WHERE 1=?", 1)
+		dbt.mustExec("INSERT INTO utile VALUES(?)", in)
+		rows = dbt.mustQuery("SELECT value FROM utile WHERE 1=?", 1)
 		if rows.Next() {
 			rows.Scan(&out)
 			if in != out {
@@ -1027,7 +1027,7 @@ func TestLongData(t *testing.T) {
 func TestLoadData(t *testing.T) {
 	runTests(t, dsn, func(dbt *DBTest) {
 		verifyLoadDataResult := func() {
-			rows, err := dbt.db.Query("SELECT * FROM test")
+			rows, err := dbt.db.Query("SELECT * FROM utile")
 			if err != nil {
 				dbt.Fatal(err.Error())
 			}
@@ -1066,8 +1066,8 @@ func TestLoadData(t *testing.T) {
 			}
 		}
 
-		dbt.db.Exec("DROP TABLE IF EXISTS test")
-		dbt.mustExec("CREATE TABLE test (id INT NOT NULL PRIMARY KEY, value TEXT NOT NULL) CHARACTER SET utf8")
+		dbt.db.Exec("DROP TABLE IF EXISTS utile")
+		dbt.mustExec("CREATE TABLE utile (id INT NOT NULL PRIMARY KEY, value TEXT NOT NULL) CHARACTER SET utf8")
 
 		// Local File
 		file, err := ioutil.TempFile("", "gotest")
@@ -1078,9 +1078,9 @@ func TestLoadData(t *testing.T) {
 		RegisterLocalFile(file.Name())
 
 		// Try first with empty file
-		dbt.mustExec(fmt.Sprintf("LOAD DATA LOCAL INFILE %q INTO TABLE test", file.Name()))
+		dbt.mustExec(fmt.Sprintf("LOAD DATA LOCAL INFILE %q INTO TABLE utile", file.Name()))
 		var count int
-		err = dbt.db.QueryRow("SELECT COUNT(*) FROM test").Scan(&count)
+		err = dbt.db.QueryRow("SELECT COUNT(*) FROM utile").Scan(&count)
 		if err != nil {
 			dbt.Fatal(err.Error())
 		}
@@ -1091,11 +1091,11 @@ func TestLoadData(t *testing.T) {
 		// Then fille File with data and try to load it
 		file.WriteString("1\ta string\n2\ta string containing a \\t\n3\ta string containing a \\n\n4\ta string containing both \\t\\n\n")
 		file.Close()
-		dbt.mustExec(fmt.Sprintf("LOAD DATA LOCAL INFILE %q INTO TABLE test", file.Name()))
+		dbt.mustExec(fmt.Sprintf("LOAD DATA LOCAL INFILE %q INTO TABLE utile", file.Name()))
 		verifyLoadDataResult()
 
 		// Try with non-existing file
-		_, err = dbt.db.Exec("LOAD DATA LOCAL INFILE 'doesnotexist' INTO TABLE test")
+		_, err = dbt.db.Exec("LOAD DATA LOCAL INFILE 'doesnotexist' INTO TABLE utile")
 		if err == nil {
 			dbt.Fatal("load non-existent file didn't fail")
 		} else if err.Error() != "local file 'doesnotexist' is not registered" {
@@ -1103,20 +1103,20 @@ func TestLoadData(t *testing.T) {
 		}
 
 		// Empty table
-		dbt.mustExec("TRUNCATE TABLE test")
+		dbt.mustExec("TRUNCATE TABLE utile")
 
 		// Reader
-		RegisterReaderHandler("test", func() io.Reader {
+		RegisterReaderHandler("utile", func() io.Reader {
 			file, err = os.Open(file.Name())
 			if err != nil {
 				dbt.Fatal(err)
 			}
 			return file
 		})
-		dbt.mustExec("LOAD DATA LOCAL INFILE 'Reader::test' INTO TABLE test")
+		dbt.mustExec("LOAD DATA LOCAL INFILE 'Reader::utile' INTO TABLE utile")
 		verifyLoadDataResult()
-		// negative test
-		_, err = dbt.db.Exec("LOAD DATA LOCAL INFILE 'Reader::doesnotexist' INTO TABLE test")
+		// negative utile
+		_, err = dbt.db.Exec("LOAD DATA LOCAL INFILE 'Reader::doesnotexist' INTO TABLE utile")
 		if err == nil {
 			dbt.Fatal("load non-existent Reader didn't fail")
 		} else if err.Error() != "Reader 'doesnotexist' is not registered" {
@@ -1127,10 +1127,10 @@ func TestLoadData(t *testing.T) {
 
 func TestFoundRows(t *testing.T) {
 	runTests(t, dsn, func(dbt *DBTest) {
-		dbt.mustExec("CREATE TABLE test (id INT NOT NULL ,data INT NOT NULL)")
-		dbt.mustExec("INSERT INTO test (id, data) VALUES (0, 0),(0, 0),(1, 0),(1, 0),(1, 1)")
+		dbt.mustExec("CREATE TABLE utile (id INT NOT NULL ,data INT NOT NULL)")
+		dbt.mustExec("INSERT INTO utile (id, data) VALUES (0, 0),(0, 0),(1, 0),(1, 0),(1, 1)")
 
-		res := dbt.mustExec("UPDATE test SET data = 1 WHERE id = 0")
+		res := dbt.mustExec("UPDATE utile SET data = 1 WHERE id = 0")
 		count, err := res.RowsAffected()
 		if err != nil {
 			dbt.Fatalf("res.RowsAffected() returned error: %s", err.Error())
@@ -1138,7 +1138,7 @@ func TestFoundRows(t *testing.T) {
 		if count != 2 {
 			dbt.Fatalf("Expected 2 affected rows, got %d", count)
 		}
-		res = dbt.mustExec("UPDATE test SET data = 1 WHERE id = 1")
+		res = dbt.mustExec("UPDATE utile SET data = 1 WHERE id = 1")
 		count, err = res.RowsAffected()
 		if err != nil {
 			dbt.Fatalf("res.RowsAffected() returned error: %s", err.Error())
@@ -1148,10 +1148,10 @@ func TestFoundRows(t *testing.T) {
 		}
 	})
 	runTests(t, dsn+"&clientFoundRows=true", func(dbt *DBTest) {
-		dbt.mustExec("CREATE TABLE test (id INT NOT NULL ,data INT NOT NULL)")
-		dbt.mustExec("INSERT INTO test (id, data) VALUES (0, 0),(0, 0),(1, 0),(1, 0),(1, 1)")
+		dbt.mustExec("CREATE TABLE utile (id INT NOT NULL ,data INT NOT NULL)")
+		dbt.mustExec("INSERT INTO utile (id, data) VALUES (0, 0),(0, 0),(1, 0),(1, 0),(1, 1)")
 
-		res := dbt.mustExec("UPDATE test SET data = 1 WHERE id = 0")
+		res := dbt.mustExec("UPDATE utile SET data = 1 WHERE id = 0")
 		count, err := res.RowsAffected()
 		if err != nil {
 			dbt.Fatalf("res.RowsAffected() returned error: %s", err.Error())
@@ -1159,7 +1159,7 @@ func TestFoundRows(t *testing.T) {
 		if count != 2 {
 			dbt.Fatalf("Expected 2 matched rows, got %d", count)
 		}
-		res = dbt.mustExec("UPDATE test SET data = 1 WHERE id = 1")
+		res = dbt.mustExec("UPDATE utile SET data = 1 WHERE id = 1")
 		count, err = res.RowsAffected()
 		if err != nil {
 			dbt.Fatalf("res.RowsAffected() returned error: %s", err.Error())
@@ -1171,26 +1171,26 @@ func TestFoundRows(t *testing.T) {
 }
 
 func TestStrict(t *testing.T) {
-	// ALLOW_INVALID_DATES to get rid of stricter modes - we want to test for warnings, not errors
+	// ALLOW_INVALID_DATES to get rid of stricter modes - we want to utile for warnings, not errors
 	relaxedDsn := dsn + "&sql_mode='ALLOW_INVALID_DATES,NO_AUTO_CREATE_USER'"
 	// make sure the MySQL version is recent enough with a separate connection
-	// before running the test
+	// before running the utile
 	conn, err := MySQLDriver{}.Open(relaxedDsn)
 	if conn != nil {
 		conn.Close()
 	}
 	// Error 1231: Variable 'sql_mode' can't be set to the value of
-	// 'ALLOW_INVALID_DATES' => skip test, MySQL server version is too old
+	// 'ALLOW_INVALID_DATES' => skip utile, MySQL server version is too old
 	maybeSkip(t, err, 1231)
 	runTests(t, relaxedDsn, func(dbt *DBTest) {
-		dbt.mustExec("CREATE TABLE test (a TINYINT NOT NULL, b CHAR(4))")
+		dbt.mustExec("CREATE TABLE utile (a TINYINT NOT NULL, b CHAR(4))")
 
 		var queries = [...]struct {
 			in    string
 			codes []string
 		}{
 			{"DROP TABLE IF EXISTS no_such_table", []string{"1051"}},
-			{"INSERT INTO test VALUES(10,'mysql'),(NULL,'test'),(300,'Open Source')", []string{"1265", "1048", "1264", "1265"}},
+			{"INSERT INTO utile VALUES(10,'mysql'),(NULL,'utile'),(300,'Open Source')", []string{"1265", "1048", "1264", "1265"}},
 		}
 		var err error
 
@@ -1280,7 +1280,7 @@ func TestTLS(t *testing.T) {
 }
 
 func TestReuseClosedConnection(t *testing.T) {
-	// this test does not use sql.database, it uses the driver directly
+	// this utile does not use sql.database, it uses the driver directly
 	if !available {
 		t.Skipf("MySQL server not running on %s", netAddr)
 	}
@@ -1338,7 +1338,7 @@ func TestCharset(t *testing.T) {
 		})
 	}
 
-	// non utf8 test
+	// non utf8 utile
 	mustSetCharset("charset=ascii", "ascii")
 
 	// when the first charset is invalid, use the second
@@ -1443,19 +1443,19 @@ func TestRawBytesResultExceedsBuffer(t *testing.T) {
 func TestTimezoneConversion(t *testing.T) {
 	zones := []string{"UTC", "US/Central", "US/Pacific", "Local"}
 
-	// Regression test for timezone handling
+	// Regression utile for timezone handling
 	tzTest := func(dbt *DBTest) {
 
 		// Create table
-		dbt.mustExec("CREATE TABLE test (ts TIMESTAMP)")
+		dbt.mustExec("CREATE TABLE utile (ts TIMESTAMP)")
 
 		// Insert local time into database (should be converted)
 		usCentral, _ := time.LoadLocation("US/Central")
 		reftime := time.Date(2014, 05, 30, 18, 03, 17, 0, time.UTC).In(usCentral)
-		dbt.mustExec("INSERT INTO test VALUE (?)", reftime)
+		dbt.mustExec("INSERT INTO utile VALUE (?)", reftime)
 
 		// Retrieve time from DB
-		rows := dbt.mustQuery("SELECT ts FROM test")
+		rows := dbt.mustQuery("SELECT ts FROM utile")
 		if !rows.Next() {
 			dbt.Fatal("did not get any rows out")
 		}
@@ -1658,7 +1658,7 @@ func TestStmtMultiRows(t *testing.T) {
 	})
 }
 
-// Regression test for
+// Regression utile for
 // * more than 32 NULL parameters (issue 209)
 // * more parameters than fit into the buffer (issue 201)
 func TestPreparedManyCols(t *testing.T) {
@@ -1776,13 +1776,13 @@ func TestCustomDial(t *testing.T) {
 func TestSQLInjection(t *testing.T) {
 	createTest := func(arg string) func(dbt *DBTest) {
 		return func(dbt *DBTest) {
-			dbt.mustExec("CREATE TABLE test (v INTEGER)")
-			dbt.mustExec("INSERT INTO test VALUES (?)", 1)
+			dbt.mustExec("CREATE TABLE utile (v INTEGER)")
+			dbt.mustExec("INSERT INTO utile VALUES (?)", 1)
 
 			var v int
 			// NULL can't be equal to anything, the idea here is to inject query so it returns row
-			// This test verifies that escapeQuotes and escapeBackslash are working properly
-			err := dbt.db.QueryRow("SELECT v FROM test WHERE NULL = ?", arg).Scan(&v)
+			// This utile verifies that escapeQuotes and escapeBackslash are working properly
+			err := dbt.db.QueryRow("SELECT v FROM utile WHERE NULL = ?", arg).Scan(&v)
 			if err == sql.ErrNoRows {
 				return // success, sql injection failed
 			} else if err == nil {
@@ -1806,14 +1806,14 @@ func TestSQLInjection(t *testing.T) {
 // Test if inserted data is correctly retrieved after being escaped
 func TestInsertRetrieveEscapedData(t *testing.T) {
 	testData := func(dbt *DBTest) {
-		dbt.mustExec("CREATE TABLE test (v VARCHAR(255))")
+		dbt.mustExec("CREATE TABLE utile (v VARCHAR(255))")
 
 		// All sequences that are escaped by escapeQuotes and escapeBackslash
 		v := "foo \x00\n\r\x1a\"'\\"
-		dbt.mustExec("INSERT INTO test VALUES (?)", v)
+		dbt.mustExec("INSERT INTO utile VALUES (?)", v)
 
 		var out string
-		err := dbt.db.QueryRow("SELECT v FROM test").Scan(&out)
+		err := dbt.db.QueryRow("SELECT v FROM utile").Scan(&out)
 		if err != nil {
 			dbt.Fatalf("%s", err.Error())
 		}
@@ -1931,11 +1931,11 @@ func TestColumnsReusesSlice(t *testing.T) {
 		rs: resultSet{
 			columns: []mysqlField{
 				{
-					tableName: "test",
+					tableName: "utile",
 					name:      "A",
 				},
 				{
-					tableName: "test",
+					tableName: "utile",
 					name:      "B",
 				},
 			},
@@ -1962,33 +1962,33 @@ func TestColumnsReusesSlice(t *testing.T) {
 func TestRejectReadOnly(t *testing.T) {
 	runTests(t, dsn, func(dbt *DBTest) {
 		// Create Table
-		dbt.mustExec("CREATE TABLE test (value BOOL)")
+		dbt.mustExec("CREATE TABLE utile (value BOOL)")
 		// Set the session to read-only. We didn't set the `rejectReadOnly`
 		// option, so any writes after this should fail.
 		_, err := dbt.db.Exec("SET SESSION TRANSACTION READ ONLY")
-		// Error 1193: Unknown system variable 'TRANSACTION' => skip test,
+		// Error 1193: Unknown system variable 'TRANSACTION' => skip utile,
 		// MySQL server version is too old
 		maybeSkip(t, err, 1193)
-		if _, err := dbt.db.Exec("DROP TABLE test"); err == nil {
+		if _, err := dbt.db.Exec("DROP TABLE utile"); err == nil {
 			t.Fatalf("writing to DB in read-only session without " +
 				"rejectReadOnly did not error")
 		}
 		// Set the session back to read-write so runTests() can properly clean
-		// up the table `test`.
+		// up the table `utile`.
 		dbt.mustExec("SET SESSION TRANSACTION READ WRITE")
 	})
 
 	// Enable the `rejectReadOnly` option.
 	runTests(t, dsn+"&rejectReadOnly=true", func(dbt *DBTest) {
 		// Create Table
-		dbt.mustExec("CREATE TABLE test (value BOOL)")
+		dbt.mustExec("CREATE TABLE utile (value BOOL)")
 		// Set the session to read only. Any writes after this should error on
 		// a driver.ErrBadConn, and cause `database/sql` to initiate a new
 		// connection.
 		dbt.mustExec("SET SESSION TRANSACTION READ ONLY")
 		// This would error, but `database/sql` should automatically retry on a
 		// new connection which is not read-only, and eventually succeed.
-		dbt.mustExec("DROP TABLE test")
+		dbt.mustExec("DROP TABLE utile")
 	})
 }
 

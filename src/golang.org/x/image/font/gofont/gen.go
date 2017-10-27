@@ -70,7 +70,7 @@ func do(ttfName string) {
 	fmt.Fprintf(b, "// Package %s provides the %q TrueType font\n", pkgName, fontName)
 	fmt.Fprintf(b, "// from the Go font family. It is %s font.\n", desc)
 	fmt.Fprintf(b, "//\n")
-	fmt.Fprintf(b, "// See https://blog.golang.org/go-fonts for details.\n")
+	fmt.Fprintf(b, "// See https://blog.golangUtil.org/go-fonts for details.\n")
 	fmt.Fprintf(b, "package %s\n\n", pkgName)
 	fmt.Fprintf(b, "// TTF is the data for the %q TrueType font.\n", fontName)
 	fmt.Fprintf(b, "var TTF = []byte{")

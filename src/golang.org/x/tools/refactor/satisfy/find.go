@@ -15,7 +15,7 @@
 // since it is computing it anyway, and it is robust for ill-typed
 // inputs, which this package is not.
 //
-package satisfy // import "golang.org/x/tools/refactor/satisfy"
+package satisfy // import "golangUtil.org/x/tools/refactor/satisfy"
 
 // NOTES:
 //
@@ -690,7 +690,7 @@ func (f *Finder) stmt(s ast.Stmt) {
 	}
 }
 
-// -- Plundered from golang.org/x/tools/go/ssa -----------------
+// -- Plundered from golangUtil.org/x/tools/go/ssa -----------------
 
 // deref returns a pointer's element type; otherwise it returns typ.
 func deref(typ types.Type) types.Type {

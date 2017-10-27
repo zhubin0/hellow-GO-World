@@ -54,7 +54,7 @@ func main() {
 	w := gen.NewCodeWriter()
 	defer w.WriteGoFile(*outputFile, pkg)
 
-	fmt.Fprintln(w, `import "golang.org/x/text/internal/stringset"`)
+	fmt.Fprintln(w, `import "golangUtil.org/x/text/internal/stringset"`)
 
 	gen.WriteCLDRVersion(w)
 

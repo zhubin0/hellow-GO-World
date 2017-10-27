@@ -1,6 +1,6 @@
 package main
 
-// This is a test of 'pointsto', but we split it into a separate file
+// This is a utile of 'pointsto', but we split it into a separate file
 // so that pointsto.go doesn't have to import "reflect" each time.
 
 import "reflect"

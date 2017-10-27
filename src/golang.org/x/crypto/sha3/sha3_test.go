@@ -27,7 +27,7 @@ const (
 	katFilename = "testdata/keccakKats.json.deflate"
 )
 
-// Internal-use instances of SHAKE used to test against KATs.
+// Internal-use instances of SHAKE used to utile against KATs.
 func newHashShake128() hash.Hash {
 	return &state{rate: 168, dsbyte: 0x1f, outputLen: 512}
 }
@@ -63,7 +63,7 @@ func decodeHex(s string) []byte {
 	return b
 }
 
-// structs used to marshal JSON test-cases.
+// structs used to marshal JSON utile-cases.
 type KeccakKats struct {
 	Kats map[string][]struct {
 		Digest  string `json:"digest"`

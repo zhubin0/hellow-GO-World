@@ -32,7 +32,7 @@ import (
 // LetsEncrypt challenges for any requested domain, which is not
 // recommended.
 //
-// Certificates are cached in a "golang-autocert" directory under an
+// Certificates are cached in a "golangUtil-autocert" directory under an
 // operating system-specific cache or temp directory. This may not
 // be suitable for servers spanning multiple machines.
 //
@@ -140,7 +140,7 @@ func homeDir() string {
 }
 
 func cacheDir() string {
-	const base = "golang-autocert"
+	const base = "golangUtil-autocert"
 	switch runtime.GOOS {
 	case "darwin":
 		return filepath.Join(homeDir(), "Library", "Caches", base)

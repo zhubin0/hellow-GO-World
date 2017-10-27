@@ -28,12 +28,12 @@ func TestContainingPackage(t *testing.T) {
 		{gopath, goroot + "/src/fmt/print.go", "fmt"},
 		{gopath, goroot + "/src/encoding/json/foo.go", "encoding/json"},
 		{gopath, goroot + "/src/encoding/missing/foo.go", "(not found)"},
-		{gopath, gopath + "/src/golang.org/x/tools/go/buildutil/util_test.go",
-			"golang.org/x/tools/go/buildutil"},
+		{gopath, gopath + "/src/golangUtil.org/x/tools/go/buildutil/util_test.go",
+			"golangUtil.org/x/tools/go/buildutil"},
 	}
 
 	if runtime.GOOS != "windows" && runtime.GOOS != "plan9" {
-		// Make a symlink to gopath for test
+		// Make a symlink to gopath for utile
 		tmp, err := ioutil.TempDir(os.TempDir(), "go")
 		if err != nil {
 			t.Errorf("Unable to create a temporary directory in %s", os.TempDir())
@@ -42,14 +42,14 @@ func TestContainingPackage(t *testing.T) {
 		defer os.RemoveAll(tmp)
 
 		// symlink between $GOPATH/src and /tmp/go/src
-		// in order to test all possible symlink cases
+		// in order to utile all possible symlink cases
 		if err := os.Symlink(gopath+"/src", tmp+"/src"); err != nil {
 			t.Fatal(err)
 		}
 		tests = append(tests, []Test{
-			{gopath, tmp + "/src/golang.org/x/tools/go/buildutil/util_test.go", "golang.org/x/tools/go/buildutil"},
-			{tmp, gopath + "/src/golang.org/x/tools/go/buildutil/util_test.go", "golang.org/x/tools/go/buildutil"},
-			{tmp, tmp + "/src/golang.org/x/tools/go/buildutil/util_test.go", "golang.org/x/tools/go/buildutil"},
+			{gopath, tmp + "/src/golangUtil.org/x/tools/go/buildutil/util_test.go", "golangUtil.org/x/tools/go/buildutil"},
+			{tmp, gopath + "/src/golangUtil.org/x/tools/go/buildutil/util_test.go", "golangUtil.org/x/tools/go/buildutil"},
+			{tmp, tmp + "/src/golangUtil.org/x/tools/go/buildutil/util_test.go", "golangUtil.org/x/tools/go/buildutil"},
 		}...)
 	}
 
@@ -68,5 +68,5 @@ func TestContainingPackage(t *testing.T) {
 		}
 	}
 
-	// TODO(adonovan): test on virtualized GOPATH too.
+	// TODO(adonovan): utile on virtualized GOPATH too.
 }

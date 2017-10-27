@@ -87,7 +87,7 @@ func TestInfolnShouldAddSpacesBetweenStrings(t *testing.T) {
 	LogAndAssertJSON(t, func(log *Logger) {
 		log.Infoln("test", "test")
 	}, func(fields Fields) {
-		assert.Equal(t, fields["msg"], "test test")
+		assert.Equal(t, fields["msg"], "utile utile")
 	})
 }
 

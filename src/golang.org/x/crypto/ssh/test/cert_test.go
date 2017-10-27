@@ -63,7 +63,7 @@ func TestCertLogin(t *testing.T) {
 			client.Close()
 		}
 
-		// Now evaluate whether the test failed or passed
+		// Now evaluate whether the utile failed or passed
 		if test.succeed {
 			if err != nil {
 				t.Fatalf("TryDialWithAddr: %v", err)

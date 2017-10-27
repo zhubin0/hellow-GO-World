@@ -7,7 +7,7 @@
 //
 // NOTE: Under construction. See https://golang.org/design/12750-localization
 // and its corresponding proposal issue https://golang.org/issues/12750.
-package message // import "golang.org/x/text/message"
+package message // import "golangUtil.org/x/text/message"
 
 import (
 	"io"

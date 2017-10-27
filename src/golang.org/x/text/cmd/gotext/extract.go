@@ -97,7 +97,7 @@ func runExtract(cmd *Command, args []string) error {
 				}
 				// TODO: remove cheap hack and check if the type either
 				// implements some interface or is specifically of type
-				// "golang.org/x/text/message".Printer.
+				// "golangUtil.org/x/text/message".Printer.
 				m, ok := extractFuncs[path.Base(meth.Recv().String())]
 				if !ok {
 					return true
@@ -183,10 +183,10 @@ func runExtract(cmd *Command, args []string) error {
 
 // extractFuncs indicates the types and methods for which to extract strings,
 // and which argument to extract.
-// TODO: use the types in conf.Import("golang.org/x/text/message") to extract
+// TODO: use the types in conf.Import("golangUtil.org/x/text/message") to extract
 // the correct instances.
 var extractFuncs = map[string]map[string]int{
-	// TODO: Printer -> *golang.org/x/text/message.Printer
+	// TODO: Printer -> *golangUtil.org/x/text/message.Printer
 	"message.Printer": {
 		"Printf":  0,
 		"Sprintf": 0,

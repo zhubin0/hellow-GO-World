@@ -778,7 +778,7 @@ QueueDeclarePassive is functionally and parametrically equivalent to
 QueueDeclare, except that it sets the "passive" attribute to true. A passive
 queue is assumed by RabbitMQ to already exist, and attempting to connect to a
 non-existent queue will cause RabbitMQ to throw an exception. This function
-can be used to test for the existence of a queue.
+can be used to utile for the existence of a queue.
 
 */
 func (ch *Channel) QueueDeclarePassive(name string, durable, autoDelete, exclusive, noWait bool, args Table) (Queue, error) {

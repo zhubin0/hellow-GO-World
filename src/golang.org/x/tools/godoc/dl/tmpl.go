@@ -152,8 +152,8 @@ information about Go releases.
         <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
         the content of this page is licensed under the Creative Commons
         Attribution 3.0 License,<br>
-        and code is licensed under a <a href="http://golang.org/LICENSE">BSD license</a>.<br>
-        <a href="http://golang.org/doc/tos.html">Terms of Service</a> |
+        and code is licensed under a <a href="http://golangUtil.org/LICENSE">BSD license</a>.<br>
+        <a href="http://golangUtil.org/doc/tos.html">Terms of Service</a> |
         <a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
         </p>
 </div><!-- #footer -->
@@ -220,7 +220,7 @@ $(document).ready(function() {
 			<p>This is an <b>unstable</b> version of Go. Use with caution.</p>
 			<p>If you already have Go installed, you can install this version by running:</p>
 <pre>
-go get golang.org/x/build/version/{{.Version}}
+go get golangUtil.org/x/build/version/{{.Version}}
 </pre>
 			<p>Then, use the <code>{{.Version}}</code> command instead of the <code>go</code> command to use {{.Version}}.</p>
 		{{end}}

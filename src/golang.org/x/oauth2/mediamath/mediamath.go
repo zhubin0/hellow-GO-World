@@ -3,7 +3,7 @@
 // license that can be found in the LICENSE file.
 
 // Package mediamath provides constants for using OAuth2 to access MediaMath.
-package mediamath // import "golang.org/x/oauth2/mediamath"
+package mediamath // import "golangUtil.org/x/oauth2/mediamath"
 
 import (
 	"golang.org/x/oauth2"

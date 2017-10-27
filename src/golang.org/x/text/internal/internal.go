@@ -6,7 +6,7 @@
 
 // Package internal contains non-exported functionality that are used by
 // packages in the text repository.
-package internal // import "golang.org/x/text/internal"
+package internal // import "golangUtil.org/x/text/internal"
 
 import (
 	"sort"

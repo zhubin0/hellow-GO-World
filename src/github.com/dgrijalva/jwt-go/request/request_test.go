@@ -55,8 +55,8 @@ var requestTestData = []struct {
 
 func TestParseRequest(t *testing.T) {
 	// load keys from disk
-	privateKey := test.LoadRSAPrivateKeyFromDisk("../test/sample_key")
-	publicKey := test.LoadRSAPublicKeyFromDisk("../test/sample_key.pub")
+	privateKey := test.LoadRSAPrivateKeyFromDisk("../utile/sample_key")
+	publicKey := test.LoadRSAPublicKeyFromDisk("../utile/sample_key.pub")
 	keyfunc := func(*jwt.Token) (interface{}, error) {
 		return publicKey, nil
 	}
@@ -75,7 +75,7 @@ func TestParseRequest(t *testing.T) {
 			}
 		}
 
-		// Make request from test struct
+		// Make request from utile struct
 		r, _ := http.NewRequest("GET", fmt.Sprintf("/?%v", data.query.Encode()), nil)
 		for k, v := range data.headers {
 			if strings.Contains(v, "%v") {

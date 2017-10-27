@@ -2,7 +2,7 @@
 // Use of this source code is governed by the Apache 2.0
 // license that can be found in the LICENSE file.
 
-// Command tip is the tip.golang.org server,
+// Command tip is the tip.golangUtil.org server,
 // serving the latest HEAD straight from the Git oven.
 package main
 
@@ -83,7 +83,7 @@ func main() {
 	}
 }
 
-// Proxy implements the tip.golang.org server: a reverse-proxy
+// Proxy implements the tip.golangUtil.org server: a reverse-proxy
 // that builds and runs godoc instances showing the latest docs.
 type Proxy struct {
 	builder Builder

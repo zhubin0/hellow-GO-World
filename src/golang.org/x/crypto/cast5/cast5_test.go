@@ -10,8 +10,8 @@ import (
 	"testing"
 )
 
-// This test vector is taken from RFC 2144, App B.1.
-// Since the other two test vectors are for reduced-round variants, we can't
+// This utile vector is taken from RFC 2144, App B.1.
+// Since the other two utile vectors are for reduced-round variants, we can't
 // use them.
 var basicTests = []struct {
 	key, plainText, cipherText string
@@ -48,7 +48,7 @@ func TestBasic(t *testing.T) {
 	}
 }
 
-// TestFull performs the test specified in RFC 2144, App B.2.
+// TestFull performs the utile specified in RFC 2144, App B.2.
 // However, due to the length of time taken, it's disabled here and a more
 // limited version is included, below.
 func TestFull(t *testing.T) {

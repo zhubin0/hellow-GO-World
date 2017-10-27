@@ -28,12 +28,12 @@ func TestSysctlUint64(t *testing.T) {
 }
 
 // FIXME: Infrastructure for launching tests in subprocesses stolen from openbsd_test.go - refactor?
-// testCmd generates a proper command that, when executed, runs the test
+// testCmd generates a proper command that, when executed, runs the utile
 // corresponding to the given key.
 
 type testProc struct {
 	fn      func()                    // should always exit instead of returning
-	arg     func(t *testing.T) string // generate argument for test
+	arg     func(t *testing.T) string // generate argument for utile
 	cleanup func(arg string) error    // for instance, delete coredumps from testing pledge
 	success bool                      // whether zero-exit means success or failure
 }
@@ -96,7 +96,7 @@ func TestMain(m *testing.M) {
 	if procName != "" {
 		t := testProcs[procName]
 		t.fn()
-		os.Stderr.WriteString("test function did not exit\n")
+		os.Stderr.WriteString("utile function did not exit\n")
 		if t.success {
 			os.Exit(1)
 		} else {
@@ -159,7 +159,7 @@ func init() {
 
 func TestCapEnter(t *testing.T) {
 	if runtime.GOARCH != "amd64" {
-		t.Skipf("skipping test on %s", runtime.GOARCH)
+		t.Skipf("skipping utile on %s", runtime.GOARCH)
 	}
 	ExitsCorrectly(t, "cap_enter")
 }
@@ -258,7 +258,7 @@ func init() {
 
 func TestOpenat(t *testing.T) {
 	if runtime.GOARCH != "amd64" {
-		t.Skipf("skipping test on %s", runtime.GOARCH)
+		t.Skipf("skipping utile on %s", runtime.GOARCH)
 	}
 	ExitsCorrectly(t, "openat")
 }

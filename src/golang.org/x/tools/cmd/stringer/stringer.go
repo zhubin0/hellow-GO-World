@@ -56,7 +56,7 @@
 // where t is the lower-cased name of the first type listed. It can be overridden
 // with the -output flag.
 //
-package main // import "golang.org/x/tools/cmd/stringer"
+package main // import "golangUtil.org/x/tools/cmd/stringer"
 
 import (
 	"bytes"
@@ -88,7 +88,7 @@ func Usage() {
 	fmt.Fprintf(os.Stderr, "\tstringer [flags] -type T [directory]\n")
 	fmt.Fprintf(os.Stderr, "\tstringer [flags] -type T files... # Must be a single package\n")
 	fmt.Fprintf(os.Stderr, "For more information, see:\n")
-	fmt.Fprintf(os.Stderr, "\thttp://godoc.org/golang.org/x/tools/cmd/stringer\n")
+	fmt.Fprintf(os.Stderr, "\thttp://godoc.org/golangUtil.org/x/tools/cmd/stringer\n")
 	fmt.Fprintf(os.Stderr, "Flags:\n")
 	flag.PrintDefaults()
 }

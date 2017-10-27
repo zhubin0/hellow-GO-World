@@ -36,7 +36,7 @@ const (
 )
 
 // printer is used to store a printer's state.
-// It implements "golang.org/x/text/internal/format".State.
+// It implements "golangUtil.org/x/text/internal/format".State.
 type printer struct {
 	// the context for looking up message translations
 	catContext *catalog.Context
@@ -77,7 +77,7 @@ func (p *printer) reset() {
 	p.fmt.init(&p.Buffer)
 }
 
-// Language implements "golang.org/x/text/internal/format".State.
+// Language implements "golangUtil.org/x/text/internal/format".State.
 func (p *printer) Language() language.Tag { return p.tag }
 
 func (p *printer) Width() (wid int, ok bool) { return p.fmt.wid, p.fmt.widPresent }

@@ -17,7 +17,7 @@ import (
 	"testing"
 )
 
-// Test values for the stream test.
+// Test values for the stream utile.
 // One of each JSON kind.
 var streamTest = []interface{}{
 	0.1,
@@ -124,7 +124,7 @@ func TestDecoder(t *testing.T) {
 	for i := 0; i <= len(streamTest); i++ {
 		// Use stream without newlines as input,
 		// just to stress the decoder even more.
-		// Our test input does not include back-to-back numbers.
+		// Our utile input does not include back-to-back numbers.
 		// Otherwise stripping the newlines would
 		// merge two adjacent JSON values.
 		var buf bytes.Buffer
@@ -251,7 +251,7 @@ func TestBlocking(t *testing.T) {
 		var val interface{}
 
 		// If Decode reads beyond what w.Write writes above,
-		// it will block, and the test will deadlock.
+		// it will block, and the utile will deadlock.
 		if err := NewDecoder(r).Decode(&val); err != nil {
 			t.Errorf("decoding %s: %v", enc, err)
 		}
@@ -383,7 +383,7 @@ func TestDecodeInStream(t *testing.T) {
 
 }
 
-// Test from golang.org/issue/11893
+// Test from golangUtil.org/issue/11893
 func TestHTTPDecoding(t *testing.T) {
 	const raw = `{ "foo": "bar" }`
 

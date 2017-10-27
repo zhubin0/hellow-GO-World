@@ -1084,12 +1084,12 @@ func (client ReplicationProtectedItemsClient) ReprotectResponder(resp *http.Resp
 	return
 }
 
-// TestFailover operation to perform a test failover of the replication protected item. This method may poll for
+// TestFailover operation to perform a utile failover of the replication protected item. This method may poll for
 // completion. Polling can be canceled by passing the cancel channel argument. The channel will be used to cancel
 // polling and any outstanding HTTP requests.
 //
 // fabricName is unique fabric name. protectionContainerName is protection container name. replicatedProtectedItemName
-// is replication protected item name. failoverInput is test failover input.
+// is replication protected item name. failoverInput is utile failover input.
 func (client ReplicationProtectedItemsClient) TestFailover(fabricName string, protectionContainerName string, replicatedProtectedItemName string, failoverInput TestFailoverInput, cancel <-chan struct{}) (<-chan ReplicationProtectedItem, <-chan error) {
 	resultChan := make(chan ReplicationProtectedItem, 1)
 	errChan := make(chan error, 1)
@@ -1172,12 +1172,12 @@ func (client ReplicationProtectedItemsClient) TestFailoverResponder(resp *http.R
 	return
 }
 
-// TestFailoverCleanup operation to clean up the test failover of a replication protected item. This method may poll
+// TestFailoverCleanup operation to clean up the utile failover of a replication protected item. This method may poll
 // for completion. Polling can be canceled by passing the cancel channel argument. The channel will be used to cancel
 // polling and any outstanding HTTP requests.
 //
 // fabricName is unique fabric name. protectionContainerName is protection container name. replicatedProtectedItemName
-// is replication protected item name. cleanupInput is test failover cleanup input.
+// is replication protected item name. cleanupInput is utile failover cleanup input.
 func (client ReplicationProtectedItemsClient) TestFailoverCleanup(fabricName string, protectionContainerName string, replicatedProtectedItemName string, cleanupInput TestFailoverCleanupInput, cancel <-chan struct{}) (<-chan ReplicationProtectedItem, <-chan error) {
 	resultChan := make(chan ReplicationProtectedItem, 1)
 	errChan := make(chan error, 1)

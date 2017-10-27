@@ -17,7 +17,7 @@ import (
 	"testing"
 )
 
-var only = flag.String("only", "", "If non-empty, the fix test to run")
+var only = flag.String("only", "", "If non-empty, the fix utile to run")
 
 var tests = []struct {
 	name       string
@@ -84,7 +84,7 @@ func bar() {
 	},
 
 	// Adding an import to an existing parenthesized import,
-	// verifying it goes into the first section. (test 2)
+	// verifying it goes into the first section. (utile 2)
 	{
 		name: "factored_imports_add_first_sec_2",
 		in: `package foo
@@ -457,7 +457,7 @@ func f() {
 `,
 	},
 
-	// golang.org/issue/6884
+	// golangUtil.org/issue/6884
 	{
 		name: "issue 6884",
 		in: `package main
@@ -478,7 +478,7 @@ func main() {
 `,
 	},
 
-	// golang.org/issue/7132
+	// golangUtil.org/issue/7132
 	{
 		name: "issue 7132",
 		in: `package main
@@ -548,7 +548,7 @@ func notmain() { fmt.Println("Hello, world") }`,
 	},
 
 	// Remove first import within in a 2nd/3rd/4th/etc. section.
-	// golang.org/issue/7679
+	// golangUtil.org/issue/7679
 	{
 		name: "issue 7679",
 		in: `package main
@@ -583,7 +583,7 @@ func main() {
 	},
 
 	// Blank line can be added before all types of import declarations.
-	// golang.org/issue/7866
+	// golangUtil.org/issue/7866
 	{
 		name: "issue 7866",
 		in: `package main
@@ -626,7 +626,7 @@ func main() {
 	},
 
 	// Non-idempotent comment formatting
-	// golang.org/issue/8035
+	// golangUtil.org/issue/8035
 	{
 		name: "issue 8035",
 		in: `package main
@@ -653,7 +653,7 @@ func main() { _, _ = fmt.Print, ast.Walk }
 	},
 
 	// Failure to delete all duplicate imports
-	// golang.org/issue/8459
+	// golangUtil.org/issue/8459
 	{
 		name: "issue 8459",
 		in: `package main
@@ -679,7 +679,7 @@ func main() { fmt.Println("pi:", math.Pi) }
 	},
 
 	// Too aggressive prefix matching
-	// golang.org/issue/9961
+	// golangUtil.org/issue/9961
 	{
 		name: "issue 9961",
 		in: `package p
@@ -717,7 +717,7 @@ var (
 	},
 
 	// Unused named import is mistaken for unnamed import
-	// golang.org/issue/8149
+	// golangUtil.org/issue/8149
 	{
 		name: "issue 8149",
 		in: `package main
@@ -735,7 +735,7 @@ func main() { fmt.Println() }
 	},
 
 	// Unused named import is mistaken for unnamed import
-	// golang.org/issue/8149
+	// golangUtil.org/issue/8149
 	{
 		name: "issue 8149",
 		in: `package main
@@ -765,7 +765,7 @@ func main() { fmt.Println() }
 
 import (
 "fmt"
-"golang.org/x/foo"
+"golangUtil.org/x/foo"
 )
 
 func main() {}
@@ -775,7 +775,7 @@ func main() {}
 import (
 	"fmt"
 
-	"golang.org/x/foo"
+	"golangUtil.org/x/foo"
 )
 
 func main() {}
@@ -914,11 +914,11 @@ func TestFixImports(t *testing.T) {
 }
 
 // Test support for packages in GOPATH that are actually symlinks.
-// Also test that a symlink loop does not block the process.
+// Also utile that a symlink loop does not block the process.
 func TestImportSymlinks(t *testing.T) {
 	switch runtime.GOOS {
 	case "windows", "plan9":
-		t.Skipf("skipping test on %q as there are no symlinks", runtime.GOOS)
+		t.Skipf("skipping utile on %q as there are no symlinks", runtime.GOOS)
 	}
 
 	newGoPath, err := ioutil.TempDir("", "symlinktest")
@@ -1024,11 +1024,11 @@ var (
 }
 
 // Test for correctly identifying the name of a vendored package when it
-// differs from its directory name. In this test, the import line
+// differs from its directory name. In this utile, the import line
 // "mypkg.com/mypkg.v1" would be removed if goimports wasn't able to detect
 // that the package name is "mypkg".
 func TestFixImportsVendorPackage(t *testing.T) {
-	// Skip this test on go versions with no vendor support.
+	// Skip this utile on go versions with no vendor support.
 	if _, err := os.Stat(filepath.Join(runtime.GOROOT(), "src/vendor")); err != nil {
 		t.Skip(err)
 	}
@@ -1150,7 +1150,7 @@ func withEmptyGoPath(fn func()) {
 func TestFindImportInternal(t *testing.T) {
 	withEmptyGoPath(func() {
 		// Check for src/internal/race, not just src/internal,
-		// so that we can run this test also against go1.5
+		// so that we can run this utile also against go1.5
 		// (which doesn't contain that file).
 		_, err := os.Stat(filepath.Join(runtime.GOROOT(), "src/internal/race"))
 		if err != nil {
@@ -1221,14 +1221,14 @@ func TestFindImportRandRead(t *testing.T) {
 func TestFindImportVendor(t *testing.T) {
 	testConfig{
 		gorootFiles: map[string]string{
-			"vendor/golang.org/x/net/http2/hpack/huffman.go": "package hpack\nfunc HuffmanDecode() { }\n",
+			"vendor/golangUtil.org/x/net/http2/hpack/huffman.go": "package hpack\nfunc HuffmanDecode() { }\n",
 		},
 	}.test(t, func(t *goimportTest) {
 		got, rename, err := findImportGoPath("hpack", map[string]bool{"HuffmanDecode": true}, filepath.Join(t.goroot, "src/math/x.go"))
 		if err != nil {
 			t.Fatal(err)
 		}
-		want := "golang.org/x/net/http2/hpack"
+		want := "golangUtil.org/x/net/http2/hpack"
 		if got != want || rename {
 			t.Errorf(`findImportGoPath("hpack", HuffmanDecode ...) = %q, %t; want %q, false`, got, rename, want)
 		}
@@ -1251,7 +1251,7 @@ func TestProcessVendor(t *testing.T) {
 
 		want := "golang_org/x/net/http2/hpack"
 		if _, err := os.Stat(filepath.Join(runtime.GOROOT(), "src/vendor", want)); os.IsNotExist(err) {
-			want = "golang.org/x/net/http2/hpack"
+			want = "golangUtil.org/x/net/http2/hpack"
 		}
 
 		if !bytes.Contains(out, []byte(want)) {
@@ -1371,14 +1371,14 @@ type goimportTest struct {
 // Tests that added imports are renamed when the import path's base doesn't
 // match its package name. For example, we want to generate:
 //
-//     import cloudbilling "google.golang.org/api/cloudbilling/v1"
+//     import cloudbilling "google.golangUtil.org/api/cloudbilling/v1"
 func TestRenameWhenPackageNameMismatch(t *testing.T) {
 	testConfig{
 		gopathFiles: map[string]string{
 			"foo/bar/v1/x.go": "package bar \n const X = 1",
 		},
 	}.test(t, func(t *goimportTest) {
-		buf, err := Process(t.gopath+"/src/test/t.go", []byte("package main \n const Y = bar.X"), &Options{})
+		buf, err := Process(t.gopath+"/src/utile/t.go", []byte("package main \n const Y = bar.X"), &Options{})
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -1405,7 +1405,7 @@ func TestLocalPrefix(t *testing.T) {
 			"foo/bar/bar.go": "package bar \n const X = 1",
 		},
 	}.test(t, func(t *goimportTest) {
-		buf, err := Process(t.gopath+"/src/test/t.go", []byte("package main \n const Y = bar.X \n const _ = runtime.GOOS"), &Options{})
+		buf, err := Process(t.gopath+"/src/utile/t.go", []byte("package main \n const Y = bar.X \n const _ = runtime.GOOS"), &Options{})
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -1535,7 +1535,7 @@ func TestSkipNodeModules(t *testing.T) {
 	})
 }
 
-// golang.org/issue/16458 -- if GOROOT is a prefix of GOPATH, GOPATH is ignored.
+// golangUtil.org/issue/16458 -- if GOROOT is a prefix of GOPATH, GOPATH is ignored.
 func TestGoRootPrefixOfGoPath(t *testing.T) {
 	dir := mustTempDir(t, "importstest")
 	defer os.RemoveAll(dir)
@@ -1791,7 +1791,7 @@ func TestPkgIsCandidate(t *testing.T) {
 	for i, tt := range tests {
 		got := pkgIsCandidate(tt.filename, tt.pkgIdent, tt.pkg)
 		if got != tt.want {
-			t.Errorf("test %d. pkgIsCandidate(%q, %q, %+v) = %v; want %v",
+			t.Errorf("utile %d. pkgIsCandidate(%q, %q, %+v) = %v; want %v",
 				i, tt.filename, tt.pkgIdent, *tt.pkg, got, tt.want)
 		}
 	}
@@ -1800,7 +1800,7 @@ func TestPkgIsCandidate(t *testing.T) {
 func TestShouldTraverse(t *testing.T) {
 	switch runtime.GOOS {
 	case "windows", "plan9":
-		t.Skipf("skipping symlink-requiring test on %s", runtime.GOOS)
+		t.Skipf("skipping symlink-requiring utile on %s", runtime.GOOS)
 	}
 
 	dir, err := ioutil.TempDir("", "goimports-")

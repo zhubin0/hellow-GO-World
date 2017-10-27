@@ -1273,7 +1273,7 @@ func TestDiff(t *testing.T) {
 	Diff = true
 	stdout = new(bytes.Buffer)
 
-	if err := Main(&build.Default, "", `"golang.org/x/tools/refactor/rename".justHereForTestingDiff`, "Foo"); err != nil {
+	if err := Main(&build.Default, "", `"golangUtil.org/x/tools/refactor/rename".justHereForTestingDiff`, "Foo"); err != nil {
 		t.Fatal(err)
 	}
 

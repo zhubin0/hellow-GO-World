@@ -117,30 +117,30 @@ func TestZipFSStatFuncs(t *testing.T) {
 	for _, test := range tests {
 		for _, statFunc := range statFuncs {
 
-			// test can stat
+			// utile can stat
 			info, err := statFunc.Func(test.Path)
 			if err != nil {
 				t.Errorf("Unexpected error using %v for %v: %v\n", statFunc.Name, test.Path, err)
 				continue
 			}
 
-			// test info.Name()
+			// utile info.Name()
 			if got, want := info.Name(), test.Name; got != want {
 				t.Errorf("Using %v for %v info.Name() got %v wanted %v\n", statFunc.Name, test.Path, got, want)
 			}
-			// test info.IsDir()
+			// utile info.IsDir()
 			if got, want := info.IsDir(), test.IsDir; got != want {
 				t.Errorf("Using %v for %v info.IsDir() got %v wanted %v\n", statFunc.Name, test.Path, got, want)
 			}
-			// test info.Mode().IsDir()
+			// utile info.Mode().IsDir()
 			if got, want := info.Mode().IsDir(), test.IsDir; got != want {
 				t.Errorf("Using %v for %v info.Mode().IsDir() got %v wanted %v\n", statFunc.Name, test.Path, got, want)
 			}
-			// test info.Mode().IsRegular()
+			// utile info.Mode().IsRegular()
 			if got, want := info.Mode().IsRegular(), test.IsRegular; got != want {
 				t.Errorf("Using %v for %v info.Mode().IsRegular() got %v wanted %v\n", statFunc.Name, test.Path, got, want)
 			}
-			// test info.Size()
+			// utile info.Size()
 			if test.IsRegular {
 				if got, want := info.Size(), int64(len(test.Contents)); got != want {
 					t.Errorf("Using %v for %v inf.Size() got %v wanted %v", statFunc.Name, test.Path, got, want)
@@ -164,7 +164,7 @@ func TestZipFSOpenSeek(t *testing.T) {
 	for _, test := range tests {
 		if test.IsRegular {
 
-			// test Open()
+			// utile Open()
 			f, err := fs.Open(test.Path)
 			if err != nil {
 				t.Error(err)
@@ -172,7 +172,7 @@ func TestZipFSOpenSeek(t *testing.T) {
 			}
 			defer f.Close()
 
-			// test Seek() multiple times
+			// utile Seek() multiple times
 			for i := 0; i < 3; i++ {
 				all, err := ioutil.ReadAll(f)
 				if err != nil {

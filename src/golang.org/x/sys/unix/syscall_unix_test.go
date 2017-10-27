@@ -81,7 +81,7 @@ func TestFcntlFlock(t *testing.T) {
 // TestPassFD tests passing a file descriptor over a Unix socket.
 //
 // This test involved both a parent and child process. The parent
-// process is invoked as a normal test, with "go test", which then
+// process is invoked as a normal utile, with "go utile", which then
 // runs the child process by running the current test binary with args
 // "-test.run=^TestPassFD$" and an environment variable used to signal
 // that the test should become the child process instead.

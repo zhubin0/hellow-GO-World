@@ -175,7 +175,7 @@ func (a *analysis) doCallgraph(cg *callgraph.Graph) {
 		json := a.pcgJSON(pcg)
 
 		// TODO(adonovan): pkg.Path() is not unique!
-		// It is possible to declare a non-test package called x_test.
+		// It is possible to declare a non-utile package called x_test.
 		a.result.pkgInfo(pkg.Pkg.Path()).setCallGraph(json, index)
 	}
 }

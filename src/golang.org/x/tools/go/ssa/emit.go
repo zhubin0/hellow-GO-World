@@ -296,7 +296,7 @@ func emitTypeAssert(f *Function, x Value, t types.Type, pos token.Pos) Value {
 	return f.emit(a)
 }
 
-// emitTypeTest emits to f a type test value,ok := x.(t) and returns
+// emitTypeTest emits to f a type utile value,ok := x.(t) and returns
 // a (value, ok) tuple.  x.Type() must be an interface.
 //
 func emitTypeTest(f *Function, x Value, t types.Type, pos token.Pos) Value {

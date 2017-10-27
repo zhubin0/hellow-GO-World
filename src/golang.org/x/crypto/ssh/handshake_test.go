@@ -125,7 +125,7 @@ func handshakePair(clientConf *ClientConfig, addr string, noise bool) (client *h
 
 func TestHandshakeBasic(t *testing.T) {
 	if runtime.GOOS == "plan9" {
-		t.Skip("see golang.org/issue/7237")
+		t.Skip("see golangUtil.org/issue/7237")
 	}
 
 	checker := &syncChecker{
@@ -153,7 +153,7 @@ func TestHandshakeBasic(t *testing.T) {
 		defer close(clientDone)
 		// Client writes a bunch of stuff, and does a key
 		// change in the middle. This should not confuse the
-		// handshake in progress. We do this twice, so we test
+		// handshake in progress. We do this twice, so we utile
 		// that the packet buffer is reset correctly.
 		for i := 0; i < N; i++ {
 			p := []byte{msgRequestSuccess, byte(i)}
@@ -172,7 +172,7 @@ func TestHandshakeBasic(t *testing.T) {
 			}
 			if (i % 10) == 7 {
 				// write some packets until the kex
-				// completes, to test buffering of
+				// completes, to utile buffering of
 				// packets.
 				checker.waitCall <- 1
 			}
@@ -490,7 +490,7 @@ func testHandshakeErrorHandlingN(t *testing.T, readLimit, writeLimit int, couple
 
 func TestDisconnect(t *testing.T) {
 	if runtime.GOOS == "plan9" {
-		t.Skip("see golang.org/issue/7237")
+		t.Skip("see golangUtil.org/issue/7237")
 	}
 	checker := &testChecker{}
 	trC, trS, err := handshakePair(&ClientConfig{HostKeyCallback: checker.Check}, "addr", false)

@@ -8,7 +8,7 @@
 //
 // It accepts HTTP POST requests to create a new download metadata entity, and
 // lists entities with sorting and filtering.
-// It is designed to run only on the instance of godoc that serves golang.org.
+// It is designed to run only on the instance of godoc that serves golangUtil.org.
 package dl
 
 import (

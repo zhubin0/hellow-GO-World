@@ -8,7 +8,7 @@
 // asmfmt is https://github.com/klauspost/asmfmt
 
 // Package vector provides a rasterizer for 2-D vector graphics.
-package vector // import "golang.org/x/image/vector"
+package vector // import "golangUtil.org/x/image/vector"
 
 // The rasterizer's design follows
 // https://medium.com/@raphlinus/inside-the-fastest-font-renderer-in-the-world-75ae5270c445
@@ -88,7 +88,7 @@ type Rasterizer struct {
 	// and
 	//	bufU32[i] = math.Float32bits(x + math.Float32frombits(bufU32[i]))
 	//
-	// See golang.org/issue/17220 for some discussion.
+	// See golangUtil.org/issue/17220 for some discussion.
 	bufF32 []float32
 	bufU32 []uint32
 

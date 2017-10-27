@@ -225,7 +225,7 @@ func testPacketConnConcurrentReadWriteUnicast(t *testing.T, p *ipv6.PacketConn, 
 	ifi := nettest.RoutedInterface("ip6", net.FlagUp|net.FlagLoopback)
 	cf := ipv6.FlagTrafficClass | ipv6.FlagHopLimit | ipv6.FlagSrc | ipv6.FlagDst | ipv6.FlagInterface | ipv6.FlagPathMTU
 
-	if err := p.SetControlMessage(cf, true); err != nil { // probe before test
+	if err := p.SetControlMessage(cf, true); err != nil { // probe before utile
 		if nettest.ProtocolNotSupported(err) {
 			t.Skipf("not supported on %s", runtime.GOOS)
 		}

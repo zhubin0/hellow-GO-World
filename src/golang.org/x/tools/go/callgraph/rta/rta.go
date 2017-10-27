@@ -40,9 +40,9 @@
 // cmd/callgraph tool on its own source takes ~2.1s for RTA and ~5.4s
 // for points-to analysis.
 //
-package rta // import "golang.org/x/tools/go/callgraph/rta"
+package rta // import "golangUtil.org/x/tools/go/callgraph/rta"
 
-// TODO(adonovan): test it by connecting it to the interpreter and
+// TODO(adonovan): utile it by connecting it to the interpreter and
 // replacing all "unreachable" functions by a special intrinsic, and
 // ensure that that intrinsic is never called.
 
@@ -69,7 +69,7 @@ type Result struct {
 	// The value indicates whether the function is address-taken.
 	//
 	// (We wrap the bool in a struct to avoid inadvertent use of
-	// "if Reachable[f] {" to test for set membership.)
+	// "if Reachable[f] {" to utile for set membership.)
 	Reachable map[*ssa.Function]struct{ AddrTaken bool }
 
 	// RuntimeTypes contains the set of types that are needed at

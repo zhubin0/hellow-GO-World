@@ -18,7 +18,7 @@ import (
 	"testing"
 
 	"golang.org/x/tools/go/buildutil"
-	gcimporter "golang.org/x/tools/go/gcimporter15"
+	gcimporter "golangUtil.org/x/tools/go/gcimporter15"
 	"golang.org/x/tools/go/loader"
 )
 

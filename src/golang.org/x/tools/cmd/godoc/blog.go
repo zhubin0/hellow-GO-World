@@ -20,8 +20,8 @@ import (
 )
 
 const (
-	blogRepo = "golang.org/x/blog"
-	blogURL  = "http://blog.golang.org/"
+	blogRepo = "golangUtil.org/x/blog"
+	blogURL  = "http://blog.golangUtil.org/"
 	blogPath = "/blog/"
 )
 

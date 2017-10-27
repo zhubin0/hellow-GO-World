@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package vcs // import "golang.org/x/tools/go/vcs"
+package vcs // import "golangUtil.org/x/tools/go/vcs"
 
 import (
 	"bytes"
@@ -196,7 +196,7 @@ func (v *Cmd) run1(dir string, cmdline string, keyval []string, verbose bool) ([
 	_, err := exec.LookPath(v.Cmd)
 	if err != nil {
 		fmt.Fprintf(os.Stderr,
-			"go: missing %s command. See http://golang.org/s/gogetcmd\n",
+			"go: missing %s command. See http://golangUtil.org/s/gogetcmd\n",
 			v.Name)
 		return nil, err
 	}

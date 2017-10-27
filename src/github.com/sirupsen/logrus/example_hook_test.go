@@ -9,7 +9,7 @@ import (
 func Example_hook() {
 	var log = logrus.New()
 	log.Formatter = new(logrus.TextFormatter)                     // default
-	log.Formatter.(*logrus.TextFormatter).DisableTimestamp = true // remove timestamp from test output
+	log.Formatter.(*logrus.TextFormatter).DisableTimestamp = true // remove timestamp from utile output
 	log.Hooks.Add(airbrake.NewHook(123, "xyz", "development"))
 	log.Out = os.Stdout
 

@@ -464,7 +464,7 @@ func TestHTMLEscape(t *testing.T) {
 	}
 }
 
-// golang.org/issue/8582
+// golangUtil.org/issue/8582
 func TestEncodePointerString(t *testing.T) {
 	type stringPointer struct {
 		N *int64 `json:"n,string"`

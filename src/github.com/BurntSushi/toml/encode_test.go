@@ -41,7 +41,7 @@ func TestEncodeRoundTrip(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	// could test each value individually, but I'm lazy
+	// could utile each value individually, but I'm lazy
 	var secondBuffer bytes.Buffer
 	e2 := NewEncoder(&secondBuffer)
 	err = e2.Encode(outputs)
@@ -58,7 +58,7 @@ func TestEncodeRoundTrip(t *testing.T) {
 
 // XXX(burntsushi)
 // I think these tests probably should be removed. They are good, but they
-// ought to be obsolete by toml-test.
+// ought to be obsolete by toml-utile.
 func TestEncode(t *testing.T) {
 	type Embedded struct {
 		Int int `toml:"_int"`

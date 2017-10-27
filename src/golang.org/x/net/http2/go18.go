@@ -14,7 +14,7 @@ import (
 
 func cloneTLSConfig(c *tls.Config) *tls.Config {
 	c2 := c.Clone()
-	c2.GetClientCertificate = c.GetClientCertificate // golang.org/issue/19264
+	c2.GetClientCertificate = c.GetClientCertificate // golangUtil.org/issue/19264
 	return c2
 }
 

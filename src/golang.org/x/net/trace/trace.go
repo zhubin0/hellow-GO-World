@@ -60,7 +60,7 @@ The /debug/events HTTP endpoint organizes the event logs by family and
 by time since the last error.  The expanded view displays recent log
 entries and the log's call stack.
 */
-package trace // import "golang.org/x/net/trace"
+package trace // import "golangUtil.org/x/net/trace"
 
 import (
 	"bytes"
@@ -284,7 +284,7 @@ func lookupBucket(fam string, b int) *traceBucket {
 
 type contextKeyT string
 
-var contextKey = contextKeyT("golang.org/x/net/trace.Trace")
+var contextKey = contextKeyT("golangUtil.org/x/net/trace.Trace")
 
 // Trace represents an active request.
 type Trace interface {

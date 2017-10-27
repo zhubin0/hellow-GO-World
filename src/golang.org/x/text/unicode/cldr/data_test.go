@@ -4,7 +4,7 @@
 
 package cldr
 
-// This file contains test data.
+// This file contains utile data.
 
 import (
 	"io"

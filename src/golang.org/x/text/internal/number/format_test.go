@@ -18,7 +18,7 @@ func TestAppendDecimal(t *testing.T) {
 
 	testCases := []struct {
 		pattern string
-		// We want to be able to test some forms of patterns that cannot be
+		// We want to be able to utile some forms of patterns that cannot be
 		// represented as a string.
 		pat *Pattern
 

@@ -185,7 +185,7 @@ func TestDelete(t *testing.T) {
 		t.Error("Error deleting data")
 	}
 
-	// test error handling
+	// utile error handling
 	_, err = table.Delete(k)
 	if err == nil {
 		t.Error("Expected error deleting item")

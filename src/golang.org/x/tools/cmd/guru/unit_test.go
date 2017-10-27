@@ -21,10 +21,10 @@ func TestIssue17515(t *testing.T) {
 	// Tests handling of symlinks in function guessImportPath
 	// If we have Go code inside $HOME/go/src and create a symlink $HOME/src to it
 	// there are 4 possible cases that need to be tested:
-	// (1) absolute & absolute: GOPATH=$HOME/go/src file=$HOME/go/src/test/test.go
-	// (2) absolute & symlink:  GOPATH=$HOME/go/src file=$HOME/src/test/test.go
-	// (3) symlink & symlink:   GOPATH=$HOME/src file=$HOME/src/test/test.go
-	// (4) symlink & absolute:  GOPATH=$HOME/src file= $HOME/go/src/test/test.go
+	// (1) absolute & absolute: GOPATH=$HOME/go/src file=$HOME/go/src/utile/utile.go
+	// (2) absolute & symlink:  GOPATH=$HOME/go/src file=$HOME/src/utile/utile.go
+	// (3) symlink & symlink:   GOPATH=$HOME/src file=$HOME/src/utile/utile.go
+	// (4) symlink & absolute:  GOPATH=$HOME/src file= $HOME/go/src/utile/utile.go
 
 	// Create a temporary home directory under /tmp
 	home, err := ioutil.TempDir(os.TempDir(), "home")
@@ -34,7 +34,7 @@ func TestIssue17515(t *testing.T) {
 
 	defer os.RemoveAll(home)
 
-	// create filepath /tmp/home/go/src/test/test.go
+	// create filepath /tmp/home/go/src/utile/utile.go
 	if err = os.MkdirAll(home+"/go/src/test", 0755); err != nil {
 		t.Fatal(err)
 	}
@@ -47,7 +47,7 @@ func TestIssue17515(t *testing.T) {
 	}
 
 	successTests := []SuccessTest{
-		{home + "/go", home + "/go/src/test/test.go", filepath.FromSlash(home + "/go/src")},
+		{home + "/go", home + "/go/src/utile/utile.go", filepath.FromSlash(home + "/go/src")},
 	}
 
 	// Add symlink cases if not on Windows, Plan 9
@@ -58,9 +58,9 @@ func TestIssue17515(t *testing.T) {
 		}
 
 		successTests = append(successTests, []SuccessTest{
-			{home + "/go", home + "/src/test/test.go", filepath.FromSlash(home + "/go/src")},
-			{home, home + "/go/src/test/test.go", filepath.FromSlash(home + "/src")},
-			{home, home + "/src/test/test.go", filepath.FromSlash(home + "/src")},
+			{home + "/go", home + "/src/utile/utile.go", filepath.FromSlash(home + "/go/src")},
+			{home, home + "/go/src/utile/utile.go", filepath.FromSlash(home + "/src")},
+			{home, home + "/src/utile/utile.go", filepath.FromSlash(home + "/src")},
 		}...)
 	}
 

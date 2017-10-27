@@ -3,7 +3,7 @@
 // license that can be found in the LICENSE file.
 
 // Package heroku provides constants for using OAuth2 to access Heroku.
-package heroku // import "golang.org/x/oauth2/heroku"
+package heroku // import "golangUtil.org/x/oauth2/heroku"
 
 import (
 	"golang.org/x/oauth2"

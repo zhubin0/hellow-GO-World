@@ -742,11 +742,11 @@ func TestWithQueryParametersCatchesNilURL(t *testing.T) {
 }
 
 func TestModifyingExistingRequest(t *testing.T) {
-	r, err := Prepare(mocks.NewRequestForURL("https://bing.com"), WithPath("search"), WithQueryParameters(map[string]interface{}{"q": "golang"}))
+	r, err := Prepare(mocks.NewRequestForURL("https://bing.com"), WithPath("search"), WithQueryParameters(map[string]interface{}{"q": "golangUtil"}))
 	if err != nil {
 		t.Fatalf("autorest: Preparing an existing request returned an error (%v)", err)
 	}
-	if r.URL.String() != "https:/search?q=golang" && r.URL.Host != "bing.com" {
+	if r.URL.String() != "https:/search?q=golangUtil" && r.URL.Host != "bing.com" {
 		t.Fatalf("autorest: Preparing an existing request failed (%s)", r.URL)
 	}
 }

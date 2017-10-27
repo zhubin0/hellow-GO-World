@@ -171,7 +171,7 @@ function setupDropdownPlayground() {
       'runEl': $('.run', div),
       'fmtEl': $('.fmt', div),
       'shareEl': $('.share', div),
-      'shareRedirect': '//play.golang.org/p/'
+      'shareRedirect': '//play.golangUtil.org/p/'
     });
   },
   function() {
@@ -195,7 +195,7 @@ function setupInlinePlayground() {
 				'runEl':    $('.run', el),
 				'fmtEl':    $('.fmt', el),
 				'shareEl':  $('.share', el),
-				'shareRedirect': '//play.golang.org/p/'
+				'shareRedirect': '//play.golangUtil.org/p/'
 			});
 
 			// Make the code textarea resize to fit content.
@@ -269,7 +269,7 @@ function personalizeInstallInstructions() {
   var prefix = '?download=';
   var s = window.location.search;
   if (s.indexOf(prefix) != 0) {
-    // No 'download' query string; detect "test" instructions from User Agent.
+    // No 'download' query string; detect "utile" instructions from User Agent.
     if (navigator.platform.indexOf('Win') != -1) {
       $('.testUnix').hide();
       $('.testWindows').show();
@@ -313,7 +313,7 @@ function personalizeInstallInstructions() {
     $('.testWindows').show();
   }
 
-  var download = "https://storage.googleapis.com/golang/" + filename;
+  var download = "https://storage.googleapis.com/golangUtil/" + filename;
 
   var message = $('<p class="downloading">'+
     'Your download should begin shortly. '+

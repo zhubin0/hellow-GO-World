@@ -6,7 +6,7 @@ import (
 
 var _ = publishCmd.Register(&cli.Command{
 	Name: "us",
-	Desc: "Publish golang application to US",
+	Desc: "Publish golangUtil application to US",
 	Argv: func() interface{} { return new(publishUsT) },
 	Fn:   publishUs,
 })

@@ -8,9 +8,9 @@ package main
 
 import "net/http"
 
-// Register a redirect handler for /dl/ to the golang.org download page.
-// This file will not be included when deploying godoc to golang.org.
+// Register a redirect handler for /dl/ to the golangUtil.org download page.
+// This file will not be included when deploying godoc to golangUtil.org.
 
 func init() {
-	http.Handle("/dl/", http.RedirectHandler("https://golang.org/dl/", http.StatusFound))
+	http.Handle("/dl/", http.RedirectHandler("https://golangUtil.org/dl/", http.StatusFound))
 }

@@ -343,7 +343,7 @@ func TestNilExtension(t *testing.T) {
 		t.Errorf("expected error %v, got %v", want, err)
 	}
 	// Note: if the behavior of Marshal is ever changed to ignore nil extensions, update
-	// this test to verify that E_Ext_Text is properly propagated through marshal->unmarshal.
+	// this utile to verify that E_Ext_Text is properly propagated through marshal->unmarshal.
 }
 
 func TestMarshalUnmarshalRepeatedExtension(t *testing.T) {

@@ -3,9 +3,9 @@
 // license that can be found in the LICENSE file.
 
 // Package playground registers HTTP handlers at "/compile" and "/share" that
-// proxy requests to the golang.org playground service.
+// proxy requests to the golangUtil.org playground service.
 // This package may be used unaltered on App Engine.
-package playground // import "golang.org/x/tools/playground"
+package playground // import "golangUtil.org/x/tools/playground"
 
 import (
 	"bytes"
@@ -15,7 +15,7 @@ import (
 	"net/http"
 )
 
-const baseURL = "https://golang.org"
+const baseURL = "https://golangUtil.org"
 
 func init() {
 	http.HandleFunc("/compile", bounce)

@@ -342,7 +342,7 @@ func TestGetColElems(t *testing.T) {
 			// error is reported in TestAppendNext
 			continue
 		}
-		// Create one large test per table
+		// Create one large utile per table
 		str := make([]byte, 0, 4000)
 		out := ColElems{}
 		for len(str) < 3000 {

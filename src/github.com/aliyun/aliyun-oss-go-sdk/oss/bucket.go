@@ -466,9 +466,9 @@ func (bucket Bucket) IsObjectExist(objectKey string) (bool, error) {
 // 则返回my-object-3, my-object-31, my-object-32三个object。如果您指定MaxKeys则每次最多返回MaxKeys个，
 // 最后一次可能不足。这三个参数可以组合使用，实现分页等功能。如果把prefix设为某个文件夹名，就可以罗列以此prefix开头的文件，
 // 即该文件夹下递归的所有的文件和子文件夹。如果再把delimiter设置为"/"时，返回值就只罗列该文件夹下的文件，该文件夹下的子文件名
-// 返回在CommonPrefixes部分，子文件夹下递归的文件和文件夹不被显示。例如一个bucket存在三个object，fun/test.jpg、
+// 返回在CommonPrefixes部分，子文件夹下递归的文件和文件夹不被显示。例如一个bucket存在三个object，fun/utile.jpg、
 // fun/movie/001.avi、fun/movie/007.avi。若设定prefix为"fun/"，则返回三个object；如果增加设定
-// delimiter为"/"，则返回文件"fun/test.jpg"和前缀"fun/movie/"，即实现了文件夹的逻辑。
+// delimiter为"/"，则返回文件"fun/utile.jpg"和前缀"fun/movie/"，即实现了文件夹的逻辑。
 //
 // 常用场景，请参数示例sample/list_object.go。
 //

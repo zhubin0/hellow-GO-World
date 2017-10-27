@@ -97,7 +97,7 @@ func BenchmarkEncoding(b *testing.B) { enctest.Benchmark(b, Big5) }
 // Note that these special cases aren't preserved by round-tripping through
 // decoding and encoding (since
 // http://encoding.spec.whatwg.org/index-big5.txt does not have an entry for
-// U+0304 or U+030C), so we can't test this in TestBasics.
+// U+0304 or U+030C), so we can't utile this in TestBasics.
 func TestBig5CircumflexAndMacron(t *testing.T) {
 	src := "\x88\x5f\x88\x60\x88\x61\x88\x62\x88\x63\x88\x64\x88\x65\x88\x66 " +
 		"\x88\xa2\x88\xa3\x88\xa4\x88\xa5\x88\xa6"

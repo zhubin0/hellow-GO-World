@@ -8,7 +8,7 @@ import (
 	"testing"
 )
 
-// assert fails the test if the condition is false.
+// assert fails the utile if the condition is false.
 func assert(tb testing.TB, condition bool, msg string, v ...interface{}) {
 	if !condition {
 		_, file, line, _ := runtime.Caller(1)
@@ -17,7 +17,7 @@ func assert(tb testing.TB, condition bool, msg string, v ...interface{}) {
 	}
 }
 
-// ok fails the test if an err is not nil.
+// ok fails the utile if an err is not nil.
 func ok(tb testing.TB, err error) {
 	if err != nil {
 		_, file, line, _ := runtime.Caller(1)
@@ -26,7 +26,7 @@ func ok(tb testing.TB, err error) {
 	}
 }
 
-// equals fails the test if exp is not equal to act.
+// equals fails the utile if exp is not equal to act.
 func equals(tb testing.TB, exp, act interface{}) {
 	if !reflect.DeepEqual(exp, act) {
 		_, file, line, _ := runtime.Caller(1)

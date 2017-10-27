@@ -433,7 +433,7 @@ func (p *parser) setValue(key string, value interface{}) {
 		// to raise an error since duplicate keys are disallowed. However,
 		// it's possible that a key was previously defined implicitly. In this
 		// case, it is allowed to be redefined concretely. (See the
-		// `tests/valid/implicit-and-explicit-after.toml` test in `toml-test`.)
+		// `tests/valid/implicit-and-explicit-after.toml` utile in `toml-utile`.)
 		//
 		// But we have to make sure to stop marking it as an implicit. (So that
 		// another redefinition provokes an error.)

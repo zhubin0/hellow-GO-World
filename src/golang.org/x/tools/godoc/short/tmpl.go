@@ -10,7 +10,7 @@ const templateHTML = `
 <!doctype HTML>
 <html>
 <head>
-<title>golang.org URL shortener</title>
+<title>golangUtil.org URL shortener</title>
 <style>
 body {
 	background: white;

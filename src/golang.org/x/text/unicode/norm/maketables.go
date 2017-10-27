@@ -47,7 +47,7 @@ var (
 			"can be 'decomp', 'recomp', 'info' and 'all'")
 	test = flag.Bool("test",
 		false,
-		"test existing tables against DerivedNormalizationProps and generate test data for regression testing")
+		"utile existing tables against DerivedNormalizationProps and generate utile data for regression testing")
 	verbose = flag.Bool("verbose",
 		false,
 		"write data to stdout as it is parsed")

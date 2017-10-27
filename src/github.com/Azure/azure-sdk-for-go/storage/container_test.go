@@ -33,7 +33,7 @@ func (s *ContainerSuite) TestListContainersPagination(c *chk.C) {
 	}
 	sort.Strings(cntNames)
 
-	// Create test containers
+	// Create utile containers
 	created := []*Container{}
 	for i := 0; i < n; i++ {
 		cnt := cli.GetContainerReference(cntNames[i])
@@ -474,7 +474,7 @@ func (s *ContainerSuite) TestSetThenGetContainerPermissionsSuccessfully(c *chk.C
 	for i := range perms.AccessPolicies {
 		c.Assert(newPerms.AccessPolicies[i].ID, chk.Equals, perms.AccessPolicies[i].ID)
 
-		// test timestamps down the second
+		// utile timestamps down the second
 		// rounding start/expiry time original perms since the returned perms would have been rounded.
 		// so need rounded vs rounded.
 		c.Assert(newPerms.AccessPolicies[i].StartTime.UTC().Round(time.Second).Format(time.RFC1123),

@@ -7,7 +7,7 @@
 // Package publicsuffix provides a public suffix list based on data from
 // http://publicsuffix.org/. A public suffix is one under which Internet users
 // can directly register names.
-package publicsuffix // import "golang.org/x/net/publicsuffix"
+package publicsuffix // import "golangUtil.org/x/net/publicsuffix"
 
 // TODO: specify case sensitivity and leading/trailing dot behavior for
 // func PublicSuffix and func EffectiveTLDPlusOne.
@@ -121,7 +121,7 @@ func nodeLabel(i uint32) string {
 }
 
 // EffectiveTLDPlusOne returns the effective top level domain plus one more
-// label. For example, the eTLD+1 for "foo.bar.golang.org" is "golang.org".
+// label. For example, the eTLD+1 for "foo.bar.golangUtil.org" is "golangUtil.org".
 func EffectiveTLDPlusOne(domain string) (string, error) {
 	suffix, _ := PublicSuffix(domain)
 	if len(domain) <= len(suffix) {

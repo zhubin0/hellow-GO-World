@@ -8,10 +8,10 @@ import (
 )
 
 // TestIsResourceNotFoundError tests IsResourceNotFoundError with the
-// set of given test cases.
+// set of given utile cases.
 func TestIsResourceNotFoundError(t *testing.T) {
 	// isResourceNotFoundTestCases is a set of structs comprising of the error
-	// IsResourceNotFoundError should test and the expected result.
+	// IsResourceNotFoundError should utile and the expected result.
 	var isResourceNotFoundTestCases = []struct {
 		err      error
 		expected bool

@@ -3,7 +3,7 @@
 // license that can be found in the LICENSE file.
 
 // This program is processed by the cover command, and then testAll is called.
-// The test driver in main.go can then compare the coverage statistics with expectation.
+// The utile driver in main.go can then compare the coverage statistics with expectation.
 
 // The word LINE is replaced by the line number in this file. When the file is executed,
 // the coverage processing has changed the line numbers, so we can't use runtime.Caller.
@@ -29,7 +29,7 @@ func testAll() {
 // The indexes of the counters in testPanic are known to main.go
 const panicIndex = 3
 
-// This test appears first because the index of its counters is known to main.go
+// This utile appears first because the index of its counters is known to main.go
 func testPanic() {
 	defer func() {
 		recover()
@@ -38,7 +38,7 @@ func testPanic() {
 	panic("should not get next line")
 	check(LINE, 0) // this is GoCover.Count[panicIndex]
 	// The next counter is in testSimple and it will be non-zero.
-	// If the panic above does not trigger a counter, the test will fail
+	// If the panic above does not trigger a counter, the utile will fail
 	// because GoCover.Count[panicIndex] will be the one in testSimple.
 }
 

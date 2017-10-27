@@ -5,7 +5,7 @@ import (
 )
 
 func TestKeysSel(t *testing.T) {
-	// Helper to test the selection behind KEYS
+	// Helper to utile the selection behind KEYS
 	// pattern -> cases -> should match?
 	for pat, chk := range map[string]map[string]bool{
 		"aap": {

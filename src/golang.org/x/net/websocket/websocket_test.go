@@ -503,7 +503,7 @@ func (c *closerConn) Close() error {
 
 func TestClose(t *testing.T) {
 	if runtime.GOOS == "plan9" {
-		t.Skip("see golang.org/issue/11454")
+		t.Skip("see golangUtil.org/issue/11454")
 	}
 
 	once.Do(startServer)

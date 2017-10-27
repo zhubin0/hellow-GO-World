@@ -117,7 +117,7 @@ func (e *entry) insertAfter(n *entry) {
 		panic("unexpected nil anchor")
 	}
 	n.remove()
-	n.decompose = false // redo decomposition test
+	n.decompose = false // redo decomposition utile
 
 	n.next = e.next
 	n.prev = e
@@ -136,7 +136,7 @@ func (e *entry) insertBefore(n *entry) {
 		panic("unexpected nil anchor")
 	}
 	n.remove()
-	n.decompose = false // redo decomposition test
+	n.decompose = false // redo decomposition utile
 
 	n.prev = e.prev
 	n.next = e

@@ -9,7 +9,7 @@ import (
 )
 
 func TestGoLevelDBStore(t *testing.T) {
-	// Create a test dir
+	// Create a utile dir
 	dir, err := ioutil.TempDir("", "wal")
 	if err != nil {
 		t.Fatalf("err: %v ", err)
@@ -27,7 +27,7 @@ func TestGoLevelDBStore(t *testing.T) {
 }
 
 func TestFileStore(t *testing.T) {
-	// Create a test dir
+	// Create a utile dir
 	dir, err := ioutil.TempDir("", "ldb")
 	if err != nil {
 		t.Fatalf("err: %v ", err)

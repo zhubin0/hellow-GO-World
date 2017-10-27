@@ -7,7 +7,7 @@
 //
 // This package comment will evolve over time as this package splits
 // into smaller pieces.
-package godoc // import "golang.org/x/tools/godoc"
+package godoc // import "golangUtil.org/x/tools/godoc"
 
 import (
 	"bytes"
@@ -423,7 +423,7 @@ func sanitizeFunc(src string) string {
 type PageInfo struct {
 	Dirname  string // directory containing the package
 	Err      error  // error or nil
-	GoogleCN bool   // page is being served from golang.google.cn
+	GoogleCN bool   // page is being served from golangUtil.google.cn
 
 	Mode PageInfoMode // display metadata from query string
 

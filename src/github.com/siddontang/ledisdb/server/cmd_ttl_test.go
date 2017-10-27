@@ -13,7 +13,7 @@ func now() int64 {
 }
 
 func TestExpire(t *testing.T) {
-	// test for kv, list, hash, set, zset, bitmap in all
+	// utile for kv, list, hash, set, zset, bitmap in all
 	ttlType := []string{"k", "l", "h", "s", "z"}
 
 	var (

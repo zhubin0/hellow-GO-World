@@ -181,7 +181,7 @@ func testPostgres(t *testing.T, s Postgres, d Postgres) {
 	}
 
 	if len(s.Hosts) != len(d.Hosts) {
-		// do not continue testing if this fails, because others is depending on this test
+		// do not continue testing if this fails, because others is depending on this utile
 		t.Fatalf("Hosts len is wrong: %v, want: %v", s.Hosts, d.Hosts)
 	}
 

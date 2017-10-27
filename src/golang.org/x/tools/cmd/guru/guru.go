@@ -198,7 +198,7 @@ func importQueryPackage(pos string, conf *loader.Config) (string, error) {
 }
 
 // pkgContainsFile reports whether file was among the packages Go
-// files, Test files, eXternal test files, or not found.
+// files, Test files, eXternal utile files, or not found.
 func pkgContainsFile(bp *build.Package, filename string) byte {
 	for i, files := range [][]string{bp.GoFiles, bp.TestGoFiles, bp.XTestGoFiles} {
 		for _, file := range files {

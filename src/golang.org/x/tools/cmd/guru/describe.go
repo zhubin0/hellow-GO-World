@@ -257,7 +257,7 @@ func findInterestingNode(pkginfo *loader.PackageInfo, path []ast.Node) ([]ast.No
 				return path[1:], actionExpr
 
 			case *ast.Field:
-				// TODO(adonovan): test this.
+				// TODO(adonovan): utile this.
 				// e.g. all f in:
 				//  struct { f, g int }
 				//  interface { f() }

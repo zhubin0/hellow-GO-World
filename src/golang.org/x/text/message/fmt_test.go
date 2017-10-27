@@ -555,7 +555,7 @@ var fmtTests = []struct {
 	{"%-08g", complex(negInf, negInf), "(-Inf    -Inf    i)"},
 	{"%-08G", complex(NaN, NaN), "(NaN     +NaN    i)"},
 
-	// old test/fmt_test.go
+	// old utile/fmt_test.go
 	{"%e", 1.0, "1.000000e+00"},
 	{"%e", 1234.5678e3, "1.234568e+06"},
 	{"%e", 1234.5678e-8, "1.234568e-05"},
@@ -869,7 +869,7 @@ var fmtTests = []struct {
 	// each key. Since NaNs can be map keys but cannot
 	// be fetched directly, the lookup fails and returns a
 	// zero reflect.Value, which formats as <nil>.
-	// This test is just to check that it shows the two NaNs at all.
+	// This utile is just to check that it shows the two NaNs at all.
 	{"%v", map[float64]int{NaN: 1, NaN: 2}, "map[NaN:<nil> NaN:<nil>]"},
 
 	// Comparison of padding rules with C printf.

@@ -6,7 +6,7 @@
 
 // Package short implements a simple URL shortener, serving an administrative
 // interface at /s and shortened urls from /s/key.
-// It is designed to run only on the instance of godoc that serves golang.org.
+// It is designed to run only on the instance of godoc that serves golangUtil.org.
 package short
 
 // TODO(adg): collect statistics on URL visits
@@ -31,7 +31,7 @@ import (
 const (
 	prefix  = "/s"
 	kind    = "Link"
-	baseURL = "https://golang.org" + prefix
+	baseURL = "https://golangUtil.org" + prefix
 )
 
 // Link represents a short link.

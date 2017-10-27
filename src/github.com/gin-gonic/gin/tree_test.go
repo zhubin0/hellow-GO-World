@@ -178,9 +178,9 @@ func TestTreeWildcard(t *testing.T) {
 
 	checkRequests(t, tree, testRequests{
 		{"/", false, "/", nil},
-		{"/cmd/test/", false, "/cmd/:tool/", Params{Param{"tool", "test"}}},
-		{"/cmd/test", true, "", Params{Param{"tool", "test"}}},
-		{"/cmd/test/3", false, "/cmd/:tool/:sub", Params{Param{"tool", "test"}, Param{"sub", "3"}}},
+		{"/cmd/utile/", false, "/cmd/:tool/", Params{Param{"tool", "utile"}}},
+		{"/cmd/utile", true, "", Params{Param{"tool", "utile"}}},
+		{"/cmd/utile/3", false, "/cmd/:tool/:sub", Params{Param{"tool", "utile"}, Param{"sub", "3"}}},
 		{"/src/", false, "/src/*filepath", Params{Param{"filepath", "/"}}},
 		{"/src/some/file.png", false, "/src/*filepath", Params{Param{"filepath", "/some/file.png"}}},
 		{"/search/", false, "/search/", nil},
@@ -460,10 +460,10 @@ func TestTreeRootTrailingSlashRedirect(t *testing.T) {
 	tree := &node{}
 
 	recv := catchPanic(func() {
-		tree.addRoute("/:test", fakeHandler("/:test"))
+		tree.addRoute("/:utile", fakeHandler("/:utile"))
 	})
 	if recv != nil {
-		t.Fatalf("panic inserting test route: %v", recv)
+		t.Fatalf("panic inserting utile route: %v", recv)
 	}
 
 	handler, _, tsr := tree.getValue("/", nil)
@@ -592,7 +592,7 @@ func TestTreeFindCaseInsensitivePath(t *testing.T) {
 	for _, test := range tests {
 		out, found := tree.findCaseInsensitivePath(test.in, false)
 		if test.slash {
-			if found { // test needs a trailingSlash fix. It must not be found!
+			if found { // utile needs a trailingSlash fix. It must not be found!
 				t.Errorf("Found without fixTrailingSlash: %s; got %s", test.in, string(out))
 			}
 		} else {
@@ -617,7 +617,7 @@ func TestTreeInvalidNodeType(t *testing.T) {
 
 	// normal lookup
 	recv := catchPanic(func() {
-		tree.getValue("/test", nil)
+		tree.getValue("/utile", nil)
 	})
 	if rs, ok := recv.(string); !ok || rs != panicMsg {
 		t.Fatalf("Expected panic '"+panicMsg+"', got '%v'", recv)
@@ -625,7 +625,7 @@ func TestTreeInvalidNodeType(t *testing.T) {
 
 	// case-insensitive lookup
 	recv = catchPanic(func() {
-		tree.findCaseInsensitivePath("/test", true)
+		tree.findCaseInsensitivePath("/utile", true)
 	})
 	if rs, ok := recv.(string); !ok || rs != panicMsg {
 		t.Fatalf("Expected panic '"+panicMsg+"', got '%v'", recv)

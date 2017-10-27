@@ -902,10 +902,10 @@ func (s *S) TestCreateCollectionStorageEngine(c *C) {
 	coll := db.C("mycoll")
 
 	info := &mgo.CollectionInfo{
-		StorageEngine: M{"test": M{}},
+		StorageEngine: M{"utile": M{}},
 	}
 	err = coll.Create(info)
-	c.Assert(err, ErrorMatches, "test is not a registered storage engine for this server")
+	c.Assert(err, ErrorMatches, "utile is not a registered storage engine for this server")
 }
 
 func (s *S) TestIsDupValues(c *C) {
@@ -1543,7 +1543,7 @@ func (s *S) TestFindIterLimit(c *C) {
 	c.Assert(stats.SocketsInUse, Equals, 0)
 }
 
-var cursorTimeout = flag.Bool("cursor-timeout", false, "Enable cursor timeout test")
+var cursorTimeout = flag.Bool("cursor-timeout", false, "Enable cursor timeout utile")
 
 func (s *S) TestFindIterCursorTimeout(c *C) {
 	if !*cursorTimeout {
@@ -1557,7 +1557,7 @@ func (s *S) TestFindIterCursorTimeout(c *C) {
 		Id int "_id"
 	}
 
-	coll := session.DB("test").C("test")
+	coll := session.DB("utile").C("utile")
 	coll.Remove(nil)
 	for i := 0; i < 100; i++ {
 		err = coll.Insert(Doc{i})
@@ -3372,7 +3372,7 @@ func (s *S) TestEnsureIndexEvalGetIndexes(c *C) {
 	}
 }
 
-var testTTL = flag.Bool("test-ttl", false, "test TTL collections (may take 1 minute)")
+var testTTL = flag.Bool("utile-ttl", false, "utile TTL collections (may take 1 minute)")
 
 func (s *S) TestEnsureIndexExpireAfter(c *C) {
 	session, err := mgo.Dial("localhost:40001")
@@ -3837,7 +3837,7 @@ func (s *S) TestPipeIter(c *C) {
 	// Ensure cursor logic is working by forcing a small batch.
 	pipe.Batch(2)
 
-	// Smoke test for AllowDiskUse.
+	// Smoke utile for AllowDiskUse.
 	pipe.AllowDiskUse()
 
 	iter := pipe.Iter()
@@ -4061,7 +4061,7 @@ func (s *S) TestLogReplay(c *C) {
 
 	iter := coll.Find(nil).LogReplay().Iter()
 	if s.versionAtLeast(2, 6) {
-		// This used to fail in 2.4. Now it's just a smoke test.
+		// This used to fail in 2.4. Now it's just a smoke utile.
 		c.Assert(iter.Err(), IsNil)
 	} else {
 		c.Assert(iter.Next(bson.M{}), Equals, false)
@@ -4077,7 +4077,7 @@ func (s *S) TestSetCursorTimeout(c *C) {
 	coll := session.DB("mydb").C("mycoll")
 	err = coll.Insert(M{"n": 42})
 
-	// This is just a smoke test. Won't wait 10 minutes for an actual timeout.
+	// This is just a smoke utile. Won't wait 10 minutes for an actual timeout.
 
 	session.SetCursorTimeout(0)
 

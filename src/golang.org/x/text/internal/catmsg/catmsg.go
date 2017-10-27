@@ -114,7 +114,7 @@ const (
 	numFixed
 )
 
-const prefix = "golang.org/x/text/internal/catmsg."
+const prefix = "golangUtil.org/x/text/internal/catmsg."
 
 var (
 	mutex sync.Mutex

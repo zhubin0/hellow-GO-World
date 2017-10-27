@@ -8,7 +8,7 @@
 //
 // NOTE: the formatting functionality is currently under development and may
 // change without notice.
-package currency // import "golang.org/x/text/currency"
+package currency // import "golangUtil.org/x/text/currency"
 
 import (
 	"errors"

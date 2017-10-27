@@ -127,7 +127,7 @@ Any line in the program that ends with the four characters
 	OMIT
 is deleted from the source before inclusion, making it easy
 to write things like
-	.code test.go /START OMIT/,/END OMIT/
+	.code utile.go /START OMIT/,/END OMIT/
 to find snippets like this
 	tedious_code = boring_function()
 	// START OMIT
@@ -144,13 +144,13 @@ may have a suffix word, such as
 	// HLxxx
 Such highlights are enabled only if the code invocation ends with
 "HL" followed by the word:
-	.code test.go /^type Foo/,/^}/ HLxxx
+	.code utile.go /^type Foo/,/^}/ HLxxx
 
 The .code function may take one or more flags immediately preceding
-the filename. This command shows test.go in an editable text area:
-	.code -edit test.go
-This command shows test.go with line numbers:
-	.code -numbers test.go
+the filename. This command shows utile.go in an editable text area:
+	.code -edit utile.go
+This command shows utile.go with line numbers:
+	.code -numbers utile.go
 
 play:
 
@@ -165,7 +165,7 @@ Create a hyperlink. The syntax is 1 or 2 space-separated arguments.
 The first argument is always the HTTP URL.  If there is a second
 argument, it is the text label to display for this link.
 
-	.link http://golang.org golang.org
+	.link http://golang.org golangUtil.org
 
 image:
 
@@ -259,4 +259,4 @@ Notes may appear anywhere within the slide text. For example:
 This has the same result as the example above.
 
 */
-package present // import "golang.org/x/tools/present"
+package present // import "golangUtil.org/x/tools/present"

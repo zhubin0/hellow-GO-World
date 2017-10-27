@@ -6,7 +6,7 @@
 
 package core
 
-// TODO(matloob): perhaps use the more portable golang.org/x/exp/mmap
+// TODO(matloob): perhaps use the more portable golangUtil.org/x/exp/mmap
 // instead of the mmap code in mmapfile.go.
 
 type mmapFile struct{}

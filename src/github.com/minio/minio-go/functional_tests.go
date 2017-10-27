@@ -147,7 +147,7 @@ func testMakeBucketError() {
 	c.SetAppInfo("Minio-go-FunctionalTest", "0.1.0")
 
 	// Generate a new random bucket name.
-	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-test")
+	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-utile")
 
 	// Make a new bucket in 'eu-central-1'.
 	if err = c.MakeBucket(bucketName, "eu-central-1"); err != nil {
@@ -196,7 +196,7 @@ func testMakeBucketRegions() {
 	c.SetAppInfo("Minio-go-FunctionalTest", "0.1.0")
 
 	// Generate a new random bucket name.
-	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-test")
+	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-utile")
 
 	// Make a new bucket in 'eu-central-1'.
 	if err = c.MakeBucket(bucketName, "eu-central-1"); err != nil {
@@ -245,7 +245,7 @@ func testPutObjectReadAt() {
 	c.SetAppInfo("Minio-go-FunctionalTest", "0.1.0")
 
 	// Generate a new random bucket name.
-	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-test")
+	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-utile")
 
 	// Make a new bucket.
 	err = c.MakeBucket(bucketName, "us-east-1")
@@ -334,7 +334,7 @@ func testPutObjectWithMetadata() {
 	c.SetAppInfo("Minio-go-FunctionalTest", "0.1.0")
 
 	// Generate a new random bucket name.
-	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-test")
+	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-utile")
 
 	// Make a new bucket.
 	err = c.MakeBucket(bucketName, "us-east-1")
@@ -424,7 +424,7 @@ func testPutObjectStreaming() {
 
 	// Generate a new random bucket name.
 	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()),
-		"minio-go-test")
+		"minio-go-utile")
 
 	// Make a new bucket.
 	err = c.MakeBucket(bucketName, "us-east-1")
@@ -434,7 +434,7 @@ func testPutObjectStreaming() {
 
 	// Upload an object.
 	sizes := []int64{0, 64*1024 - 1, 64 * 1024}
-	objectName := "test-object"
+	objectName := "utile-object"
 	for i, size := range sizes {
 		data := bytes.Repeat([]byte("a"), int(size))
 		n, err := c.PutObjectStreaming(bucketName, objectName, bytes.NewReader(data))
@@ -485,7 +485,7 @@ func testListPartiallyUploaded() {
 	// c.TraceOn(os.Stderr)
 
 	// Generate a new random bucket name.
-	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-test")
+	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-utile")
 
 	// Make a new bucket.
 	err = c.MakeBucket(bucketName, "us-east-1")
@@ -559,7 +559,7 @@ func testGetObjectSeekEnd() {
 	c.SetAppInfo("Minio-go-FunctionalTest", "0.1.0")
 
 	// Generate a new random bucket name.
-	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-test")
+	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-utile")
 
 	// Make a new bucket.
 	err = c.MakeBucket(bucketName, "us-east-1")
@@ -651,7 +651,7 @@ func testGetObjectClosedTwice() {
 	c.SetAppInfo("Minio-go-FunctionalTest", "0.1.0")
 
 	// Generate a new random bucket name.
-	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-test")
+	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-utile")
 
 	// Make a new bucket.
 	err = c.MakeBucket(bucketName, "us-east-1")
@@ -728,7 +728,7 @@ func testRemoveMultipleObjects() {
 	// c.TraceOn(os.Stderr)
 
 	// Generate a new random bucket name.
-	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-test")
+	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-utile")
 
 	// Make a new bucket.
 	err = c.MakeBucket(bucketName, "us-east-1")
@@ -768,7 +768,7 @@ func testRemoveMultipleObjects() {
 		}
 	}
 
-	// Clean the bucket created by the test
+	// Clean the bucket created by the utile
 	err = c.RemoveBucket(bucketName)
 	if err != nil {
 		logger().Fatal("Error:", err)
@@ -800,7 +800,7 @@ func testRemovePartiallyUploaded() {
 	// c.TraceOn(os.Stderr)
 
 	// Generate a new random bucket name.
-	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-test")
+	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-utile")
 
 	// Make a new bucket.
 	err = c.MakeBucket(bucketName, "us-east-1")
@@ -867,7 +867,7 @@ func testFPutObjectMultipart() {
 	c.SetAppInfo("Minio-go-FunctionalTest", "0.1.0")
 
 	// Generate a new random bucket name.
-	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-test")
+	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-utile")
 
 	// Make a new bucket.
 	err = c.MakeBucket(bucketName, "us-east-1")
@@ -962,7 +962,7 @@ func testFPutObject() {
 	c.SetAppInfo("Minio-go-FunctionalTest", "0.1.0")
 
 	// Generate a new random bucket name.
-	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-test")
+	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-utile")
 
 	// Make a new bucket.
 	err = c.MakeBucket(bucketName, "us-east-1")
@@ -1120,7 +1120,7 @@ func testGetObjectReadSeekFunctional() {
 	c.SetAppInfo("Minio-go-FunctionalTest", "0.1.0")
 
 	// Generate a new random bucket name.
-	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-test")
+	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-utile")
 
 	// Make a new bucket.
 	err = c.MakeBucket(bucketName, "us-east-1")
@@ -1273,7 +1273,7 @@ func testGetObjectReadAtFunctional() {
 	c.SetAppInfo("Minio-go-FunctionalTest", "0.1.0")
 
 	// Generate a new random bucket name.
-	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-test")
+	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-utile")
 
 	// Make a new bucket.
 	err = c.MakeBucket(bucketName, "us-east-1")
@@ -1421,7 +1421,7 @@ func testPresignedPostPolicy() {
 	c.SetAppInfo("Minio-go-FunctionalTest", "0.1.0")
 
 	// Generate a new random bucket name.
-	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-test")
+	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-utile")
 
 	// Make a new bucket in 'us-east-1' (source bucket).
 	err = c.MakeBucket(bucketName, "us-east-1")
@@ -1514,7 +1514,7 @@ func testCopyObject() {
 	c.SetAppInfo("Minio-go-FunctionalTest", "0.1.0")
 
 	// Generate a new random bucket name.
-	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-test")
+	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-utile")
 
 	// Make a new bucket in 'us-east-1' (source bucket).
 	err = c.MakeBucket(bucketName, "us-east-1")
@@ -1684,7 +1684,7 @@ func testEncryptionPutGet() {
 	c.SetAppInfo("Minio-go-FunctionalTest", "0.1.0")
 
 	// Generate a new random bucket name.
-	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-test")
+	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-utile")
 
 	// Make a new bucket.
 	err = c.MakeBucket(bucketName, "us-east-1")
@@ -1803,7 +1803,7 @@ func testEncryptionPutGet() {
 			logger().Fatalf("Test %d, error: Encrypted sent is not equal to decrypted, want `%x`, go `%x`", i+1, testCase.buf, recvBuffer.Bytes())
 		}
 
-		// Remove test object
+		// Remove utile object
 		err = c.RemoveObject(bucketName, objectName)
 		if err != nil {
 			logger().Fatalf("Test %d, error: %v", i+1, err)
@@ -1811,7 +1811,7 @@ func testEncryptionPutGet() {
 
 	}
 
-	// Remove test bucket
+	// Remove utile bucket
 	err = c.RemoveBucket(bucketName)
 	if err != nil {
 		logger().Fatal("Error:", err)
@@ -1827,7 +1827,7 @@ func testBucketNotification() {
 		os.Getenv("NOTIFY_REGION") == "" ||
 		os.Getenv("NOTIFY_ACCOUNTID") == "" ||
 		os.Getenv("NOTIFY_RESOURCE") == "" {
-		logger().Info("skipping notification test if not configured")
+		logger().Info("skipping notification utile if not configured")
 		return
 	}
 
@@ -1925,7 +1925,7 @@ func testFunctional() {
 	c.SetAppInfo("Minio-go-FunctionalTest", "0.1.0")
 
 	// Generate a new random bucket name.
-	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-test")
+	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-utile")
 
 	// Make a new bucket.
 	err = c.MakeBucket(bucketName, "us-east-1")
@@ -2132,7 +2132,7 @@ func testFunctional() {
 
 	// Set request parameters.
 	reqParams := make(url.Values)
-	reqParams.Set("response-content-disposition", "attachment; filename=\"test.txt\"")
+	reqParams.Set("response-content-disposition", "attachment; filename=\"utile.txt\"")
 	presignedGetURL, err = c.PresignedGetObject(bucketName, objectName, 3600*time.Second, reqParams)
 	if err != nil {
 		logger().Fatal("Error: ", err)
@@ -2152,7 +2152,7 @@ func testFunctional() {
 	if !bytes.Equal(newPresignedBytes, buf) {
 		logger().Fatal("Error: bytes mismatch for presigned GET URL.")
 	}
-	if resp.Header.Get("Content-Disposition") != "attachment; filename=\"test.txt\"" {
+	if resp.Header.Get("Content-Disposition") != "attachment; filename=\"utile.txt\"" {
 		logger().Fatalf("Error: wrong Content-Disposition received %s", resp.Header.Get("Content-Disposition"))
 	}
 
@@ -2251,7 +2251,7 @@ func testGetObjectObjectModified() {
 	c.SetAppInfo("Minio-go-FunctionalTest", "0.1.0")
 
 	// Make a new bucket.
-	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-test")
+	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-utile")
 	err = c.MakeBucket(bucketName, "us-east-1")
 	if err != nil {
 		logger().Fatal("Error:", err, bucketName)
@@ -2323,14 +2323,14 @@ func testPutObjectUploadSeekedObject() {
 	c.SetAppInfo("Minio-go-FunctionalTest", "0.1.0")
 
 	// Make a new bucket.
-	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-test")
+	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-utile")
 	err = c.MakeBucket(bucketName, "us-east-1")
 	if err != nil {
 		logger().Fatal("Error:", err, bucketName)
 	}
 	defer c.RemoveBucket(bucketName)
 
-	tempfile, err := ioutil.TempFile("", "minio-go-upload-test-")
+	tempfile, err := ioutil.TempFile("", "minio-go-upload-utile-")
 	if err != nil {
 		logger().Fatal("Error:", err)
 	}
@@ -2347,7 +2347,7 @@ func testPutObjectUploadSeekedObject() {
 		logger().Fatal("Error:", err)
 	}
 
-	objectName := fmt.Sprintf("test-file-%v", rand.Uint32())
+	objectName := fmt.Sprintf("utile-file-%v", rand.Uint32())
 
 	offset := length / 2
 	if _, err := tempfile.Seek(int64(offset), 0); err != nil {
@@ -2427,7 +2427,7 @@ func testMakeBucketErrorV2() {
 	c.SetAppInfo("Minio-go-FunctionalTest", "0.1.0")
 
 	// Generate a new random bucket name.
-	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-test")
+	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-utile")
 
 	// Make a new bucket in 'eu-west-1'.
 	if err = c.MakeBucket(bucketName, "eu-west-1"); err != nil {
@@ -2471,7 +2471,7 @@ func testGetObjectClosedTwiceV2() {
 	c.SetAppInfo("Minio-go-FunctionalTest", "0.1.0")
 
 	// Generate a new random bucket name.
-	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-test")
+	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-utile")
 
 	// Make a new bucket.
 	err = c.MakeBucket(bucketName, "us-east-1")
@@ -2549,7 +2549,7 @@ func testRemovePartiallyUploadedV2() {
 	// c.TraceOn(os.Stderr)
 
 	// Generate a new random bucket name.
-	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-test")
+	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-utile")
 
 	// make a new bucket.
 	err = c.MakeBucket(bucketName, "us-east-1")
@@ -2616,7 +2616,7 @@ func testFPutObjectV2() {
 	c.SetAppInfo("Minio-go-FunctionalTest", "0.1.0")
 
 	// Generate a new random bucket name.
-	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-test")
+	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-utile")
 
 	// Make a new bucket.
 	err = c.MakeBucket(bucketName, "us-east-1")
@@ -2767,7 +2767,7 @@ func testMakeBucketRegionsV2() {
 	c.SetAppInfo("Minio-go-FunctionalTest", "0.1.0")
 
 	// Generate a new random bucket name.
-	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-test")
+	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-utile")
 
 	// Make a new bucket in 'eu-central-1'.
 	if err = c.MakeBucket(bucketName, "eu-west-1"); err != nil {
@@ -2815,7 +2815,7 @@ func testGetObjectReadSeekFunctionalV2() {
 	c.SetAppInfo("Minio-go-FunctionalTest", "0.1.0")
 
 	// Generate a new random bucket name.
-	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-test")
+	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-utile")
 
 	// Make a new bucket.
 	err = c.MakeBucket(bucketName, "us-east-1")
@@ -2945,7 +2945,7 @@ func testGetObjectReadAtFunctionalV2() {
 	c.SetAppInfo("Minio-go-FunctionalTest", "0.1.0")
 
 	// Generate a new random bucket name.
-	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-test")
+	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-utile")
 
 	// Make a new bucket.
 	err = c.MakeBucket(bucketName, "us-east-1")
@@ -3080,7 +3080,7 @@ func testCopyObjectV2() {
 	c.SetAppInfo("Minio-go-FunctionalTest", "0.1.0")
 
 	// Generate a new random bucket name.
-	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-test")
+	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-utile")
 
 	// Make a new bucket in 'us-east-1' (source bucket).
 	err = c.MakeBucket(bucketName, "us-east-1")
@@ -3227,7 +3227,7 @@ func testCopyObjectV2() {
 
 func testComposeObjectErrorCasesWrapper(c *minio.Client) {
 	// Generate a new random bucket name.
-	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-test")
+	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-utile")
 
 	// Make a new bucket in 'us-east-1' (source bucket).
 	err := c.MakeBucket(bucketName, "us-east-1")
@@ -3294,7 +3294,7 @@ func testComposeObjectErrorCasesV2() {
 
 func testComposeMultipleSources(c *minio.Client) {
 	// Generate a new random bucket name.
-	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-test")
+	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-utile")
 	// Make a new bucket in 'us-east-1' (source bucket).
 	err := c.MakeBucket(bucketName, "us-east-1")
 	if err != nil {
@@ -3358,7 +3358,7 @@ func testCompose10KSourcesV2() {
 }
 func testEncryptedCopyObjectWrapper(c *minio.Client) {
 	// Generate a new random bucket name.
-	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-test")
+	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-utile")
 	// Make a new bucket in 'us-east-1' (source bucket).
 	err := c.MakeBucket(bucketName, "us-east-1")
 	if err != nil {
@@ -3468,7 +3468,7 @@ func testUserMetadataCopying() {
 }
 func testUserMetadataCopyingWrapper(c *minio.Client) {
 	// Generate a new random bucket name.
-	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-test")
+	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-utile")
 	// Make a new bucket in 'us-east-1' (source bucket).
 	err := c.MakeBucket(bucketName, "us-east-1")
 	if err != nil {
@@ -3635,7 +3635,7 @@ func testPutObject0ByteV2() {
 
 	// Generate a new random bucket name.
 	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()),
-		"minio-go-test")
+		"minio-go-utile")
 
 	// Make a new bucket.
 	err = c.MakeBucket(bucketName, "us-east-1")
@@ -3726,7 +3726,7 @@ func testFunctionalV2() {
 	c.SetAppInfo("Minio-go-FunctionalTest", "0.1.0")
 
 	// Generate a new random bucket name.
-	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-test")
+	bucketName := randString(60, rand.NewSource(time.Now().UnixNano()), "minio-go-utile")
 
 	// Make a new bucket.
 	err = c.MakeBucket(bucketName, "us-east-1")
@@ -3890,7 +3890,7 @@ func testFunctionalV2() {
 
 	// Set request parameters.
 	reqParams := make(url.Values)
-	reqParams.Set("response-content-disposition", "attachment; filename=\"test.txt\"")
+	reqParams.Set("response-content-disposition", "attachment; filename=\"utile.txt\"")
 	// Generate presigned GET object url.
 	presignedGetURL, err = c.PresignedGetObject(bucketName, objectName, 3600*time.Second, reqParams)
 	if err != nil {
@@ -3912,7 +3912,7 @@ func testFunctionalV2() {
 		logger().Fatal("Error: bytes mismatch for presigned GET url.")
 	}
 	// Verify content disposition.
-	if resp.Header.Get("Content-Disposition") != "attachment; filename=\"test.txt\"" {
+	if resp.Header.Get("Content-Disposition") != "attachment; filename=\"utile.txt\"" {
 		logger().Fatalf("Error: wrong Content-Disposition received %s", resp.Header.Get("Content-Disposition"))
 	}
 

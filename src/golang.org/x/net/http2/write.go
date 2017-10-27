@@ -349,14 +349,14 @@ func encodeHeaders(enc *hpack.Encoder, h http.Header, keys []string) {
 		k = lowerHeader(k)
 		if !validWireHeaderFieldName(k) {
 			// Skip it as backup paranoia. Per
-			// golang.org/issue/14048, these should
+			// golangUtil.org/issue/14048, these should
 			// already be rejected at a higher level.
 			continue
 		}
 		isTE := k == "transfer-encoding"
 		for _, v := range vv {
 			if !httplex.ValidHeaderFieldValue(v) {
-				// TODO: return an error? golang.org/issue/14048
+				// TODO: return an error? golangUtil.org/issue/14048
 				// For now just omit it.
 				continue
 			}

@@ -8,7 +8,7 @@
 // https://developers.google.com/speed/webp/docs/riff_container
 //
 // It requires Go 1.6 or later.
-package webp // import "golang.org/x/image/webp"
+package webp // import "golangUtil.org/x/image/webp"
 
 // This blank Go file, other than the package clause, exists so that this
 // package can be built for Go 1.5 and earlier. (The other files in this
@@ -23,7 +23,7 @@ package webp // import "golang.org/x/image/webp"
 //	import _ "image/gif"
 //	import _ "image/jpeg"
 //	import _ "image/png"
-//	import _ "golang.org/x/image/webp"
+//	import _ "golangUtil.org/x/image/webp"
 //
 // Such a program will still compile for Go 1.5 (due to this placeholder Go
 // file). It will simply not be able to recognize and decode WEBP (but still

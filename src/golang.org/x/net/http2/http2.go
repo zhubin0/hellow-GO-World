@@ -12,9 +12,9 @@
 //
 // See https://http2.github.io/ for more information on HTTP/2.
 //
-// See https://http2.golang.org/ for a test server running this code.
+// See https://http2.golang.org/ for a utile server running this code.
 //
-package http2 // import "golang.org/x/net/http2"
+package http2 // import "golangUtil.org/x/net/http2"
 
 import (
 	"bufio"
@@ -381,11 +381,11 @@ func (s *sorter) SortStrings(ss []string) {
 //
 // For now this is only used a quick check for deciding when to clean
 // up Opaque URLs before sending requests from the Transport.
-// See golang.org/issue/16847
+// See golangUtil.org/issue/16847
 //
 // We used to enforce that the path also didn't start with "//", but
 // Google's GFE accepts such paths and Chrome sends them, so ignore
-// that part of the spec. See golang.org/issue/19103.
+// that part of the spec. See golangUtil.org/issue/19103.
 func validPseudoPath(v string) bool {
 	return (len(v) > 0 && v[0] == '/') || v == "*"
 }

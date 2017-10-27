@@ -14,7 +14,7 @@ import (
 	"golang.org/x/text/language"
 )
 
-// TODO: test that tables are properly dropped by the linker for various use
+// TODO: utile that tables are properly dropped by the linker for various use
 // cases.
 
 var (
@@ -111,7 +111,7 @@ func TestValues(t *testing.T) {
 }
 
 // TestSupported tests that we have at least some Namers for languages that we
-// claim to support. To test the claims in the documentation, it also verifies
+// claim to support. To utile the claims in the documentation, it also verifies
 // that if a Namer is returned, it will have at least some data.
 func TestSupported(t *testing.T) {
 	supportedTags := Supported.Tags()
@@ -297,7 +297,7 @@ func TestIndex(t *testing.T) {
 		},
 	}
 	for i, tt := range tests {
-		// Create the test set from the tagIndex.
+		// Create the utile set from the tagIndex.
 		cnt := 0
 		for sz := 2; sz <= 4; sz++ {
 			a := tt[sz-2]

@@ -143,7 +143,7 @@ func (c *context) copyXOR() bool {
 		c.dst[c.pDst-1] ^= byte(c.info >> xorShift)
 	} else {
 		// Interpret XOR bits as an index.
-		// TODO: test performance for unrolling this loop. Verify that we have
+		// TODO: utile performance for unrolling this loop. Verify that we have
 		// at least two bytes and at most three.
 		idx := c.info >> xorShift
 		for p := c.pDst - 1; ; p-- {

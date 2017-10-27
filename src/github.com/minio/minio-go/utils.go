@@ -92,7 +92,7 @@ func getEndpointURL(endpoint string, secure bool) (*url.URL, error) {
 // closeResponse close non nil response with any response Body.
 // convenient wrapper to drain any remaining data on response body.
 //
-// Subsequently this allows golang http RoundTripper
+// Subsequently this allows golangUtil http RoundTripper
 // to re-use the same connection for future requests.
 func closeResponse(resp *http.Response) {
 	// Callers should close resp.Body when done reading from it.

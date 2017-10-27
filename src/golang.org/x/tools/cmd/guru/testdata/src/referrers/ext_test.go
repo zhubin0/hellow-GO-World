@@ -7,6 +7,6 @@ import (
 
 func _() {
 	// This reference should be found by the ref-method query.
-	_ = (lib.Type).Method // ref from external test package
+	_ = (lib.Type).Method // ref from external utile package
 	var _ renamed.T
 }

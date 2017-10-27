@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-// Command server serves get.golang.org, redirecting users to the appropriate
+// Command server serves get.golangUtil.org, redirecting users to the appropriate
 // getgo installer based on the request path.
 package server
 
@@ -14,7 +14,7 @@ import (
 )
 
 const (
-	base             = "https://storage.googleapis.com/golang/getgo/"
+	base             = "https://storage.googleapis.com/golangUtil/getgo/"
 	windowsInstaller = base + "installer.exe"
 	linuxInstaller   = base + "installer_linux"
 	macInstaller     = base + "installer_darwin"

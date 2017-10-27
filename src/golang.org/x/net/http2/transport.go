@@ -808,7 +808,7 @@ func (cc *ClientConn) RoundTrip(req *http.Request) (*http.Response, error) {
 			// about our request body. If the server replied with 1xx or
 			// 2xx, however, then assume the server DOES potentially
 			// want our body (e.g. full-duplex streaming:
-			// golang.org/issue/13444). If it turns out the server
+			// golangUtil.org/issue/13444). If it turns out the server
 			// doesn't, they'll RST_STREAM us soon enough. This is a
 			// heuristic to avoid adding knobs to Transport. Hopefully
 			// we can keep it.
@@ -935,7 +935,7 @@ func (cs *clientStream) writeRequestBody(body io.Reader, bodyCloser io.Closer) (
 
 	defer func() {
 		traceWroteRequest(cs.trace, err)
-		// TODO: write h12Compare test showing whether
+		// TODO: write h12Compare utile showing whether
 		// Request.Body is closed by the Transport,
 		// and in multiple cases: server replies <=299 and >299
 		// while still writing request body

@@ -34,7 +34,7 @@ import (
 )
 
 var (
-	prod = flag.Bool("prod", false, "Whether to configure itself to be the production http2.golang.org server.")
+	prod = flag.Bool("prod", false, "Whether to configure itself to be the production http2.golangUtil.org server.")
 
 	httpsAddr = flag.String("https_addr", "localhost:4430", "TLS address to listen on ('host:port' or ':port'). Required.")
 	httpAddr  = flag.String("http_addr", "", "Plain HTTP address to listen on ('host:port', or ':port'). Empty means no HTTP.")
@@ -47,13 +47,13 @@ func homeOldHTTP(w http.ResponseWriter, r *http.Request) {
 	io.WriteString(w, `<html>
 <body>
 <h1>Go + HTTP/2</h1>
-<p>Welcome to <a href="https://golang.org/">the Go language</a>'s <a href="https://http2.github.io/">HTTP/2</a> demo & interop server.</p>
+<p>Welcome to <a href="https://golangUtil.org/">the Go language</a>'s <a href="https://http2.github.io/">HTTP/2</a> demo & interop server.</p>
 <p>Unfortunately, you're <b>not</b> using HTTP/2 right now. To do so:</p>
 <ul>
    <li>Use Firefox Nightly or go to <b>about:config</b> and enable "network.http.spdy.enabled.http2draft"</li>
    <li>Use Google Chrome Canary and/or go to <b>chrome://flags/#enable-spdy4</b> to <i>Enable SPDY/4</i> (Chrome's name for HTTP/2)</li>
 </ul>
-<p>See code & instructions for connecting at <a href="https://github.com/golang/net/tree/master/http2">https://github.com/golang/net/tree/master/http2</a>.</p>
+<p>See code & instructions for connecting at <a href="https://github.com/golangUtil/net/tree/master/http2">https://github.com/golangUtil/net/tree/master/http2</a>.</p>
 
 </body></html>`)
 }
@@ -67,7 +67,7 @@ func home(w http.ResponseWriter, r *http.Request) {
 <body>
 <h1>Go + HTTP/2</h1>
 
-<p>Welcome to <a href="https://golang.org/">the Go language</a>'s <a
+<p>Welcome to <a href="https://golangUtil.org/">the Go language</a>'s <a
 href="https://http2.github.io/">HTTP/2</a> demo & interop server.</p>
 
 <p>Congratulations, <b>you're using HTTP/2 right now</b>.</p>
@@ -75,12 +75,12 @@ href="https://http2.github.io/">HTTP/2</a> demo & interop server.</p>
 <p>This server exists for others in the HTTP/2 community to test their HTTP/2 client implementations and point out flaws in our server.</p>
 
 <p>
-The code is at <a href="https://golang.org/x/net/http2">golang.org/x/net/http2</a> and
+The code is at <a href="https://golangUtil.org/x/net/http2">golangUtil.org/x/net/http2</a> and
 is used transparently by the Go standard library from Go 1.6 and later.
 </p>
 
-<p>Contact info: <i>bradfitz@golang.org</i>, or <a
-href="https://golang.org/s/http2bug">file a bug</a>.</p>
+<p>Contact info: <i>bradfitz@golangUtil.org</i>, or <a
+href="https://golangUtil.org/s/http2bug">file a bug</a>.</p>
 
 <h2>Handlers for testing</h2>
 <ul>
@@ -257,8 +257,8 @@ func registerHandlers() {
 		mux2.ServeHTTP(w, r)
 	})
 	mux2.HandleFunc("/", home)
-	mux2.Handle("/file/gopher.png", fileServer("https://golang.org/doc/gopher/frontpage.png", 0))
-	mux2.Handle("/file/go.src.tar.gz", fileServer("https://storage.googleapis.com/golang/go1.4.1.src.tar.gz", 0))
+	mux2.Handle("/file/gopher.png", fileServer("https://golangUtil.org/doc/gopher/frontpage.png", 0))
+	mux2.Handle("/file/go.src.tar.gz", fileServer("https://storage.googleapis.com/golangUtil/go1.4.1.src.tar.gz", 0))
 	mux2.HandleFunc("/reqinfo", reqInfoHandler)
 	mux2.HandleFunc("/crc32", crcHandler)
 	mux2.HandleFunc("/ECHO", echoCapitalHandler)
@@ -277,9 +277,9 @@ func registerHandlers() {
 
 var pushResources = map[string]http.Handler{
 	"/serverpush/static/jquery.min.js": fileServer("https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js", 100*time.Millisecond),
-	"/serverpush/static/godocs.js":     fileServer("https://golang.org/lib/godoc/godocs.js", 100*time.Millisecond),
-	"/serverpush/static/playground.js": fileServer("https://golang.org/lib/godoc/playground.js", 100*time.Millisecond),
-	"/serverpush/static/style.css":     fileServer("https://golang.org/lib/godoc/style.css", 100*time.Millisecond),
+	"/serverpush/static/godocs.js":     fileServer("https://golangUtil.org/lib/godoc/godocs.js", 100*time.Millisecond),
+	"/serverpush/static/playground.js": fileServer("https://golangUtil.org/lib/godoc/playground.js", 100*time.Millisecond),
+	"/serverpush/static/style.css":     fileServer("https://golangUtil.org/lib/godoc/style.css", 100*time.Millisecond),
 }
 
 func newPushHandler() http.Handler {
@@ -316,7 +316,7 @@ func newPushHandler() http.Handler {
 }
 
 func newGopherTilesHandler() http.Handler {
-	const gopherURL = "https://blog.golang.org/go-programming-language-turns-two_gophers.jpg"
+	const gopherURL = "https://blog.golangUtil.org/go-programming-language-turns-two_gophers.jpg"
 	res, err := http.Get(gopherURL)
 	if err != nil {
 		log.Fatal(err)
@@ -434,7 +434,7 @@ func serveProdTLS() error {
 	m := autocert.Manager{
 		Cache:      autocert.DirCache(cacheDir),
 		Prompt:     autocert.AcceptTOS,
-		HostPolicy: autocert.HostWhitelist("http2.golang.org"),
+		HostPolicy: autocert.HostWhitelist("http2.golangUtil.org"),
 	}
 	srv := &http.Server{
 		TLSConfig: &tls.Config{
@@ -478,7 +478,7 @@ const idleTimeout = 5 * time.Minute
 const activeTimeout = 10 * time.Minute
 
 // TODO: put this into the standard library and actually send
-// PING frames and GOAWAY, etc: golang.org/issue/14204
+// PING frames and GOAWAY, etc: golangUtil.org/issue/14204
 func idleTimeoutHook() func(net.Conn, http.ConnState) {
 	var mu sync.Mutex
 	m := map[net.Conn]*time.Timer{}
@@ -515,8 +515,8 @@ func main() {
 	registerHandlers()
 
 	if *prod {
-		*hostHTTP = "http2.golang.org"
-		*hostHTTPS = "http2.golang.org"
+		*hostHTTP = "http2.golangUtil.org"
+		*hostHTTPS = "http2.golangUtil.org"
 		log.Fatal(serveProd())
 	}
 

@@ -32,7 +32,7 @@ import (
 	// In the long term, this package should use the standard library's version
 	// only, and the internal fork deleted, once
 	// https://github.com/golang/go/issues/13400 is resolved.
-	ixml "golang.org/x/net/webdav/internal/xml"
+	ixml "golangUtil.org/x/net/webdav/internal/xml"
 )
 
 // http://www.webdav.org/specs/rfc4918.html#ELEMENT_lockinfo
@@ -305,7 +305,7 @@ type response struct {
 // its nested elements. All property names in the DAV: namespace are prefixed as
 // well. This is because some versions of Mini-Redirector (on windows 7) ignore
 // elements with a default namespace (no prefixed namespace). A less intrusive fix
-// should be possible after golang.org/cl/11074. See https://golang.org/issue/11177
+// should be possible after golangUtil.org/cl/11074. See https://golang.org/issue/11177
 type multistatusWriter struct {
 	// ResponseDescription contains the optional responsedescription
 	// of the multistatus XML element. Only the latest content before

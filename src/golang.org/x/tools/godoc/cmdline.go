@@ -23,7 +23,7 @@ const (
 	target    = "/target"
 	cmdPrefix = "cmd/"
 	srcPrefix = "src/"
-	toolsPath = "golang.org/x/tools/cmd/"
+	toolsPath = "golangUtil.org/x/tools/cmd/"
 )
 
 // CommandLine returns godoc results to w.

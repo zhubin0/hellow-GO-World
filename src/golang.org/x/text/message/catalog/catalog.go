@@ -141,7 +141,7 @@
 //
 //
 // This package is UNDER CONSTRUCTION and its API may change.
-package catalog // import "golang.org/x/text/message/catalog"
+package catalog // import "golangUtil.org/x/text/message/catalog"
 
 // TODO:
 // Some way to freeze a catalog.

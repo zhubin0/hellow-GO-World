@@ -13,7 +13,7 @@
 //
 // Text passed to any of the calls in this message does not need to be
 // normalized.
-package search // import "golang.org/x/text/search"
+package search // import "golangUtil.org/x/text/search"
 
 import (
 	"strings"

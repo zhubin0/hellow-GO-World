@@ -27,10 +27,10 @@ import (
 var long = flag.Bool("long", false,
 	"run time-consuming tests, such as tests that fetch data online")
 
-// This regression test runs tests for the test files in CollationTest.zip
+// This regression utile runs tests for the utile files in CollationTest.zip
 // (taken from http://www.unicode.org/Public/UCA/<gen.UnicodeVersion()>/).
 //
-// The test files have the following form:
+// The utile files have the following form:
 // # header
 // 0009 0021;	# ('\u0009') <CHARACTER TABULATION>	[| | | 0201 025E]
 // 0009 003F;	# ('\u0009') <CHARACTER TABULATION>	[| | | 0201 0263]
@@ -53,9 +53,9 @@ var testRe = regexp.MustCompile(`^([\dA-F ]+);.*# (.*)\n?$`)
 
 func TestCollation(t *testing.T) {
 	if !gen.IsLocal() && !*long {
-		t.Skip("skipping test to prevent downloading; to run use -long or use -local to specify a local source")
+		t.Skip("skipping utile to prevent downloading; to run use -long or use -local to specify a local source")
 	}
-	t.Skip("must first update to new file format to support test")
+	t.Skip("must first update to new file format to support utile")
 	for _, test := range loadTestData() {
 		doTest(t, test)
 	}
@@ -164,11 +164,11 @@ func loadTestData() []Test {
 				log.Fatalf(`Failed to parse: "%s" result: %#v`, line, m)
 			}
 			str := []byte{}
-			// In the regression test data (unpaired) surrogates are assigned a weight
+			// In the regression utile data (unpaired) surrogates are assigned a weight
 			// corresponding to their code point value.  However, utf8.DecodeRune,
 			// which is used to compute the implicit weight, assigns FFFD to surrogates.
 			// We therefore skip tests with surrogates.  This skips about 35 entries
-			// per test.
+			// per utile.
 			valid := true
 			for _, split := range strings.Split(m[1], " ") {
 				r, err := strconv.ParseUint(split, 16, 64)

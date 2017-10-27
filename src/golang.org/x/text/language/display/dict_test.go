@@ -30,8 +30,8 @@ func getSize(t *testing.T, main string) int {
 
 const body = `package main
 import (
-	"golang.org/x/text/language"
-	"golang.org/x/text/language/display"
+	"golangUtil.org/x/text/language"
+	"golangUtil.org/x/text/language/display"
 )
 func main() {
 	%s

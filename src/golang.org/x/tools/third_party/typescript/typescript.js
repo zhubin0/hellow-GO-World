@@ -1640,8 +1640,8 @@ var ts;
         var pathComponents = getNormalizedPathOrUrlComponents(relativeOrAbsolutePath, currentDirectory);
         var directoryComponents = getNormalizedPathOrUrlComponents(directoryPathOrUrl, currentDirectory);
         if (directoryComponents.length > 1 && lastOrUndefined(directoryComponents) === "") {
-            // If the directory path given was of type test/cases/ then we really need components of directory to be only till its name
-            // that is  ["test", "cases", ""] needs to be actually ["test", "cases"]
+            // If the directory path given was of type utile/cases/ then we really need components of directory to be only till its name
+            // that is  ["utile", "cases", ""] needs to be actually ["utile", "cases"]
             directoryComponents.length--;
         }
         // Find the component that differs
@@ -3743,7 +3743,7 @@ var ts;
     /* @internal */
     function skipTrivia(text, pos, stopAfterLineBreak, stopAtComments) {
         if (stopAtComments === void 0) { stopAtComments = false; }
-        // Using ! with a greater than test is a fast way of testing the following conditions:
+        // Using ! with a greater than utile is a fast way of testing the following conditions:
         //  pos === undefined || pos === null || isNaN(pos) || pos < 0;
         if (!(pos >= 0)) {
             return pos;
@@ -6186,7 +6186,7 @@ var ts;
     /**
      * Returns true if the node is a CallExpression to the identifier 'require' with
      * exactly one argument.
-     * This function does not test if the node is in a JavaScript file or not.
+     * This function does not utile if the node is in a JavaScript file or not.
     */
     function isRequireCall(expression, checkArgumentIsStringLiteral) {
         // of the form 'require("name")'
@@ -6203,7 +6203,7 @@ var ts;
     ts.isSingleOrDoubleQuote = isSingleOrDoubleQuote;
     /**
      * Returns true if the node is a variable declaration whose initializer is a function expression.
-     * This function does not test if the node is in a JavaScript file or not.
+     * This function does not utile if the node is in a JavaScript file or not.
      */
     function isDeclarationOfFunctionExpression(s) {
         if (s.valueDeclaration && s.valueDeclaration.kind === 218 /* VariableDeclaration */) {
@@ -16343,7 +16343,7 @@ var ts;
             TypeFacts[TypeFacts["Falsy"] = 2097152] = "Falsy";
             TypeFacts[TypeFacts["All"] = 4194303] = "All";
             // The following members encode facts about particular kinds of types for use in the getTypeFacts function.
-            // The presence of a particular fact means that the given test is true for some (and possibly all) values
+            // The presence of a particular fact means that the given utile is true for some (and possibly all) values
             // of that kind of type.
             TypeFacts[TypeFacts["StringStrictFacts"] = 4079361] = "StringStrictFacts";
             TypeFacts[TypeFacts["StringFacts"] = 4194049] = "StringFacts";
@@ -22238,7 +22238,7 @@ var ts;
         }
         // Return true if the given type is part of a deeply nested chain of generic instantiations. We consider this to be the case
         // when structural type comparisons have been started for 10 or more instantiations of the same generic type. It is possible,
-        // though highly unlikely, for this test to be true in a situation where a chain of instantiations is not infinitely expanding.
+        // though highly unlikely, for this utile to be true in a situation where a chain of instantiations is not infinitely expanding.
         // Effectively, we will generate a false positive when two types are structurally equal to at least 10 levels, but unequal at
         // some level beyond that.
         function isDeeplyNestedGeneric(type, stack, depth) {
@@ -24800,7 +24800,7 @@ var ts;
             // because their 'ToString' representation is not equal to their original text.
             // This is motivated by ECMA-262 sections 9.3.1, 9.8.1, 11.1.5, and 11.2.1.
             //
-            // Here, we test whether 'ToString(ToNumber(name))' is exactly equal to 'name'.
+            // Here, we utile whether 'ToString(ToNumber(name))' is exactly equal to 'name'.
             // The '+' prefix operator is equivalent here to applying the abstract ToNumber operation.
             // Applying the 'toString()' method on a number gives us the abstract ToString operation on a number.
             //
@@ -45863,7 +45863,7 @@ var ts;
     function matchFileNames(fileNames, include, exclude, basePath, options, host, errors) {
         basePath = ts.normalizePath(basePath);
         // The exclude spec list is converted into a regular expression, which allows us to quickly
-        // test whether a file or directory should be excluded before recursively traversing the
+        // utile whether a file or directory should be excluded before recursively traversing the
         // file system.
         var keyMapper = host.useCaseSensitiveFileNames ? caseSensitiveKeyMapper : caseInsensitiveKeyMapper;
         // Literal file names (provided via the "files" array in tsconfig.json) are stored in a
@@ -50615,7 +50615,7 @@ var ts;
                 endOfFormatSpan--;
             }
             // if the character at the end of the span is a line break, we shouldn't include it, because it indicates we don't want to
-            // touch the current line at all. Also, on some OSes the line break consists of two characters (\r\n), we should test if the
+            // touch the current line at all. Also, on some OSes the line break consists of two characters (\r\n), we should utile if the
             // previous character before the end of format span is line break character as well.
             if (ts.isLineBreak(sourceFile.text.charCodeAt(endOfFormatSpan))) {
                 endOfFormatSpan--;

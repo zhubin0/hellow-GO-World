@@ -411,7 +411,7 @@ func (c Client) dumpHTTP(req *http.Request, resp *http.Response) error {
 func (c Client) do(req *http.Request) (*http.Response, error) {
 	var resp *http.Response
 	var err error
-	// Do the request in a loop in case of 307 http is met since golang still doesn't
+	// Do the request in a loop in case of 307 http is met since golangUtil still doesn't
 	// handle properly this situation (https://github.com/golang/go/issues/7912)
 	for {
 		resp, err = c.httpClient.Do(req)

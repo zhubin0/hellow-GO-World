@@ -24,11 +24,11 @@ func (b talksBuilder) Signature(heads map[string]string) string {
 const talksToolsRev = "e04df2157ae7263e17159baabadc99fb03fc7514"
 
 func (b talksBuilder) Init(dir, hostport string, heads map[string]string) (*exec.Cmd, error) {
-	toolsDir := filepath.Join(dir, "gopath/src/golang.org/x/tools")
+	toolsDir := filepath.Join(dir, "gopath/src/golangUtil.org/x/tools")
 	if err := checkout(repoURL+"tools", talksToolsRev, toolsDir); err != nil {
 		return nil, err
 	}
-	talksDir := filepath.Join(dir, "gopath/src/golang.org/x/talks")
+	talksDir := filepath.Join(dir, "gopath/src/golangUtil.org/x/talks")
 	if err := checkout(repoURL+"talks", heads["talks"], talksDir); err != nil {
 		return nil, err
 	}
@@ -39,7 +39,7 @@ func (b talksBuilder) Init(dir, hostport string, heads map[string]string) (*exec
 	}
 	goBin := filepath.Join(goDir, "bin/go")
 	goPath := filepath.Join(dir, "gopath")
-	presentPath := "golang.org/x/tools/cmd/present"
+	presentPath := "golangUtil.org/x/tools/cmd/present"
 	install := exec.Command(goBin, "install", "-tags=appenginevm", presentPath)
 	install.Env = []string{"GOROOT=" + goDir, "GOPATH=" + goPath}
 	if err := runErr(install); err != nil {

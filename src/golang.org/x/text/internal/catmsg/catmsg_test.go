@@ -255,7 +255,7 @@ type empty struct{}
 func (empty) Compile(e *Encoder) (err error) { return nil }
 
 var msgIncomplete = Register(
-	"golang.org/x/text/internal/catmsg.incomplete",
+	"golangUtil.org/x/text/internal/catmsg.incomplete",
 	func(d *Decoder) bool { return false })
 
 type incomplete struct{}

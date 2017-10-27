@@ -13,19 +13,19 @@ func TestInlineParsing(t *testing.T) {
 		text   string
 		length int
 	}{
-		{"[[http://golang.org]]", "http://golang.org", "golang.org", 21},
-		{"[[http://golang.org][]]", "http://golang.org", "http://golang.org", 23},
-		{"[[http://golang.org]] this is ignored", "http://golang.org", "golang.org", 21},
-		{"[[http://golang.org][link]]", "http://golang.org", "link", 27},
-		{"[[http://golang.org][two words]]", "http://golang.org", "two words", 32},
-		{"[[http://golang.org][*link*]]", "http://golang.org", "<b>link</b>", 29},
+		{"[[http://golangUtil.org]]", "http://golangUtil.org", "golangUtil.org", 21},
+		{"[[http://golangUtil.org][]]", "http://golangUtil.org", "http://golangUtil.org", 23},
+		{"[[http://golangUtil.org]] this is ignored", "http://golangUtil.org", "golangUtil.org", 21},
+		{"[[http://golangUtil.org][link]]", "http://golangUtil.org", "link", 27},
+		{"[[http://golangUtil.org][two words]]", "http://golangUtil.org", "two words", 32},
+		{"[[http://golangUtil.org][*link*]]", "http://golangUtil.org", "<b>link</b>", 29},
 		{"[[http://bad[url]]", "", "", 0},
-		{"[[http://golang.org][a [[link]] ]]", "http://golang.org", "a [[link", 31},
+		{"[[http://golangUtil.org][a [[link]] ]]", "http://golangUtil.org", "a [[link", 31},
 		{"[[http:// *spaces* .com]]", "", "", 0},
 		{"[[http://bad`char.com]]", "", "", 0},
 		{" [[http://google.com]]", "", "", 0},
-		{"[[mailto:gopher@golang.org][Gopher]]", "mailto:gopher@golang.org", "Gopher", 36},
-		{"[[mailto:gopher@golang.org]]", "mailto:gopher@golang.org", "gopher@golang.org", 28},
+		{"[[mailto:gopher@golangUtil.org][Gopher]]", "mailto:gopher@golangUtil.org", "Gopher", 36},
+		{"[[mailto:gopher@golangUtil.org]]", "mailto:gopher@golangUtil.org", "gopher@golangUtil.org", 28},
 	}
 
 	for i, test := range tests {

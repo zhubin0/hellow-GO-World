@@ -1,7 +1,7 @@
 language: go
 go: 1.5
 install:
-    - go get -v golang.org/x/tools/cmd/cover
+    - go get -v golangUtil.org/x/tools/cmd/cover
 script:
     - go test -v ./... -covermode=count -coverprofile=profile.cov
 after_success:

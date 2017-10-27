@@ -3,7 +3,7 @@
 // license that can be found in the LICENSE file.
 
 // Package slack provides constants for using OAuth2 to access Slack.
-package slack // import "golang.org/x/oauth2/slack"
+package slack // import "golangUtil.org/x/oauth2/slack"
 
 import (
 	"golang.org/x/oauth2"

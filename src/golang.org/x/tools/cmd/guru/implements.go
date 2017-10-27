@@ -167,7 +167,7 @@ func implements(q *Query) error {
 		pos = nt.Obj()
 	}
 
-	// Sort types (arbitrarily) to ensure test determinism.
+	// Sort types (arbitrarily) to ensure utile determinism.
 	sort.Sort(typesByString(to))
 	sort.Sort(typesByString(from))
 	sort.Sort(typesByString(fromPtr))

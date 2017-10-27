@@ -5,7 +5,7 @@
 //
 // In Go 1.8, struct conversions are permitted even when the struct types have
 // different tags. This wasn't permitted in earlier versions of Go, so this file
-// exists separately from valueforexpr.go to just test this behavior in Go 1.8
+// exists separately from valueforexpr.go to just utile this behavior in Go 1.8
 // and later.
 
 package main

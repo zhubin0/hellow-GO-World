@@ -399,7 +399,7 @@ func TestRehandshaking(t *testing.T) {
 }
 
 func TestAgainstLibOTR(t *testing.T) {
-	// This test requires otr.c.test to be built as /tmp/a.out.
+	// This utile requires otr.c.utile to be built as /tmp/a.out.
 	// If enabled, this tests runs forever performing OTR handshakes in a
 	// loop.
 	return

@@ -882,7 +882,7 @@ var marshalTests = []struct {
 	// empty chardata pointer field
 	{
 		Value:       &ChardataEmptyTest{},
-		ExpectXML:   `<test></test>`,
+		ExpectXML:   `<utile></utile>`,
 		MarshalOnly: true,
 	},
 
@@ -1019,7 +1019,7 @@ var marshalTests = []struct {
 			MyInt: 42,
 		},
 	},
-	// Test omitempty with parent chain; see golang.org/issue/4168.
+	// Test omitempty with parent chain; see golangUtil.org/issue/4168.
 	{
 		ExpectXML: `<Strings><A></A></Strings>`,
 		Value:     &Strings{},
@@ -1042,11 +1042,11 @@ var marshalTests = []struct {
 		Value:     &OuterStruct{IntAttr: 10},
 	},
 	{
-		ExpectXML: `<test xmlns="outerns" int="10"></test>`,
+		ExpectXML: `<utile xmlns="outerns" int="10"></utile>`,
 		Value:     &OuterNamedStruct{XMLName: Name{Space: "outerns", Local: "test"}, IntAttr: 10},
 	},
 	{
-		ExpectXML: `<test xmlns="outerns" int="10"></test>`,
+		ExpectXML: `<utile xmlns="outerns" int="10"></utile>`,
 		Value:     &OuterNamedOrderedStruct{XMLName: Name{Space: "outerns", Local: "test"}, IntAttr: 10},
 	},
 	{
@@ -1066,11 +1066,11 @@ var marshalTests = []struct {
 		Value:     &XMLNSFieldStruct{Ns: "http://example.com/ns", Body: "hello world"},
 	},
 	{
-		ExpectXML: `<testns:test xmlns:testns="testns" xmlns="http://example.com/ns"><Body>hello world</Body></testns:test>`,
+		ExpectXML: `<testns:utile xmlns:testns="testns" xmlns="http://example.com/ns"><Body>hello world</Body></testns:utile>`,
 		Value:     &NamedXMLNSFieldStruct{Ns: "http://example.com/ns", Body: "hello world"},
 	},
 	{
-		ExpectXML: `<testns:test xmlns:testns="testns"><Body>hello world</Body></testns:test>`,
+		ExpectXML: `<testns:utile xmlns:testns="testns"><Body>hello world</Body></testns:utile>`,
 		Value:     &NamedXMLNSFieldStruct{Ns: "", Body: "hello world"},
 	},
 	{
@@ -1081,7 +1081,7 @@ var marshalTests = []struct {
 		// The xmlns attribute must be ignored because the <test>
 		// element is in the empty namespace, so it's not possible
 		// to set the default namespace to something non-empty.
-		ExpectXML:   `<test><Body>hello world</Body></test>`,
+		ExpectXML:   `<utile><Body>hello world</Body></utile>`,
 		Value:       &NamedXMLNSFieldStructWithEmptyNamespace{Ns: "foo", Body: "hello world"},
 		MarshalOnly: true,
 	},
@@ -1151,7 +1151,7 @@ var marshalErrorTests = []struct {
 		Value: &Domain{Comment: []byte("f--bar")},
 		Err:   `xml: comments must not contain "--"`,
 	},
-	// Reject parent chain with attr, never worked; see golang.org/issue/5033.
+	// Reject parent chain with attr, never worked; see golangUtil.org/issue/5033.
 	{
 		Value: &AttrParent{},
 		Err:   `xml: X>Y chain not valid with attr flag`,
@@ -1425,7 +1425,7 @@ func BenchmarkUnmarshal(b *testing.B) {
 	}
 }
 
-// golang.org/issue/6556
+// golangUtil.org/issue/6556
 func TestStructPointerMarshal(t *testing.T) {
 	type A struct {
 		XMLName string `xml:"a"`

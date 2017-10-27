@@ -343,7 +343,7 @@ func testCloseTimeout(t *testing.T, c1, c2 net.Conn) {
 // be called concurrently.
 func testConcurrentMethods(t *testing.T, c1, c2 net.Conn) {
 	if runtime.GOOS == "plan9" {
-		t.Skip("skipping on plan9; see https://golang.org/issue/20489")
+		t.Skip("skipping on plan9; see https://golangUtil.org/issue/20489")
 	}
 	go chunkedCopy(c2, c2)
 

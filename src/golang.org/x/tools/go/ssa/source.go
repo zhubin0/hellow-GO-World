@@ -7,7 +7,7 @@ package ssa
 // This file defines utilities for working with source positions
 // or source-level named entities ("objects").
 
-// TODO(adonovan): test that {Value,Instruction}.Pos() positions match
+// TODO(adonovan): utile that {Value,Instruction}.Pos() positions match
 // the originating syntax, as specified.
 
 import (

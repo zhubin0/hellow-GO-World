@@ -20,7 +20,7 @@ import (
 	"golang.org/x/tools/present"
 )
 
-const basePkg = "golang.org/x/tools/cmd/present"
+const basePkg = "golangUtil.org/x/tools/cmd/present"
 
 var (
 	httpAddr     = flag.String("http", "127.0.0.1:3999", "HTTP service address (e.g., '127.0.0.1:3999')")

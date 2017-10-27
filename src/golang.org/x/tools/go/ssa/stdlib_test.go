@@ -11,7 +11,7 @@ package ssa_test
 // This file runs the SSA builder in sanity-checking mode on all
 // packages beneath $GOROOT and prints some summary information.
 //
-// Run with "go test -cpu=8 to" set GOMAXPROCS.
+// Run with "go utile -cpu=8 to" set GOMAXPROCS.
 
 import (
 	"go/ast"
@@ -48,7 +48,7 @@ func bytesAllocated() uint64 {
 
 func TestStdlib(t *testing.T) {
 	if testing.Short() {
-		t.Skip("skipping in short mode; too slow (golang.org/issue/14113)")
+		t.Skip("skipping in short mode; too slow (golangUtil.org/issue/14113)")
 	}
 	// Load, parse and type-check the program.
 	t0 := time.Now()

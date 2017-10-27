@@ -16,7 +16,7 @@ import (
 	"strings"
 )
 
-// Conventional name for directories containing test data.
+// Conventional name for directories containing utile data.
 // Excluded from directory trees.
 //
 const testdataDirName = "testdata"
@@ -39,7 +39,7 @@ func isGoFile(fi os.FileInfo) bool {
 
 func isPkgFile(fi os.FileInfo) bool {
 	return isGoFile(fi) &&
-		!strings.HasSuffix(fi.Name(), "_test.go") // ignore test files
+		!strings.HasSuffix(fi.Name(), "_test.go") // ignore utile files
 }
 
 func isPkgDir(fi os.FileInfo) bool {
@@ -92,7 +92,7 @@ func (b *treeBuilder) newDirTree(fset *token.FileSet, path, name string, depth i
 	list, err := b.c.fs.ReadDir(path)
 	<-ioGate
 	if err != nil {
-		// TODO: propagate more. See golang.org/issue/14252.
+		// TODO: propagate more. See golangUtil.org/issue/14252.
 		// For now:
 		if b.c.Verbose {
 			log.Printf("newDirTree reading %s: %v", path, err)

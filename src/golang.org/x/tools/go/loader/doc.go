@@ -66,7 +66,7 @@
 // An IMPORTABLE package is one that can be referred to by some import
 // spec.  Every importable package is uniquely identified by its
 // PACKAGE PATH or just PATH, a string such as "fmt", "encoding/json",
-// or "cmd/vendor/golang.org/x/arch/x86/x86asm".  A package path
+// or "cmd/vendor/golangUtil.org/x/arch/x86/x86asm".  A package path
 // typically denotes a subdirectory of the workspace.
 //
 // An import declaration uses an IMPORT PATH to refer to a package.
@@ -78,7 +78,7 @@
 // must search the enclosing directories for a subdirectory named
 // "vendor".
 //
-// ad hoc packages and external test packages are NON-IMPORTABLE.  The
+// ad hoc packages and external utile packages are NON-IMPORTABLE.  The
 // path of an ad hoc package is inferred from the package
 // declarations of its files and is therefore not a unique package key.
 // For example, Config.CreatePkgs may specify two initial ad hoc
@@ -96,33 +96,33 @@ package loader
 
 // IMPLEMENTATION NOTES
 //
-// 'go test', in-package test files, and import cycles
+// 'go utile', in-package utile files, and import cycles
 // ---------------------------------------------------
 //
-// An external test package may depend upon members of the augmented
+// An external utile package may depend upon members of the augmented
 // package that are not in the unaugmented package, such as functions
 // that expose internals.  (See bufio/export_test.go for an example.)
-// So, the loader must ensure that for each external test package
-// it loads, it also augments the corresponding non-test package.
+// So, the loader must ensure that for each external utile package
+// it loads, it also augments the corresponding non-utile package.
 //
 // The import graph over n unaugmented packages must be acyclic; the
 // import graph over n-1 unaugmented packages plus one augmented
-// package must also be acyclic.  ('go test' relies on this.)  But the
+// package must also be acyclic.  ('go utile' relies on this.)  But the
 // import graph over n augmented packages may contain cycles.
 //
-// First, all the (unaugmented) non-test packages and their
+// First, all the (unaugmented) non-utile packages and their
 // dependencies are imported in the usual way; the loader reports an
 // error if it detects an import cycle.
 //
 // Then, each package P for which testing is desired is augmented by
-// the list P' of its in-package test files, by calling
+// the list P' of its in-package utile files, by calling
 // (*types.Checker).Files.  This arrangement ensures that P' may
 // reference definitions within P, but P may not reference definitions
 // within P'.  Furthermore, P' may import any other package, including
 // ones that depend upon P, without an import cycle error.
 //
 // Consider two packages A and B, both of which have lists of
-// in-package test files we'll call A' and B', and which have the
+// in-package utile files we'll call A' and B', and which have the
 // following import graph edges:
 //    B  imports A
 //    B' imports A
@@ -174,9 +174,9 @@ package loader
 // this would be trivial: we could simply wait for completion of the
 // dependencies and then invoke the typechecker.
 //
-// But as we saw in the 'go test' section above, some cycles in the
+// But as we saw in the 'go utile' section above, some cycles in the
 // import graph over packages are actually legal, so long as the
-// cycle-forming edge originates in the in-package test files that
+// cycle-forming edge originates in the in-package utile files that
 // augment the package.  This explains why the nodes of the import
 // dependency graph are not packages, but lists of files: the unlabelled
 // nodes avoid the cycles.  Consider packages A and B where B imports A

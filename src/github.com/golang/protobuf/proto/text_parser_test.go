@@ -147,7 +147,7 @@ var unMarshalTextTests = []UnmarshalTextTest{
 		},
 	},
 
-	// Quoted string with all the accepted special characters from the C++ test
+	// Quoted string with all the accepted special characters from the C++ utile
 	{
 		in: `count:42 name: ` + "\"\\\"A string with \\' characters \\n and \\r newlines and \\t tabs and \\001 slashes \\\\ and  multiple   spaces\"",
 		out: &MyMessage{
@@ -563,7 +563,7 @@ func TestUnmarshalTextCustomMessage(t *testing.T) {
 	}
 }
 
-// Regression test; this caused a panic.
+// Regression utile; this caused a panic.
 func TestRepeatedEnum(t *testing.T) {
 	pb := new(RepeatedEnum)
 	if err := UnmarshalText("color: RED", pb); err != nil {

@@ -18,7 +18,7 @@ const MNT_WAIT = 1
 const MNT_NOWAIT = 2
 
 func TestGetfsstat(t *testing.T) {
-	const flags = MNT_NOWAIT // see golang.org/issue/16937
+	const flags = MNT_NOWAIT // see golangUtil.org/issue/16937
 	n, err := unix.Getfsstat(nil, flags)
 	if err != nil {
 		t.Fatal(err)

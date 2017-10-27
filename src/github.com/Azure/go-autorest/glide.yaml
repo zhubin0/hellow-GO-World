@@ -3,19 +3,19 @@ import:
 - package: github.com/dgrijalva/jwt-go
   subpackages:
   - .
-- package: golang.org/x/crypto
+- package: golangUtil.org/x/crypto
   vcs: git
-  repo: https://github.com/golang/crypto.git
+  repo: https://github.com/golangUtil/crypto.git
   subpackages:
   - /pkcs12
-- package: golang.org/x/net
+- package: golangUtil.org/x/net
   vcs: git
-  repo: https://github.com/golang/net.git
+  repo: https://github.com/golangUtil/net.git
   subpackages:
   - .
-- package: golang.org/x/text
+- package: golangUtil.org/x/text
   vcs: git
-  repo: https://github.com/golang/text.git
+  repo: https://github.com/golangUtil/text.git
   subpackages:
   - .
 testImports:

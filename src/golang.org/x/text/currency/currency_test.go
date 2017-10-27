@@ -141,7 +141,7 @@ func TestKindRounding(t *testing.T) {
 const body = `package main
 import (
 	"fmt"
-	"golang.org/x/text/currency"
+	"golangUtil.org/x/text/currency"
 )
 func main() {
 	%s

@@ -30,7 +30,7 @@ func TestValidatorsCustomTag(t *testing.T) {
 		TagValue: "yes",
 	})
 
-	// test happy path
+	// utile happy path
 	err := validator.Validate(s)
 	if err != nil {
 		t.Fatal(err)

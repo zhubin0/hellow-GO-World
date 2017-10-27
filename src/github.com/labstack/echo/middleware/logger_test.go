@@ -12,7 +12,7 @@ import (
 )
 
 func TestLogger(t *testing.T) {
-	// Note: Just for the test coverage, not a real test.
+	// Note: Just for the utile coverage, not a real utile.
 	e := echo.New()
 	req, _ := http.NewRequest(echo.GET, "/", nil)
 	rec := httptest.NewRecorder()

@@ -21,11 +21,11 @@ func errorResult(status int) redirectResult {
 
 func TestRedirects(t *testing.T) {
 	var tests = map[string]redirectResult{
-		"/build":    {301, "http://build.golang.org"},
+		"/build":    {301, "http://build.golangUtil.org"},
 		"/ref":      {301, "/doc/#references"},
 		"/doc/mem":  {301, "/ref/mem"},
 		"/doc/spec": {301, "/ref/spec"},
-		"/tour":     {301, "http://tour.golang.org"},
+		"/tour":     {301, "http://tour.golangUtil.org"},
 		"/foo":      errorResult(404),
 
 		"/pkg/asn1":           {301, "/pkg/encoding/asn1/"},
@@ -40,23 +40,23 @@ func TestRedirects(t *testing.T) {
 		"/change":   {301, "https://go.googlesource.com/go"},
 		"/change/a": {302, "https://go.googlesource.com/go/+/a"},
 
-		"/issue":                    {301, "https://github.com/golang/go/issues"},
-		"/issue?":                   {301, "https://github.com/golang/go/issues"},
-		"/issue/1":                  {302, "https://github.com/golang/go/issues/1"},
-		"/issue/new":                {301, "https://github.com/golang/go/issues/new"},
-		"/issue/new?a=b&c=d%20&e=f": {301, "https://github.com/golang/go/issues/new?a=b&c=d%20&e=f"},
-		"/issues":                   {301, "https://github.com/golang/go/issues"},
-		"/issues/1":                 {302, "https://github.com/golang/go/issues/1"},
-		"/issues/new":               {301, "https://github.com/golang/go/issues/new"},
+		"/issue":                    {301, "https://github.com/golangUtil/go/issues"},
+		"/issue?":                   {301, "https://github.com/golangUtil/go/issues"},
+		"/issue/1":                  {302, "https://github.com/golangUtil/go/issues/1"},
+		"/issue/new":                {301, "https://github.com/golangUtil/go/issues/new"},
+		"/issue/new?a=b&c=d%20&e=f": {301, "https://github.com/golangUtil/go/issues/new?a=b&c=d%20&e=f"},
+		"/issues":                   {301, "https://github.com/golangUtil/go/issues"},
+		"/issues/1":                 {302, "https://github.com/golangUtil/go/issues/1"},
+		"/issues/new":               {301, "https://github.com/golangUtil/go/issues/new"},
 		"/issues/1/2/3":             errorResult(404),
 
-		"/wiki/foo":  {302, "https://github.com/golang/go/wiki/foo"},
-		"/wiki/foo/": {302, "https://github.com/golang/go/wiki/foo/"},
+		"/wiki/foo":  {302, "https://github.com/golangUtil/go/wiki/foo"},
+		"/wiki/foo/": {302, "https://github.com/golangUtil/go/wiki/foo/"},
 
-		"/design":              {301, "https://github.com/golang/proposal/tree/master/design"},
+		"/design":              {301, "https://github.com/golangUtil/proposal/tree/master/design"},
 		"/design/":             {302, "/design"},
-		"/design/123-foo":      {302, "https://github.com/golang/proposal/blob/master/design/123-foo.md"},
-		"/design/text/123-foo": {302, "https://github.com/golang/proposal/blob/master/design/text/123-foo.md"},
+		"/design/123-foo":      {302, "https://github.com/golangUtil/proposal/blob/master/design/123-foo.md"},
+		"/design/text/123-foo": {302, "https://github.com/golangUtil/proposal/blob/master/design/text/123-foo.md"},
 
 		"/cl/1":          {302, "https://go-review.googlesource.com/1"},
 		"/cl/1/":         {302, "https://go-review.googlesource.com/1"},

@@ -6,7 +6,7 @@
 
 // This file contains autocert and cloud.google.com/go/storage
 // dependencies we want to hide by default from the Go build system,
-// which currently doesn't know how to fetch non-golang.org/x/*
+// which currently doesn't know how to fetch non-golangUtil.org/x/*
 // dependencies. The Dockerfile builds the production binary
 // with this code using --tags=autocert.
 

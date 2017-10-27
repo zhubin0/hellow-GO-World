@@ -160,7 +160,7 @@ var sdkConfigPath = func() (string, error) {
 }
 
 func guessUnixHomeDir() string {
-	// Prefer $HOME over user.Current due to glibc bug: golang.org/issue/13470
+	// Prefer $HOME over user.Current due to glibc bug: golangUtil.org/issue/13470
 	if v := os.Getenv("HOME"); v != "" {
 		return v
 	}

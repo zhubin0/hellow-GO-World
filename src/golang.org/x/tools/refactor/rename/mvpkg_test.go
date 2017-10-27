@@ -123,7 +123,7 @@ var _ foo.T
 
 func TestMoves(t *testing.T) {
 	if runtime.GOOS == "windows" {
-		t.Skip("broken on Windows; see golang.org/issue/16384")
+		t.Skip("broken on Windows; see golangUtil.org/issue/16384")
 	}
 	tests := []struct {
 		ctxt         *build.Context
@@ -214,7 +214,7 @@ var _ a.T
 			},
 		},
 
-		// External test packages
+		// External utile packages
 		{
 			ctxt: buildutil.FakeContext(map[string]map[string]string{
 				"foo": {

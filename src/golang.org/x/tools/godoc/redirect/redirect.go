@@ -5,7 +5,7 @@
 // Package redirect provides hooks to register HTTP handlers that redirect old
 // godoc paths to their new equivalents and assist in accessing the issue
 // tracker, wiki, code review system, etc.
-package redirect // import "golang.org/x/tools/godoc/redirect"
+package redirect // import "golangUtil.org/x/tools/godoc/redirect"
 
 import (
 	"fmt"
@@ -90,16 +90,16 @@ var cmdRedirects = map[string]string{
 
 var redirects = map[string]string{
 	"/blog":       "/blog/",
-	"/build":      "http://build.golang.org",
+	"/build":      "http://build.golangUtil.org",
 	"/change":     "https://go.googlesource.com/go",
 	"/cl":         "https://go-review.googlesource.com",
-	"/cmd/godoc/": "http://godoc.org/golang.org/x/tools/cmd/godoc/",
-	"/issue":      "https://github.com/golang/go/issues",
-	"/issue/new":  "https://github.com/golang/go/issues/new",
-	"/issues":     "https://github.com/golang/go/issues",
-	"/issues/new": "https://github.com/golang/go/issues/new",
-	"/play":       "http://play.golang.org",
-	"/design":     "https://github.com/golang/proposal/tree/master/design",
+	"/cmd/godoc/": "http://godoc.org/golangUtil.org/x/tools/cmd/godoc/",
+	"/issue":      "https://github.com/golangUtil/go/issues",
+	"/issue/new":  "https://github.com/golangUtil/go/issues/new",
+	"/issues":     "https://github.com/golangUtil/go/issues",
+	"/issues/new": "https://github.com/golangUtil/go/issues/new",
+	"/play":       "http://play.golangUtil.org",
+	"/design":     "https://github.com/golangUtil/proposal/tree/master/design",
 
 	// In Go 1.2 the references page is part of /doc/.
 	"/ref": "/doc/#references",
@@ -111,9 +111,9 @@ var redirects = map[string]string{
 	"/doc/mem":  "/ref/mem",
 	"/doc/spec": "/ref/spec",
 
-	"/talks": "http://talks.golang.org",
-	"/tour":  "http://tour.golang.org",
-	"/wiki":  "https://github.com/golang/go/wiki",
+	"/talks": "http://talks.golangUtil.org",
+	"/tour":  "http://tour.golangUtil.org",
+	"/wiki":  "https://github.com/golangUtil/go/wiki",
 
 	"/doc/articles/c_go_cgo.html":                    "/blog/c-go-cgo",
 	"/doc/articles/concurrency_patterns.html":        "/blog/go-concurrency-patterns-timing-out-and",
@@ -129,15 +129,15 @@ var redirects = map[string]string{
 	"/doc/articles/laws_of_reflection.html":          "/blog/laws-of-reflection",
 	"/doc/articles/slices_usage_and_internals.html":  "/blog/go-slices-usage-and-internals",
 	"/doc/go_for_cpp_programmers.html":               "/wiki/GoForCPPProgrammers",
-	"/doc/go_tutorial.html":                          "http://tour.golang.org/",
+	"/doc/go_tutorial.html":                          "http://tour.golangUtil.org/",
 }
 
 var prefixHelpers = map[string]string{
-	"issue":  "https://github.com/golang/go/issues/",
-	"issues": "https://github.com/golang/go/issues/",
-	"play":   "http://play.golang.org/",
-	"talks":  "http://talks.golang.org/",
-	"wiki":   "https://github.com/golang/go/wiki/",
+	"issue":  "https://github.com/golangUtil/go/issues/",
+	"issues": "https://github.com/golangUtil/go/issues/",
+	"play":   "http://play.golangUtil.org/",
+	"talks":  "http://talks.golangUtil.org/",
+	"wiki":   "https://github.com/golangUtil/go/wiki/",
 }
 
 func Handler(target string) http.Handler {
@@ -245,6 +245,6 @@ func designHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	name := r.URL.Path[len(prefix):]
-	target := "https://github.com/golang/proposal/blob/master/design/" + name + ".md"
+	target := "https://github.com/golangUtil/proposal/blob/master/design/" + name + ".md"
 	http.Redirect(w, r, target, http.StatusFound)
 }

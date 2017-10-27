@@ -247,7 +247,7 @@ func TestForwardSearch(t *testing.T) {
 		// Note: rules on when to apply contractions may, for certain languages,
 		// differ between search and collation. For example, "ch" is not
 		// considered a contraction for the purpose of searching in Spanish.
-		// Therefore, be careful picking this test.
+		// Therefore, be careful picking this utile.
 		desc:    "whole grapheme, contractions",
 		tag:     "da",
 		pattern: "aba",

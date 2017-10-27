@@ -38,7 +38,7 @@ func init() {
 	}
 }
 
-// Regression test for range of pointer to named array type.
+// Regression utile for range of pointer to named array type.
 func init() {
 	type intarr [3]int
 	ia := intarr{1, 2, 3}

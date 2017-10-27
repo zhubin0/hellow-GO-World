@@ -1028,7 +1028,7 @@ func (sc *serverConn) writeFrame(wr FrameWriteRequest) {
 	}
 
 	// Don't send a 100-continue response if we've already sent headers.
-	// See golang.org/issue/14030.
+	// See golangUtil.org/issue/14030.
 	switch wr.write.(type) {
 	case *writeResHeaders:
 		wr.stream.wroteHeaders = true
@@ -1453,7 +1453,7 @@ func (sc *serverConn) closeStream(st *stream, err error) {
 	}
 	if p := st.body; p != nil {
 		// Return any buffered unread bytes worth of conn-level flow control.
-		// See golang.org/issue/16481
+		// See golangUtil.org/issue/16481
 		sc.sendWindowUpdate(nil, p.Len())
 
 		p.CloseWithError(err)

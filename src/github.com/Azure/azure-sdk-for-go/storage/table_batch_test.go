@@ -160,7 +160,7 @@ func (s *TableBatchSuite) Test_BatchInsertThenDeleteDifferentBatches(c *chk.C) {
 	err = batch.ExecuteBatch()
 	c.Assert(err, chk.IsNil)
 
-	// Timeout set to 15 for this test to work propwrly with the recordings
+	// Timeout set to 15 for this utile to work propwrly with the recordings
 	results, err = table.QueryEntities(15, FullMetadata, &options)
 	c.Assert(err, chk.IsNil)
 	c.Assert(results.Entities, chk.HasLen, 0)

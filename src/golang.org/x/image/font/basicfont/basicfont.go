@@ -5,7 +5,7 @@
 //go:generate go run gen.go
 
 // Package basicfont provides fixed-size font faces.
-package basicfont // import "golang.org/x/image/font/basicfont"
+package basicfont // import "golangUtil.org/x/image/font/basicfont"
 
 import (
 	"image"

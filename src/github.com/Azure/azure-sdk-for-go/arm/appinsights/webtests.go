@@ -42,13 +42,13 @@ func NewWebTestsClientWithBaseURI(baseURI string, subscriptionID string) WebTest
 	return WebTestsClient{NewWithBaseURI(baseURI, subscriptionID)}
 }
 
-// CreateOrUpdate creates or updates an Application Insights web test
+// CreateOrUpdate creates or updates an Application Insights web utile
 // definition.
 //
 // resourceGroupName is the name of the resource group. webTestName is the name
 // of the Application Insights webtest resource. webTestDefinition is
 // properties that need to be specified to create or update an Application
-// Insights web test definition.
+// Insights web utile definition.
 func (client WebTestsClient) CreateOrUpdate(resourceGroupName string, webTestName string, webTestDefinition WebTest) (result WebTest, err error) {
 	if err := validation.Validate([]validation.Validation{
 		{TargetValue: webTestDefinition,
@@ -123,7 +123,7 @@ func (client WebTestsClient) CreateOrUpdateResponder(resp *http.Response) (resul
 	return
 }
 
-// Delete deletes an Application Insights web test.
+// Delete deletes an Application Insights web utile.
 //
 // resourceGroupName is the name of the resource group. webTestName is the name
 // of the Application Insights webtest resource.
@@ -188,7 +188,7 @@ func (client WebTestsClient) DeleteResponder(resp *http.Response) (result autore
 	return
 }
 
-// Get get a specific Application Insights web test definition.
+// Get get a specific Application Insights web utile definition.
 //
 // resourceGroupName is the name of the resource group. webTestName is the name
 // of the Application Insights webtest resource.
@@ -254,7 +254,7 @@ func (client WebTestsClient) GetResponder(resp *http.Response) (result WebTest, 
 	return
 }
 
-// List get all Application Insights web test alerts definitioned within a
+// List get all Application Insights web utile alerts definitioned within a
 // subscription.
 func (client WebTestsClient) List() (result WebTestListResult, err error) {
 	req, err := client.ListPreparer()
@@ -429,11 +429,11 @@ func (client WebTestsClient) ListByResourceGroupNextResults(lastResults WebTestL
 	return
 }
 
-// UpdateTags creates or updates an Application Insights web test definition.
+// UpdateTags creates or updates an Application Insights web utile definition.
 //
 // resourceGroupName is the name of the resource group. webTestName is the name
 // of the Application Insights webtest resource. webTestTags is updated tag
-// information to set into the web test instance.
+// information to set into the web utile instance.
 func (client WebTestsClient) UpdateTags(resourceGroupName string, webTestName string, webTestTags TagsResource) (result WebTest, err error) {
 	req, err := client.UpdateTagsPreparer(resourceGroupName, webTestName, webTestTags)
 	if err != nil {

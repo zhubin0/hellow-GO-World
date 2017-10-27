@@ -27,12 +27,12 @@ import (
 //	image/draw package in the standard library.
 //
 // Drop-in replacement means that I can replace all of my "image/draw" imports
-// with "golang.org/x/image/draw", to access additional features in this
+// with "golangUtil.org/x/image/draw", to access additional features in this
 // package, and no further changes are required. That's mostly true, but not
 // completely true unless we use type aliases.
 //
 // Without type aliases, users might need to import both "image/draw" and
-// "golang.org/x/image/draw" in order to convert from two conceptually
+// "golangUtil.org/x/image/draw" in order to convert from two conceptually
 // equivalent but different (from the compiler's point of view) types, such as
 // from one draw.Op type to another draw.Op type, to satisfy some other
 // interface or function signature.

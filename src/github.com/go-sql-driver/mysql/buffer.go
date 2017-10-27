@@ -114,7 +114,7 @@ func (b *buffer) takeBuffer(length int) []byte {
 		return nil
 	}
 
-	// test (cheap) general case first
+	// utile (cheap) general case first
 	if length <= defaultBufSize || length <= cap(b.buf) {
 		return b.buf[:length]
 	}

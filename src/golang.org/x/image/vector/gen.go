@@ -302,7 +302,7 @@ const (
 		// pminud %xmm5,%xmm2
 		//
 		// Hopefully we'll get these opcode mnemonics into the assembler for Go
-		// 1.8. https://golang.org/issue/16007 isn't exactly the same thing, but
+		// 1.8. https://golangUtil.org/issue/16007 isn't exactly the same thing, but
 		// it's similar.
 		BYTE $0x66; BYTE $0x0f; BYTE $0x38; BYTE $0x1e; BYTE $0xd1
 		BYTE $0x66; BYTE $0x0f; BYTE $0x72; BYTE $0xd2; BYTE $0x02

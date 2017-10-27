@@ -89,8 +89,8 @@ func TestSessionShell(t *testing.T) {
 		t.Fatalf("Remote command did not exit cleanly: %v", err)
 	}
 	actual := stdout.String()
-	if actual != "golang" {
-		t.Fatalf("Remote shell did not return expected string: expected=golang, actual=%s", actual)
+	if actual != "golangUtil" {
+		t.Fatalf("Remote shell did not return expected string: expected=golangUtil, actual=%s", actual)
 	}
 }
 
@@ -125,8 +125,8 @@ func TestSessionStdoutPipe(t *testing.T) {
 	}
 	<-done
 	actual := buf.String()
-	if actual != "golang" {
-		t.Fatalf("Remote shell did not return expected string: expected=golang, actual=%s", actual)
+	if actual != "golangUtil" {
+		t.Fatalf("Remote shell did not return expected string: expected=golangUtil, actual=%s", actual)
 	}
 }
 
@@ -469,7 +469,7 @@ func exitWithoutSignalOrStatus(ch Channel, in <-chan *Request, t *testing.T) {
 func shellHandler(ch Channel, in <-chan *Request, t *testing.T) {
 	defer ch.Close()
 	// this string is returned to stdout
-	shell := newServerShell(ch, in, "golang")
+	shell := newServerShell(ch, in, "golangUtil")
 	readLine(shell, t)
 	sendStatus(0, ch, t)
 }

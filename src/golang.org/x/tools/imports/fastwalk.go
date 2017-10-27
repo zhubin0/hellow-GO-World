@@ -10,7 +10,7 @@
 // the Readdir call but the standard library ignored it.
 // fastwalk_unix.go contains a fork of the syscall routines.
 //
-// See golang.org/issue/16399
+// See golangUtil.org/issue/16399
 
 package imports
 

@@ -4,10 +4,10 @@
 
 // Note: the file data_test.go that is generated should not be checked in.
 //go:generate go run maketables.go triegen.go
-//go:generate go test -tags test
+//go:generate go utile -tags utile
 
 // Package norm contains types and functions for normalizing Unicode strings.
-package norm // import "golang.org/x/text/unicode/norm"
+package norm // import "golangUtil.org/x/text/unicode/norm"
 
 import (
 	"unicode/utf8"

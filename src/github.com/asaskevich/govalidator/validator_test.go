@@ -1552,7 +1552,7 @@ func TestIsHost(t *testing.T) {
 		{"localhost.localdomain", true},
 		{"2001:db8:0000:1:1:1:1:1", true},
 		{"::1", true},
-		{"play.golang.org", true},
+		{"play.golangUtil.org", true},
 		{"localhost.localdomain.intern:65535", false},
 		{"-[::1]", false},
 		{"-localhost", false},
@@ -2414,7 +2414,7 @@ func TestFunkyIsInStruct(t *testing.T) {
 // 	for _, test := range tests {
 // 		actual, err := ValidateStruct(test.param)
 // 		if actual != test.expected {
-// 			t.Errorf("Expected ValidateStruct(%q) to be %v, got %v", test.param, test.expected, actual)
+// 			t.Errorf("Expected ValidateStruct(%q) to be %v, got %v", utile.param, utile.expected, actual)
 // 			if err != nil {
 // 				t.Errorf("Got Error on ValidateStruct(%q): %s", test.param, err)
 // 			}

@@ -8,7 +8,7 @@ import (
 	"testing"
 )
 
-// A sample test key for when we just want to initialize a cipher
+// A sample utile key for when we just want to initialize a cipher
 var testKey = []byte{0x00, 0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88, 0x99, 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF}
 
 // Test that the block size for XTEA is correct
@@ -31,7 +31,7 @@ func TestBlocksize(t *testing.T) {
 	}
 }
 
-// A series of test values to confirm that the Cipher.table array was initialized correctly
+// A series of utile values to confirm that the Cipher.table array was initialized correctly
 var testTable = []uint32{
 	0x00112233, 0x6B1568B8, 0xE28CE030, 0xC5089E2D, 0xC5089E2D, 0x1EFBD3A2, 0xA7845C2A, 0x78EF0917,
 	0x78EF0917, 0x172682D0, 0x5B6AC714, 0x822AC955, 0x3DE68511, 0xDC1DFECA, 0x2062430E, 0x3611343F,

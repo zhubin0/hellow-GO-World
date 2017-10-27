@@ -3,7 +3,7 @@
 // license that can be found in the LICENSE file.
 
 // Package unicode provides Unicode encodings such as UTF-16.
-package unicode // import "golang.org/x/text/encoding/unicode"
+package unicode // import "golangUtil.org/x/text/encoding/unicode"
 
 import (
 	"errors"
@@ -190,7 +190,7 @@ const (
 
 	// HACK: numBOMValues == 8 triggers a bug in the 1.4 compiler (cannot have a
 	// map of an array of length 8 of a type that is also used as a key or value
-	// in another map). See golang.org/issue/11354.
+	// in another map). See golangUtil.org/issue/11354.
 	// TODO: consider changing this value back to 8 if the use of 1.4.* has
 	// been minimized.
 	numBOMValues = 8 + 1

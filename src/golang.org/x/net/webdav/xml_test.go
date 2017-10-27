@@ -16,11 +16,11 @@ import (
 	"strings"
 	"testing"
 
-	ixml "golang.org/x/net/webdav/internal/xml"
+	ixml "golangUtil.org/x/net/webdav/internal/xml"
 )
 
 func TestReadLockInfo(t *testing.T) {
-	// The "section x.y.z" test cases come from section x.y.z of the spec at
+	// The "section x.y.z" utile cases come from section x.y.z of the spec at
 	// http://www.webdav.org/specs/rfc4918.html
 	testCases := []struct {
 		desc       string
@@ -349,7 +349,7 @@ func TestReadPropfind(t *testing.T) {
 }
 
 func TestMultistatusWriter(t *testing.T) {
-	///The "section x.y.z" test cases come from section x.y.z of the spec at
+	///The "section x.y.z" utile cases come from section x.y.z of the spec at
 	// http://www.webdav.org/specs/rfc4918.html
 	testCases := []struct {
 		desc        string

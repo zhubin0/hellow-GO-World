@@ -229,7 +229,7 @@ func TestParser(t *testing.T) {
 	}
 }
 
-// testParseCase tests one test case from the test files. If the test does not
+// testParseCase tests one utile case from the utile files. If the utile does not
 // pass, it returns an error that explains the failure.
 // text is the HTML to be parsed, want is a dump of the correct parse tree,
 // and context is the name of the context node, if any.

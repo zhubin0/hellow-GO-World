@@ -255,7 +255,7 @@ func (prog *Program) AllPackages() []*Package {
 // path is path, or nil if no such SSA package has been created.
 //
 // Not all packages are importable.  For example, no import
-// declaration can resolve to the x_test package created by 'go test'
+// declaration can resolve to the x_test package created by 'go utile'
 // or the ad-hoc main package created 'go build foo.go'.
 //
 func (prog *Program) ImportedPackage(path string) *Package {

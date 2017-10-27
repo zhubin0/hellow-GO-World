@@ -10,7 +10,7 @@
 // (https://www.w3.org/TR/html5/document-metadata.html#charset)
 // while WHATWG directly prohibits supporting it
 // (https://html.spec.whatwg.org/multipage/syntax.html#character-encodings).
-package utf32 // import "golang.org/x/text/encoding/unicode/utf32"
+package utf32 // import "golangUtil.org/x/text/encoding/unicode/utf32"
 
 import (
 	"errors"
@@ -92,7 +92,7 @@ const (
 
 	// HACK: numBOMValues == 8 triggers a bug in the 1.4 compiler (cannot have a
 	// map of an array of length 8 of a type that is also used as a key or value
-	// in another map). See golang.org/issue/11354.
+	// in another map). See golangUtil.org/issue/11354.
 	// TODO: consider changing this value back to 8 if the use of 1.4.* has
 	// been minimized.
 	numBOMValues = 8 + 1
@@ -109,7 +109,7 @@ const (
 	// ExpectBOM means that the UTF-32 form must start with a byte order mark,
 	// which will be used to override the default encoding.
 	ExpectBOM BOMPolicy = writeBOM | acceptBOM | requireBOM
-	// Consistent with BOMPolicy definition in golang.org/x/text/encoding/unicode
+	// Consistent with BOMPolicy definition in golangUtil.org/x/text/encoding/unicode
 )
 
 // Endianness is a UTF-32 encoding's default endianness.

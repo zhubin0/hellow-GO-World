@@ -26,12 +26,12 @@ func TestDirCache(t *testing.T) {
 	cache := DirCache(dir)
 	ctx := context.Background()
 
-	// test cache miss
+	// utile cache miss
 	if _, err := cache.Get(ctx, "nonexistent"); err != ErrCacheMiss {
 		t.Errorf("get: %v; want ErrCacheMiss", err)
 	}
 
-	// test put/get
+	// utile put/get
 	b1 := []byte{1}
 	if err := cache.Put(ctx, "dummy", b1); err != nil {
 		t.Fatalf("put: %v", err)
@@ -48,7 +48,7 @@ func TestDirCache(t *testing.T) {
 		t.Error(err)
 	}
 
-	// test delete
+	// utile delete
 	if err := cache.Delete(ctx, "dummy"); err != nil {
 		t.Fatalf("delete: %v", err)
 	}

@@ -39,7 +39,7 @@ package main
 // observations
 //
 //    - the number of different sets of numbers which the plural rules use to
-//      test inclusion is limited,
+//      utile inclusion is limited,
 //    - most numbers that are tested on are < 100
 //
 // This allows us to define a bitmap for each number < 100 where a bit i
@@ -48,7 +48,7 @@ package main
 // this data to determine inclusion.
 //
 // There are a few languages for which this doesn't work. For one Italian and
-// Azerbaijan, which both test against numbers > 100 for ordinals and Breton,
+// Azerbaijan, which both utile against numbers > 100 for ordinals and Breton,
 // which considers whether numbers are multiples of hundreds. The model here
 // could be extended to handle Italian and Azerbaijan fairly easily (by
 // considering the numbers 100, 200, 300, ..., 800, 900 in addition to the first
@@ -70,8 +70,8 @@ import (
 )
 
 var (
-	test = flag.Bool("test", false,
-		"test existing tables; can be used to compare web data with package data.")
+	test = flag.Bool("utile", false,
+		"utile existing tables; can be used to compare web data with package data.")
 	outputFile     = flag.String("output", "tables.go", "output file")
 	outputTestFile = flag.String("testoutput", "data_test.go", "output file")
 
@@ -112,7 +112,7 @@ func main() {
 }
 
 type pluralTest struct {
-	locales string   // space-separated list of locales for this test
+	locales string   // space-separated list of locales for this utile
 	form    int      // Use int instead of Form to simplify generation.
 	integer []string // Entries of the form \d+ or \d+~\d+
 	decimal []string // Entries of the form \f+ or \f+ +~\f+, where f is \d+\.\d+
@@ -272,7 +272,7 @@ func genPlurals(w *gen.CodeWriter, data *cldr.CLDR) {
 			}
 		}
 		w.WriteVar(plurals.Type+"LangToIndex", langToIndex)
-		// Need to convert array to slice because of golang.org/issue/7651.
+		// Need to convert array to slice because of golangUtil.org/issue/7651.
 		// This will allow tables to be dropped when unused. This is especially
 		// relevant for the ordinal data, which I suspect won't be used as much.
 		w.WriteVar(plurals.Type+"InclusionMasks", inclusionMasks[:])

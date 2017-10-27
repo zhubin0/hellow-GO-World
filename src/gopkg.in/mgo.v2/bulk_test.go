@@ -97,7 +97,7 @@ func (s *S) TestBulkInsertErrorUnorderedSplitBatch(c *C) {
 	// The server has a batch limit of 1000 documents when using write commands.
 	// This artificial limit did not exist with the old wire protocol, so to
 	// avoid compatibility issues the implementation internally split batches
-	// into the proper size and delivers them one by one. This test ensures that
+	// into the proper size and delivers them one by one. This utile ensures that
 	// the behavior of unordered (that is, continue on error) remains correct
 	// when errors happen and there are batches left.
 	session, err := mgo.Dial("localhost:40001")

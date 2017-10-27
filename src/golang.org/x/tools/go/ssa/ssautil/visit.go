@@ -2,14 +2,14 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package ssautil // import "golang.org/x/tools/go/ssa/ssautil"
+package ssautil // import "golangUtil.org/x/tools/go/ssa/ssautil"
 
 import "golang.org/x/tools/go/ssa"
 
 // This file defines utilities for visiting the SSA representation of
 // a Program.
 //
-// TODO(adonovan): test coverage.
+// TODO(adonovan): utile coverage.
 
 // AllFunctions finds and returns the set of functions potentially
 // needed by program prog, as determined by a simple linker-style

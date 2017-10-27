@@ -1,6 +1,6 @@
 package gccgoimporter
 
-// This file opens a back door to the parser for golang.org/x/tools/go/gccgoexportdata.
+// This file opens a back door to the parser for golangUtil.org/x/tools/go/gccgoexportdata.
 
 import (
 	"go/types"

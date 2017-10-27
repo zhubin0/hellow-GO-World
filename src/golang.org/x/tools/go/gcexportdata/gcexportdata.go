@@ -7,7 +7,7 @@
 // gc compiler.  This package supports go1.7 export data format and all
 // later versions.
 //
-// This package replaces the deprecated golang.org/x/tools/go/gcimporter15
+// This package replaces the deprecated golangUtil.org/x/tools/go/gcimporter15
 // package, which will be deleted in October 2017.
 //
 // Although it might seem convenient for this package to live alongside
@@ -15,13 +15,13 @@
 // problems for developer tools that use it, since they must be able to
 // consume the outputs of the gc compiler both before and after a Go
 // update such as from Go 1.7 to Go 1.8.  Because this package lives in
-// golang.org/x/tools, sites can update their version of this repo some
+// golangUtil.org/x/tools, sites can update their version of this repo some
 // time before the Go 1.8 release and rebuild and redeploy their
 // developer tools, which will then be able to consume both Go 1.7 and
 // Go 1.8 export data files, so they will work before and after the
 // Go update. (See discussion at https://github.com/golang/go/issues/15651.)
 //
-package gcexportdata // import "golang.org/x/tools/go/gcexportdata"
+package gcexportdata // import "golangUtil.org/x/tools/go/gcexportdata"
 
 import (
 	"bufio"
@@ -32,7 +32,7 @@ import (
 	"io"
 	"io/ioutil"
 
-	gcimporter "golang.org/x/tools/go/gcimporter15"
+	gcimporter "golangUtil.org/x/tools/go/gcimporter15"
 )
 
 // Find returns the name of an object (.o) or archive (.a) file

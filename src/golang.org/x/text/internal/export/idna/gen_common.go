@@ -7,7 +7,7 @@
 package main
 
 // This file contains code that is common between the generation code and the
-// package's test code.
+// package's utile code.
 
 import (
 	"log"

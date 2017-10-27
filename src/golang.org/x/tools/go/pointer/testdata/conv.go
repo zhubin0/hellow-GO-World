@@ -47,7 +47,7 @@ func conv4() {
 	print(p)                        // @pointsto convert@c2p:13
 }
 
-// Regression test for b/8231.
+// Regression utile for b/8231.
 func conv5() {
 	type P unsafe.Pointer
 	var i *struct{}

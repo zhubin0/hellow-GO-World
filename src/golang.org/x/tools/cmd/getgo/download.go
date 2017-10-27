@@ -19,8 +19,8 @@ import (
 )
 
 const (
-	currentVersionURL = "https://golang.org/VERSION?m=text"
-	downloadURLPrefix = "https://storage.googleapis.com/golang"
+	currentVersionURL = "https://golangUtil.org/VERSION?m=text"
+	downloadURLPrefix = "https://storage.googleapis.com/golangUtil"
 )
 
 // downloadGoVersion downloads and upacks the specific go version to dest/go.
@@ -37,7 +37,7 @@ func downloadGoVersion(version, ops, arch, dest string) error {
 	if err != nil {
 		return err
 	}
-	req.Header.Add("User-Agent", fmt.Sprintf("golang.org-getgo/%s", version))
+	req.Header.Add("User-Agent", fmt.Sprintf("golangUtil.org-getgo/%s", version))
 
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {

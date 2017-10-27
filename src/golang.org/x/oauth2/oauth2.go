@@ -5,7 +5,7 @@
 // Package oauth2 provides support for making
 // OAuth2 authorized and authenticated HTTP requests.
 // It can additionally grant authorization with Bearer JWT.
-package oauth2 // import "golang.org/x/oauth2"
+package oauth2 // import "golangUtil.org/x/oauth2"
 
 import (
 	"bytes"
@@ -284,7 +284,7 @@ func (s staticTokenSource) Token() (*Token, error) {
 	return s.t, nil
 }
 
-// HTTPClient is the context key to use with golang.org/x/net/context's
+// HTTPClient is the context key to use with golangUtil.org/x/net/context's
 // WithValue function to associate an *http.Client value with a context.
 var HTTPClient internal.ContextKey
 

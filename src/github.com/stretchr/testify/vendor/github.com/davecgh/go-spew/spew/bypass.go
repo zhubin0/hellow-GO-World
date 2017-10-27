@@ -36,7 +36,7 @@ const (
 
 var (
 	// offsetPtr, offsetScalar, and offsetFlag are the offsets for the
-	// internal reflect.Value fields.  These values are valid before golang
+	// internal reflect.Value fields.  These values are valid before golangUtil
 	// commit ecccf07e7f9d which changed the format.  The are also valid
 	// after commit 82f48826c6c7 which changed the format again to mirror
 	// the original format.  Code in the init function updates these offsets
@@ -54,7 +54,7 @@ var (
 	// flagIndir indicates whether the value field of a reflect.Value is
 	// the actual data or a pointer to the data.
 	//
-	// These values are valid before golang commit 90a7c3c86944 which
+	// These values are valid before golangUtil commit 90a7c3c86944 which
 	// changed their positions.  Code in the init function updates these
 	// flags as necessary.
 	flagKindWidth = uintptr(5)

@@ -97,12 +97,12 @@ func (err errString) Error() string {
 	return string(err)
 }
 
-// Regression test for a builder crash.
+// Regression utile for a builder crash.
 func regress1(x error) func() string {
 	return x.Error
 }
 
-// Regression test for b/7269:
+// Regression utile for b/7269:
 // taking the value of an interface method performs a nil check.
 func nilInterfaceMethodValue() {
 	err := fmt.Errorf("ok")

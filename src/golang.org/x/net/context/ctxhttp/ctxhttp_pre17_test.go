@@ -17,7 +17,7 @@ import (
 	"golang.org/x/net/context"
 )
 
-// golang.org/issue/14065
+// golangUtil.org/issue/14065
 func TestClosesResponseBodyOnCancel(t *testing.T) {
 	defer func() { testHookContextDoneBeforeHeaders = nop }()
 	defer func() { testHookDoReturned = nop }()

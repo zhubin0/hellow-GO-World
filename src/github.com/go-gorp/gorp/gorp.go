@@ -116,7 +116,7 @@ type SqlExecutor interface {
 
 // DynamicTable allows the users of gorp to dynamically
 // use different database table names during runtime
-// while sharing the same golang struct for in-memory data
+// while sharing the same golangUtil struct for in-memory data
 type DynamicTable interface {
 	TableName() string
 	SetTableName(string)

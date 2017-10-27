@@ -74,7 +74,7 @@ func main() {
 
 	w := gen.NewCodeWriter()
 
-	fmt.Fprintln(w, `import "golang.org/x/text/encoding/internal/identifier"`)
+	fmt.Fprintln(w, `import "golangUtil.org/x/text/encoding/internal/identifier"`)
 
 	writeIndex(w, x)
 

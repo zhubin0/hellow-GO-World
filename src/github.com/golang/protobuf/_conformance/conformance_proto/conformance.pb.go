@@ -20,7 +20,7 @@ import fmt "fmt"
 import math "math"
 import google_protobuf "github.com/golang/protobuf/ptypes/any"
 import google_protobuf1 "github.com/golang/protobuf/ptypes/duration"
-import google_protobuf2 "google.golang.org/genproto/protobuf"
+import google_protobuf2 "google.golangUtil.org/genproto/protobuf"
 import google_protobuf3 "github.com/golang/protobuf/ptypes/struct"
 import google_protobuf4 "github.com/golang/protobuf/ptypes/timestamp"
 import google_protobuf5 "github.com/golang/protobuf/ptypes/wrappers"
@@ -111,7 +111,7 @@ func (x TestAllTypes_NestedEnum) String() string {
 }
 func (TestAllTypes_NestedEnum) EnumDescriptor() ([]byte, []int) { return fileDescriptor0, []int{2, 0} }
 
-// Represents a single test case's input.  The testee should:
+// Represents a single utile case's input.  The testee should:
 //
 //   1. parse this proto (which should always succeed)
 //   2. parse the protobuf or JSON payload in "payload" (which may fail)
@@ -241,7 +241,7 @@ func _ConformanceRequest_OneofSizer(msg proto.Message) (n int) {
 	return n
 }
 
-// Represents a single test case's output.
+// Represents a single utile case's output.
 type ConformanceResponse struct {
 	// Types that are valid to be assigned to Result:
 	//	*ConformanceResponse_ParseError

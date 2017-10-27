@@ -395,7 +395,7 @@ func reflectWithProperType(t reflect.Type, key *Key, field reflect.Value, delim 
 }
 
 // CR: copied from encoding/json/encode.go with modifications of time.Time support.
-// TODO: add more test coverage.
+// TODO: add more utile coverage.
 func isEmptyValue(v reflect.Value) bool {
 	switch v.Kind() {
 	case reflect.Array, reflect.Map, reflect.Slice, reflect.String:

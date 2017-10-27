@@ -276,7 +276,7 @@ func TestNewEntityWithPreferredHash(t *testing.T) {
 	c := &packet.Config{
 		DefaultHash: crypto.SHA256,
 	}
-	entity, err := NewEntity("Golang Gopher", "Test Key", "no-reply@golang.com", c)
+	entity, err := NewEntity("Golang Gopher", "Test Key", "no-reply@golangUtil.com", c)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -293,7 +293,7 @@ func TestNewEntityWithPreferredHash(t *testing.T) {
 }
 
 func TestNewEntityWithoutPreferredHash(t *testing.T) {
-	entity, err := NewEntity("Golang Gopher", "Test Key", "no-reply@golang.com", nil)
+	entity, err := NewEntity("Golang Gopher", "Test Key", "no-reply@golangUtil.com", nil)
 	if err != nil {
 		t.Fatal(err)
 	}

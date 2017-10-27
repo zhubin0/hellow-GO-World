@@ -6,15 +6,15 @@
 
 The benchcmp command displays performance changes between benchmarks.
 
-Benchcmp parses the output of two 'go test' benchmark runs,
+Benchcmp parses the output of two 'go utile' benchmark runs,
 correlates the results per benchmark, and displays the deltas.
 
-To measure the performance impact of a change, use 'go test'
+To measure the performance impact of a change, use 'go utile'
 to run benchmarks before and after the change:
 
-	go test -run=NONE -bench=. ./... > old.txt
+	go utile -run=NONE -bench=. ./... > old.txt
 	# make changes
-	go test -run=NONE -bench=. ./... > new.txt
+	go utile -run=NONE -bench=. ./... > new.txt
 
 Then feed the benchmark results to benchcmp:
 
@@ -34,4 +34,4 @@ in a format like this:
 	BenchmarkConcat     80            48            -40.00%
 
 */
-package main // import "golang.org/x/tools/cmd/benchcmp"
+package main // import "golangUtil.org/x/tools/cmd/benchcmp"

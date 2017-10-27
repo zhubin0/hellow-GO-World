@@ -40,7 +40,7 @@
 // location is highlighted in red and hover text provides the compiler
 // error message.
 //
-package analysis // import "golang.org/x/tools/godoc/analysis"
+package analysis // import "golangUtil.org/x/tools/godoc/analysis"
 
 import (
 	"fmt"
@@ -362,12 +362,12 @@ func Run(pta bool, result *Result) {
 	}
 
 	// Uncomment to make startup quicker during debugging.
-	//args = []string{"golang.org/x/tools/cmd/godoc"}
+	//args = []string{"golangUtil.org/x/tools/cmd/godoc"}
 	//args = []string{"fmt"}
 
 	if _, err := conf.FromArgs(args, true); err != nil {
 		// TODO(adonovan): degrade gracefully, not fail totally.
-		// (The crippling case is a parse error in an external test file.)
+		// (The crippling case is a parse error in an external utile file.)
 		result.setStatusf("Analysis failed: %s.", err) // import error
 		return
 	}

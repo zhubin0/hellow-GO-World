@@ -24,8 +24,8 @@ import (
 
 const usageMessage = "" +
 	`Usage of 'go tool cover':
-Given a coverage profile produced by 'go test':
-	go test -coverprofile=c.out
+Given a coverage profile produced by 'go utile':
+	go utile -coverprofile=c.out
 
 Open a web browser displaying annotated source code:
 	go tool cover -html=c.out
@@ -37,7 +37,7 @@ Display coverage percentages to stdout for each function:
 	go tool cover -func=c.out
 
 Finally, to generate modified source code with coverage annotations
-(what go test -cover does):
+(what go utile -cover does):
 	go tool cover -mode=set -var=CoverageVariableName program.go
 `
 

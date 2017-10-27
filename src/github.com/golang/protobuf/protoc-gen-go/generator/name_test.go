@@ -65,8 +65,8 @@ func TestGoPackageOption(t *testing.T) {
 	}{
 		{"", "", "", false},
 		{"foo", "", "foo", true},
-		{"github.com/golang/bar", "github.com/golang/bar", "bar", true},
-		{"github.com/golang/bar;baz", "github.com/golang/bar", "baz", true},
+		{"github.com/golangUtil/bar", "github.com/golangUtil/bar", "bar", true},
+		{"github.com/golangUtil/bar;baz", "github.com/golangUtil/bar", "baz", true},
 	}
 	for _, tc := range tests {
 		d := &FileDescriptor{

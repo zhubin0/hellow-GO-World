@@ -75,7 +75,7 @@ func TestGetEndpointURL(t *testing.T) {
 		// Expected result.
 		result string
 		err    error
-		// Flag indicating whether the test is expected to pass or not.
+		// Flag indicating whether the utile is expected to pass or not.
 		shouldPass bool
 	}{
 		{"s3.amazonaws.com", true, "https://s3.amazonaws.com", nil, true},
@@ -121,7 +121,7 @@ func TestIsValidEndpointURL(t *testing.T) {
 	testCases := []struct {
 		url string
 		err error
-		// Flag indicating whether the test is expected to pass or not.
+		// Flag indicating whether the utile is expected to pass or not.
 		shouldPass bool
 	}{
 		{"", ErrInvalidArgument("Endpoint url cannot be empty."), false},
@@ -221,7 +221,7 @@ func TestIsValidExpiry(t *testing.T) {
 		duration time.Duration
 		// Expected result.
 		err error
-		// Flag to indicate whether the test should pass.
+		// Flag to indicate whether the utile should pass.
 		shouldPass bool
 	}{
 		{100 * time.Millisecond, ErrInvalidArgument("Expires cannot be lesser than 1 second."), false},
@@ -257,7 +257,7 @@ func TestIsValidBucketName(t *testing.T) {
 		bucketName string
 		// Expected result.
 		err error
-		// Flag to indicate whether test should Pass.
+		// Flag to indicate whether utile should Pass.
 		shouldPass bool
 	}{
 		{".mybucket", ErrInvalidBucketName("Bucket name contains invalid characters"), false},

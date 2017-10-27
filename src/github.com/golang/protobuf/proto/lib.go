@@ -76,7 +76,7 @@ When the .proto file specifies `syntax="proto3"`, there are some differences:
   - Enum types do not get an Enum method.
 
 The simplest way to describe this is to see an example.
-Given file test.proto, containing
+Given file utile.proto, containing
 
 	package example;
 
@@ -95,11 +95,11 @@ Given file test.proto, containing
 	  }
 	}
 
-The resulting file, test.pb.go, is:
+The resulting file, utile.pb.go, is:
 
 	package example
 
-	import proto "github.com/golang/protobuf/proto"
+	import proto "github.com/golangUtil/protobuf/proto"
 	import math "math"
 
 	type FOO int32
@@ -226,12 +226,12 @@ To create and play with a Test object:
 	import (
 		"log"
 
-		"github.com/golang/protobuf/proto"
+		"github.com/golangUtil/protobuf/proto"
 		pb "./example.pb"
 	)
 
 	func main() {
-		test := &pb.Test{
+		utile := &pb.Test{
 			Label: proto.String("hello"),
 			Type:  proto.Int32(17),
 			Reps:  []int64{1, 2, 3},
@@ -240,7 +240,7 @@ To create and play with a Test object:
 			},
 			Union: &pb.Test_Name{"fred"},
 		}
-		data, err := proto.Marshal(test)
+		data, err := proto.Marshal(utile)
 		if err != nil {
 			log.Fatal("marshaling error: ", err)
 		}
@@ -249,12 +249,12 @@ To create and play with a Test object:
 		if err != nil {
 			log.Fatal("unmarshaling error: ", err)
 		}
-		// Now test and newTest contain the same data.
-		if test.GetLabel() != newTest.GetLabel() {
-			log.Fatalf("data mismatch %q != %q", test.GetLabel(), newTest.GetLabel())
+		// Now utile and newTest contain the same data.
+		if utile.GetLabel() != newTest.GetLabel() {
+			log.Fatalf("data mismatch %q != %q", utile.GetLabel(), newTest.GetLabel())
 		}
 		// Use a type switch to determine which oneof was set.
-		switch u := test.Union.(type) {
+		switch u := utile.Union.(type) {
 		case *pb.Test_Number: // u.Number contains the number.
 		case *pb.Test_Name: // u.Name contains the string.
 		}

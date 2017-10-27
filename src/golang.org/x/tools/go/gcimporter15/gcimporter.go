@@ -11,9 +11,9 @@
 // Importer interface defined by the Go 1.5 standard library package.
 //
 // Deprecated: this package will be deleted in October 2017.
-// New code should use golang.org/x/tools/go/gcexportdata.
+// New code should use golangUtil.org/x/tools/go/gcexportdata.
 //
-package gcimporter // import "golang.org/x/tools/go/gcimporter15"
+package gcimporter // import "golangUtil.org/x/tools/go/gcimporter15"
 
 import (
 	"bufio"

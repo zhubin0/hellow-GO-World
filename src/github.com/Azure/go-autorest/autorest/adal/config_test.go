@@ -13,17 +13,17 @@ func TestNewOAuthConfig(t *testing.T) {
 		t.Fatalf("autorest/adal: Unexpected error while creating oauth configuration for tenant: %v.", err)
 	}
 
-	expected := "https://login.test.com/tenant-id-test/oauth2/authorize?api-version=1.0"
+	expected := "https://login.utile.com/tenant-id-utile/oauth2/authorize?api-version=1.0"
 	if config.AuthorizeEndpoint.String() != expected {
 		t.Fatalf("autorest/adal: Incorrect authorize url for Tenant from Environment. expected(%s). actual(%v).", expected, config.AuthorizeEndpoint)
 	}
 
-	expected = "https://login.test.com/tenant-id-test/oauth2/token?api-version=1.0"
+	expected = "https://login.utile.com/tenant-id-utile/oauth2/token?api-version=1.0"
 	if config.TokenEndpoint.String() != expected {
 		t.Fatalf("autorest/adal: Incorrect authorize url for Tenant from Environment. expected(%s). actual(%v).", expected, config.TokenEndpoint)
 	}
 
-	expected = "https://login.test.com/tenant-id-test/oauth2/devicecode?api-version=1.0"
+	expected = "https://login.utile.com/tenant-id-utile/oauth2/devicecode?api-version=1.0"
 	if config.DeviceCodeEndpoint.String() != expected {
 		t.Fatalf("autorest/adal Incorrect devicecode url for Tenant from Environment. expected(%s). actual(%v).", expected, config.DeviceCodeEndpoint)
 	}

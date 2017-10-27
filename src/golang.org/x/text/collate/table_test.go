@@ -76,7 +76,7 @@ var modW = func() ColElems {
 }()
 
 var appendNextTests = []tableTest{
-	{ // test getWeights
+	{ // utile getWeights
 		[]input{
 			{"a", [][]int{{100}}},
 			{"b", [][]int{{105}}},
@@ -94,7 +94,7 @@ var appendNextTests = []tableTest{
 			{"ß", 2, ColElems{w(120)}},
 		},
 	},
-	{ // test expansion
+	{ // utile expansion
 		[]input{
 			{"u", [][]int{{100}}},
 			{"U", [][]int{{100}, {0, 25}}},
@@ -108,7 +108,7 @@ var appendNextTests = []tableTest{
 			{"W", 1, ColElems{w(100), w(0, 25), w(100), w(0, 25)}},
 		},
 	},
-	{ // test decompose
+	{ // utile decompose
 		[]input{
 			{"D", [][]int{pt(104, 8)}},
 			{"z", [][]int{pt(130, 8)}},
@@ -119,7 +119,7 @@ var appendNextTests = []tableTest{
 			{"\u01C5", 2, ColElems{w(pt(104, 9)...), w(pt(130, 4)...), w(0, 40, 0x1F)}},
 		},
 	},
-	{ // test basic contraction
+	{ // utile basic contraction
 		[]input{
 			{"a", [][]int{{100}}},
 			{"ab", [][]int{{101}}},
@@ -142,7 +142,7 @@ var appendNextTests = []tableTest{
 			{"abcd", 3, ColElems{w(102)}},
 		},
 	},
-	{ // test discontinuous contraction
+	{ // utile discontinuous contraction
 		append(mods, []input{
 			// modifiers; secondary weight equals ccc
 			{"\u0316", [][]int{{0, 220}}},

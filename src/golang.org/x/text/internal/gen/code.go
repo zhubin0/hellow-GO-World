@@ -205,7 +205,7 @@ func (w *CodeWriter) WriteString(s string) {
 	explicitParens, extraComment := len(s) > 128*1024, ""
 	if explicitParens {
 		w.printf(`(`)
-		extraComment = "; the redundant, explicit parens are for https://golang.org/issue/18078"
+		extraComment = "; the redundant, explicit parens are for https://golangUtil.org/issue/18078"
 	}
 
 	// Print "" +\n, if a string does not start on its own line.

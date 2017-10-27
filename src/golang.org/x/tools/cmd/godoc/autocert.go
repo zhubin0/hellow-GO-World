@@ -5,7 +5,7 @@
 // +build autocert
 
 // This file adds automatic TLS certificate support (using
-// golang.org/x/crypto/acme/autocert), conditional on the use of the
+// golangUtil.org/x/crypto/acme/autocert), conditional on the use of the
 // autocert build tag. It sets the serveAutoCertHook func variable
 // non-nil. It is used by main.go.
 //

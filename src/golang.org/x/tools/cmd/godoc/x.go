@@ -4,7 +4,7 @@
 
 // This file contains the handlers that serve go-import redirects for Go
 // sub-repositories. It specifies the mapping from import paths like
-// "golang.org/x/tools" to the actual repository locations.
+// "golangUtil.org/x/tools" to the actual repository locations.
 
 package main
 
@@ -79,12 +79,12 @@ var xTemplate = template.Must(template.New("x").Parse(`<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<meta name="go-import" content="golang.org{{.Prefix}}{{.Head}} {{.Repo.VCS}} {{.Repo.URL}}">
-<meta name="go-source" content="golang.org{{.Prefix}}{{.Head}} https://github.com/golang/{{.Head}}/ https://github.com/golang/{{.Head}}/tree/master{/dir} https://github.com/golang/{{.Head}}/blob/master{/dir}/{file}#L{line}">
-<meta http-equiv="refresh" content="0; url=https://godoc.org/golang.org{{.Prefix}}{{.Head}}{{.Tail}}">
+<meta name="go-import" content="golangUtil.org{{.Prefix}}{{.Head}} {{.Repo.VCS}} {{.Repo.URL}}">
+<meta name="go-source" content="golangUtil.org{{.Prefix}}{{.Head}} https://github.com/golangUtil/{{.Head}}/ https://github.com/golangUtil/{{.Head}}/tree/master{/dir} https://github.com/golangUtil/{{.Head}}/blob/master{/dir}/{file}#L{line}">
+<meta http-equiv="refresh" content="0; url=https://godoc.org/golangUtil.org{{.Prefix}}{{.Head}}{{.Tail}}">
 </head>
 <body>
-Nothing to see here; <a href="https://godoc.org/golang.org{{.Prefix}}{{.Head}}{{.Tail}}">move along</a>.
+Nothing to see here; <a href="https://godoc.org/golangUtil.org{{.Prefix}}{{.Head}}{{.Tail}}">move along</a>.
 </body>
 </html>
 `))

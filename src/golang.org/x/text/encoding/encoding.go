@@ -6,9 +6,9 @@
 // JIS and Windows 1252, that can convert to and from UTF-8.
 //
 // Encoding implementations are provided in other packages, such as
-// golang.org/x/text/encoding/charmap and
-// golang.org/x/text/encoding/japanese.
-package encoding // import "golang.org/x/text/encoding"
+// golangUtil.org/x/text/encoding/charmap and
+// golangUtil.org/x/text/encoding/japanese.
+package encoding // import "golangUtil.org/x/text/encoding"
 
 import (
 	"errors"

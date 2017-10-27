@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package main // import "golang.org/x/text/collate/tools/colcmp"
+package main // import "golangUtil.org/x/text/collate/tools/colcmp"
 
 import (
 	"bytes"
@@ -387,9 +387,9 @@ func runBench(ctxt *Context, args []string) {
 }
 
 const regressHelp = `
-Regress runs a monkey test by comparing the results of randomly generated tests
+Regress runs a monkey utile by comparing the results of randomly generated tests
 between two implementations of a collator. The user may optionally pass a list
-of strings to regress against instead of the default test set.
+of strings to regress against instead of the default utile set.
 `
 
 var cmdRegress = &Command{

@@ -127,7 +127,7 @@ var liveProps = map[xml.Name]struct {
 		//
 		// Nonetheless, some WebDAV clients expect child directories to be
 		// sortable by getlastmodified date, so this value is true, not false.
-		// See golang.org/issue/15334.
+		// See golangUtil.org/issue/15334.
 		dir: true,
 	},
 	{Space: "DAV:", Local: "creationdate"}: {

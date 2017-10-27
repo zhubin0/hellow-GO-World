@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-// Test runner for coverage test. This file is not coverage-annotated; test.go is.
+// Test runner for coverage utile. This file is not coverage-annotated; utile.go is.
 // It knows the coverage counter is called "coverTest".
 
 package main
@@ -46,7 +46,7 @@ func checkVal(line, count uint32, val int) int {
 
 var PASS = true
 
-// verify checks the expected counts against the actual. It runs after the test has completed.
+// verify checks the expected counts against the actual. It runs after the utile has completed.
 func verify() {
 	for b := range counters {
 		got, index := count(b.line)
@@ -69,7 +69,7 @@ func verify() {
 // after the panic call in testPanic.
 func verifyPanic() {
 	if coverTest.Count[panicIndex-1] != 1 {
-		// Sanity check for test before panic.
+		// Sanity check for utile before panic.
 		fmt.Fprintf(os.Stderr, "bad before panic")
 		PASS = false
 	}
@@ -88,7 +88,7 @@ func count(line uint32) (uint32, int) {
 	// Linear search is fine. Choose perfect fit over approximate.
 	// We can have a closing brace for a range on the same line as a condition for an "else if"
 	// and we don't want that brace to steal the count for the condition on the "if".
-	// Therefore we test for a perfect (lo==line && hi==line) match, but if we can't
+	// Therefore we utile for a perfect (lo==line && hi==line) match, but if we can't
 	// find that we take the first imperfect match.
 	index := -1
 	indexLo := uint32(1e9)

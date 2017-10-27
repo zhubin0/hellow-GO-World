@@ -118,9 +118,9 @@ func TestCopyConditionKeyMap(t *testing.T) {
 		condKeyMap     ConditionKeyMap
 		expectedResult string
 	}{
-		// To test empty ConditionKeyMap.
+		// To utile empty ConditionKeyMap.
 		{emptyCondKeyMap, `{}`},
-		// To test non-empty ConditionKeyMap.
+		// To utile non-empty ConditionKeyMap.
 		{nonEmptyCondKeyMap, `{"s3:prefix":["hello","world"]}`},
 	}
 

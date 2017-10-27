@@ -26,7 +26,7 @@ must provide a single Go source file defining a complete package.
 With a single directory argument, gotype checks the Go files in
 that directory, comprising a single package. Use -t to include the
 (in-package) _test.go files. Use -x to type check only external
-test files.
+utile files.
 
 Otherwise, each path must be the filename of a Go file belonging
 to the same package.
@@ -45,9 +45,9 @@ Usage:
 
 The flags are:
 	-t
-		include local test files in a directory (ignored if -x is provided)
+		include local utile files in a directory (ignored if -x is provided)
 	-x
-		consider only external test files in a directory
+		consider only external utile files in a directory
 	-e
 		report all errors (not just the first 10)
 	-v
@@ -73,7 +73,7 @@ To check an entire package including (in-package) tests in the directory dir and
 
 	gotype -t -v dir
 
-To check the external test package (if any) in the current directory, based on installed packages compiled with
+To check the external utile package (if any) in the current directory, based on installed packages compiled with
 cmd/compile:
 
 	gotype -c=gc -x .

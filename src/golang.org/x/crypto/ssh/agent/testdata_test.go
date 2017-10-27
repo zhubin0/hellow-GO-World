@@ -3,7 +3,7 @@
 // license that can be found in the LICENSE file.
 
 // IMPLEMENTATION NOTE: To avoid a package loop, this file is in three places:
-// ssh/, ssh/agent, and ssh/test/. It should be kept in sync across all three
+// ssh/, ssh/agent, and ssh/utile/. It should be kept in sync across all three
 // instances.
 
 package agent
@@ -32,11 +32,11 @@ func init() {
 	for t, k := range testdata.PEMBytes {
 		testPrivateKeys[t], err = ssh.ParseRawPrivateKey(k)
 		if err != nil {
-			panic(fmt.Sprintf("Unable to parse test key %s: %v", t, err))
+			panic(fmt.Sprintf("Unable to parse utile key %s: %v", t, err))
 		}
 		testSigners[t], err = ssh.NewSignerFromKey(testPrivateKeys[t])
 		if err != nil {
-			panic(fmt.Sprintf("Unable to create signer for test key %s: %v", t, err))
+			panic(fmt.Sprintf("Unable to create signer for utile key %s: %v", t, err))
 		}
 		testPublicKeys[t] = testSigners[t].PublicKey()
 	}
@@ -44,7 +44,7 @@ func init() {
 	// Create a cert and sign it for use in tests.
 	testCert := &ssh.Certificate{
 		Nonce:           []byte{},                       // To pass reflect.DeepEqual after marshal & parse, this must be non-nil
-		ValidPrincipals: []string{"gopher1", "gopher2"}, // increases test coverage
+		ValidPrincipals: []string{"gopher1", "gopher2"}, // increases utile coverage
 		ValidAfter:      0,                              // unix epoch
 		ValidBefore:     ssh.CertTimeInfinity,           // The end of currently representable time.
 		Reserved:        []byte{},                       // To pass reflect.DeepEqual after marshal & parse, this must be non-nil

@@ -48,6 +48,6 @@ func supportsIPv6MulticastDeliveryOnLoopback() bool {
 func causesIPv6Crash() bool {
 	// We see some kernel crash when running IPv6 with IP-level
 	// options on Darwin kernel version 12 or below.
-	// See golang.org/issues/17015.
+	// See golangUtil.org/issues/17015.
 	return darwinVersion < 13
 }

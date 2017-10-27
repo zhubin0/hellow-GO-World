@@ -569,8 +569,8 @@ func TestNewV3(t *testing.T) {
 		t.Errorf("UUIDv3 generated incorrectly: %s", u.String())
 	}
 
-	u1 := NewV3(NamespaceDNS, "golang.org")
-	u2 := NewV3(NamespaceDNS, "golang.org")
+	u1 := NewV3(NamespaceDNS, "golangUtil.org")
+	u2 := NewV3(NamespaceDNS, "golangUtil.org")
 	if !Equal(u1, u2) {
 		t.Errorf("UUIDv3 generated different UUIDs for same namespace and name: %s and %s", u1, u2)
 	}
@@ -580,7 +580,7 @@ func TestNewV3(t *testing.T) {
 		t.Errorf("UUIDv3 generated same UUIDs for different names in same namespace: %s and %s", u1, u2)
 	}
 
-	u4 := NewV3(NamespaceURL, "golang.org")
+	u4 := NewV3(NamespaceURL, "golangUtil.org")
 	if Equal(u1, u4) {
 		t.Errorf("UUIDv3 generated same UUIDs for sane names in different namespaces: %s and %s", u1, u4)
 	}
@@ -615,8 +615,8 @@ func TestNewV5(t *testing.T) {
 		t.Errorf("UUIDv5 generated incorrectly: %s", u.String())
 	}
 
-	u1 := NewV5(NamespaceDNS, "golang.org")
-	u2 := NewV5(NamespaceDNS, "golang.org")
+	u1 := NewV5(NamespaceDNS, "golangUtil.org")
+	u2 := NewV5(NamespaceDNS, "golangUtil.org")
 	if !Equal(u1, u2) {
 		t.Errorf("UUIDv5 generated different UUIDs for same namespace and name: %s and %s", u1, u2)
 	}
@@ -626,7 +626,7 @@ func TestNewV5(t *testing.T) {
 		t.Errorf("UUIDv5 generated same UUIDs for different names in same namespace: %s and %s", u1, u2)
 	}
 
-	u4 := NewV5(NamespaceURL, "golang.org")
+	u4 := NewV5(NamespaceURL, "golangUtil.org")
 	if Equal(u1, u4) {
 		t.Errorf("UUIDv3 generated same UUIDs for sane names in different namespaces: %s and %s", u1, u4)
 	}

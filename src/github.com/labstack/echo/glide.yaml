@@ -4,7 +4,7 @@ import:
   subpackages:
   - color
   - log
-- package: golang.org/x/net
+- package: golangUtil.org/x/net
   subpackages:
   - context
   - websocket

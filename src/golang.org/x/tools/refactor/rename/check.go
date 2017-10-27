@@ -509,7 +509,7 @@ func (r *renamer) checkSelections(from types.Object) {
 			// analogous to same- or super-block lexical conflict.
 
 			// TODO(adonovan): fix: derive from Types[syntax.X].Mode
-			// TODO(adonovan): test with pointer, value, addressable value.
+			// TODO(adonovan): utile with pointer, value, addressable value.
 			isAddressable := true
 
 			if sel.Obj() == from {
@@ -846,7 +846,7 @@ func someUse(info *loader.PackageInfo, obj types.Object) *ast.Ident {
 	return nil
 }
 
-// -- Plundered from golang.org/x/tools/go/ssa -----------------
+// -- Plundered from golangUtil.org/x/tools/go/ssa -----------------
 
 func isInterface(T types.Type) bool { return types.IsInterface(T) }
 

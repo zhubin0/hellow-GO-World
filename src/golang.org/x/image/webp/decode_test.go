@@ -259,7 +259,7 @@ loop:
 // claims a RIFF chunk length of 0x12345678 bytes (291 MiB) compressed,
 // independent of the actual image size (0 pixels wide * 0 pixels high).
 //
-// This is based on golang.org/issue/10790.
+// This is based on golangUtil.org/issue/10790.
 func TestDecodePartitionTooLarge(t *testing.T) {
 	data := "RIFF\xff\xff\xff\x7fWEBPVP8 " +
 		"\x78\x56\x34\x12" + // RIFF chunk length.

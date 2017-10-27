@@ -87,13 +87,13 @@ func TestDialTimeout(t *testing.T) {
 	// set up the authenticator
 	auth := AuthenticatorWithTimeout(timeoutHost, timeoutPort, secret, timeout * time.Second)
 
-	// get the test start time
+	// get the utile start time
 	startTime := time.Now()
 
-	// execute the timeout test
+	// execute the timeout utile
 	_, err = auth.Authenticate(user, password, nasId)
 
-	// assert the test case passed
+	// assert the utile case passed
 	if err == nil {
 		t.Fatal("Failed to get the timeout error message")
 	}

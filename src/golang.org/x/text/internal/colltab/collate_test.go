@@ -17,7 +17,7 @@ import (
 	"golang.org/x/text/unicode/rangetable"
 )
 
-// assigned is used to only test runes that are inside the scope of the Unicode
+// assigned is used to only utile runes that are inside the scope of the Unicode
 // version used to generation the collation table.
 var assigned = rangetable.Assigned(collate.UnicodeVersion)
 

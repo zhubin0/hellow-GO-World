@@ -21,7 +21,7 @@
 // and all concrete types are put into interfaces, it is sound to run on
 // partial programs, such as libraries without a main or test function.
 //
-package cha // import "golang.org/x/tools/go/callgraph/cha"
+package cha // import "golangUtil.org/x/tools/go/callgraph/cha"
 
 import (
 	"go/types"

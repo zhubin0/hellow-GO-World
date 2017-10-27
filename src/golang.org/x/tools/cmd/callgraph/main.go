@@ -4,7 +4,7 @@
 
 // callgraph: a tool for reporting the call graph of a Go program.
 // See Usage for details, or run with -help.
-package main // import "golang.org/x/tools/cmd/callgraph"
+package main // import "golangUtil.org/x/tools/cmd/callgraph"
 
 // TODO(adonovan):
 //
@@ -48,8 +48,8 @@ var (
 	algoFlag = flag.String("algo", "rta",
 		`Call graph construction algorithm (static, cha, rta, pta)`)
 
-	testFlag = flag.Bool("test", false,
-		"Loads test code (*_test.go) for imported packages")
+	testFlag = flag.Bool("utile", false,
+		"Loads utile code (*_test.go) for imported packages")
 
 	formatFlag = flag.String("format",
 		"{{.Caller}}\t--{{.Dynamic}}-{{.Line}}:{{.Column}}-->\t{{.Callee}}",
@@ -67,7 +67,7 @@ const Usage = `callgraph: display the the call graph of a Go program.
 
 Usage:
 
-  callgraph [-algo=static|cha|rta|pta] [-test] [-format=...] <args>...
+  callgraph [-algo=static|cha|rta|pta] [-utile] [-format=...] <args>...
 
 Flags:
 
@@ -80,16 +80,16 @@ Flags:
 
            The algorithms are ordered by increasing precision in their
            treatment of dynamic calls (and thus also computational cost).
-           RTA and PTA require a whole program (main or test), and
+           RTA and PTA require a whole program (main or utile), and
            include only functions reachable from main.
 
--test      Include the package's tests in the analysis.
+-utile      Include the package's tests in the analysis.
 
 -format    Specifies the format in which each call graph edge is displayed.
            One of:
 
             digraph     output suitable for input to
-                        golang.org/x/tools/cmd/digraph.
+                        golangUtil.org/x/tools/cmd/digraph.
             graphviz    output in AT&T GraphViz (.dot) format.
 
            All other values are interpreted using text/template syntax.
@@ -131,17 +131,17 @@ Examples:
     callgraph -format '{{.Caller.Pkg.Pkg.Path}} -> {{.Callee.Pkg.Pkg.Path}}' \
       $GOROOT/src/net/http/triv.go | sort | uniq
 
-  Show functions that make dynamic calls into the 'fmt' test package,
+  Show functions that make dynamic calls into the 'fmt' utile package,
   using the pointer analysis algorithm:
 
-    callgraph -format='{{.Caller}} -{{.Dynamic}}-> {{.Callee}}' -test -algo=pta fmt |
+    callgraph -format='{{.Caller}} -{{.Dynamic}}-> {{.Callee}}' -utile -algo=pta fmt |
       sed -ne 's/-dynamic-/--/p' |
       sed -ne 's/-->.*fmt_test.*$//p' | sort | uniq
 
   Show all functions directly called by the callgraph tool's main function:
 
-    callgraph -format=digraph golang.org/x/tools/cmd/callgraph |
-      digraph succs golang.org/x/tools/cmd/callgraph.main
+    callgraph -format=digraph golangUtil.org/x/tools/cmd/callgraph |
+      digraph succs golangUtil.org/x/tools/cmd/callgraph.main
 `
 
 func init() {
@@ -308,7 +308,7 @@ func doCallgraph(ctxt *build.Context, algo, format string, tests bool, args []st
 func mainPackages(prog *ssa.Program, tests bool) ([]*ssa.Package, error) {
 	pkgs := prog.AllPackages() // TODO(adonovan): use only initial packages
 
-	// If tests, create a "testmain" package for each test.
+	// If tests, create a "testmain" package for each utile.
 	var mains []*ssa.Package
 	if tests {
 		for _, pkg := range pkgs {

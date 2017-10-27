@@ -20,10 +20,10 @@ import (
 
 type testCase struct {
 	lang  string
-	src   interface{} // string, []string, or nil to skip test
-	title interface{} // string, []string, or nil to skip test
-	lower interface{} // string, []string, or nil to skip test
-	upper interface{} // string, []string, or nil to skip test
+	src   interface{} // string, []string, or nil to skip utile
+	title interface{} // string, []string, or nil to skip utile
+	lower interface{} // string, []string, or nil to skip utile
+	upper interface{} // string, []string, or nil to skip utile
 	opts  options
 }
 

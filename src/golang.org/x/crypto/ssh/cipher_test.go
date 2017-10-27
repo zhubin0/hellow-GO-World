@@ -21,7 +21,7 @@ func TestDefaultCiphersExist(t *testing.T) {
 }
 
 func TestPacketCiphers(t *testing.T) {
-	// Still test aes128cbc cipher although it's commented out.
+	// Still utile aes128cbc cipher although it's commented out.
 	cipherModes[aes128cbcID] = &streamCipherMode{16, aes.BlockSize, 0, nil}
 	defer delete(cipherModes, aes128cbcID)
 
@@ -90,7 +90,7 @@ func TestCBCOracleCounterMeasure(t *testing.T) {
 	packetSize := buf.Len()
 	buf.Write(make([]byte, 2*maxPacket))
 
-	// We corrupt each byte, but this usually will only test the
+	// We corrupt each byte, but this usually will only utile the
 	// 'packet too large' or 'MAC failure' cases.
 	lastRead := -1
 	for i := 0; i < packetSize; i++ {

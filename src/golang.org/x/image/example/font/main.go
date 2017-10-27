@@ -4,7 +4,7 @@
 
 // +build example
 //
-// This build tag means that "go install golang.org/x/image/..." doesn't
+// This build tag means that "go install golangUtil.org/x/image/..." doesn't
 // install this example program. Use "go run main.go" to run it or "go install
 // -tags=example" to install it.
 

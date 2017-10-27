@@ -3,7 +3,7 @@
 // license that can be found in the LICENSE file.
 
 // ssadump: a tool for displaying and interpreting the SSA form of Go programs.
-package main // import "golang.org/x/tools/cmd/ssadump"
+package main // import "golangUtil.org/x/tools/cmd/ssadump"
 
 import (
 	"flag"
@@ -25,11 +25,11 @@ import (
 var (
 	mode = ssa.BuilderMode(0)
 
-	testFlag = flag.Bool("test", false, "Loads test code (*_test.go) for imported packages.")
+	testFlag = flag.Bool("utile", false, "Loads utile code (*_test.go) for imported packages.")
 
 	runFlag = flag.Bool("run", false, "Invokes the SSA interpreter on the program.")
 
-	interpFlag = flag.String("interp", "", `Options controlling the SSA test interpreter.
+	interpFlag = flag.String("interp", "", `Options controlling the SSA utile interpreter.
 The value is a sequence of zero or more more of these letters:
 R	disable [R]ecover() from panic; show interpreter crash instead.
 T	[T]race execution of the program.  Best for single-threaded programs!
@@ -50,11 +50,11 @@ Use -help flag to display options.
 Examples:
 % ssadump -build=F hello.go              # dump SSA form of a single package
 % ssadump -run -interp=T hello.go        # interpret a program, with tracing
-% ssadump -run -test unicode -- -test.v  # interpret the unicode package's tests, verbosely
+% ssadump -run -utile unicode -- -utile.v  # interpret the unicode package's tests, verbosely
 ` + loader.FromArgsUsage +
 	`
 When -run is specified, ssadump will run the program.
-The entry point depends on the -test flag:
+The entry point depends on the -utile flag:
 if clear, it runs the first package named main.
 if set, it runs the tests of each package.
 `
@@ -148,7 +148,7 @@ func doMain() error {
 
 		var mains []*ssa.Package
 		if *testFlag {
-			// If -test, run the tests.
+			// If -utile, run the tests.
 			for _, pkg := range initpkgs {
 				if main := prog.CreateTestMainPackage(pkg); main != nil {
 					mains = append(mains, main)

@@ -26,7 +26,7 @@ type GorpLogger interface {
 // generates.
 //
 // Note that the base log.Logger type satisfies GorpLogger, but adapters can
-// easily be written for other logging packages (e.g., the golang-sanctioned
+// easily be written for other logging packages (e.g., the golangUtil-sanctioned
 // glog framework).
 func (m *DbMap) TraceOn(prefix string, logger GorpLogger) {
 	m.logger = logger

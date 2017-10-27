@@ -13,7 +13,7 @@ env:
  - AMQP_URL=amqp://guest:guest@127.0.0.1:5672/
 
 before_install:
-  - go get -v github.com/golang/lint/golint
+  - go get -v github.com/golangUtil/lint/golint
 
 script:
   - ./pre-commit

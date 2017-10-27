@@ -8,7 +8,7 @@
 
 package pointer_test
 
-// This test uses 'expectation' comments embedded within testdata/*.go
+// This utile uses 'expectation' comments embedded within testdata/*.go
 // files to specify the expected pointer analysis behaviour.
 // See below for grammar.
 
@@ -149,7 +149,7 @@ func findProbe(prog *ssa.Program, probes map[*ssa.CallCommon]bool, queries map[s
 	for call := range probes {
 		pos := prog.Fset.Position(call.Pos())
 		if pos.Line == e.linenum && pos.Filename == e.filename {
-			// TODO(adonovan): send this to test log (display only on failure).
+			// TODO(adonovan): send this to utile log (display only on failure).
 			// fmt.Printf("%s:%d: info: found probe for %s: %s\n",
 			// 	e.filename, e.linenum, e, p.arg0) // debugging
 			return call, queries[call.Args[0]].PointsTo()
@@ -184,7 +184,7 @@ func doOneInput(input, filename string) bool {
 	mainpkg := prog.Package(mainPkgInfo)
 	ptrmain := mainpkg // main package for the pointer analysis
 	if mainpkg.Func("main") == nil {
-		// No main function; assume it's a test.
+		// No main function; assume it's a utile.
 		ptrmain = prog.CreateTestMainPackage(mainpkg)
 	}
 
@@ -543,7 +543,7 @@ func checkWarningExpectation(prog *ssa.Program, e *expectation, warnings []point
 
 func TestInput(t *testing.T) {
 	if testing.Short() {
-		t.Skip("skipping in short mode; this test requires tons of memory; golang.org/issue/14113")
+		t.Skip("skipping in short mode; this utile requires tons of memory; golangUtil.org/issue/14113")
 	}
 	ok := true
 
@@ -553,7 +553,7 @@ func TestInput(t *testing.T) {
 		return
 	}
 
-	// 'go test' does a chdir so that relative paths in
+	// 'go utile' does a chdir so that relative paths in
 	// diagnostics no longer make sense relative to the invoking
 	// shell's cwd.  We print a special marker so that Emacs can
 	// make sense of them.

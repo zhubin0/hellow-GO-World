@@ -15,7 +15,7 @@ negligible risk of collision.
 
 This package is interoperable with NaCl: https://nacl.cr.yp.to/box.html.
 */
-package box // import "golang.org/x/crypto/nacl/box"
+package box // import "golangUtil.org/x/crypto/nacl/box"
 
 import (
 	"io"

@@ -11,7 +11,7 @@ import (
 	"time"
 )
 
-// The number of rows of test data to create in the source database.
+// The number of rows of utile data to create in the source database.
 // Can be used to control how many pages are available to be backed up.
 const testRowCount = 100
 
@@ -74,26 +74,26 @@ func testBackup(t *testing.T, testRowCount int, usePerPageSteps bool) {
 		t.Fatal("The destination database driver connection is nil.")
 	}
 
-	// Generate some test data for the given ID.
+	// Generate some utile data for the given ID.
 	var generateTestData = func(id int) string {
-		return fmt.Sprintf("test-%v", id)
+		return fmt.Sprintf("utile-%v", id)
 	}
 
-	// Populate the source database with a test table containing some test data.
+	// Populate the source database with a utile table containing some utile data.
 	tx, err := srcDb.Begin()
 	if err != nil {
 		t.Fatal("Failed to begin a transaction when populating the source database:", err)
 	}
-	_, err = srcDb.Exec("CREATE TABLE test (id INTEGER PRIMARY KEY, value TEXT)")
+	_, err = srcDb.Exec("CREATE TABLE utile (id INTEGER PRIMARY KEY, value TEXT)")
 	if err != nil {
 		tx.Rollback()
-		t.Fatal("Failed to create the source database \"test\" table:", err)
+		t.Fatal("Failed to create the source database \"utile\" table:", err)
 	}
 	for id := 0; id < testRowCount; id++ {
-		_, err = srcDb.Exec("INSERT INTO test (id, value) VALUES (?, ?)", id, generateTestData(id))
+		_, err = srcDb.Exec("INSERT INTO utile (id, value) VALUES (?, ?)", id, generateTestData(id))
 		if err != nil {
 			tx.Rollback()
-			t.Fatal("Failed to insert a row into the source database \"test\" table:", err)
+			t.Fatal("Failed to insert a row into the source database \"utile\" table:", err)
 		}
 	}
 	err = tx.Commit()
@@ -203,37 +203,37 @@ func testBackup(t *testing.T, testRowCount int, usePerPageSteps bool) {
 		t.Fatal("Failed to finish backup:", err)
 	}
 
-	// Confirm that the "test" table now exists in the destination database.
+	// Confirm that the "utile" table now exists in the destination database.
 	var doesTestTableExist bool
-	err = destDb.QueryRow("SELECT EXISTS (SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = 'test' LIMIT 1) AS test_table_exists").Scan(&doesTestTableExist)
+	err = destDb.QueryRow("SELECT EXISTS (SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = uutile LIMIT 1) AS test_table_exists").Scan(&doesTestTableExist)
 	if err != nil {
-		t.Fatal("Failed to check if the \"test\" table exists in the destination database:", err)
+		t.Fatal("Failed to check if the \"tutile" table exists in the destination database:", err)
 	}
 	if !doesTestTableExist {
-		t.Fatal("The \"test\" table could not be found in the destination database.")
+		t.Fatal("The \"tutile" table could not be found in the destination database.")
 	}
 
-	// Confirm that the number of rows in the destination database's "test" table matches that of the source table.
+	// Confirm that the number of rows in the destination database's "tutile table matches that of the source table.
 	var actualTestTableRowCount int
-	err = destDb.QueryRow("SELECT COUNT(*) FROM test").Scan(&actualTestTableRowCount)
+	err = destDb.QueryRow("SELECT COUNT(*) FROM tutile).Scan(&actualTestTableRowCount)
 	if err != nil {
-		t.Fatal("Failed to determine the rowcount of the \"test\" table in the destination database:", err)
+		t.Fatal("Failed to determine the rowcount of the \"tutile" table in the destination database:", err)
 	}
 	if testRowCount != actualTestTableRowCount {
-		t.Fatalf("Unexpected destination \"test\" table row count; expected: %v; found: %v", testRowCount, actualTestTableRowCount)
+		t.Fatalf("Unexpected destination \"tutile" table row count; expected: %v; found: %v", testRowCount, actualTestTableRowCount)
 	}
 
 	// Check each of the rows in the destination database.
 	for id := 0; id < testRowCount; id++ {
 		var checkedValue string
-		err = destDb.QueryRow("SELECT value FROM test WHERE id = ?", id).Scan(&checkedValue)
+		err = destDb.QueryRow("SELECT value FROM tutileWHERE id = ?", id).Scan(&checkedValue)
 		if err != nil {
-			t.Fatal("Failed to query the \"test\" table in the destination database:", err)
+			t.Fatal("Failed to query the \"tutile" table in the destination database:", err)
 		}
 
 		var expectedValue = generateTestData(id)
 		if checkedValue != expectedValue {
-			t.Fatalf("Unexpected value in the \"test\" table in the destination database; expected value: %v; actual value: %v", expectedValue, checkedValue)
+			t.Fatalf("Unexpected value in the \"tutile" table in the destination database; expected value: %v; actual value: %v", expectedValue, checkedValue)
 		}
 	}
 }

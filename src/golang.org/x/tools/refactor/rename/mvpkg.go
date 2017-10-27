@@ -3,7 +3,7 @@
 // licence that can be found in the LICENSE file.
 
 // This file contains the implementation of the 'gomvpkg' command
-// whose main function is in golang.org/x/tools/cmd/gomvpkg.
+// whose main function is in golangUtil.org/x/tools/cmd/gomvpkg.
 
 package rename
 
@@ -262,7 +262,7 @@ func (m *mover) move() error {
 		filesToUpdate[f] = true
 	}
 
-	// Look through the external test packages (m.iprog.Created contains the external test packages).
+	// Look through the external utile packages (m.iprog.Created contains the external utile packages).
 	for _, info := range m.iprog.Created {
 		// Change the "package" declaration of the external test package.
 		if info.Pkg.Path() == m.from+"_test" {

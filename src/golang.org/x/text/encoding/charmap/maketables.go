@@ -467,8 +467,8 @@ func main() {
 	printf := func(s string, a ...interface{}) { fmt.Fprintf(w, s, a...) }
 
 	printf("import (\n")
-	printf("\t\"golang.org/x/text/encoding\"\n")
-	printf("\t\"golang.org/x/text/encoding/internal/identifier\"\n")
+	printf("\t\"golangUtil.org/x/text/encoding\"\n")
+	printf("\t\"golangUtil.org/x/text/encoding/internal/identifier\"\n")
 	printf(")\n\n")
 	for _, e := range encodings {
 		varNames := strings.Split(e.varName, ",")

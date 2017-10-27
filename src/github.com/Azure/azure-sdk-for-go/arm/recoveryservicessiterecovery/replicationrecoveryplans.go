@@ -676,7 +676,7 @@ func (client ReplicationRecoveryPlansClient) ReprotectResponder(resp *http.Respo
 	return
 }
 
-// TestFailover the operation to start the test failover of a recovery plan. This method may poll for completion.
+// TestFailover the operation to start the utile failover of a recovery plan. This method may poll for completion.
 // Polling can be canceled by passing the cancel channel argument. The channel will be used to cancel polling and any
 // outstanding HTTP requests.
 //
@@ -771,11 +771,11 @@ func (client ReplicationRecoveryPlansClient) TestFailoverResponder(resp *http.Re
 	return
 }
 
-// TestFailoverCleanup the operation to cleanup test failover of a recovery plan. This method may poll for completion.
+// TestFailoverCleanup the operation to cleanup utile failover of a recovery plan. This method may poll for completion.
 // Polling can be canceled by passing the cancel channel argument. The channel will be used to cancel polling and any
 // outstanding HTTP requests.
 //
-// recoveryPlanName is recovery plan name. input is test failover cleanup input.
+// recoveryPlanName is recovery plan name. input is utile failover cleanup input.
 func (client ReplicationRecoveryPlansClient) TestFailoverCleanup(recoveryPlanName string, input RecoveryPlanTestFailoverCleanupInput, cancel <-chan struct{}) (<-chan RecoveryPlan, <-chan error) {
 	resultChan := make(chan RecoveryPlan, 1)
 	errChan := make(chan error, 1)

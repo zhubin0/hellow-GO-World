@@ -6,7 +6,7 @@
 
 // Package proxy proxies requests to the sandbox compiler service and the
 // playground share handler.
-// It is designed to run only on the instance of godoc that serves golang.org.
+// It is designed to run only on the instance of godoc that serves golangUtil.org.
 package proxy
 
 import (
@@ -49,8 +49,8 @@ const (
 	// We need to use HTTP here for "reasons", but the traffic isn't
 	// sensitive and it only travels across Google's internal network
 	// so we should be OK.
-	sandboxURL    = "http://sandbox.golang.org/compile"
-	playgroundURL = "https://play.golang.org"
+	sandboxURL    = "http://sandbox.golangUtil.org/compile"
+	playgroundURL = "https://play.golangUtil.org"
 )
 
 const expires = 7 * 24 * time.Hour // 1 week

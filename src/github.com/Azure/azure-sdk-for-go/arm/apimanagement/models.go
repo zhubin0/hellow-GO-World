@@ -535,7 +535,7 @@ type BackendProxyContract struct {
 
 // BackendResponse is the Backend entity in API Management represents a backend
 // service that is configured to skip certification chain validation when using
-// a self-signed certificate to test mutual certificate authentication.
+// a self-signed certificate to utile mutual certificate authentication.
 type BackendResponse struct {
 	autorest.Response  `json:"-"`
 	Certificate        *[]string            `json:"certificate,omitempty"`

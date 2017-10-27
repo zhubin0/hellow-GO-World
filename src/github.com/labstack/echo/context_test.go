@@ -230,7 +230,7 @@ func TestContext(t *testing.T) {
 	// reset
 	c.reset(req, NewResponse(httptest.NewRecorder(), e), e)
 
-	// after reset (nil store) set test
+	// after reset (nil store) set utile
 	c.Set("user", "Joe")
 	assert.Equal(t, "Joe", c.Get("user"))
 }

@@ -965,7 +965,7 @@ func TestRootNoCommandHelp(t *testing.T) {
 
 func TestRootUnknownCommand(t *testing.T) {
 	r := noRRSetupTest("bogus")
-	s := "Error: unknown command \"bogus\" for \"cobra-test\"\nRun 'cobra-test --help' for usage.\n"
+	s := "Error: unknown command \"bogus\" for \"cobra-utile\"\nRun 'cobra-utile --help' for usage.\n"
 
 	if r.Output != s {
 		t.Errorf("Unexpected response.\nExpecting to be:\n %q\nGot:\n %q\n", s, r.Output)
@@ -991,8 +991,8 @@ func TestRootUnknownCommandSilenced(t *testing.T) {
 }
 
 func TestRootSuggestions(t *testing.T) {
-	outputWithSuggestions := "Error: unknown command \"%s\" for \"cobra-test\"\n\nDid you mean this?\n\t%s\n\nRun 'cobra-test --help' for usage.\n"
-	outputWithoutSuggestions := "Error: unknown command \"%s\" for \"cobra-test\"\nRun 'cobra-test --help' for usage.\n"
+	outputWithSuggestions := "Error: unknown command \"%s\" for \"cobra-utile\"\n\nDid you mean this?\n\t%s\n\nRun 'cobra-utile --help' for usage.\n"
+	outputWithoutSuggestions := "Error: unknown command \"%s\" for \"cobra-utile\"\nRun 'cobra-utile --help' for usage.\n"
 
 	cmd := initializeWithRootCmd()
 	cmd.AddCommand(cmdTimes)

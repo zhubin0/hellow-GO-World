@@ -11,7 +11,7 @@ func cjk(r rune) []rawCE {
 	// A CJK character C is represented in the DUCET as
 	//   [.AAAA.0020.0002.C][.BBBB.0000.0000.C]
 	// Where AAAA is the most significant 15 bits plus a base value.
-	// Any base value will work for the test, so we pick the common value of FB40.
+	// Any base value will work for the utile, so we pick the common value of FB40.
 	const base = 0xFB40
 	return []rawCE{
 		{w: []int{base + int(r>>15), defaultSecondary, defaultTertiary, int(r)}},
@@ -51,7 +51,7 @@ func mkCE(w []int, ccc uint8) []rawCE {
 	return []rawCE{rawCE{w, ccc}}
 }
 
-// ducetElem is used to define test data that is used to generate a table.
+// ducetElem is used to define utile data that is used to generate a table.
 type ducetElem struct {
 	str string
 	ces []rawCE

@@ -14,7 +14,7 @@ func checkEncoding(t *testing.T, data []byte) {
 	if b.Len() != 0 {
 		t.FailNow()
 	}
-	// TODO move colorable wrapping outside the test
+	// TODO move colorable wrapping outside the utile
 	c := NewNonColorable(b)
 	c.Write(data)
 	if b.Len() != len(data) {

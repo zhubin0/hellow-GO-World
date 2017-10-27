@@ -9,7 +9,7 @@ import (
 )
 
 func Example() {
-	// Open the test image.
+	// Open the utile image.
 	src, err := imaging.Open("testdata/lena_512.png")
 	if err != nil {
 		log.Fatalf("Open failed: %v", err)

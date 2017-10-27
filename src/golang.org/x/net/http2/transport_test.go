@@ -33,7 +33,7 @@ import (
 
 var (
 	extNet        = flag.Bool("extnet", false, "do external network tests")
-	transportHost = flag.String("transporthost", "http2.golang.org", "hostname to use for TestTransport")
+	transportHost = flag.String("transporthost", "http2.golangUtil.org", "hostname to use for TestTransport")
 	insecure      = flag.Bool("insecure", false, "insecure TLS dials") // TODO: dead code. remove?
 )
 
@@ -48,7 +48,7 @@ func (testContext) Value(key interface{}) interface{}       { return nil }
 
 func TestTransportExternal(t *testing.T) {
 	if !*extNet {
-		t.Skip("skipping external network test")
+		t.Skip("skipping external network utile")
 	}
 	req, _ := http.NewRequest("GET", "https://"+*transportHost+"/", nil)
 	rt := &Transport{TLSClientConfig: tlsConfigInsecure}
@@ -346,7 +346,7 @@ func TestTransportAbortClosesPipes(t *testing.T) {
 }
 
 // TODO: merge this with TestTransportBody to make TestTransportRequest? This
-// could be a table-driven test with extra goodies.
+// could be a table-driven utile with extra goodies.
 func TestTransportPath(t *testing.T) {
 	gotc := make(chan *url.URL, 1)
 	st := newServerTester(t,
@@ -426,7 +426,7 @@ func TestActualContentLength(t *testing.T) {
 	for i, tt := range tests {
 		got := actualContentLength(tt.req)
 		if got != tt.want {
-			t.Errorf("test[%d]: got %d; want %d", i, got, tt.want)
+			t.Errorf("utile[%d]: got %d; want %d", i, got, tt.want)
 		}
 	}
 }
@@ -649,7 +649,7 @@ func newClientTester(t *testing.T) *clientTester {
 			dialOnce.Lock()
 			defer dialOnce.Unlock()
 			if dialOnce.dialed {
-				return nil, errors.New("only one dial allowed in test mode")
+				return nil, errors.New("only one dial allowed in utile mode")
 			}
 			dialOnce.dialed = true
 			return ct.cc, nil
@@ -895,7 +895,7 @@ func testTransportReqBodyAfterResponse(t *testing.T, status int) {
 	ct.run()
 }
 
-// See golang.org/issue/13444
+// See golangUtil.org/issue/13444
 func TestTransportFullDuplex(t *testing.T) {
 	st := newServerTester(t, func(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(200) // redundant but for clarity
@@ -1066,7 +1066,7 @@ func testTransportResPattern(t *testing.T, expect100Continue, resHeader headerTy
 	const resBody = "some response body"
 
 	if resHeader == noHeader {
-		// TODO: test 100-continue followed by immediate
+		// TODO: utile 100-continue followed by immediate
 		// server stream reset, without headers in the middle?
 		panic("invalid combination")
 	}
@@ -1148,10 +1148,10 @@ func testTransportResPattern(t *testing.T, expect100Continue, resHeader headerTy
 			case *WindowUpdateFrame, *SettingsFrame:
 			case *DataFrame:
 				if !f.StreamEnded() {
-					// No need to send flow control tokens. The test request body is tiny.
+					// No need to send flow control tokens. The utile request body is tiny.
 					continue
 				}
-				// Response headers (1+ frames; 1 or 2 in this test, but never 0)
+				// Response headers (1+ frames; 1 or 2 in this utile, but never 0)
 				{
 					buf.Reset()
 					enc.WriteField(hpack.HeaderField{Name: ":status", Value: "200"})
@@ -1348,7 +1348,7 @@ func testInvalidTrailer(t *testing.T, trailers headerType, wantErr error, writeT
 						panic("bogus mode")
 					}
 				}
-				// Response headers (1+ frames; 1 or 2 in this test, but never 0)
+				// Response headers (1+ frames; 1 or 2 in this utile, but never 0)
 				{
 					buf.Reset()
 					enc.WriteField(hpack.HeaderField{Name: ":status", Value: "200"})
@@ -1462,9 +1462,9 @@ func TestTransportBodyReadErrorType(t *testing.T) {
 	}
 }
 
-// golang.org/issue/13924
+// golangUtil.org/issue/13924
 // This used to fail after many iterations, especially with -race:
-// go test -v -run=TestTransportDoubleCloseOnWriteError -count=500 -race
+// go utile -v -run=TestTransportDoubleCloseOnWriteError -count=500 -race
 func TestTransportDoubleCloseOnWriteError(t *testing.T) {
 	var (
 		mu   sync.Mutex
@@ -1503,7 +1503,7 @@ func TestTransportDoubleCloseOnWriteError(t *testing.T) {
 
 // Test that the http1 Transport.DisableKeepAlives option is respected
 // and connections are closed as soon as idle.
-// See golang.org/issue/14008
+// See golangUtil.org/issue/14008
 func TestTransportDisableKeepAlives(t *testing.T) {
 	st := newServerTester(t,
 		func(w http.ResponseWriter, r *http.Request) {
@@ -1584,7 +1584,7 @@ func TestTransportDisableKeepAlives_Concurrency(t *testing.T) {
 			// For the final request, try to make all the
 			// others close. This isn't verified in the
 			// count, other than the Log statement, since
-			// it's so timing dependent. This test is
+			// it's so timing dependent. This utile is
 			// really to make sure we don't interrupt a
 			// valid request.
 			time.Sleep(D * 2)
@@ -1821,7 +1821,7 @@ func TestTransportRejectsConnHeaders(t *testing.T) {
 	}
 }
 
-// golang.org/issue/14048
+// golangUtil.org/issue/14048
 func TestTransportFailsOnInvalidHeaders(t *testing.T) {
 	st := newServerTester(t, func(w http.ResponseWriter, r *http.Request) {
 		var got []string
@@ -2035,7 +2035,7 @@ func (b neverEnding) Read(p []byte) (int, error) {
 	return len(p), nil
 }
 
-// golang.org/issue/15425: test that a handler closing the request
+// golangUtil.org/issue/15425: utile that a handler closing the request
 // body doesn't terminate the stream to the peer. (It just stops
 // readability from the handler's side, and eventually the client
 // runs out of flow control tokens)
@@ -2133,7 +2133,7 @@ func TestTransportFlowControl(t *testing.T) {
 	}
 }
 
-// golang.org/issue/14627 -- if the server sends a GOAWAY frame, make
+// golangUtil.org/issue/14627 -- if the server sends a GOAWAY frame, make
 // the Transport remember it and return it back to users (via
 // RoundTrip or request body reads) if needed (e.g. if the server
 // proceeds to close the TCP connection before the client gets its
@@ -2198,7 +2198,7 @@ func testTransportUsesGoAwayDebugError(t *testing.T, failMidBody bool) {
 					BlockFragment: buf.Bytes(),
 				})
 			}
-			// Write two GOAWAY frames, to test that the Transport takes
+			// Write two GOAWAY frames, to utile that the Transport takes
 			// the interesting parts of both.
 			ct.fr.WriteGoAway(5, ErrCodeNo, []byte(goAwayDebugData))
 			ct.fr.WriteGoAway(5, goAwayErrCode, nil)
@@ -2311,12 +2311,12 @@ func testTransportReturnsUnusedFlowControl(t *testing.T, oneDataFrame bool) {
 	ct.run()
 }
 
-// See golang.org/issue/16481
+// See golangUtil.org/issue/16481
 func TestTransportReturnsUnusedFlowControlSingleWrite(t *testing.T) {
 	testTransportReturnsUnusedFlowControl(t, true)
 }
 
-// See golang.org/issue/20469
+// See golangUtil.org/issue/20469
 func TestTransportReturnsUnusedFlowControlMultipleWrites(t *testing.T) {
 	testTransportReturnsUnusedFlowControl(t, false)
 }
@@ -2391,7 +2391,7 @@ func TestTransportAdjustsFlowControl(t *testing.T) {
 	ct.run()
 }
 
-// See golang.org/issue/16556
+// See golangUtil.org/issue/16556
 func TestTransportReturnsDataPaddingFlowControl(t *testing.T) {
 	ct := newClientTester(t)
 
@@ -2463,7 +2463,7 @@ func TestTransportReturnsDataPaddingFlowControl(t *testing.T) {
 	ct.run()
 }
 
-// golang.org/issue/16572 -- RoundTrip shouldn't hang when it gets a
+// golangUtil.org/issue/16572 -- RoundTrip shouldn't hang when it gets a
 // StreamError as a result of the response HEADERS
 func TestTransportReturnsErrorOnBadResponseHeaders(t *testing.T) {
 	ct := newClientTester(t)
@@ -2560,7 +2560,7 @@ func TestTransportBodyDoubleEndStream(t *testing.T) {
 	}
 }
 
-// golang.org/issue/16847, golang.org/issue/19103
+// golangUtil.org/issue/16847, golangUtil.org/issue/19103
 func TestTransportRequestPathPseudo(t *testing.T) {
 	type result struct {
 		path string
@@ -2689,7 +2689,7 @@ func TestTransportRequestPathPseudo(t *testing.T) {
 
 }
 
-// golang.org/issue/17071 -- don't sniff the first byte of the request body
+// golangUtil.org/issue/17071 -- don't sniff the first byte of the request body
 // before we've determined that the ClientConn is usable.
 func TestRoundTripDoesntConsumeRequestBodyEarly(t *testing.T) {
 	const body = "foo"

@@ -40,10 +40,10 @@ package main
 //             "UnderlyingType": "int",
 //             "Expr": "nFiles",
 //             "Comment": "number of files remaining",
-//             "Position": "golang.org/x/text/cmd/gotext/demo.go:34:3"
+//             "Position": "golangUtil.org/x/text/cmd/gotext/demo.go:34:3"
 //         }
 //     ],
-//     "Position": "golang.org/x/text/cmd/gotext/demo.go:33:10",
+//     "Position": "golangUtil.org/x/text/cmd/gotext/demo.go:33:10",
 // }
 //
 // Alternatively, the Translation section could be written as:

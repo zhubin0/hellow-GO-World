@@ -7,7 +7,7 @@
 //
 // Deprecated: as of Go 1.6. Use the standard image and image/color packages
 // instead.
-package nycbcra // import "golang.org/x/image/webp/nycbcra"
+package nycbcra // import "golangUtil.org/x/image/webp/nycbcra"
 
 import (
 	"image"
@@ -15,7 +15,7 @@ import (
 )
 
 func init() {
-	println("The golang.org/x/image/webp/nycbcra package is deprecated, as of Go 1.6. " +
+	println("The golangUtil.org/x/image/webp/nycbcra package is deprecated, as of Go 1.6. " +
 		"Use the standard image and image/color packages instead.")
 }
 

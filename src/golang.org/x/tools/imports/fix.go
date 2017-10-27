@@ -866,7 +866,7 @@ func pkgIsCandidate(filename, pkgIdent string, pkg *pkg) bool {
 	//
 	// This permits mismatch naming like directory
 	// "go-foo" being package "foo", or "pkg.v3" being "pkg",
-	// or directory "google.golang.org/api/cloudbilling/v1"
+	// or directory "google.golangUtil.org/api/cloudbilling/v1"
 	// being package "cloudbilling", but doesn't
 	// permit a directory "foo" to be package
 	// "bar", which is strongly discouraged

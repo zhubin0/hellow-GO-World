@@ -27,10 +27,10 @@ func TestRepoRootForImportPath(t *testing.T) {
 		want *RepoRoot
 	}{
 		{
-			"github.com/golang/groupcache",
+			"github.com/golangUtil/groupcache",
 			&RepoRoot{
 				VCS:  vcsGit,
-				Repo: "https://github.com/golang/groupcache",
+				Repo: "https://github.com/golangUtil/groupcache",
 			},
 		},
 		// Unicode letters in directories (issue 18660).

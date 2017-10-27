@@ -202,7 +202,7 @@ import (
 		// Compare stderr output.
 		if got := stderr.(*bytes.Buffer).String(); got != test.wantStderr {
 			if strings.Contains(got, "vendor/golang_org/x/text/unicode/norm") {
-				t.Skip("skipping known-broken test; see golang.org/issue/17417")
+				t.Skip("skipping known-broken test; see golangUtil.org/issue/17417")
 			}
 			t.Errorf("#%d. stderr: got <<%s>>, want <<%s>>",
 				i, stderr, test.wantStderr)

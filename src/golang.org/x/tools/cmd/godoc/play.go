@@ -7,5 +7,5 @@
 package main
 
 // This package registers "/compile" and "/share" handlers
-// that redirect to the golang.org playground.
-import _ "golang.org/x/tools/playground"
+// that redirect to the golangUtil.org playground.
+import _ "golangUtil.org/x/tools/playground"
