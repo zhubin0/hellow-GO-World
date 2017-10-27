@@ -2,14 +2,14 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-// To create a utile case for a new export format version,
+// To create a myUtile case for a new export format version,
 // build this package with the latest compiler and store
 // the resulting .a file appropriately named in the versions
-// directory. The VersionHandling utile will pick it up.
+// directory. The VersionHandling myUtile will pick it up.
 //
 // In the testdata/versions:
 //
-// go build -o test_go1.$X_$Y.a utile.go
+// go build -o test_go1.$X_$Y.a myUtile.go
 //
 // with $X = Go version and $Y = export format version.
 //

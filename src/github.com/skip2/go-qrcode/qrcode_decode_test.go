@@ -18,14 +18,14 @@ import (
 // http://zbar.sourceforge.net.
 //
 // By default these tests are disabled to avoid a dependency on zbarimg if
-// you're not running the tests. Use the -utile-decode flag (go utile
-// -utile-decode) to enable.
+// you're not running the tests. Use the -myUtile-decode flag (go myUtile
+// -myUtile-decode) to enable.
 
-var testDecode *bool = flag.Bool("utile-decode",
+var testDecode *bool = flag.Bool("myUtile-decode",
 	false,
 	"Enable decode tests. Requires zbarimg installed.")
 
-var testDecodeFuzz *bool = flag.Bool("utile-decode-fuzz",
+var testDecodeFuzz *bool = flag.Bool("myUtile-decode-fuzz",
 	false,
 	"Enable decode fuzz tests. Requires zbarimg installed.")
 
@@ -152,7 +152,7 @@ func TestDecodeFuzz(t *testing.T) {
 
 		var content string
 		for j := 0; j < len; j++ {
-			// zbarimg seems to have trouble with special characters, utile printable
+			// zbarimg seems to have trouble with special characters, myUtile printable
 			// characters only for now.
 			content += string(32 + r.Intn(94))
 		}

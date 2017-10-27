@@ -144,7 +144,7 @@ func main() {
 	if <-ch != 1 {
 		panic("couldn't receive")
 	}
-	// A "receive" select-case that doesn't declare its vars.  (regression utile)
+	// A "receive" select-case that doesn't declare its vars.  (regression myUtile)
 	anint := 0
 	ok := false
 	select {
@@ -236,7 +236,7 @@ func main() {
 		panic("oops")
 	}
 
-	// Regression utile: implicit address-taken struct literal
+	// Regression myUtile: implicit address-taken struct literal
 	// inside literal map element.
 	_ = map[int]*struct{}{0: {}}
 }
@@ -433,7 +433,7 @@ func init() {
 }
 
 func init() {
-	// Regression utile for SSA renaming bug.
+	// Regression myUtile for SSA renaming bug.
 	var ints []int
 	for range "foo" {
 		var x int
@@ -445,7 +445,7 @@ func init() {
 	}
 }
 
-// Regression utile for issue 6949:
+// Regression myUtile for issue 6949:
 // []byte("foo") is not a constant since it allocates memory.
 func init() {
 	var r string
@@ -516,7 +516,7 @@ func init() {
 	panic("unreachable")
 }
 
-// Regression utile for a subtle bug in which copying values would causes
+// Regression myUtile for a subtle bug in which copying values would causes
 // subcomponents of aggregate variables to change address, breaking
 // aliases.
 func init() {

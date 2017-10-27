@@ -18,7 +18,7 @@ type ExampleInterface interface {
 	TheExampleMethod(a, b, c int) (int, error)
 }
 
-// TestExampleImplementation is a utile implementation of ExampleInterface
+// TestExampleImplementation is a myUtile implementation of ExampleInterface
 type TestExampleImplementation struct {
 	Mock
 }
@@ -85,7 +85,7 @@ func Test_Mock_TestData(t *testing.T) {
 
 func Test_Mock_On(t *testing.T) {
 
-	// make a utile impl object
+	// make a myUtile impl object
 	var mockedService = new(TestExampleImplementation)
 
 	c := mockedService.On("TheExampleMethod")
@@ -94,7 +94,7 @@ func Test_Mock_On(t *testing.T) {
 }
 
 func Test_Mock_Chained_On(t *testing.T) {
-	// make a utile impl object
+	// make a myUtile impl object
 	var mockedService = new(TestExampleImplementation)
 
 	mockedService.
@@ -122,7 +122,7 @@ func Test_Mock_Chained_On(t *testing.T) {
 
 func Test_Mock_On_WithArgs(t *testing.T) {
 
-	// make a utile impl object
+	// make a myUtile impl object
 	var mockedService = new(TestExampleImplementation)
 
 	c := mockedService.On("TheExampleMethod", 1, 2, 3, 4)
@@ -134,7 +134,7 @@ func Test_Mock_On_WithArgs(t *testing.T) {
 
 func Test_Mock_On_WithFuncArg(t *testing.T) {
 
-	// make a utile impl object
+	// make a myUtile impl object
 	var mockedService = new(TestExampleImplementation)
 
 	c := mockedService.
@@ -212,7 +212,7 @@ func Test_Mock_On_WithFuncArgMatcher(t *testing.T) {
 
 func Test_Mock_On_WithVariadicFunc(t *testing.T) {
 
-	// make a utile impl object
+	// make a myUtile impl object
 	var mockedService = new(TestExampleImplementation)
 
 	c := mockedService.
@@ -234,7 +234,7 @@ func Test_Mock_On_WithVariadicFunc(t *testing.T) {
 
 func Test_Mock_On_WithMixedVariadicFunc(t *testing.T) {
 
-	// make a utile impl object
+	// make a myUtile impl object
 	var mockedService = new(TestExampleImplementation)
 
 	c := mockedService.
@@ -257,7 +257,7 @@ func Test_Mock_On_WithMixedVariadicFunc(t *testing.T) {
 
 func Test_Mock_On_WithVariadicFuncWithInterface(t *testing.T) {
 
-	// make a utile impl object
+	// make a myUtile impl object
 	var mockedService = new(TestExampleImplementation)
 
 	c := mockedService.On("TheExampleMethodVariadicInterface", []interface{}{1, 2, 3}).
@@ -278,7 +278,7 @@ func Test_Mock_On_WithVariadicFuncWithInterface(t *testing.T) {
 
 func Test_Mock_On_WithVariadicFuncWithEmptyInterfaceArray(t *testing.T) {
 
-	// make a utile impl object
+	// make a myUtile impl object
 	var mockedService = new(TestExampleImplementation)
 
 	var expected []interface{}
@@ -300,7 +300,7 @@ func Test_Mock_On_WithVariadicFuncWithEmptyInterfaceArray(t *testing.T) {
 }
 
 func Test_Mock_On_WithFuncPanics(t *testing.T) {
-	// make a utile impl object
+	// make a myUtile impl object
 	var mockedService = new(TestExampleImplementation)
 
 	assert.Panics(t, func() {
@@ -310,7 +310,7 @@ func Test_Mock_On_WithFuncPanics(t *testing.T) {
 
 func Test_Mock_On_WithFuncTypeArg(t *testing.T) {
 
-	// make a utile impl object
+	// make a myUtile impl object
 	var mockedService = new(TestExampleImplementation)
 
 	c := mockedService.
@@ -329,7 +329,7 @@ func Test_Mock_On_WithFuncTypeArg(t *testing.T) {
 
 func Test_Mock_Return(t *testing.T) {
 
-	// make a utile impl object
+	// make a myUtile impl object
 	var mockedService = new(TestExampleImplementation)
 
 	c := mockedService.
@@ -353,7 +353,7 @@ func Test_Mock_Return(t *testing.T) {
 
 func Test_Mock_Return_WaitUntil(t *testing.T) {
 
-	// make a utile impl object
+	// make a myUtile impl object
 	var mockedService = new(TestExampleImplementation)
 	ch := time.After(time.Second)
 
@@ -380,7 +380,7 @@ func Test_Mock_Return_WaitUntil(t *testing.T) {
 
 func Test_Mock_Return_After(t *testing.T) {
 
-	// make a utile impl object
+	// make a myUtile impl object
 	var mockedService = new(TestExampleImplementation)
 
 	c := mockedService.Mock.
@@ -406,7 +406,7 @@ func Test_Mock_Return_After(t *testing.T) {
 
 func Test_Mock_Return_Run(t *testing.T) {
 
-	// make a utile impl object
+	// make a myUtile impl object
 	var mockedService = new(TestExampleImplementation)
 
 	fn := func(args Arguments) {
@@ -437,7 +437,7 @@ func Test_Mock_Return_Run(t *testing.T) {
 }
 
 func Test_Mock_Return_Run_Out_Of_Order(t *testing.T) {
-	// make a utile impl object
+	// make a myUtile impl object
 	var mockedService = new(TestExampleImplementation)
 	f := func(args Arguments) {
 		arg := args.Get(0).(*ExampleType)
@@ -463,7 +463,7 @@ func Test_Mock_Return_Run_Out_Of_Order(t *testing.T) {
 
 func Test_Mock_Return_Once(t *testing.T) {
 
-	// make a utile impl object
+	// make a myUtile impl object
 	var mockedService = new(TestExampleImplementation)
 
 	c := mockedService.On("TheExampleMethod", "A", "B", true).
@@ -487,7 +487,7 @@ func Test_Mock_Return_Once(t *testing.T) {
 
 func Test_Mock_Return_Twice(t *testing.T) {
 
-	// make a utile impl object
+	// make a myUtile impl object
 	var mockedService = new(TestExampleImplementation)
 
 	c := mockedService.
@@ -512,7 +512,7 @@ func Test_Mock_Return_Twice(t *testing.T) {
 
 func Test_Mock_Return_Times(t *testing.T) {
 
-	// make a utile impl object
+	// make a myUtile impl object
 	var mockedService = new(TestExampleImplementation)
 
 	c := mockedService.
@@ -537,7 +537,7 @@ func Test_Mock_Return_Times(t *testing.T) {
 
 func Test_Mock_Return_Nothing(t *testing.T) {
 
-	// make a utile impl object
+	// make a myUtile impl object
 	var mockedService = new(TestExampleImplementation)
 
 	c := mockedService.
@@ -1162,7 +1162,7 @@ func Test_Arguments_Bool(t *testing.T) {
 
 func Test_WaitUntil_Parallel(t *testing.T) {
 
-	// make a utile impl object
+	// make a myUtile impl object
 	var mockedService *TestExampleImplementation = new(TestExampleImplementation)
 
 	ch1 := make(chan time.Time)

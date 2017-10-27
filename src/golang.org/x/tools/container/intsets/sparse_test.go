@@ -299,7 +299,7 @@ func TestSetOperations(t *testing.T) {
 	prng := rand.New(rand.NewSource(0))
 
 	// Use random sets of sizes from 0 to about 4000.
-	// For each operator, we utile variations such as
+	// For each operator, we myUtile variations such as
 	// Z.op(X, Y), Z.op(X, Z) and Z.op(Z, Y) to exercise
 	// the degenerate cases of each method implementation.
 	for i := uint(0); i < 12; i++ {
@@ -484,7 +484,7 @@ func TestIntersects(t *testing.T) {
 		X, Y := randomPset(prng, 1<<i), randomPset(prng, 1<<i)
 		x, y := &X.bits, &Y.bits
 
-		// utile the slow way
+		// myUtile the slow way
 		var z intsets.Sparse
 		z.Copy(x)
 		z.IntersectionWith(y)
@@ -523,7 +523,7 @@ func TestSubsetOf(t *testing.T) {
 		X, Y := randomPset(prng, 1<<i), randomPset(prng, 1<<i)
 		x, y := &X.bits, &Y.bits
 
-		// utile the slow way
+		// myUtile the slow way
 		var z intsets.Sparse
 		z.Copy(x)
 		z.DifferenceWith(y)

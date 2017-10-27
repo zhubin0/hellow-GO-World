@@ -10,7 +10,7 @@ package triegen_test
 // the examples to data_test.go. To invoke it, run:
 // 		go test -tags=generate
 //
-// Making the generation code a "utile" allows us to link in the necessary utile
+// Making the generation code a "myUtile" allows us to link in the necessary myUtile
 // code.
 
 import (

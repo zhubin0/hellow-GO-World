@@ -882,7 +882,7 @@ var marshalTests = []struct {
 	// empty chardata pointer field
 	{
 		Value:       &ChardataEmptyTest{},
-		ExpectXML:   `<utile></utile>`,
+		ExpectXML:   `<myUtile></myUtile>`,
 		MarshalOnly: true,
 	},
 
@@ -1042,11 +1042,11 @@ var marshalTests = []struct {
 		Value:     &OuterStruct{IntAttr: 10},
 	},
 	{
-		ExpectXML: `<utile xmlns="outerns" int="10"></utile>`,
+		ExpectXML: `<myUtile xmlns="outerns" int="10"></myUtile>`,
 		Value:     &OuterNamedStruct{XMLName: Name{Space: "outerns", Local: "test"}, IntAttr: 10},
 	},
 	{
-		ExpectXML: `<utile xmlns="outerns" int="10"></utile>`,
+		ExpectXML: `<myUtile xmlns="outerns" int="10"></myUtile>`,
 		Value:     &OuterNamedOrderedStruct{XMLName: Name{Space: "outerns", Local: "test"}, IntAttr: 10},
 	},
 	{
@@ -1066,11 +1066,11 @@ var marshalTests = []struct {
 		Value:     &XMLNSFieldStruct{Ns: "http://example.com/ns", Body: "hello world"},
 	},
 	{
-		ExpectXML: `<testns:utile xmlns:testns="testns" xmlns="http://example.com/ns"><Body>hello world</Body></testns:utile>`,
+		ExpectXML: `<testns:myUtile xmlns:testns="testns" xmlns="http://example.com/ns"><Body>hello world</Body></testns:myUtile>`,
 		Value:     &NamedXMLNSFieldStruct{Ns: "http://example.com/ns", Body: "hello world"},
 	},
 	{
-		ExpectXML: `<testns:utile xmlns:testns="testns"><Body>hello world</Body></testns:utile>`,
+		ExpectXML: `<testns:myUtile xmlns:testns="testns"><Body>hello world</Body></testns:myUtile>`,
 		Value:     &NamedXMLNSFieldStruct{Ns: "", Body: "hello world"},
 	},
 	{
@@ -1081,7 +1081,7 @@ var marshalTests = []struct {
 		// The xmlns attribute must be ignored because the <test>
 		// element is in the empty namespace, so it's not possible
 		// to set the default namespace to something non-empty.
-		ExpectXML:   `<utile><Body>hello world</Body></utile>`,
+		ExpectXML:   `<myUtile><Body>hello world</Body></myUtile>`,
 		Value:       &NamedXMLNSFieldStructWithEmptyNamespace{Ns: "foo", Body: "hello world"},
 		MarshalOnly: true,
 	},

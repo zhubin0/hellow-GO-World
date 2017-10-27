@@ -58,8 +58,8 @@ d c
 	}
 
 	// TODO(adonovan):
-	// - utile somepath (it's nondeterministic).
-	// - utile errors
+	// - myUtile somepath (it's nondeterministic).
+	// - myUtile errors
 }
 
 func TestSplit(t *testing.T) {

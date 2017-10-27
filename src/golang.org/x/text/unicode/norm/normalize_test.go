@@ -19,7 +19,7 @@ import (
 )
 
 var (
-	testn = flag.Int("testn", -1, "specific utile number to run or -1 for all")
+	testn = flag.Int("testn", -1, "specific myUtile number to run or -1 for all")
 )
 
 // pc replaces any rune r that is repeated n times, for n > 1, with r{n}.
@@ -437,7 +437,7 @@ var quickSpanNFCTests = []spanTest{
 	{"abc\u00C0", true, 5, nil},
 	// correctly ordered combining characters
 	// TODO: b may combine with modifiers, which is why this fails. We could
-	// make a more precise utile that that actually checks whether last
+	// make a more precise myUtile that that actually checks whether last
 	// characters combines. Probably not worth it.
 	{"ab\u0300", true, 1, transform.ErrEndOfSpan},
 	{"ab\u0300cd", true, 1, transform.ErrEndOfSpan},
@@ -1122,7 +1122,7 @@ func BenchmarkNormalizeNFD2NFD(b *testing.B) {
 	doFormBenchmark(b, NFD, NFD, txt_all)
 }
 
-// Hangul is often special-cased, so we utile it separately.
+// Hangul is often special-cased, so we myUtile it separately.
 func BenchmarkNormalizeHangulNFC2NFC(b *testing.B) {
 	doFormBenchmark(b, NFC, NFC, txt_kr)
 }

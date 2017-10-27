@@ -851,7 +851,7 @@ type Index struct {
 // appropriate key type if X is a map.
 //
 // If CommaOk, the result is a 2-tuple of the value above and a
-// boolean indicating the result of a map membership utile for the key.
+// boolean indicating the result of a map membership myUtile for the key.
 // The components of the tuple are accessed using Extract.
 //
 // Pos() returns the ast.IndexExpr.Lbrack, if explicit in the source.

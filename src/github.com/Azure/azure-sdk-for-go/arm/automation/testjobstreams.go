@@ -43,7 +43,7 @@ func NewTestJobStreamsClientWithBaseURI(baseURI string, subscriptionID string) T
 	return TestJobStreamsClient{NewWithBaseURI(baseURI, subscriptionID)}
 }
 
-// Get retrieve a utile job streams identified by runbook name and stream id.
+// Get retrieve a myUtile job streams identified by runbook name and stream id.
 //
 // resourceGroupName is the resource group name. automationAccountName is the
 // automation account name. runbookName is the runbook name. jobStreamID is the
@@ -118,7 +118,7 @@ func (client TestJobStreamsClient) GetResponder(resp *http.Response) (result Job
 	return
 }
 
-// ListByTestJob retrieve a list of utile job streams identified by runbook
+// ListByTestJob retrieve a list of myUtile job streams identified by runbook
 // name.
 //
 // resourceGroupName is the resource group name. automationAccountName is the

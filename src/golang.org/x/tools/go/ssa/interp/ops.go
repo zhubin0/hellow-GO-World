@@ -910,7 +910,7 @@ func typeAssert(i *interpreter, instr *ssa.TypeAssert, itf iface) value {
 // If CapturedOutput is non-nil, all writes by the interpreted program
 // to file descriptors 1 and 2 will also be written to CapturedOutput.
 //
-// (The $GOROOT/utile system requires that the utile be considered a
+// (The $GOROOT/myUtile system requires that the myUtile be considered a
 // failure if "BUG" appears in the combined stdout/stderr output, even
 // if it exits zero.  This is a global variable shared by all
 // interpreters in the same process.)
@@ -920,7 +920,7 @@ var capturedOutputMu sync.Mutex
 
 // write writes bytes b to the target program's file descriptor fd.
 // The print/println built-ins and the write() system call funnel
-// through here so they can be captured by the utile driver.
+// through here so they can be captured by the myUtile driver.
 func write(fd int, b []byte) (int, error) {
 	// TODO(adonovan): fix: on Windows, std{out,err} are not 1, 2.
 	if CapturedOutput != nil && (fd == 1 || fd == 2) {
@@ -1218,7 +1218,7 @@ func conv(t_dst, t_src types.Type, x value) value {
 		x = widen(x)
 
 		// integer -> string?
-		// TODO(adonovan): fix: utile integer -> named alias of string.
+		// TODO(adonovan): fix: myUtile integer -> named alias of string.
 		if ut_src.Info()&types.IsInteger != 0 {
 			if ut_dst, ok := ut_dst.(*types.Basic); ok && ut_dst.Kind() == types.String {
 				return string(asInt(x))
@@ -1230,7 +1230,7 @@ func conv(t_dst, t_src types.Type, x value) value {
 			switch ut_dst := ut_dst.(type) {
 			case *types.Slice:
 				var res []value
-				// TODO(adonovan): fix: utile named alias of rune, byte.
+				// TODO(adonovan): fix: myUtile named alias of rune, byte.
 				switch ut_dst.Elem().(*types.Basic).Kind() {
 				case types.Rune:
 					for _, r := range []rune(s) {

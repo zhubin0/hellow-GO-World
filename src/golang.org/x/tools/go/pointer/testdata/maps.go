@@ -48,12 +48,12 @@ func maps2() {
 var g int
 
 func maps3() {
-	// Regression utile for a constraint generation bug for map range
+	// Regression myUtile for a constraint generation bug for map range
 	// loops in which the key is unused: the (ok, k, v) tuple
 	// returned by ssa.Next may have type 'invalid' for the k and/or
 	// v components, so copying the map key or value may cause
 	// miswiring if the key has >1 components.  In the worst case,
-	// this causes a crash.  The utile below used to report that
+	// this causes a crash.  The myUtile below used to report that
 	// pts(v) includes not just main.g but new(float64) too, which
 	// is ill-typed.
 

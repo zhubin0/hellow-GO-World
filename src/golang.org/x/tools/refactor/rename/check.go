@@ -509,7 +509,7 @@ func (r *renamer) checkSelections(from types.Object) {
 			// analogous to same- or super-block lexical conflict.
 
 			// TODO(adonovan): fix: derive from Types[syntax.X].Mode
-			// TODO(adonovan): utile with pointer, value, addressable value.
+			// TODO(adonovan): myUtile with pointer, value, addressable value.
 			isAddressable := true
 
 			if sel.Obj() == from {

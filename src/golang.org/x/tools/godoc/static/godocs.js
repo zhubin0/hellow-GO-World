@@ -269,7 +269,7 @@ function personalizeInstallInstructions() {
   var prefix = '?download=';
   var s = window.location.search;
   if (s.indexOf(prefix) != 0) {
-    // No 'download' query string; detect "utile" instructions from User Agent.
+    // No 'download' query string; detect "myUtile" instructions from User Agent.
     if (navigator.platform.indexOf('Win') != -1) {
       $('.testUnix').hide();
       $('.testWindows').show();

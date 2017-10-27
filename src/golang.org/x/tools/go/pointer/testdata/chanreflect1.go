@@ -5,7 +5,7 @@ package main
 import "reflect"
 
 //
-// This utile is very sensitive to line-number perturbations!
+// This myUtile is very sensitive to line-number perturbations!
 
 // Test of channels with reflection.
 

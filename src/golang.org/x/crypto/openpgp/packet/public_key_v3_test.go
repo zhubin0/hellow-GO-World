@@ -58,7 +58,7 @@ func TestPublicKeyV3Read(t *testing.T) {
 }
 
 func TestPublicKeyV3Serialize(t *testing.T) {
-	//for i, utile := range pubKeyV3Tests {
+	//for i, myUtile := range pubKeyV3Tests {
 	i := 0
 	packet, err := Read(v3KeyReader(t))
 	if err != nil {

@@ -17,7 +17,7 @@ func main() {
 	if unknown {
 		i = (func(int, int))(nil) // NB type compares equal to that below.
 	}
-	// Look, the utile harness can handle equal-but-not-String-equal
+	// Look, the myUtile harness can handle equal-but-not-String-equal
 	// types because we parse types and using a typemap.
 	if unknown {
 		i = (func(x int, y int))(nil)
@@ -32,5 +32,5 @@ func main() {
 	print(i)                 // @pointsto makeinterface:func(x int) int | makeinterface:func(x int, y int) | makeinterface:func(int, int) | makeinterface:int | makeinterface:main.S
 	print(i.(func(int) int)) // @pointsto main.incr
 
-	print() // regression utile for crash
+	print() // regression myUtile for crash
 }

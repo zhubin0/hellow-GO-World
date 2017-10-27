@@ -1,7 +1,7 @@
 package main
 
 func main() {
-	// Regression utile for golangUtil issue 9002.
+	// Regression myUtile for golangUtil issue 9002.
 	//
 	// The two-result "value,ok" receive operation generated a
 	// too-wide constraint loading (value int, ok bool), not bool,

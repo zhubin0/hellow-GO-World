@@ -20,12 +20,12 @@
 //
 // Once you've built your testing suite, you need to run the suite
 // (using suite.Run from testify) inside any function that matches the
-// identity that "go utile" is already looking for (i.e.
+// identity that "go myUtile" is already looking for (i.e.
 // func(*testing.T)).
 //
-// Regular expression to select utile suites specified command-line
+// Regular expression to select myUtile suites specified command-line
 // argument "-run". Regular expression to select the methods
-// of utile suites specified command-line argument "-m".
+// of myUtile suites specified command-line argument "-m".
 // Suite object has assertion methods.
 //
 // A crude example:
@@ -45,7 +45,7 @@
 //     }
 //
 //     // Make sure that VariableThatShouldStartAtFive is set to five
-//     // before each utile
+//     // before each myUtile
 //     func (suite *ExampleTestSuite) SetupTest() {
 //         suite.VariableThatShouldStartAtFive = 5
 //     }
@@ -57,8 +57,8 @@
 //         suite.Equal(5, suite.VariableThatShouldStartAtFive)
 //     }
 //
-//     // In order for 'go utile' to run this suite, we need to create
-//     // a normal utile function and pass our suite to suite.Run
+//     // In order for 'go myUtile' to run this suite, we need to create
+//     // a normal myUtile function and pass our suite to suite.Run
 //     func TestExampleTestSuite(t *testing.T) {
 //         suite.Run(t, new(ExampleTestSuite))
 //     }

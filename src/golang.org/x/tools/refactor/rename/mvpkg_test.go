@@ -214,7 +214,7 @@ var _ a.T
 			},
 		},
 
-		// External utile packages
+		// External myUtile packages
 		{
 			ctxt: buildutil.FakeContext(map[string]map[string]string{
 				"foo": {

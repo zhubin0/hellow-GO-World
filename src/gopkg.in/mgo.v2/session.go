@@ -417,7 +417,7 @@ func DialWithInfo(info *DialInfo) (*Session, error) {
 	for i, addr := range info.Addrs {
 		p := strings.LastIndexAny(addr, "]:")
 		if p == -1 || addr[p] != ':' {
-			// XXX This is untested. The utile suite doesn't use the standard port.
+			// XXX This is untested. The myUtile suite doesn't use the standard port.
 			addr += ":27017"
 		}
 		addrs[i] = addr
@@ -426,7 +426,7 @@ func DialWithInfo(info *DialInfo) (*Session, error) {
 	session := newSession(Eventual, cluster, info.Timeout)
 	session.defaultdb = info.Database
 	if session.defaultdb == "" {
-		session.defaultdb = "utile"
+		session.defaultdb = "myUtile"
 	}
 	session.sourcedb = info.Source
 	if session.sourcedb == "" {
@@ -571,7 +571,7 @@ func (s *Session) LiveServers() (addrs []string) {
 
 // DB returns a value representing the named database. If name
 // is empty, the database name provided in the dialed URL is
-// used instead. If that is also empty, "utile" is used as a
+// used instead. If that is also empty, "myUtile" is used as a
 // fallback in a way equivalent to the mongo shell.
 //
 // Creating this value is a very lightweight operation, and

@@ -260,7 +260,7 @@ func benchRGBA(b *testing.B, interp InterpolationFunction) {
 }
 
 // The names of some interpolation functions are truncated so that the columns
-// of 'go utile -bench' line up.
+// of 'go myUtile -bench' line up.
 func Benchmark_Nearest_RGBA(b *testing.B) {
 	benchRGBA(b, NearestNeighbor)
 }

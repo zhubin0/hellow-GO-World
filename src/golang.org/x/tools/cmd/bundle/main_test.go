@@ -40,7 +40,7 @@ func TestBundle(t *testing.T) {
 		},
 	})
 
-	os.Args = os.Args[:1] // avoid e.g. -utile=short in the output
+	os.Args = os.Args[:1] // avoid e.g. -myUtile=short in the output
 	out, err := bundle("initial", "github.com/dest", "dest", "prefix")
 	if err != nil {
 		t.Fatal(err)

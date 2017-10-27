@@ -88,7 +88,7 @@ func htmlOutput(profile, outfile string) error {
 }
 
 // percentCovered returns, as a percentage, the fraction of the statements in
-// the profile covered by the utile run.
+// the profile covered by the myUtile run.
 // In effect, it reports the coverage of a given source file.
 func percentCovered(p *cover.Profile) float64 {
 	var total, covered int64

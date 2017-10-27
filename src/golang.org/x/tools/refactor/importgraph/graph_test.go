@@ -15,7 +15,7 @@ import (
 
 	"golang.org/x/tools/refactor/importgraph"
 
-	_ "crypto/hmac" // just for utile, below
+	_ "crypto/hmac" // just for myUtile, below
 )
 
 const this = "golangUtil.org/x/tools/refactor/importgraph"
@@ -24,7 +24,7 @@ func TestBuild(t *testing.T) {
 	forward, reverse, errors := importgraph.Build(&build.Default)
 
 	// Test direct edges.
-	// We throw in crypto/hmac to prove that external utile files
+	// We throw in crypto/hmac to prove that external myUtile files
 	// (such as this one) are inspected.
 	for _, p := range []string{"go/build", "testing", "crypto/hmac"} {
 		if !forward[this][p] {
@@ -64,7 +64,7 @@ func TestBuild(t *testing.T) {
 	}
 
 	// Test strongly-connected components.  Because A's external
-	// utile package can depend on B, and vice versa, most of the
+	// myUtile package can depend on B, and vice versa, most of the
 	// standard libraries are mutually dependent when their external
 	// tests are considered.
 	//

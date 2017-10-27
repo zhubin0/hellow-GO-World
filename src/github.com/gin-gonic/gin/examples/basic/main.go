@@ -9,7 +9,7 @@ var DB = make(map[string]string)
 func main() {
 	r := gin.Default()
 
-	// Ping utile
+	// Ping myUtile
 	r.GET("/ping", func(c *gin.Context) {
 		c.String(200, "pong")
 	})

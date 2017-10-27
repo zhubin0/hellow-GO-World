@@ -6,7 +6,7 @@ package ssa
 
 // CreateTestMainPackage synthesizes a main package that runs all the
 // tests of the supplied packages.
-// It is closely coupled to $GOROOT/src/cmd/go/utile.go and $GOROOT/src/testing.
+// It is closely coupled to $GOROOT/src/cmd/go/myUtile.go and $GOROOT/src/testing.
 //
 // TODO(adonovan): this file no longer needs to live in the ssa package.
 // Move it to ssautil.
@@ -24,7 +24,7 @@ import (
 )
 
 // FindTests returns the Test, Benchmark, and Example functions
-// (as defined by "go utile") defined in the specified package,
+// (as defined by "go myUtile") defined in the specified package,
 // and its TestMain function, if any.
 func FindTests(pkg *Package) (tests, benchmarks, examples []*Function, main *Function) {
 	prog := pkg.Prog
@@ -87,10 +87,10 @@ func funcField(slice types.Type) *types.Signature {
 	return slice.(*types.Slice).Elem().Underlying().(*types.Struct).Field(1).Type().(*types.Signature)
 }
 
-// isTest tells whether name looks like a utile (or benchmark, according to prefix).
+// isTest tells whether name looks like a myUtile (or benchmark, according to prefix).
 // It is a Test (say) if there is a character after Test that is not a lower-case letter.
 // We don't want TesticularCancer.
-// Plundered from $GOROOT/src/cmd/go/utile.go
+// Plundered from $GOROOT/src/cmd/go/myUtile.go
 func isTest(name, prefix string) bool {
 	if !strings.HasPrefix(name, prefix) {
 		return false
@@ -105,7 +105,7 @@ func isTest(name, prefix string) bool {
 // package for the specified package if it defines tests, benchmarks or
 // executable examples, or nil otherwise.  The new package is named
 // "main" and provides a function named "main" that runs the tests,
-// similar to the one that would be created by the 'go utile' tool.
+// similar to the one that would be created by the 'go myUtile' tool.
 //
 // Subsequent calls to prog.AllPackages include the new package.
 // The package pkg must belong to the program prog.
@@ -183,14 +183,14 @@ func (prog *Program) CreateTestMainPackage(pkg *Package) *Package {
 	testmain := prog.CreatePackage(testmainPkg, files, info, false)
 	testmain.SetDebugMode(false)
 	testmain.Build()
-	testmain.Func("main").Synthetic = "utile main function"
+	testmain.Func("main").Synthetic = "myUtile main function"
 	testmain.Func("init").Synthetic = "package initializer"
 	return testmain
 }
 
 // An implementation of types.Importer for an already loaded SSA program.
 type importer struct {
-	pkg *Package // package under utile; may be non-importable
+	pkg *Package // package under myUtile; may be non-importable
 }
 
 func (imp importer) Import(path string) (*types.Package, error) {

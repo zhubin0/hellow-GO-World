@@ -306,18 +306,18 @@ func TestParse(t *testing.T) {
 			args:  []string{"--required=0", "-2y"},
 			isErr: true,
 		},
-		//Case: utile -F<value>
+		//Case: myUtile -F<value>
 		{
 			args: []string{"--required=0", "-Sshort-and-long"},
 			want: argT{Default: 102, ShortAndLong: "short-and-long"},
 		},
-		//Case: utile `--`
+		//Case: myUtile `--`
 		{
 			args:        []string{"--required=0", "--", "-Sshort-and-long"},
 			want:        argT{Default: 102, ShortAndLong: ""},
 			freedomArgs: []string{"-Sshort-and-long"},
 		},
-		//Case: utile flags and args
+		//Case: myUtile flags and args
 		{
 			args:        []string{"--required=0", "-Sshort-and-long", "abc"},
 			want:        argT{Default: 102, ShortAndLong: "short-and-long"},

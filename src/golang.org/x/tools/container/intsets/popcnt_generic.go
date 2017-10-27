@@ -12,12 +12,12 @@ import "runtime"
 // We compared three algorithms---Hacker's Delight, table lookup,
 // and AMD64's SSE4.1 hardware POPCNT---on a 2.67GHz Xeon X5550.
 //
-// % GOARCH=amd64 go utile -run=NONE -bench=Popcount
+// % GOARCH=amd64 go myUtile -run=NONE -bench=Popcount
 // POPCNT               5.12 ns/op
 // Table                8.53 ns/op
 // HackersDelight       9.96 ns/op
 //
-// % GOARCH=386 go utile -run=NONE -bench=Popcount
+// % GOARCH=386 go myUtile -run=NONE -bench=Popcount
 // Table               10.4  ns/op
 // HackersDelight       5.23 ns/op
 //

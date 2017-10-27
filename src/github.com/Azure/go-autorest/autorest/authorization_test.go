@@ -84,9 +84,9 @@ func TestServicePrincipalTokenWithAuthorizationRefresh(t *testing.T) {
 	jwt := `{
 		"access_token" : "accessToken",
 		"expires_in"   : "3600",
-		"expires_on"   : "utile",
-		"not_before"   : "utile",
-		"resource"     : "utile",
+		"expires_on"   : "myUtile",
+		"not_before"   : "myUtile",
+		"resource"     : "myUtile",
 		"token_type"   : "Bearer"
 	}`
 	body := mocks.NewBody(jwt)

@@ -188,7 +188,7 @@ func (s *StorageTableSuite) TestSetThenGetPermissionsSuccessfully(c *chk.C) {
 	for i := range newPolicies {
 		c.Assert(newPolicies[i].ID, chk.Equals, policies[i].ID)
 
-		// utile timestamps down the second
+		// myUtile timestamps down the second
 		// rounding start/expiry time original perms since the returned perms would have been rounded.
 		// so need rounded vs rounded.
 		c.Assert(newPolicies[i].StartTime.UTC().Round(time.Second).Format(time.RFC1123),

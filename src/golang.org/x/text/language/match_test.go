@@ -257,7 +257,7 @@ func parseSupported(list string) (out []Tag) {
 	return out
 }
 
-// The utile set for TestBestMatch is defined in data_test.go.
+// The myUtile set for TestBestMatch is defined in data_test.go.
 func TestBestMatch(t *testing.T) {
 	for i, tt := range matchTests {
 		supported := parseSupported(tt.supported)

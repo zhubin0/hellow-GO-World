@@ -76,7 +76,7 @@ When the .proto file specifies `syntax="proto3"`, there are some differences:
   - Enum types do not get an Enum method.
 
 The simplest way to describe this is to see an example.
-Given file utile.proto, containing
+Given file myUtile.proto, containing
 
 	package example;
 
@@ -95,7 +95,7 @@ Given file utile.proto, containing
 	  }
 	}
 
-The resulting file, utile.pb.go, is:
+The resulting file, myUtile.pb.go, is:
 
 	package example
 
@@ -231,7 +231,7 @@ To create and play with a Test object:
 	)
 
 	func main() {
-		utile := &pb.Test{
+		myUtile := &pb.Test{
 			Label: proto.String("hello"),
 			Type:  proto.Int32(17),
 			Reps:  []int64{1, 2, 3},
@@ -240,7 +240,7 @@ To create and play with a Test object:
 			},
 			Union: &pb.Test_Name{"fred"},
 		}
-		data, err := proto.Marshal(utile)
+		data, err := proto.Marshal(myUtile)
 		if err != nil {
 			log.Fatal("marshaling error: ", err)
 		}
@@ -249,12 +249,12 @@ To create and play with a Test object:
 		if err != nil {
 			log.Fatal("unmarshaling error: ", err)
 		}
-		// Now utile and newTest contain the same data.
-		if utile.GetLabel() != newTest.GetLabel() {
-			log.Fatalf("data mismatch %q != %q", utile.GetLabel(), newTest.GetLabel())
+		// Now myUtile and newTest contain the same data.
+		if myUtile.GetLabel() != newTest.GetLabel() {
+			log.Fatalf("data mismatch %q != %q", myUtile.GetLabel(), newTest.GetLabel())
 		}
 		// Use a type switch to determine which oneof was set.
-		switch u := utile.Union.(type) {
+		switch u := myUtile.Union.(type) {
 		case *pb.Test_Number: // u.Number contains the number.
 		case *pb.Test_Name: // u.Name contains the string.
 		}

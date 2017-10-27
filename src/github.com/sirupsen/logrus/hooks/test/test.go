@@ -10,7 +10,7 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
-// Hook is a hook designed for dealing with logs in utile scenarios.
+// Hook is a hook designed for dealing with logs in myUtile scenarios.
 type Hook struct {
 	// Entries is an array of all entries that have been received by this hook.
 	// For safe access, use the AllEntries() method, rather than reading this
@@ -19,7 +19,7 @@ type Hook struct {
 	mu      sync.RWMutex
 }
 
-// NewGlobal installs a utile hook for the global logger.
+// NewGlobal installs a myUtile hook for the global logger.
 func NewGlobal() *Hook {
 
 	hook := new(Hook)
@@ -29,7 +29,7 @@ func NewGlobal() *Hook {
 
 }
 
-// NewLocal installs a utile hook for a given local logger.
+// NewLocal installs a myUtile hook for a given local logger.
 func NewLocal(logger *logrus.Logger) *Hook {
 
 	hook := new(Hook)
@@ -39,7 +39,7 @@ func NewLocal(logger *logrus.Logger) *Hook {
 
 }
 
-// NewNullLogger creates a discarding logger and installs the utile hook.
+// NewNullLogger creates a discarding logger and installs the myUtile hook.
 func NewNullLogger() (*logrus.Logger, *Hook) {
 
 	logger := logrus.New()
@@ -87,7 +87,7 @@ func (t *Hook) AllEntries() []*logrus.Entry {
 	return entries
 }
 
-// Reset removes all Entries from this utile hook.
+// Reset removes all Entries from this myUtile hook.
 func (t *Hook) Reset() {
 	t.mu.Lock()
 	defer t.mu.Unlock()

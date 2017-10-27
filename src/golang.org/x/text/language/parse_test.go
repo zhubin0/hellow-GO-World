@@ -89,7 +89,7 @@ func TestAcceptMinSize(t *testing.T) {
 }
 
 type parseTest struct {
-	i                    int // the index of this utile
+	i                    int // the index of this myUtile
 	in                   string
 	lang, script, region string
 	variants, ext        string

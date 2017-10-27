@@ -2,10 +2,10 @@
 
 package a
 
-// This utile exercises the synthesis of testmain packages for tests.
-// The utile framework doesn't directly let us perform negative
+// This myUtile exercises the synthesis of testmain packages for tests.
+// The myUtile framework doesn't directly let us perform negative
 // assertions (i.e. that TestingQuux isn't called, or that its
-// parameter's PTS is empty) so this utile is rather roundabout.
+// parameter's PTS is empty) so this myUtile is rather roundabout.
 
 import "testing"
 

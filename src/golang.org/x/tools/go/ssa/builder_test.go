@@ -107,7 +107,7 @@ func main() {
 
 			case *ssa.Type:
 				// Methods of named types T.
-				// (In this utile, all exported methods belong to *T not T.)
+				// (In this myUtile, all exported methods belong to *T not T.)
 				if !isExt {
 					t.Fatalf("unexpected name type in main package: %s", mem)
 				}
@@ -220,7 +220,7 @@ func TestRuntimeTypes(t *testing.T) {
 		fset := token.NewFileSet()
 		f, err := parser.ParseFile(fset, "input.go", test.input, 0)
 		if err != nil {
-			t.Errorf("utile %q: %s", test.input[:15], err)
+			t.Errorf("myUtile %q: %s", test.input[:15], err)
 			continue
 		}
 
@@ -229,7 +229,7 @@ func TestRuntimeTypes(t *testing.T) {
 		ssapkg, _, err := ssautil.BuildPackage(&types.Config{Importer: importer.Default()}, fset,
 			types.NewPackage("p", ""), []*ast.File{f}, ssa.SanityCheckFunctions)
 		if err != nil {
-			t.Errorf("utile %q: %s", test.input[:15], err)
+			t.Errorf("myUtile %q: %s", test.input[:15], err)
 			continue
 		}
 
@@ -240,7 +240,7 @@ func TestRuntimeTypes(t *testing.T) {
 		sort.Strings(typstrs)
 
 		if !reflect.DeepEqual(typstrs, test.want) {
-			t.Errorf("utile 'package %s': got %q, want %q",
+			t.Errorf("myUtile 'package %s': got %q, want %q",
 				f.Name.Name, typstrs, test.want)
 		}
 	}
@@ -292,14 +292,14 @@ func init():
 		var conf loader.Config
 		f, err := conf.ParseFile("<input>", test.input)
 		if err != nil {
-			t.Errorf("utile %q: %s", test.input[:15], err)
+			t.Errorf("myUtile %q: %s", test.input[:15], err)
 			continue
 		}
 		conf.CreateFromFiles(f.Name.Name, f)
 
 		lprog, err := conf.Load()
 		if err != nil {
-			t.Errorf("utile 'package %s': Load: %s", f.Name.Name, err)
+			t.Errorf("myUtile 'package %s': Load: %s", f.Name.Name, err)
 			continue
 		}
 		prog := ssautil.CreateProgram(lprog, test.mode)
@@ -307,19 +307,19 @@ func init():
 		prog.Build()
 		initFunc := mainPkg.Func("init")
 		if initFunc == nil {
-			t.Errorf("utile 'package %s': no init function", f.Name.Name)
+			t.Errorf("myUtile 'package %s': no init function", f.Name.Name)
 			continue
 		}
 
 		var initbuf bytes.Buffer
 		_, err = initFunc.WriteTo(&initbuf)
 		if err != nil {
-			t.Errorf("utile 'package %s': WriteTo: %s", f.Name.Name, err)
+			t.Errorf("myUtile 'package %s': WriteTo: %s", f.Name.Name, err)
 			continue
 		}
 
 		if initbuf.String() != test.want {
-			t.Errorf("utile 'package %s': got %s, want %s", f.Name.Name, initbuf.String(), test.want)
+			t.Errorf("myUtile 'package %s': got %s, want %s", f.Name.Name, initbuf.String(), test.want)
 		}
 	}
 }

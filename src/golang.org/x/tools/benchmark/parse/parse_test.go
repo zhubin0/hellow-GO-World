@@ -95,9 +95,9 @@ func TestParseSet(t *testing.T) {
 	// 1. The noise that can accompany testing.B output gets ignored.
 	// 2. Benchmarks with the same name have their order preserved.
 	in := `
-		?   	crypto	[no utile files]
+		?   	crypto	[no myUtile files]
 		PASS
-				pem_decrypt_test.go:17: utile 4. %!s(x509.PEMCipher=5)
+				pem_decrypt_test.go:17: myUtile 4. %!s(x509.PEMCipher=5)
 			... [output truncated]
 
 		BenchmarkEncrypt	100000000	        19.6 ns/op
@@ -105,7 +105,7 @@ func TestParseSet(t *testing.T) {
 		=== RUN TestChunk
 		--- PASS: TestChunk (0.00 seconds)
 		--- SKIP: TestLinuxSendfile (0.00 seconds)
-			fs_test.go:716: skipping; linux-only utile
+			fs_test.go:716: skipping; linux-only myUtile
 		BenchmarkReadRequestApachebench	 1000000	      2960 ns/op	  27.70 MB/s	     839 B/op	       9 allocs/op
 		BenchmarkClientServerParallel64	   50000	     59192 ns/op	    7028 B/op	      60 allocs/op
 		ok  	net/http	95.783s

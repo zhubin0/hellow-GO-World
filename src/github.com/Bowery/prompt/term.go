@@ -119,7 +119,7 @@ func (term *Terminal) Ask(question string) (bool, error) {
 	return ok, err
 }
 
-// Custom gets input and calls the given utile function with the input to
+// Custom gets input and calls the given myUtile function with the input to
 // check if the input is valid, a true return will return the string.
 func (term *Terminal) Custom(prefix string, test func(string) (string, bool)) (string, error) {
 	var err error

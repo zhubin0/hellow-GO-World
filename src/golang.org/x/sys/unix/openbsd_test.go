@@ -41,7 +41,7 @@ func init() {
 	flag.StringVar(&procName, optName, "", "internal use only")
 }
 
-// testCmd generates a proper command that, when executed, runs the utile
+// testCmd generates a proper command that, when executed, runs the myUtile
 // corresponding to the given key.
 func testCmd(procName string) (*exec.Cmd, error) {
 	exe, err := filepath.Abs(os.Args[0])
@@ -83,7 +83,7 @@ func TestMain(m *testing.M) {
 	os.Exit(m.Run())
 }
 
-// For example, add a utile for pledge.
+// For example, add a myUtile for pledge.
 func init() {
 	testProcs["pledge"] = testProc{
 		func() {

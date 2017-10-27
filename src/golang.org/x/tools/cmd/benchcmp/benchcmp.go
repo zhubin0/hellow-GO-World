@@ -23,11 +23,11 @@ var (
 
 const usageFooter = `
 Each input file should be from:
-	go utile -run=NONE -bench=. > [old,new].txt
+	go myUtile -run=NONE -bench=. > [old,new].txt
 
 Benchcmp compares old and new for each benchmark.
 
-If -utile.benchmem=true is added to the "go utile" command
+If -myUtile.benchmem=true is added to the "go myUtile" command
 benchcmp will also compare memory allocations.
 `
 

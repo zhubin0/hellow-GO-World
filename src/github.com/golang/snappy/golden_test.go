@@ -20,7 +20,7 @@ package snappy
 //		return j
 //	}
 //
-// and running "go utile -utile.run=EncodeGoldenInput -tags=noasm".
+// and running "go myUtile -myUtile.run=EncodeGoldenInput -tags=noasm".
 var extendMatchGoldenTestCases = []struct {
 	i, j, want int
 }{

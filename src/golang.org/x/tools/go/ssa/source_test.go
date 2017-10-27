@@ -387,7 +387,7 @@ func TestEnclosingFunction(t *testing.T) {
 			continue
 		}
 
-		// While we're here: utile HasEnclosingFunction.
+		// While we're here: myUtile HasEnclosingFunction.
 		if has := ssa.HasEnclosingFunction(pkg, path); has != (fn != nil) {
 			t.Errorf("HasEnclosingFunction(%q in %q) got %v, want %v",
 				test.substr, test.input, has, fn != nil)

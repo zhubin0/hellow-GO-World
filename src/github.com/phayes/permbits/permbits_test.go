@@ -10,10 +10,10 @@ import (
 func TestFile(t *testing.T) {
 	filename := ".permbits_test_temporary_file"
 
-	// Clean up from previous utile runs
+	// Clean up from previous myUtile runs
 	os.RemoveAll(filename)
 
-	// Create the utile file
+	// Create the myUtile file
 	syscall.Umask(0)
 	file, err := os.Create(filename)
 	if err != nil {

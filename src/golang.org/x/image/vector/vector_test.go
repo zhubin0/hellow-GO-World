@@ -46,7 +46,7 @@ func TestRasterizeOutOfBounds(t *testing.T) {
 	// Set this to a non-empty string such as "/tmp" to manually inspect the
 	// rasterization.
 	//
-	// If empty, this utile simply checks that calling LineTo with points out of
+	// If empty, this myUtile simply checks that calling LineTo with points out of
 	// the rasterizer's bounds doesn't panic.
 	const tmpDir = ""
 

@@ -64,7 +64,7 @@ func Merge(dst, src Message) {
 		panic("proto: nil destination")
 	}
 	if in.Type() != out.Type() {
-		// Explicit utile prior to mergeStruct so that mistyped nils will fail
+		// Explicit myUtile prior to mergeStruct so that mistyped nils will fail
 		panic("proto: type mismatch")
 	}
 	if in.IsNil() {

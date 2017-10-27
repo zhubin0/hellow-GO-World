@@ -34,7 +34,7 @@ func TestIsValidDomain(t *testing.T) {
 		{"s3.cn-north-1.amazonaws.com.cn", true},
 		{"s3.amazonaws.com_", false},
 		{"%$$$", false},
-		{"s3.amz.utile.com", true},
+		{"s3.amz.myUtile.com", true},
 		{"s3.%%", false},
 		{"localhost", true},
 		{"-localhost", false},
@@ -46,7 +46,7 @@ func TestIsValidDomain(t *testing.T) {
 	for i, testCase := range testCases {
 		result := IsValidDomain(testCase.host)
 		if testCase.result != result {
-			t.Errorf("Test %d: Expected isValidDomain utile to be '%v', but found '%v' instead", i+1, testCase.result, result)
+			t.Errorf("Test %d: Expected isValidDomain myUtile to be '%v', but found '%v' instead", i+1, testCase.result, result)
 		}
 	}
 }
@@ -212,9 +212,9 @@ func TestPercentEncodeSlash(t *testing.T) {
 	}{
 		{"test123", "test123"},
 		{"abc,+_1", "abc,+_1"},
-		{"%40prefix=utile%40123", "%40prefix=utile%40123"},
+		{"%40prefix=myUtile%40123", "%40prefix=myUtile%40123"},
 		{"key1=val1/val2", "key1=val1%2Fval2"},
-		{"%40prefix=utile%40123/", "%40prefix=utile%40123%2F"},
+		{"%40prefix=myUtile%40123/", "%40prefix=myUtile%40123%2F"},
 	}
 
 	for i, testCase := range testCases {
@@ -238,13 +238,13 @@ func TestQueryEncode(t *testing.T) {
 		// Expected result.
 		result string
 	}{
-		{"prefix", []string{"utile@123", "utile@456"}, "prefix=utile%40123&prefix=utile%40456"},
-		{"@prefix", []string{"utile@123"}, "%40prefix=utile%40123"},
+		{"prefix", []string{"myUtile@123", "myUtile@456"}, "prefix=myUtile%40123&prefix=myUtile%40456"},
+		{"@prefix", []string{"myUtile@123"}, "%40prefix=myUtile%40123"},
 		{"@prefix", []string{"a/b/c/"}, "%40prefix=a%2Fb%2Fc%2F"},
-		{"prefix", []string{"utile#123"}, "prefix=utile%23123"},
-		{"prefix#", []string{"utile#123"}, "prefix%23=utile%23123"},
+		{"prefix", []string{"myUtile#123"}, "prefix=myUtile%23123"},
+		{"prefix#", []string{"myUtile#123"}, "prefix%23=myUtile%23123"},
 		{"prefix", []string{"test123"}, "prefix=test123"},
-		{"prefix", []string{"test本語123", "test123"}, "prefix=utile%E6%9C%AC%E8%AA%9E123&prefix=test123"},
+		{"prefix", []string{"test本語123", "test123"}, "prefix=myUtile%E6%9C%AC%E8%AA%9E123&prefix=test123"},
 	}
 
 	for i, testCase := range testCases {
@@ -291,7 +291,7 @@ func TestIsValidBucketName(t *testing.T) {
 		bucketName string
 		// Expected result.
 		err error
-		// Flag to indicate whether utile should Pass.
+		// Flag to indicate whether myUtile should Pass.
 		shouldPass bool
 	}{
 		{".mybucket", errors.New("Bucket name contains invalid characters"), false},
@@ -333,7 +333,7 @@ func TestIsValidBucketNameStrict(t *testing.T) {
 		bucketName string
 		// Expected result.
 		err error
-		// Flag to indicate whether utile should Pass.
+		// Flag to indicate whether myUtile should Pass.
 		shouldPass bool
 	}{
 		{".mybucket", errors.New("Bucket name contains invalid characters"), false},

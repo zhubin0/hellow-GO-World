@@ -59,7 +59,7 @@ func TestProfiles(t *testing.T) {
 	}
 }
 
-// doTest performs a single utile f(input) and verifies that the output matches
+// doTest performs a single myUtile f(input) and verifies that the output matches
 // out and that the returned error is expected. The errors string contains
 // all allowed error codes as categorized in
 // http://www.unicode.org/Public/idna/9.0.0/IdnaTest.txt:
@@ -131,7 +131,7 @@ func TestLabelErrors(t *testing.T) {
 		want    string
 		wantErr string
 	}{
-		{lengthU, "", "", "A4"}, // From UTS 46 conformance utile.
+		{lengthU, "", "", "A4"}, // From UTS 46 conformance myUtile.
 		{lengthA, "", "", "A4"},
 
 		{lengthU, "xn--", "", "A4"},
@@ -147,7 +147,7 @@ func TestLabelErrors(t *testing.T) {
 		{lengthA, "a..b", "a..b", "A4"},
 		// Stripping leading empty labels here but not for "empty" punycode
 		// above seems inconsistent, but seems to be applied by both the
-		// conformance utile and Chrome. Different interpretations would be
+		// conformance myUtile and Chrome. Different interpretations would be
 		// possible, though.
 		{lengthA, "..b", "b", ""},
 		{lengthA, "b..", "b..", ""}, // TODO: remove trailing dots?
@@ -237,7 +237,7 @@ func TestConformance(t *testing.T) {
 	for p.Next() {
 		started = true
 
-		// What to utile
+		// What to myUtile
 		profiles := []*Profile{}
 		switch p.String(0) {
 		case "T":

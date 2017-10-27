@@ -39,11 +39,11 @@ func TestEquality(t *testing.T) {
 		tag := Make(s)
 		t1 := Make(tag.String())
 		if tag != t1 {
-			t.Errorf("%d:%s: equality utile 1 failed\n got: %#v\nwant: %#v)", i, s, t1, tag)
+			t.Errorf("%d:%s: equality myUtile 1 failed\n got: %#v\nwant: %#v)", i, s, t1, tag)
 		}
 		t2, _ := Compose(tag)
 		if tag != t2 {
-			t.Errorf("%d:%s: equality utile 2 failed\n got: %#v\nwant: %#v", i, s, t2, tag)
+			t.Errorf("%d:%s: equality myUtile 2 failed\n got: %#v\nwant: %#v", i, s, t2, tag)
 		}
 	}
 }
@@ -69,7 +69,7 @@ func TestMakeString(t *testing.T) {
 			}
 		}
 		// The bytes to string conversion as used in remakeString
-		// occasionally measures as more than one alloc, breaking this utile.
+		// occasionally measures as more than one alloc, breaking this myUtile.
 		// To alleviate this we set the number of runs to more than 1.
 		if n := testtext.AllocsPerRun(8, id.remakeString); n > 1 {
 			t.Errorf("%d: # allocs got %.1f; want <= 1", i, n)
@@ -491,7 +491,7 @@ func TestRegionTLD(t *testing.T) {
 }
 
 func TestCanonicalize(t *testing.T) {
-	// TODO: do a full utile using CLDR data in a separate regression utile.
+	// TODO: do a full myUtile using CLDR data in a separate regression myUtile.
 	tests := []struct {
 		in, out string
 		option  CanonType

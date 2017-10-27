@@ -256,7 +256,7 @@ func TestWildcardMatch(t *testing.T) {
 	}
 }
 
-// TODO(hanwen): utile coverage for certificates.
+// TODO(hanwen): myUtile coverage for certificates.
 
 const testHostname = "hostname"
 

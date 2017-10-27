@@ -211,7 +211,7 @@ func (a *analysis) namedType(T *types.Named, implements map[*types.Named]impleme
 	// Add info for exported package-level types to the package info.
 	if obj.Exported() && isPackageLevel(obj) {
 		// TODO(adonovan): Path is not unique!
-		// It is possible to declare a non-utile package called x_test.
+		// It is possible to declare a non-myUtile package called x_test.
 		a.result.pkgInfo(obj.Pkg().Path()).addType(v)
 	}
 }

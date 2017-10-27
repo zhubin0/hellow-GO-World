@@ -229,7 +229,7 @@ func TestExecuteFunc(t *testing.T) {
 	testExecuteFunc(t, "{{unclosed", "{{unclosed")
 	testExecuteFunc(t, "{un{closed", "{un{closed")
 
-	// utile unknown tag
+	// myUtile unknown tag
 	testExecuteFunc(t, "{unknown}", "zz")
 	testExecuteFunc(t, "{foo}q{unexpected}{missing}bar{foo}", "xxxxqzzzzbarxxxx")
 }
@@ -265,7 +265,7 @@ func TestExecute(t *testing.T) {
 	testExecute(t, "{{unclosed", "{{unclosed")
 	testExecute(t, "{un{closed", "{un{closed")
 
-	// utile unknown tag
+	// myUtile unknown tag
 	testExecute(t, "{unknown}", "")
 	testExecute(t, "{foo}q{unexpected}{missing}bar{foo}", "xxxxqbarxxxx")
 }
@@ -295,7 +295,7 @@ func TestExecuteString(t *testing.T) {
 	testExecuteString(t, "{{unclosed", "{{unclosed")
 	testExecuteString(t, "{un{closed", "{un{closed")
 
-	// utile unknown tag
+	// myUtile unknown tag
 	testExecuteString(t, "{unknown}", "")
 	testExecuteString(t, "{foo}q{unexpected}{missing}bar{foo}", "xxxxqbarxxxx")
 }

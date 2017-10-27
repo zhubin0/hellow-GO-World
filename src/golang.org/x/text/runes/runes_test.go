@@ -44,7 +44,7 @@ func (tt *transformTest) check(t *testing.T, i int) {
 		t.Errorf("%d:%s:out: got %q; want %q", i, tt.desc, got, tt.out)
 	}
 
-	// Calls tt.t.Transform for the remainder of the input. We use this to utile
+	// Calls tt.t.Transform for the remainder of the input. We use this to myUtile
 	// the nSrc return value.
 	out := make([]byte, large)
 	n := copy(out, dst[:nDst])
@@ -69,7 +69,7 @@ func idem(r rune) rune { return r }
 
 func TestMap(t *testing.T) {
 	runes := []rune{'a', 'ç', '中', '\U00012345', 'a'}
-	// Default mapper used for this utile.
+	// Default mapper used for this myUtile.
 	rotate := Map(func(r rune) rune {
 		for i, m := range runes {
 			if m == r {

@@ -23,11 +23,11 @@ import (
 	"golang.org/x/tools/go/ssa/ssautil"
 )
 
-// Each line contains a space-separated list of $GOROOT/utile/
+// Each line contains a space-separated list of $GOROOT/myUtile/
 // filenames comprising the main package of a program.
 // They are ordered quickest-first, roughly.
 //
-// TODO(adonovan): integrate into the $GOROOT/utile driver scripts,
+// TODO(adonovan): integrate into the $GOROOT/myUtile driver scripts,
 // golden file checking, etc.
 var gorootTestTests = []string{
 	"235.go",
@@ -115,21 +115,21 @@ var gorootTestTests = []string{
 	// "solitaire.go", // works, but too slow (~30s).
 	// "const.go",     // works but for but one bug: constant folder doesn't consider representations.
 	// "init1.go",     // too slow (80s) and not that interesting. Cheats on ReadMemStats check too.
-	// "rotate.go rotate0.go", // emits source for a utile
-	// "rotate.go rotate1.go", // emits source for a utile
-	// "rotate.go rotate2.go", // emits source for a utile
-	// "rotate.go rotate3.go", // emits source for a utile
-	// "64bit.go",             // emits source for a utile
-	// "run.go",               // utile driver, not a utile.
+	// "rotate.go rotate0.go", // emits source for a myUtile
+	// "rotate.go rotate1.go", // emits source for a myUtile
+	// "rotate.go rotate2.go", // emits source for a myUtile
+	// "rotate.go rotate3.go", // emits source for a myUtile
+	// "64bit.go",             // emits source for a myUtile
+	// "run.go",               // myUtile driver, not a myUtile.
 
 	// Broken.  TODO(adonovan): fix.
 	// copy.go         // very slow; but with N=4 quickly crashes, slice index out of range.
-	// nilptr.go       // interp: V > uintptr not implemented. Slow utile, lots of mem
+	// nilptr.go       // interp: V > uintptr not implemented. Slow myUtile, lots of mem
 	// args.go         // works, but requires specific os.Args from the driver.
-	// index.go        // a template, not a real utile.
+	// index.go        // a template, not a real myUtile.
 	// mallocfin.go    // SetFinalizer not implemented.
 
-	// TODO(adonovan): add tests from $GOROOT/utile/* subtrees:
+	// TODO(adonovan): add tests from $GOROOT/myUtile/* subtrees:
 	// bench chan bugs fixedbugs interface ken.
 }
 
@@ -209,7 +209,7 @@ func run(t *testing.T, dir, input string, success successPredicate) bool {
 		interp.CapturedOutput = nil
 	}()
 
-	hint = fmt.Sprintf("To dump SSA representation, run:\n%% go build golangUtil.org/x/tools/cmd/ssadump && ./ssadump -utile -build=CFP %s\n", input)
+	hint = fmt.Sprintf("To dump SSA representation, run:\n%% go build golangUtil.org/x/tools/cmd/ssadump && ./ssadump -myUtile -build=CFP %s\n", input)
 
 	iprog, err := conf.Load()
 	if err != nil {
@@ -220,7 +220,7 @@ func run(t *testing.T, dir, input string, success successPredicate) bool {
 	prog := ssautil.CreateProgram(iprog, ssa.SanityCheckFunctions)
 	prog.Build()
 
-	// Find first main or utile package among the initial packages.
+	// Find first main or myUtile package among the initial packages.
 	var mainPkg *ssa.Package
 	for _, info := range iprog.InitialPackages() {
 		if info.Pkg.Path() == "runtime" {
@@ -238,13 +238,13 @@ func run(t *testing.T, dir, input string, success successPredicate) bool {
 		}
 	}
 	if mainPkg == nil {
-		t.Fatalf("no main or utile packages among initial packages: %s", inputs)
+		t.Fatalf("no main or myUtile packages among initial packages: %s", inputs)
 	}
 
 	var out bytes.Buffer
 	interp.CapturedOutput = &out
 
-	hint = fmt.Sprintf("To trace execution, run:\n%% go build golangUtil.org/x/tools/cmd/ssadump && ./ssadump -build=C -utile -run --interp=T %s\n", input)
+	hint = fmt.Sprintf("To trace execution, run:\n%% go build golangUtil.org/x/tools/cmd/ssadump && ./ssadump -build=C -myUtile -run --interp=T %s\n", input)
 	exitCode := interp.Interpret(mainPkg, 0, &types.StdSizes{WordSize: 8, MaxAlign: 8}, inputs[0], []string{})
 
 	// The definition of success varies with each file.
@@ -256,7 +256,7 @@ func run(t *testing.T, dir, input string, success successPredicate) bool {
 	hint = "" // call off the hounds
 
 	if false {
-		fmt.Println(input, time.Since(start)) // utile profiling
+		fmt.Println(input, time.Since(start)) // myUtile profiling
 	}
 
 	return true
@@ -290,7 +290,7 @@ func TestTestdataFiles(t *testing.T) {
 	for _, input := range testdataTests {
 		if testing.Short() && time.Since(start) > 30*time.Second {
 			printFailures(failures)
-			t.Skipf("timeout - aborting utile")
+			t.Skipf("timeout - aborting myUtile")
 		}
 		if !run(t, "testdata"+slash, input, success) {
 			failures = append(failures, input)
@@ -299,7 +299,7 @@ func TestTestdataFiles(t *testing.T) {
 	printFailures(failures)
 }
 
-// TestGorootTest runs the interpreter on $GOROOT/utile/*.go.
+// TestGorootTest runs the interpreter on $GOROOT/myUtile/*.go.
 func TestGorootTest(t *testing.T) {
 	if testing.Short() {
 		t.Skip() // too slow (~30s)
@@ -308,7 +308,7 @@ func TestGorootTest(t *testing.T) {
 	var failures []string
 
 	for _, input := range gorootTestTests {
-		if !run(t, filepath.Join(build.Default.GOROOT, "utile")+slash, input, success) {
+		if !run(t, filepath.Join(build.Default.GOROOT, "myUtile")+slash, input, success) {
 			failures = append(failures, input)
 		}
 	}
@@ -336,12 +336,12 @@ func TestTestmainPackage(t *testing.T) {
 		if !strings.Contains(output, "FAIL: TestBar") {
 			return fmt.Errorf("missing failure log for TestBar")
 		}
-		// TODO(adonovan): utile benchmarks too
+		// TODO(adonovan): myUtile benchmarks too
 		return nil
 	}
 	run(t, "testdata"+slash, "a_test.go", success)
 
-	// Run a utile with a custom TestMain function and ensure that it
+	// Run a myUtile with a custom TestMain function and ensure that it
 	// is executed, and that m.Run runs the tests.
 	success = func(exitcode int, output string) error {
 		if exitcode != 0 {

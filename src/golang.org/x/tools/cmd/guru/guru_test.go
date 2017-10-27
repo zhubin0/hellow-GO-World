@@ -4,7 +4,7 @@
 
 package main_test
 
-// This file defines a utile framework for guru queries.
+// This file defines a myUtile framework for guru queries.
 //
 // The files beneath testdata/src/main contain Go programs containing
 // query annotations of the form:
@@ -19,11 +19,11 @@ package main_test
 // .golden file.
 //
 // (Location information is not included because it's too fragile to
-// display as text.  TODO(adonovan): think about how we can utile its
+// display as text.  TODO(adonovan): think about how we can myUtile its
 // correctness, since it is critical information.)
 //
-// Run this utile with:
-// 	% go utile golangUtil.org/x/tools/cmd/guru -update
+// Run this myUtile with:
+// 	% go myUtile golangUtil.org/x/tools/cmd/guru -update
 // to update the golden files.
 
 import (
@@ -74,7 +74,7 @@ func parseQueries(t *testing.T, filename string) []*query {
 		t.Fatal(err)
 	}
 
-	// Parse the file once to discover the utile queries.
+	// Parse the file once to discover the myUtile queries.
 	fset := token.NewFileSet()
 	f, err := parser.ParseFile(fset, filename, filedata, parser.ParseComments)
 	if err != nil {
@@ -135,7 +135,7 @@ func parseQueries(t *testing.T, filename string) []*query {
 				continue
 			}
 
-			// Assumes ASCII. TODO(adonovan): utile on UTF-8.
+			// Assumes ASCII. TODO(adonovan): myUtile on UTF-8.
 			linestart := posn.Offset - (posn.Column - 1)
 
 			// Compute the file offsets.
@@ -212,9 +212,9 @@ func doQuery(out io.Writer, q *query, json bool) {
 func TestGuru(t *testing.T) {
 	switch runtime.GOOS {
 	case "android":
-		t.Skipf("skipping utile on %q (no testdata dir)", runtime.GOOS)
+		t.Skipf("skipping myUtile on %q (no testdata dir)", runtime.GOOS)
 	case "windows":
-		t.Skipf("skipping utile on %q (no /usr/bin/diff)", runtime.GOOS)
+		t.Skipf("skipping myUtile on %q (no /usr/bin/diff)", runtime.GOOS)
 	}
 
 	for _, filename := range []string{
@@ -247,7 +247,7 @@ func TestGuru(t *testing.T) {
 		"testdata/src/what-json/main.go",
 	} {
 		if filename == "testdata/src/referrers/main.go" && runtime.GOOS == "plan9" {
-			// Disable this utile on plan9 since it expects a particular
+			// Disable this myUtile on plan9 since it expects a particular
 			// wording for a "no such file or directory" error.
 			continue
 		}

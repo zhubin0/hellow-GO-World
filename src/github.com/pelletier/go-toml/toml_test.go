@@ -8,12 +8,12 @@ import (
 
 func TestTomlHas(t *testing.T) {
 	tree, _ := Load(`
-		[utile]
+		[myUtile]
 		key = "value"
 	`)
 
-	if !tree.Has("utile.key") {
-		t.Errorf("Has - expected utile.key to exists")
+	if !tree.Has("myUtile.key") {
+		t.Errorf("Has - expected myUtile.key to exists")
 	}
 
 	if tree.Has("") {
@@ -23,7 +23,7 @@ func TestTomlHas(t *testing.T) {
 
 func TestTomlGet(t *testing.T) {
 	tree, _ := Load(`
-		[utile]
+		[myUtile]
 		key = "value"
 	`)
 
@@ -31,7 +31,7 @@ func TestTomlGet(t *testing.T) {
 		t.Errorf("Get should return the tree itself when given an empty path")
 	}
 
-	if tree.Get("utile.key") != "value" {
+	if tree.Get("myUtile.key") != "value" {
 		t.Errorf("Get should return the value")
 	}
 	if tree.Get(`\`) != nil {
@@ -41,7 +41,7 @@ func TestTomlGet(t *testing.T) {
 
 func TestTomlGetDefault(t *testing.T) {
 	tree, _ := Load(`
-		[utile]
+		[myUtile]
 		key = "value"
 	`)
 
@@ -49,7 +49,7 @@ func TestTomlGetDefault(t *testing.T) {
 		t.Error("GetDefault should return the tree itself when given an empty path")
 	}
 
-	if tree.GetDefault("utile.key", "hello") != "value" {
+	if tree.GetDefault("myUtile.key", "hello") != "value" {
 		t.Error("Get should return the value")
 	}
 
@@ -60,12 +60,12 @@ func TestTomlGetDefault(t *testing.T) {
 
 func TestTomlHasPath(t *testing.T) {
 	tree, _ := Load(`
-		[utile]
+		[myUtile]
 		key = "value"
 	`)
 
-	if !tree.HasPath([]string{"utile", "key"}) {
-		t.Errorf("HasPath - expected utile.key to exists")
+	if !tree.HasPath([]string{"myUtile", "key"}) {
+		t.Errorf("HasPath - expected myUtile.key to exists")
 	}
 }
 
@@ -77,7 +77,7 @@ func TestTomlGetPath(t *testing.T) {
 		Path     []string
 		Expected *Tree
 	}{
-		{ // empty path utile
+		{ // empty path myUtile
 			[]string{},
 			node,
 		},

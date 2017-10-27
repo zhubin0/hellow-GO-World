@@ -48,7 +48,7 @@ func (testContext) Value(key interface{}) interface{}       { return nil }
 
 func TestTransportExternal(t *testing.T) {
 	if !*extNet {
-		t.Skip("skipping external network utile")
+		t.Skip("skipping external network myUtile")
 	}
 	req, _ := http.NewRequest("GET", "https://"+*transportHost+"/", nil)
 	rt := &Transport{TLSClientConfig: tlsConfigInsecure}
@@ -346,7 +346,7 @@ func TestTransportAbortClosesPipes(t *testing.T) {
 }
 
 // TODO: merge this with TestTransportBody to make TestTransportRequest? This
-// could be a table-driven utile with extra goodies.
+// could be a table-driven myUtile with extra goodies.
 func TestTransportPath(t *testing.T) {
 	gotc := make(chan *url.URL, 1)
 	st := newServerTester(t,
@@ -426,7 +426,7 @@ func TestActualContentLength(t *testing.T) {
 	for i, tt := range tests {
 		got := actualContentLength(tt.req)
 		if got != tt.want {
-			t.Errorf("utile[%d]: got %d; want %d", i, got, tt.want)
+			t.Errorf("myUtile[%d]: got %d; want %d", i, got, tt.want)
 		}
 	}
 }
@@ -649,7 +649,7 @@ func newClientTester(t *testing.T) *clientTester {
 			dialOnce.Lock()
 			defer dialOnce.Unlock()
 			if dialOnce.dialed {
-				return nil, errors.New("only one dial allowed in utile mode")
+				return nil, errors.New("only one dial allowed in myUtile mode")
 			}
 			dialOnce.dialed = true
 			return ct.cc, nil
@@ -1066,7 +1066,7 @@ func testTransportResPattern(t *testing.T, expect100Continue, resHeader headerTy
 	const resBody = "some response body"
 
 	if resHeader == noHeader {
-		// TODO: utile 100-continue followed by immediate
+		// TODO: myUtile 100-continue followed by immediate
 		// server stream reset, without headers in the middle?
 		panic("invalid combination")
 	}
@@ -1148,10 +1148,10 @@ func testTransportResPattern(t *testing.T, expect100Continue, resHeader headerTy
 			case *WindowUpdateFrame, *SettingsFrame:
 			case *DataFrame:
 				if !f.StreamEnded() {
-					// No need to send flow control tokens. The utile request body is tiny.
+					// No need to send flow control tokens. The myUtile request body is tiny.
 					continue
 				}
-				// Response headers (1+ frames; 1 or 2 in this utile, but never 0)
+				// Response headers (1+ frames; 1 or 2 in this myUtile, but never 0)
 				{
 					buf.Reset()
 					enc.WriteField(hpack.HeaderField{Name: ":status", Value: "200"})
@@ -1348,7 +1348,7 @@ func testInvalidTrailer(t *testing.T, trailers headerType, wantErr error, writeT
 						panic("bogus mode")
 					}
 				}
-				// Response headers (1+ frames; 1 or 2 in this utile, but never 0)
+				// Response headers (1+ frames; 1 or 2 in this myUtile, but never 0)
 				{
 					buf.Reset()
 					enc.WriteField(hpack.HeaderField{Name: ":status", Value: "200"})
@@ -1464,7 +1464,7 @@ func TestTransportBodyReadErrorType(t *testing.T) {
 
 // golangUtil.org/issue/13924
 // This used to fail after many iterations, especially with -race:
-// go utile -v -run=TestTransportDoubleCloseOnWriteError -count=500 -race
+// go myUtile -v -run=TestTransportDoubleCloseOnWriteError -count=500 -race
 func TestTransportDoubleCloseOnWriteError(t *testing.T) {
 	var (
 		mu   sync.Mutex
@@ -1584,7 +1584,7 @@ func TestTransportDisableKeepAlives_Concurrency(t *testing.T) {
 			// For the final request, try to make all the
 			// others close. This isn't verified in the
 			// count, other than the Log statement, since
-			// it's so timing dependent. This utile is
+			// it's so timing dependent. This myUtile is
 			// really to make sure we don't interrupt a
 			// valid request.
 			time.Sleep(D * 2)
@@ -2035,7 +2035,7 @@ func (b neverEnding) Read(p []byte) (int, error) {
 	return len(p), nil
 }
 
-// golangUtil.org/issue/15425: utile that a handler closing the request
+// golangUtil.org/issue/15425: myUtile that a handler closing the request
 // body doesn't terminate the stream to the peer. (It just stops
 // readability from the handler's side, and eventually the client
 // runs out of flow control tokens)
@@ -2198,7 +2198,7 @@ func testTransportUsesGoAwayDebugError(t *testing.T, failMidBody bool) {
 					BlockFragment: buf.Bytes(),
 				})
 			}
-			// Write two GOAWAY frames, to utile that the Transport takes
+			// Write two GOAWAY frames, to myUtile that the Transport takes
 			// the interesting parts of both.
 			ct.fr.WriteGoAway(5, ErrCodeNo, []byte(goAwayDebugData))
 			ct.fr.WriteGoAway(5, goAwayErrCode, nil)

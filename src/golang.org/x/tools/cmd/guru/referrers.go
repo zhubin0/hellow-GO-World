@@ -131,7 +131,7 @@ func packageReferrers(q *Query, path string) error {
 	}
 	allowErrors(&lconf)
 
-	// The importgraph doesn't treat external utile packages
+	// The importgraph doesn't treat external myUtile packages
 	// as separate nodes, so we must use ImportWithTests.
 	for path := range users {
 		lconf.ImportWithTests(path)
@@ -242,7 +242,7 @@ func globalReferrers(q *Query, qpkg, defpkg string, objposn token.Position, isPk
 	}
 	allowErrors(&lconf)
 
-	// The importgraph doesn't treat external utile packages
+	// The importgraph doesn't treat external myUtile packages
 	// as separate nodes, so we must use ImportWithTests.
 	for path := range users {
 		lconf.ImportWithTests(path)

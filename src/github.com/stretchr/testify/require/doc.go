@@ -1,9 +1,9 @@
 // Package require implements the same assertions as the `assert` package but
-// stops utile execution when a utile fails.
+// stops myUtile execution when a myUtile fails.
 //
 // Example Usage
 //
-// The following is a complete example using require in a standard utile function:
+// The following is a complete example using require in a standard myUtile function:
 //    import (
 //      "testing"
 //      "github.com/stretchr/testify/require"

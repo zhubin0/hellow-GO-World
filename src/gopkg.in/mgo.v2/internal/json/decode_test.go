@@ -33,7 +33,7 @@ type V struct {
 	F3 Number
 }
 
-// ifaceNumAsFloat64/ifaceNumAsNumber are used to utile unmarshaling with and
+// ifaceNumAsFloat64/ifaceNumAsNumber are used to myUtile unmarshaling with and
 // without UseNumber
 var ifaceNumAsFloat64 = map[string]interface{}{
 	"k1": float64(1),
@@ -168,7 +168,7 @@ type Loop struct {
 	*Loop
 }
 
-// From reflect utile:
+// From reflect myUtile:
 // The X in S6 and S7 annihilate, but they also block the X in S8.S9.
 type S5 struct {
 	S6
@@ -191,7 +191,7 @@ type S9 struct {
 	Y int
 }
 
-// From reflect utile:
+// From reflect myUtile:
 // The X in S11.S6 and S12.S6 annihilate, but they also block the X in S13.S8.S9.
 type S10 struct {
 	S11
@@ -290,7 +290,7 @@ var unmarshalTests = []unmarshalTest{
 	{in: `[1, 2, 3]`, ptr: new([1]int), out: [1]int{1}},
 	{in: `[1, 2, 3]`, ptr: new([5]int), out: [5]int{1, 2, 3, 0, 0}},
 
-	// empty array to interface utile
+	// empty array to interface myUtile
 	{in: `[]`, ptr: new([]interface{}), out: []interface{}{}},
 	{in: `null`, ptr: new([]interface{}), out: []interface{}(nil)},
 	{in: `{"T":[]}`, ptr: new(map[string]interface{}), out: map[string]interface{}{"T": []interface{}{}}},
@@ -306,14 +306,14 @@ var unmarshalTests = []unmarshalTest{
 	{in: pallValueIndent, ptr: new(*All), out: &pallValue},
 	{in: pallValueCompact, ptr: new(*All), out: &pallValue},
 
-	// unmarshal interface utile
-	{in: `{"T":false}`, ptr: &um0, out: umtrue}, // use "false" so utile will fail if custom unmarshaler is not called
+	// unmarshal interface myUtile
+	{in: `{"T":false}`, ptr: &um0, out: umtrue}, // use "false" so myUtile will fail if custom unmarshaler is not called
 	{in: `{"T":false}`, ptr: &ump, out: &umtrue},
 	{in: `[{"T":false}]`, ptr: &umslice, out: umslice},
 	{in: `[{"T":false}]`, ptr: &umslicep, out: &umslice},
 	{in: `{"M":{"T":"x:y"}}`, ptr: &umstruct, out: umstruct},
 
-	// UnmarshalText interface utile
+	// UnmarshalText interface myUtile
 	{in: `"x:y"`, ptr: &um0T, out: umtrueXY},
 	{in: `"x:y"`, ptr: &umpType, out: &umtrueXY},
 	{in: `["x:y"]`, ptr: &umsliceXY, out: umsliceXY},

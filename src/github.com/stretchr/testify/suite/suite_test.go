@@ -11,7 +11,7 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-// SuiteRequireTwice is intended to utile the usage of suite.Require in two
+// SuiteRequireTwice is intended to myUtile the usage of suite.Require in two
 // different tests
 type SuiteRequireTwice struct{ Suite }
 
@@ -113,18 +113,18 @@ func (suite *SuiteSkipTester) TearDownSuite() {
 	suite.TearDownSuiteRunCount++
 }
 
-// The SetupTest method will be run before every utile in the suite.
+// The SetupTest method will be run before every myUtile in the suite.
 func (suite *SuiteTester) SetupTest() {
 	suite.SetupTestRunCount++
 }
 
-// The TearDownTest method will be run after every utile in the suite.
+// The TearDownTest method will be run after every myUtile in the suite.
 func (suite *SuiteTester) TearDownTest() {
 	suite.TearDownTestRunCount++
 }
 
 // Every method in a testing suite that begins with "Test" will be run
-// as a utile.  TestOne is an example of a utile.  For the purposes of
+// as a myUtile.  TestOne is an example of a myUtile.  For the purposes of
 // this example, we've included assertions in the tests, since most
 // tests will issue assertions.
 func (suite *SuiteTester) TestOne() {
@@ -134,7 +134,7 @@ func (suite *SuiteTester) TestOne() {
 	suite.Equal(suite.TestOneRunCount, beforeCount+1)
 }
 
-// TestTwo is another example of a utile.
+// TestTwo is another example of a myUtile.
 func (suite *SuiteTester) TestTwo() {
 	beforeCount := suite.TestTwoRunCount
 	suite.TestTwoRunCount++
@@ -147,19 +147,19 @@ func (suite *SuiteTester) TestSkip() {
 }
 
 // NonTestMethod does not begin with "Test", so it will not be run by
-// testify as a utile in the suite.  This is useful for creating helper
+// testify as a myUtile in the suite.  This is useful for creating helper
 // methods for your tests.
 func (suite *SuiteTester) NonTestMethod() {
 	suite.NonTestMethodRunCount++
 }
 
-// TestRunSuite will be run by the 'go utile' command, so within it, we
+// TestRunSuite will be run by the 'go myUtile' command, so within it, we
 // can run our suite using the Run(*testing.T, TestingSuite) function.
 func TestRunSuite(t *testing.T) {
 	suiteTester := new(SuiteTester)
 	Run(t, suiteTester)
 
-	// Normally, the utile would end here.  The following are simply
+	// Normally, the myUtile would end here.  The following are simply
 	// some assertions to ensure that the Run function is working as
 	// intended - they are not part of the example.
 
@@ -197,17 +197,17 @@ func TestRunSuite(t *testing.T) {
 		assert.False(t, when.IsZero())
 	}
 
-	// There are three utile methods (TestOne, TestTwo, and TestSkip), so
+	// There are three myUtile methods (TestOne, TestTwo, and TestSkip), so
 	// the SetupTest and TearDownTest methods (which should be run once for
-	// each utile) should have been run three times.
+	// each myUtile) should have been run three times.
 	assert.Equal(t, suiteTester.SetupTestRunCount, 3)
 	assert.Equal(t, suiteTester.TearDownTestRunCount, 3)
 
-	// Each utile should have been run once.
+	// Each myUtile should have been run once.
 	assert.Equal(t, suiteTester.TestOneRunCount, 1)
 	assert.Equal(t, suiteTester.TestTwoRunCount, 1)
 
-	// Methods that don't match the utile method identifier shouldn't
+	// Methods that don't match the myUtile method identifier shouldn't
 	// have been run at all.
 	assert.Equal(t, suiteTester.NonTestMethodRunCount, 0)
 

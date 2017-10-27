@@ -146,7 +146,7 @@ get         download and install packages and dependencies
 install     compile and install packages and dependencies
 list        list packages
 run         compile and run Go program
-utile        utile packages
+myUtile        myUtile packages
 tool        run specified go tool
 version     print Go version
 vet         run go tool vet on packages
@@ -210,7 +210,7 @@ The -i flag installs the packages that are dependencies of the target.
 </p>
 <p>
 The build flags are shared by the build, clean, get, install, list, run,
-and utile commands:
+and myUtile commands:
 </p>
 <pre>-a
 	force rebuilding of packages that are already up-to-date.
@@ -218,7 +218,7 @@ and utile commands:
 	print the commands but do not run them.
 -p n
 	the number of programs, such as build commands or
-	utile binaries, that can be run in parallel.
+	myUtile binaries, that can be run in parallel.
 	The default is the number of CPUs available.
 -race
 	enable data race detection.
@@ -308,14 +308,14 @@ Specifically, clean removes the following files from each of the
 source directories corresponding to the import paths:
 </p>
 <pre>_obj/            old object directory, left from Makefiles
-_test/           old utile directory, left from Makefiles
+_test/           old myUtile directory, left from Makefiles
 _testmain.go     old gotest file, left from Makefiles
-utile.out         old utile log, left from Makefiles
-build.out        old utile log, left from Makefiles
+myUtile.out         old myUtile log, left from Makefiles
+build.out        old myUtile log, left from Makefiles
 *.[568ao]        object files, left from Makefiles
 
 DIR(.exe)        from go build
-DIR.utile(.exe)   from go utile -c
+DIR.myUtile(.exe)   from go myUtile -c
 MAINFILE(.exe)   from go build MAINFILE.go
 *.so             from SWIG
 </pre>
@@ -546,7 +546,7 @@ files. Those commands can run any process but the intent is to
 create or update Go source files.
 </p>
 <p>
-Go generate is never run automatically by go build, go get, go utile,
+Go generate is never run automatically by go build, go get, go myUtile,
 and so on. It must be run explicitly.
 </p>
 <p>
@@ -917,11 +917,11 @@ See also: go build.
 <p>
 Usage:
 </p>
-<pre>go utile [build/utile flags] [packages] [build/utile flags &amp; utile binary flags]
+<pre>go myUtile [build/myUtile flags] [packages] [build/myUtile flags &amp; myUtile binary flags]
 </pre>
 <p>
-&#39;Go utile&#39; automates testing the packages named by the import paths.
-It prints a summary of the utile results in the format:
+&#39;Go myUtile&#39; automates testing the packages named by the import paths.
+It prints a summary of the myUtile results in the format:
 </p>
 <pre>ok   archive/tar   0.011s
 FAIL archive/zip   0.022s
@@ -932,58 +932,58 @@ ok   compress/gzip 0.033s
 followed by detailed output for each failed package.
 </p>
 <p>
-&#39;Go utile&#39; recompiles each package along with any files with names matching
+&#39;Go myUtile&#39; recompiles each package along with any files with names matching
 the file pattern &#34;*_test.go&#34;.
 Files whose names begin with &#34;_&#34; (including &#34;_test.go&#34;) or &#34;.&#34; are ignored.
-These additional files can contain utile functions, benchmark functions, and
+These additional files can contain myUtile functions, benchmark functions, and
 example functions.  See &#39;go help testfunc&#39; for more.
-Each listed package causes the execution of a separate utile binary.
+Each listed package causes the execution of a separate myUtile binary.
 </p>
 <p>
 Test files that declare a package with the suffix &#34;_test&#34; will be compiled as a
-separate package, and then linked and run with the main utile binary.
+separate package, and then linked and run with the main myUtile binary.
 </p>
 <p>
 The go tool will ignore a directory named &#34;testdata&#34;, making it available
 to hold ancillary data needed by the tests.
 </p>
 <p>
-By default, go utile needs no arguments.  It compiles and tests the package
+By default, go myUtile needs no arguments.  It compiles and tests the package
 with source in the current directory, including tests, and runs the tests.
 </p>
 <p>
 The package is built in a temporary directory so it does not interfere with the
-non-utile installation.
+non-myUtile installation.
 </p>
 <p>
-In addition to the build flags, the flags handled by &#39;go utile&#39; itself are:
+In addition to the build flags, the flags handled by &#39;go myUtile&#39; itself are:
 </p>
 <pre>-args
     Pass the remainder of the command line (everything after -args)
-    to the utile binary, uninterpreted and unchanged.
+    to the myUtile binary, uninterpreted and unchanged.
     Because this flag consumes the remainder of the command line,
     the package list (if present) must appear before this flag.
 
 -c
-    Compile the utile binary to pkg.utile but do not run it
+    Compile the myUtile binary to pkg.myUtile but do not run it
     (where pkg is the last element of the package&#39;s import path).
     The file name can be changed with the -o flag.
 
 -exec xprog
-    Run the utile binary using xprog. The behavior is the same as
+    Run the myUtile binary using xprog. The behavior is the same as
     in &#39;go run&#39;. See &#39;go help run&#39; for details.
 
 -i
-    Install packages that are dependencies of the utile.
-    Do not run the utile.
+    Install packages that are dependencies of the myUtile.
+    Do not run the myUtile.
 
 -o file
-    Compile the utile binary to the named file.
-    The utile still runs (unless -c or -i is specified).
+    Compile the myUtile binary to the named file.
+    The myUtile still runs (unless -c or -i is specified).
 </pre>
 <p>
-The utile binary also accepts flags that control execution of the utile; these
-flags are also accessible by &#39;go utile&#39;. See &#39;go help testflag&#39; for details.
+The myUtile binary also accepts flags that control execution of the myUtile; these
+flags are also accessible by &#39;go myUtile&#39;. See &#39;go help testflag&#39; for details.
 </p>
 <p>
 For more about build flags, see &#39;go help build&#39;.
@@ -1147,7 +1147,7 @@ line comment. See the go/build package documentation for
 more details.
 </p>
 <p>
-Non-utile Go source files can also include a //go:binary-only-package
+Non-myUtile Go source files can also include a //go:binary-only-package
 comment, indicating that the package sources are included
 for documentation only and must not be used to build the
 package binary. This enables distribution of Go packages in
@@ -1419,10 +1419,10 @@ The toolchain supports relative import paths as a shortcut in two ways.
 First, a relative path can be used as a shorthand on the command line.
 If you are working in the directory containing the code imported as
 &#34;unicode&#34; and want to run the tests for &#34;unicode/utf8&#34;, you can type
-&#34;go utile ./utf8&#34; instead of needing to specify the full path.
-Similarly, in the reverse situation, &#34;go utile ..&#34; will utile &#34;unicode&#34; from
+&#34;go myUtile ./utf8&#34; instead of needing to specify the full path.
+Similarly, in the reverse situation, &#34;go myUtile ..&#34; will myUtile &#34;unicode&#34; from
 the &#34;unicode/utf8&#34; directory. Relative patterns are also allowed, like
-&#34;go utile ./...&#34; to utile all subdirectories. See &#39;go help packages&#39; for details
+&#34;go myUtile ./...&#34; to myUtile all subdirectories. See &#39;go help packages&#39; for details
 on the pattern syntax.
 </p>
 <p>
@@ -1690,8 +1690,8 @@ by the go tool, as are directories named &#34;testdata&#34;.
 </p>
 <h3 id="hdr-Description_of_testing_flags">Description of testing flags</h3>
 <p>
-The &#39;go utile&#39; command takes both flags that apply to &#39;go utile&#39; itself
-and flags that apply to the resulting utile binary.
+The &#39;go myUtile&#39; command takes both flags that apply to &#39;go myUtile&#39; itself
+and flags that apply to the resulting myUtile binary.
 </p>
 <p>
 Several of the flags control profiling and write an execution profile
@@ -1700,8 +1700,8 @@ information.  The --alloc_space, --alloc_objects, and --show_bytes
 options of pprof control how the information is presented.
 </p>
 <p>
-The following flags are recognized by the &#39;go utile&#39; command and
-control the execution of any utile:
+The following flags are recognized by the &#39;go myUtile&#39; command and
+control the execution of any myUtile:
 </p>
 <pre>-bench regexp
     Run (sub)benchmarks matching a regular expression.
@@ -1717,7 +1717,7 @@ control the execution of any utile:
     The default is 1 second (1s).
 
 -count n
-    Run each utile and benchmark n times (default 1).
+    Run each myUtile and benchmark n times (default 1).
     If -cpu is set, run n times for each GOMAXPROCS value.
     Examples are always run once.
 
@@ -1736,8 +1736,8 @@ control the execution of any utile:
     Sets -cover.
 
 -coverpkg pkg1,pkg2,pkg3
-    Apply coverage analysis in each utile to the given list of packages.
-    The default is for each utile to analyze only the package being tested.
+    Apply coverage analysis in each myUtile to the given list of packages.
+    The default is for each myUtile to analyze only the package being tested.
     Packages are specified as import paths.
     Sets -cover.
 
@@ -1747,11 +1747,11 @@ control the execution of any utile:
     of GOMAXPROCS.
 
 -parallel n
-    Allow parallel execution of utile functions that call t.Parallel.
+    Allow parallel execution of myUtile functions that call t.Parallel.
     The value of this flag is the maximum number of tests to run
     simultaneously; by default, it is set to the value of GOMAXPROCS.
-    Note that -parallel only applies within a single utile binary.
-    The &#39;go utile&#39; command may run tests for different packages
+    Note that -parallel only applies within a single myUtile binary.
+    The &#39;go myUtile&#39; command may run tests for different packages
     in parallel as well, according to the setting of the -p flag
     (see &#39;go help build&#39;).
 
@@ -1759,7 +1759,7 @@ control the execution of any utile:
     Run only those tests and examples matching the regular expression.
     For tests the regular expression is split into smaller ones by
     top-level &#39;/&#39;, where each must match the corresponding part of a
-    utile&#39;s identifier.
+    myUtile&#39;s identifier.
 
 -short
     Tell long-running tests to shorten their run time.
@@ -1768,15 +1768,15 @@ control the execution of any utile:
     exhaustive tests.
 
 -timeout t
-    If a utile runs longer than t, panic.
+    If a myUtile runs longer than t, panic.
     The default is 10 minutes (10m).
 
 -v
     Verbose output: log all tests as they are run. Also print all
-    text from Log and Logf calls even if the utile succeeds.
+    text from Log and Logf calls even if the myUtile succeeds.
 </pre>
 <p>
-The following flags are also recognized by &#39;go utile&#39; and can be used to
+The following flags are also recognized by &#39;go myUtile&#39; and can be used to
 profile the tests during execution:
 </p>
 <pre>-benchmem
@@ -1785,7 +1785,7 @@ profile the tests during execution:
 -blockprofile block.out
     Write a goroutine blocking profile to the specified file
     when all tests are complete.
-    Writes utile binary as -c would.
+    Writes myUtile binary as -c would.
 
 -blockprofilerate n
     Control the detail provided in goroutine blocking profiles by
@@ -1793,8 +1793,8 @@ profile the tests during execution:
     See &#39;go doc runtime.SetBlockProfileRate&#39;.
     The profiler aims to sample, on average, one blocking event every
     n nanoseconds the program spends blocked.  By default,
-    if -utile.blockprofile is set without this flag, all blocking events
-    are recorded, equivalent to -utile.blockprofilerate=1.
+    if -myUtile.blockprofile is set without this flag, all blocking events
+    are recorded, equivalent to -myUtile.blockprofilerate=1.
 
 -coverprofile cover.out
     Write a coverage profile to the file after all tests have passed.
@@ -1802,22 +1802,22 @@ profile the tests during execution:
 
 -cpuprofile cpu.out
     Write a CPU profile to the specified file before exiting.
-    Writes utile binary as -c would.
+    Writes myUtile binary as -c would.
 
 -memprofile mem.out
     Write a memory profile to the file after all tests have passed.
-    Writes utile binary as -c would.
+    Writes myUtile binary as -c would.
 
 -memprofilerate n
     Enable more precise (and expensive) memory profiles by setting
     runtime.MemProfileRate.  See &#39;go doc runtime.MemProfileRate&#39;.
-    To profile all memory allocations, use -utile.memprofilerate=1
+    To profile all memory allocations, use -myUtile.memprofilerate=1
     and pass --alloc_space flag to the pprof tool.
 
 -mutexprofile mutex.out
     Write a mutex contention profile to the specified file
     when all tests are complete.
-    Writes utile binary as -c would.
+    Writes myUtile binary as -c would.
 
 -mutexprofilefraction n
     Sample 1 in n stack traces of goroutines holding a
@@ -1825,90 +1825,90 @@ profile the tests during execution:
 
 -outputdir directory
     Place output files from profiling in the specified directory,
-    by default the directory in which &#34;go utile&#34; is running.
+    by default the directory in which &#34;go myUtile&#34; is running.
 
 -trace trace.out
     Write an execution trace to the specified file before exiting.
 </pre>
 <p>
-Each of these flags is also recognized with an optional &#39;utile.&#39; prefix,
-as in -utile.v. When invoking the generated utile binary (the result of
-&#39;go utile -c&#39;) directly, however, the prefix is mandatory.
+Each of these flags is also recognized with an optional &#39;myUtile.&#39; prefix,
+as in -myUtile.v. When invoking the generated myUtile binary (the result of
+&#39;go myUtile -c&#39;) directly, however, the prefix is mandatory.
 </p>
 <p>
-The &#39;go utile&#39; command rewrites or removes recognized flags,
+The &#39;go myUtile&#39; command rewrites or removes recognized flags,
 as appropriate, both before and after the optional package list,
-before invoking the utile binary.
+before invoking the myUtile binary.
 </p>
 <p>
 For instance, the command
 </p>
-<pre>go utile -v -myflag testdata -cpuprofile=prof.out -x
+<pre>go myUtile -v -myflag testdata -cpuprofile=prof.out -x
 </pre>
 <p>
-will compile the utile binary and then run it as
+will compile the myUtile binary and then run it as
 </p>
-<pre>pkg.utile -utile.v -myflag testdata -utile.cpuprofile=prof.out
+<pre>pkg.myUtile -myUtile.v -myflag testdata -myUtile.cpuprofile=prof.out
 </pre>
 <p>
 (The -x flag is removed because it applies only to the go command&#39;s
-execution, not to the utile itself.)
+execution, not to the myUtile itself.)
 </p>
 <p>
-The utile flags that generate profiles (other than for coverage) also
-leave the utile binary in pkg.utile for use when analyzing the profiles.
+The myUtile flags that generate profiles (other than for coverage) also
+leave the myUtile binary in pkg.myUtile for use when analyzing the profiles.
 </p>
 <p>
-When &#39;go utile&#39; runs a utile binary, it does so from within the
-corresponding package&#39;s source code directory. Depending on the utile,
-it may be necessary to do the same when invoking a generated utile
+When &#39;go myUtile&#39; runs a myUtile binary, it does so from within the
+corresponding package&#39;s source code directory. Depending on the myUtile,
+it may be necessary to do the same when invoking a generated myUtile
 binary directly.
 </p>
 <p>
 The command-line package list, if present, must appear before any
-flag not known to the go utile command. Continuing the example above,
+flag not known to the go myUtile command. Continuing the example above,
 the package list would have to appear before -myflag, but could appear
 on either side of -v.
 </p>
 <p>
-To keep an argument for a utile binary from being interpreted as a
-known flag or a package name, use -args (see &#39;go help utile&#39;) which
-passes the remainder of the command line through to the utile binary
+To keep an argument for a myUtile binary from being interpreted as a
+known flag or a package name, use -args (see &#39;go help myUtile&#39;) which
+passes the remainder of the command line through to the myUtile binary
 uninterpreted and unaltered.
 </p>
 <p>
 For instance, the command
 </p>
-<pre>go utile -v -args -x -v
+<pre>go myUtile -v -args -x -v
 </pre>
 <p>
-will compile the utile binary and then run it as
+will compile the myUtile binary and then run it as
 </p>
-<pre>pkg.utile -utile.v -x -v
+<pre>pkg.myUtile -myUtile.v -x -v
 </pre>
 <p>
 Similarly,
 </p>
-<pre>go utile -args math
+<pre>go myUtile -args math
 </pre>
 <p>
-will compile the utile binary and then run it as
+will compile the myUtile binary and then run it as
 </p>
-<pre>pkg.utile math
+<pre>pkg.myUtile math
 </pre>
 <p>
 In the first example, the -x and the second -v are passed through to the
-utile binary unchanged and with no effect on the go command itself.
-In the second example, the argument math is passed through to the utile
+myUtile binary unchanged and with no effect on the go command itself.
+In the second example, the argument math is passed through to the myUtile
 binary, instead of being interpreted as the package list.
 </p>
 <h3 id="hdr-Description_of_testing_functions">Description of testing functions</h3>
 <p>
-The &#39;go utile&#39; command expects to find utile, benchmark, and example functions
-in the &#34;*_test.go&#34; files corresponding to the package under utile.
+The &#39;go myUtile&#39; command expects to find myUtile, benchmark, and example functions
+in the &#34;*_test.go&#34; files corresponding to the package under myUtile.
 </p>
 <p>
-A utile function is one named TestXXX (where XXX is any alphanumeric string
+A myUtile function is one named TestXXX (where XXX is any alphanumeric string
 not starting with a lower case letter) and should have the signature,
 </p>
 <pre>func TestXXX(t *testing.T) { ... }
@@ -1919,7 +1919,7 @@ A benchmark function is one named BenchmarkXXX and should have the signature,
 <pre>func BenchmarkXXX(b *testing.B) { ... }
 </pre>
 <p>
-An example function is similar to a utile function but, instead of using
+An example function is similar to a myUtile function but, instead of using
 *testing.T to report success or failure, prints output to os.Stdout.
 If the last comment in the function starts with &#34;Output:&#34; then the output
 is compared exactly against the comment (see examples below). If the last
@@ -1960,9 +1960,9 @@ Here is another example where the ordering of the output is ignored:
 }
 </pre>
 <p>
-The entire utile file is presented as the example when it contains a single
+The entire myUtile file is presented as the example when it contains a single
 example function, at least one other function, type, variable, or constant
-declaration, and no utile or benchmark functions.
+declaration, and no myUtile or benchmark functions.
 </p>
 <p>
 See the documentation of the testing package for more information.

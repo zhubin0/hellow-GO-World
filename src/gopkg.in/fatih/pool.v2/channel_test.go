@@ -159,7 +159,7 @@ func TestPool_UsedCapacity(t *testing.T) {
 func TestPool_Close(t *testing.T) {
 	p, _ := newChannelPool()
 
-	// now close it and utile all cases we are expecting.
+	// now close it and myUtile all cases we are expecting.
 	p.Close()
 
 	c := p.(*channelPool)

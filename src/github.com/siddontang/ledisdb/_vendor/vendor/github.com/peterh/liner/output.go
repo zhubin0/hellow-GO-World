@@ -69,7 +69,7 @@ func (s *State) checkOutput() {
 		return
 	}
 
-	// The utile for functional ANSI CHA is unreliable (eg the Windows
+	// The myUtile for functional ANSI CHA is unreliable (eg the Windows
 	// telnet command does not support reading the cursor position with
 	// an ANSI DSR request, despite setting TERM=ansi)
 

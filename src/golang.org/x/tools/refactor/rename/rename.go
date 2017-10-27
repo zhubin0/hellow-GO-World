@@ -284,7 +284,7 @@ func Main(ctxt *build.Context, offsetFlag, fromFlag, to string) error {
 		// Enumerate the set of potentially affected packages.
 		affectedPackages := make(map[string]bool)
 		for _, obj := range fromObjects {
-			// External utile packages are never imported,
+			// External myUtile packages are never imported,
 			// so they will never appear in the graph.
 			for path := range rev.Search(obj.Pkg().Path()) {
 				affectedPackages[path] = true

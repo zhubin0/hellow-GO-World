@@ -707,7 +707,7 @@ func (c *Command) ExecuteC() (cmd *Command, err error) {
 
 	var args []string
 
-	// Workaround FAIL with "go utile -v" or "cobra.utile -utile.v", see #155
+	// Workaround FAIL with "go myUtile -v" or "cobra.myUtile -myUtile.v", see #155
 	if c.args == nil && filepath.Base(os.Args[0]) != "cobra.test" {
 		args = os.Args[1:]
 	} else {

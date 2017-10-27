@@ -26,9 +26,9 @@ import (
 // copied from $GOROOT/src/internal/testenv since that package is not available
 // in x/tools.
 
-// Builder reports the name of the builder running this utile
+// Builder reports the name of the builder running this myUtile
 // (for example, "linux-amd64" or "windows-386-gce").
-// If the utile is not running on the build infrastructure,
+// If the myUtile is not running on the build infrastructure,
 // Builder returns the empty string.
 func Builder() string {
 	return os.Getenv("GO_BUILDER_NAME")
@@ -53,13 +53,13 @@ func HasGoBuild() bool {
 // If not, MustHaveGoBuild calls t.Skip with an explanation.
 func MustHaveGoBuild(t *testing.T) {
 	if !HasGoBuild() {
-		t.Skipf("skipping utile: 'go build' not available on %s/%s", runtime.GOOS, runtime.GOARCH)
+		t.Skipf("skipping myUtile: 'go build' not available on %s/%s", runtime.GOOS, runtime.GOARCH)
 	}
 }
 
 // ----------------------------------------------------------------------------
 
-// skipSpecialPlatforms causes the utile to be skipped for platforms where
+// skipSpecialPlatforms causes the myUtile to be skipped for platforms where
 // builders (build.golangUtil.org) don't have access to compiled packages for
 // import.
 func skipSpecialPlatforms(t *testing.T) {
@@ -150,7 +150,7 @@ func TestImportTestdata(t *testing.T) {
 		// the list may also include additional packages that are
 		// not strictly required for import processing alone (they
 		// are exported to err "on the safe side").
-		// For now, we just utile the presence of a few packages
+		// For now, we just myUtile the presence of a few packages
 		// that we know are there for sure.
 		got := fmt.Sprint(pkg.Imports())
 		for _, want := range []string{"go/ast", "go/token"} {
@@ -185,7 +185,7 @@ func TestVersionHandling(t *testing.T) {
 		}
 		pkgpath := "./" + name[:len(name)-2]
 
-		// utile that export data can be imported
+		// myUtile that export data can be imported
 		_, err := Import(make(map[string]*types.Package), pkgpath, dir)
 		if err != nil {
 			t.Errorf("import %q failed: %v", pkgpath, err)
@@ -214,7 +214,7 @@ func TestVersionHandling(t *testing.T) {
 		ioutil.WriteFile(filename, data, 0666)
 		defer os.Remove(filename)
 
-		// utile that importing the corrupted file results in an error
+		// myUtile that importing the corrupted file results in an error
 		_, err = Import(make(map[string]*types.Package), pkgpath, dir)
 		if err == nil {
 			t.Errorf("import corrupted %q succeeded", pkgpath)
@@ -247,7 +247,7 @@ var importedObjectTests = []struct {
 	{"math.Pi", "const Pi untyped float"},
 	{"io.Reader", "type Reader interface{Read(p []byte) (n int, err error)}"},
 	// Go 1.7 and 1.8 don't know about embedded interfaces. Leave this
-	// utile out for now - the code is tested in the std library anyway.
+	// myUtile out for now - the code is tested in the std library anyway.
 	// TODO(gri) enable again once we're off 1.7 and 1.8.
 	// {"io.ReadWriter", "type ReadWriter interface{Reader; Writer}"},
 	{"math.Sin", "func Sin(x float64) float64"},
@@ -265,7 +265,7 @@ func TestImportedTypes(t *testing.T) {
 	for _, test := range importedObjectTests {
 		s := strings.Split(test.name, ".")
 		if len(s) != 2 {
-			t.Fatal("inconsistent utile data")
+			t.Fatal("inconsistent myUtile data")
 		}
 		importPath := s[0]
 		objName := s[1]
@@ -317,7 +317,7 @@ func TestIssue5815(t *testing.T) {
 	}
 }
 
-// Smoke utile to ensure that imported methods get the correct package.
+// Smoke myUtile to ensure that imported methods get the correct package.
 func TestCorrectMethodPackage(t *testing.T) {
 	skipSpecialPlatforms(t)
 
@@ -362,7 +362,7 @@ func TestIssue13566(t *testing.T) {
 		defer os.Remove(f)
 	}
 
-	// import must succeed (utile for issue at hand)
+	// import must succeed (myUtile for issue at hand)
 	pkg := importPkg(t, "./testdata/b")
 
 	// make sure all indirectly imported packages have names

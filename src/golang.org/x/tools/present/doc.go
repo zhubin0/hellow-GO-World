@@ -127,7 +127,7 @@ Any line in the program that ends with the four characters
 	OMIT
 is deleted from the source before inclusion, making it easy
 to write things like
-	.code utile.go /START OMIT/,/END OMIT/
+	.code myUtile.go /START OMIT/,/END OMIT/
 to find snippets like this
 	tedious_code = boring_function()
 	// START OMIT
@@ -144,13 +144,13 @@ may have a suffix word, such as
 	// HLxxx
 Such highlights are enabled only if the code invocation ends with
 "HL" followed by the word:
-	.code utile.go /^type Foo/,/^}/ HLxxx
+	.code myUtile.go /^type Foo/,/^}/ HLxxx
 
 The .code function may take one or more flags immediately preceding
-the filename. This command shows utile.go in an editable text area:
-	.code -edit utile.go
-This command shows utile.go with line numbers:
-	.code -numbers utile.go
+the filename. This command shows myUtile.go in an editable text area:
+	.code -edit myUtile.go
+This command shows myUtile.go with line numbers:
+	.code -numbers myUtile.go
 
 play:
 

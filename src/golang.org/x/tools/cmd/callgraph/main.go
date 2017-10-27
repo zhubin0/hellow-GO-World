@@ -48,8 +48,8 @@ var (
 	algoFlag = flag.String("algo", "rta",
 		`Call graph construction algorithm (static, cha, rta, pta)`)
 
-	testFlag = flag.Bool("utile", false,
-		"Loads utile code (*_test.go) for imported packages")
+	testFlag = flag.Bool("myUtile", false,
+		"Loads myUtile code (*_test.go) for imported packages")
 
 	formatFlag = flag.String("format",
 		"{{.Caller}}\t--{{.Dynamic}}-{{.Line}}:{{.Column}}-->\t{{.Callee}}",
@@ -67,7 +67,7 @@ const Usage = `callgraph: display the the call graph of a Go program.
 
 Usage:
 
-  callgraph [-algo=static|cha|rta|pta] [-utile] [-format=...] <args>...
+  callgraph [-algo=static|cha|rta|pta] [-myUtile] [-format=...] <args>...
 
 Flags:
 
@@ -80,10 +80,10 @@ Flags:
 
            The algorithms are ordered by increasing precision in their
            treatment of dynamic calls (and thus also computational cost).
-           RTA and PTA require a whole program (main or utile), and
+           RTA and PTA require a whole program (main or myUtile), and
            include only functions reachable from main.
 
--utile      Include the package's tests in the analysis.
+-myUtile      Include the package's tests in the analysis.
 
 -format    Specifies the format in which each call graph edge is displayed.
            One of:
@@ -131,10 +131,10 @@ Examples:
     callgraph -format '{{.Caller.Pkg.Pkg.Path}} -> {{.Callee.Pkg.Pkg.Path}}' \
       $GOROOT/src/net/http/triv.go | sort | uniq
 
-  Show functions that make dynamic calls into the 'fmt' utile package,
+  Show functions that make dynamic calls into the 'fmt' myUtile package,
   using the pointer analysis algorithm:
 
-    callgraph -format='{{.Caller}} -{{.Dynamic}}-> {{.Callee}}' -utile -algo=pta fmt |
+    callgraph -format='{{.Caller}} -{{.Dynamic}}-> {{.Callee}}' -myUtile -algo=pta fmt |
       sed -ne 's/-dynamic-/--/p' |
       sed -ne 's/-->.*fmt_test.*$//p' | sort | uniq
 
@@ -308,7 +308,7 @@ func doCallgraph(ctxt *build.Context, algo, format string, tests bool, args []st
 func mainPackages(prog *ssa.Program, tests bool) ([]*ssa.Package, error) {
 	pkgs := prog.AllPackages() // TODO(adonovan): use only initial packages
 
-	// If tests, create a "testmain" package for each utile.
+	// If tests, create a "testmain" package for each myUtile.
 	var mains []*ssa.Package
 	if tests {
 		for _, pkg := range pkgs {

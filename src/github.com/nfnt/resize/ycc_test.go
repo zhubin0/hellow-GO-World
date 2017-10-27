@@ -74,7 +74,7 @@ func TestConvertYCbCr(t *testing.T) {
 			}
 		}
 
-		// utile conversion from YCbCr to ycc
+		// myUtile conversion from YCbCr to ycc
 		yc := imageYCbCrToYCC(m)
 		for y := m.Rect.Min.Y; y < m.Rect.Max.Y; y++ {
 			for x := m.Rect.Min.X; x < m.Rect.Max.X; x++ {
@@ -98,7 +98,7 @@ func TestConvertYCbCr(t *testing.T) {
 			}
 		}
 
-		// utile conversion from ycc back to YCbCr
+		// myUtile conversion from ycc back to YCbCr
 		ym := yc.YCbCr()
 		for y := m.Rect.Min.Y; y < m.Rect.Max.Y; y++ {
 			for x := m.Rect.Min.X; x < m.Rect.Max.X; x++ {

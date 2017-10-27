@@ -896,7 +896,7 @@ func (s *S) TestPreserveSocketCountOnSync(c *C) {
 		startedAll <- true
 	}()
 
-	// Do not allow the utile to return before the goroutine above is done.
+	// Do not allow the myUtile to return before the goroutine above is done.
 	defer func() {
 		<-startedAll
 	}()
@@ -1012,7 +1012,7 @@ func (s *S) TestDialWithTimeout(c *C) {
 	timeout := 2 * time.Second
 	started := time.Now()
 
-	// 40009 isn't used by the utile servers.
+	// 40009 isn't used by the myUtile servers.
 	session, err := mgo.DialWithTimeout("localhost:40009", timeout)
 	if session != nil {
 		session.Close()
@@ -1177,7 +1177,7 @@ func (s *S) TestDirect(c *C) {
 	session.SetSyncTimeout(5e8 * time.Nanosecond)
 
 	coll := session.DB("mydb").C("mycoll")
-	err = coll.Insert(M{"utile": 1})
+	err = coll.Insert(M{"myUtile": 1})
 	c.Assert(err, ErrorMatches, "no reachable servers")
 
 	// Writing to the local database is okay.
@@ -1215,7 +1215,7 @@ func (s *S) TestDirectToUnknownStateMember(c *C) {
 	session.SetSyncTimeout(5e8 * time.Nanosecond)
 
 	coll := session.DB("mydb").C("mycoll")
-	err = coll.Insert(M{"utile": 1})
+	err = coll.Insert(M{"myUtile": 1})
 	c.Assert(err, ErrorMatches, "no reachable servers")
 
 	// Slave is still reachable.
@@ -1520,7 +1520,7 @@ func (s *S) TestRemovalOfClusterMember(c *C) {
 		master.Close()
 		slave.Close()
 
-		// Ensure suite syncs up with the changes before next utile.
+		// Ensure suite syncs up with the changes before next myUtile.
 		s.Stop(":40201")
 		s.StartAll()
 		time.Sleep(8 * time.Second)
@@ -1859,7 +1859,7 @@ func (s *S) TestNearestSecondary(c *C) {
 	// Wait for the ping to be processed.
 	time.Sleep(500 * time.Millisecond)
 
-	// Repeating the utile should now pick the former server consistently.
+	// Repeating the myUtile should now pick the former server consistently.
 	for i := 0; i < 10; i++ {
 		session.Refresh()
 		err = session.Run("serverStatus", &result)
@@ -1921,7 +1921,7 @@ func (s *S) TestNearestServer(c *C) {
 	// Wait for the ping to be processed.
 	time.Sleep(500 * time.Millisecond)
 
-	// Repeating the utile should now pick the primary server consistently.
+	// Repeating the myUtile should now pick the primary server consistently.
 	for i := 0; i < 10; i++ {
 		session.Refresh()
 		err = session.Run("serverStatus", &result)
@@ -2060,7 +2060,7 @@ func (s *S) TestSelectServersWithMongos(c *C) {
 
 func (s *S) TestDoNotFallbackToMonotonic(c *C) {
 	// There was a bug at some point that some functions were
-	// falling back to Monotonic mode. This utile ensures all listIndexes
+	// falling back to Monotonic mode. This myUtile ensures all listIndexes
 	// commands go to the primary, as should happen since the session is
 	// in Strong mode.
 	if !s.versionAtLeast(3, 0) {

@@ -7,11 +7,11 @@ import "reflect"
 const fastpathEnabled = false
 
 // The generated fast-path code is very large, and adds a few seconds to the build time.
-// This causes utile execution, execution of small tools which use codec, etc
+// This causes myUtile execution, execution of small tools which use codec, etc
 // to take a long time.
 //
 // To mitigate, we now support the notfastpath tag.
-// This tag disables fastpath during build, allowing for faster build, utile execution,
+// This tag disables fastpath during build, allowing for faster build, myUtile execution,
 // short-program runs, etc.
 
 func fastpathDecodeTypeSwitch(iv interface{}, d *Decoder) bool      { return false }

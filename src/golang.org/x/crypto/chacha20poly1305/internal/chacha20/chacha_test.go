@@ -10,7 +10,7 @@ import (
 )
 
 func TestCore(t *testing.T) {
-	// This is just a smoke utile that checks the example from
+	// This is just a smoke myUtile that checks the example from
 	// https://tools.ietf.org/html/rfc7539#section-2.3.2. The
 	// chacha20poly1305 package contains much more extensive tests of this
 	// code.

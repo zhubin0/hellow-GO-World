@@ -29,7 +29,7 @@ func skipShort(t *testing.T) {
 	once.Do(func() { loadTestData(t) })
 }
 
-// This regression utile runs the utile set in NormalizationTest.txt
+// This regression myUtile runs the myUtile set in NormalizationTest.txt
 // (taken from http://www.unicode.org/Public/<unicode.Version>/ucd/).
 //
 // NormalizationTest.txt has form:
@@ -38,7 +38,7 @@ func skipShort(t *testing.T) {
 // 1E0A;1E0A;0044 0307;1E0A;0044 0307; # (Ḋ; Ḋ; D◌̇; Ḋ; D◌̇; ) LATIN CAPITAL LETTER D WITH DOT ABOVE
 // 1E0C;1E0C;0044 0323;1E0C;0044 0323; # (Ḍ; Ḍ; D◌̣; Ḍ; D◌̣; ) LATIN CAPITAL LETTER D WITH DOT BELOW
 //
-// Each utile has 5 columns (c1, c2, c3, c4, c5), where
+// Each myUtile has 5 columns (c1, c2, c3, c4, c5), where
 // (c1, c2, c3, c4, c5) == (c1, NFC(c1), NFD(c1), NFKC(c1), NFKD(c1))
 //
 // CONFORMANCE:
@@ -88,7 +88,7 @@ type Test struct {
 	name   string
 	partnr int
 	number int
-	r      rune                // used for character by character utile
+	r      rune                // used for character by character myUtile
 	cols   [cMaxColumns]string // Each has 5 entries, see below.
 }
 
@@ -229,7 +229,7 @@ func TestCharacterByCharacter(t *testing.T) {
 			r = tests[i].r
 		}
 		for last++; last < r; last++ {
-			// Check all characters that were not explicitly listed in the utile.
+			// Check all characters that were not explicitly listed in the myUtile.
 			tc := &Test{partnr: 1, number: -1}
 			char := string(last)
 			doTest(t, tc, NFC, char, char)
@@ -268,7 +268,7 @@ func TestPerformance(t *testing.T) {
 	timeout := time.After(1 * time.Second)
 	select {
 	case <-success:
-		// utile completed before the timeout
+		// myUtile completed before the timeout
 	case <-timeout:
 		t.Errorf(`unexpectedly long time to complete PerformanceTest`)
 	}

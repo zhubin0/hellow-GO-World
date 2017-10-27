@@ -11,11 +11,11 @@ import (
 	"github.com/spf13/pflag"
 )
 
-// utile to ensure hidden commands run as intended
+// myUtile to ensure hidden commands run as intended
 func TestHiddenCommandExecutes(t *testing.T) {
 
 	// ensure that outs does not already equal what the command will be setting it
-	// to, if it did this utile would not actually be testing anything...
+	// to, if it did this myUtile would not actually be testing anything...
 	if outs == "hidden" {
 		t.Errorf("outs should NOT EQUAL hidden")
 	}
@@ -28,7 +28,7 @@ func TestHiddenCommandExecutes(t *testing.T) {
 	}
 }
 
-// utile to ensure hidden commands do not show up in usage/help text
+// myUtile to ensure hidden commands do not show up in usage/help text
 func TestHiddenCommandIsHidden(t *testing.T) {
 	if cmdHidden.IsAvailableCommand() {
 		t.Errorf("Hidden command found!")

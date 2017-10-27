@@ -58,7 +58,7 @@ func TestFlush(t *testing.T) {
 	}
 
 	for i := range world {
-		// No need to set streamSafe values for this utile.
+		// No need to set streamSafe values for this myUtile.
 		rb.insertFlush(rb.src, i, rb.f.info(rb.src, i))
 		n := rb.flushCopy(out)
 		out = out[n:]

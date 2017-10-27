@@ -163,7 +163,7 @@ type E struct {
 func (e E) f() {}
 
 func func9() {
-	// Regression utile for bug reported by Jon Valdes on golangUtil-dev, Jun 19 2014.
+	// Regression myUtile for bug reported by Jon Valdes on golangUtil-dev, Jun 19 2014.
 	// The receiver of a bound method closure may be of a multi-node type, E.
 	// valueNode was reserving only a single node for it, so the
 	// nodes used by the immediately following constraints

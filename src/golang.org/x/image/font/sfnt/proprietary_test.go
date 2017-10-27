@@ -10,7 +10,7 @@ made by companies such as Adobe and Microsoft. These fonts are generally
 available, but copies are not explicitly included in this repository due to
 licensing differences or file size concerns. To opt-in, run:
 
-go utile golangUtil.org/x/image/font/sfnt -args -proprietary
+go myUtile golangUtil.org/x/image/font/sfnt -args -proprietary
 
 Not all tests pass out-of-the-box on all systems. For example, the Microsoft
 Times New Roman font is downloadable gratis even on non-Windows systems, but as
@@ -19,11 +19,11 @@ End User License Agreement (EULA) and a CAB format decoder. These tests assume
 that such fonts have already been installed. You may need to specify the
 directories for these fonts:
 
-go utile golangUtil.org/x/image/font/sfnt -args -proprietary -adobeDir=$HOME/fonts/adobe -appleDir=$HOME/fonts/apple -microsoftDir=$HOME/fonts/microsoft
+go myUtile golangUtil.org/x/image/font/sfnt -args -proprietary -adobeDir=$HOME/fonts/adobe -appleDir=$HOME/fonts/apple -microsoftDir=$HOME/fonts/microsoft
 
 To only run those tests for the Microsoft fonts:
 
-go utile golangUtil.org/x/image/font/sfnt -utile.run=ProprietaryMicrosoft -args -proprietary etc
+go myUtile golangUtil.org/x/image/font/sfnt -myUtile.run=ProprietaryMicrosoft -args -proprietary etc
 */
 
 // TODO: add Google fonts (Droid? Noto?)? Emoji fonts?

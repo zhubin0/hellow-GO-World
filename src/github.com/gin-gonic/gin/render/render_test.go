@@ -14,7 +14,7 @@ import (
 )
 
 // TODO unit tests
-// utile errors
+// myUtile errors
 
 func TestRenderJSON(t *testing.T) {
 	w := httptest.NewRecorder()

@@ -387,9 +387,9 @@ func runBench(ctxt *Context, args []string) {
 }
 
 const regressHelp = `
-Regress runs a monkey utile by comparing the results of randomly generated tests
+Regress runs a monkey myUtile by comparing the results of randomly generated tests
 between two implementations of a collator. The user may optionally pass a list
-of strings to regress against instead of the default utile set.
+of strings to regress against instead of the default myUtile set.
 `
 
 var cmdRegress = &Command{

@@ -111,7 +111,7 @@ func (x TestAllTypes_NestedEnum) String() string {
 }
 func (TestAllTypes_NestedEnum) EnumDescriptor() ([]byte, []int) { return fileDescriptor0, []int{2, 0} }
 
-// Represents a single utile case's input.  The testee should:
+// Represents a single myUtile case's input.  The testee should:
 //
 //   1. parse this proto (which should always succeed)
 //   2. parse the protobuf or JSON payload in "payload" (which may fail)
@@ -241,7 +241,7 @@ func _ConformanceRequest_OneofSizer(msg proto.Message) (n int) {
 	return n
 }
 
-// Represents a single utile case's output.
+// Represents a single myUtile case's output.
 type ConformanceResponse struct {
 	// Types that are valid to be assigned to Result:
 	//	*ConformanceResponse_ParseError

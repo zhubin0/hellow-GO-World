@@ -67,7 +67,7 @@ func TestChannelOpenOnAClosedConnectionFails_ReleasesAllocatedChannel(t *testing
 // does not race with shutting the connection down.
 //
 // See https://github.com/streadway/amqp/issues/251 - thanks to jmalloc for the
-// utile case.
+// myUtile case.
 func TestRaceBetweenChannelAndConnectionClose(t *testing.T) {
 	defer time.AfterFunc(10*time.Second, func() { panic("Close deadlock") }).Stop()
 
@@ -167,7 +167,7 @@ func TestPlaintextDialTLS(t *testing.T) {
 		t.Fatalf("parse URI error: %s", err)
 	}
 
-	// We can only utile when we have a plaintext listener
+	// We can only myUtile when we have a plaintext listener
 	if uri.Scheme != "amqp" {
 		t.Skip("requires server listening for plaintext connections")
 	}

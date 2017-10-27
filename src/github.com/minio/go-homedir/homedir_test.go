@@ -30,7 +30,7 @@ func BenchmarkDir(b *testing.B) {
 }
 
 func TestDir(t *testing.T) {
-	// NOTE: This utile is not portable. If user.Current() worked
+	// NOTE: This myUtile is not portable. If user.Current() worked
 	// everywhere, we wouldn't need our package in the first place.
 	u, err := user.Current()
 	if err != nil {

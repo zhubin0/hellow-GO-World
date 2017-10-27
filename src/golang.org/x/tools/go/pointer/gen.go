@@ -498,7 +498,7 @@ func (a *analysis) genAppend(instr *ssa.Call, cgn *cgnode) {
 		return // no allocation for z = append(x) or _ = append(x).
 	}
 
-	// TODO(adonovan): utile append([]byte, ...string) []byte.
+	// TODO(adonovan): myUtile append([]byte, ...string) []byte.
 
 	y := instr.Call.Args[1]
 	tArray := sliceToArray(instr.Call.Args[0].Type())
@@ -1118,7 +1118,7 @@ func (a *analysis) makeCGNode(fn *ssa.Function, obj nodeid, callersite *callsite
 }
 
 // genRootCalls generates the synthetic root of the callgraph and the
-// initial calls from it to the analysis scope, such as main, a utile
+// initial calls from it to the analysis scope, such as main, a myUtile
 // or a library.
 //
 func (a *analysis) genRootCalls() *cgnode {

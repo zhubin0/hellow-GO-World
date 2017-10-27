@@ -10,7 +10,7 @@ import (
 	"golang.org/x/text/runes"
 )
 
-// Compile-time regression utile to ensure that Class is a Set
+// Compile-time regression myUtile to ensure that Class is a Set
 var _ runes.Set = (*class)(nil)
 
 // Ensure that certain characters are (or are not) in the identifer class.

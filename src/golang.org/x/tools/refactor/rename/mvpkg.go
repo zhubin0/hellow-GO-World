@@ -262,7 +262,7 @@ func (m *mover) move() error {
 		filesToUpdate[f] = true
 	}
 
-	// Look through the external utile packages (m.iprog.Created contains the external utile packages).
+	// Look through the external myUtile packages (m.iprog.Created contains the external myUtile packages).
 	for _, info := range m.iprog.Created {
 		// Change the "package" declaration of the external test package.
 		if info.Pkg.Path() == m.from+"_test" {

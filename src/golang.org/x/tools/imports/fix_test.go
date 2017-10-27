@@ -17,7 +17,7 @@ import (
 	"testing"
 )
 
-var only = flag.String("only", "", "If non-empty, the fix utile to run")
+var only = flag.String("only", "", "If non-empty, the fix myUtile to run")
 
 var tests = []struct {
 	name       string
@@ -84,7 +84,7 @@ func bar() {
 	},
 
 	// Adding an import to an existing parenthesized import,
-	// verifying it goes into the first section. (utile 2)
+	// verifying it goes into the first section. (myUtile 2)
 	{
 		name: "factored_imports_add_first_sec_2",
 		in: `package foo
@@ -914,11 +914,11 @@ func TestFixImports(t *testing.T) {
 }
 
 // Test support for packages in GOPATH that are actually symlinks.
-// Also utile that a symlink loop does not block the process.
+// Also myUtile that a symlink loop does not block the process.
 func TestImportSymlinks(t *testing.T) {
 	switch runtime.GOOS {
 	case "windows", "plan9":
-		t.Skipf("skipping utile on %q as there are no symlinks", runtime.GOOS)
+		t.Skipf("skipping myUtile on %q as there are no symlinks", runtime.GOOS)
 	}
 
 	newGoPath, err := ioutil.TempDir("", "symlinktest")
@@ -1024,11 +1024,11 @@ var (
 }
 
 // Test for correctly identifying the name of a vendored package when it
-// differs from its directory name. In this utile, the import line
+// differs from its directory name. In this myUtile, the import line
 // "mypkg.com/mypkg.v1" would be removed if goimports wasn't able to detect
 // that the package name is "mypkg".
 func TestFixImportsVendorPackage(t *testing.T) {
-	// Skip this utile on go versions with no vendor support.
+	// Skip this myUtile on go versions with no vendor support.
 	if _, err := os.Stat(filepath.Join(runtime.GOROOT(), "src/vendor")); err != nil {
 		t.Skip(err)
 	}
@@ -1150,7 +1150,7 @@ func withEmptyGoPath(fn func()) {
 func TestFindImportInternal(t *testing.T) {
 	withEmptyGoPath(func() {
 		// Check for src/internal/race, not just src/internal,
-		// so that we can run this utile also against go1.5
+		// so that we can run this myUtile also against go1.5
 		// (which doesn't contain that file).
 		_, err := os.Stat(filepath.Join(runtime.GOROOT(), "src/internal/race"))
 		if err != nil {
@@ -1378,7 +1378,7 @@ func TestRenameWhenPackageNameMismatch(t *testing.T) {
 			"foo/bar/v1/x.go": "package bar \n const X = 1",
 		},
 	}.test(t, func(t *goimportTest) {
-		buf, err := Process(t.gopath+"/src/utile/t.go", []byte("package main \n const Y = bar.X"), &Options{})
+		buf, err := Process(t.gopath+"/src/myUtile/t.go", []byte("package main \n const Y = bar.X"), &Options{})
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -1405,7 +1405,7 @@ func TestLocalPrefix(t *testing.T) {
 			"foo/bar/bar.go": "package bar \n const X = 1",
 		},
 	}.test(t, func(t *goimportTest) {
-		buf, err := Process(t.gopath+"/src/utile/t.go", []byte("package main \n const Y = bar.X \n const _ = runtime.GOOS"), &Options{})
+		buf, err := Process(t.gopath+"/src/myUtile/t.go", []byte("package main \n const Y = bar.X \n const _ = runtime.GOOS"), &Options{})
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -1791,7 +1791,7 @@ func TestPkgIsCandidate(t *testing.T) {
 	for i, tt := range tests {
 		got := pkgIsCandidate(tt.filename, tt.pkgIdent, tt.pkg)
 		if got != tt.want {
-			t.Errorf("utile %d. pkgIsCandidate(%q, %q, %+v) = %v; want %v",
+			t.Errorf("myUtile %d. pkgIsCandidate(%q, %q, %+v) = %v; want %v",
 				i, tt.filename, tt.pkgIdent, *tt.pkg, got, tt.want)
 		}
 	}
@@ -1800,7 +1800,7 @@ func TestPkgIsCandidate(t *testing.T) {
 func TestShouldTraverse(t *testing.T) {
 	switch runtime.GOOS {
 	case "windows", "plan9":
-		t.Skipf("skipping symlink-requiring utile on %s", runtime.GOOS)
+		t.Skipf("skipping symlink-requiring myUtile on %s", runtime.GOOS)
 	}
 
 	dir, err := ioutil.TempDir("", "goimports-")

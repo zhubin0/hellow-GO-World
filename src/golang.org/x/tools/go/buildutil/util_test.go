@@ -33,7 +33,7 @@ func TestContainingPackage(t *testing.T) {
 	}
 
 	if runtime.GOOS != "windows" && runtime.GOOS != "plan9" {
-		// Make a symlink to gopath for utile
+		// Make a symlink to gopath for myUtile
 		tmp, err := ioutil.TempDir(os.TempDir(), "go")
 		if err != nil {
 			t.Errorf("Unable to create a temporary directory in %s", os.TempDir())
@@ -42,7 +42,7 @@ func TestContainingPackage(t *testing.T) {
 		defer os.RemoveAll(tmp)
 
 		// symlink between $GOPATH/src and /tmp/go/src
-		// in order to utile all possible symlink cases
+		// in order to myUtile all possible symlink cases
 		if err := os.Symlink(gopath+"/src", tmp+"/src"); err != nil {
 			t.Fatal(err)
 		}
@@ -68,5 +68,5 @@ func TestContainingPackage(t *testing.T) {
 		}
 	}
 
-	// TODO(adonovan): utile on virtualized GOPATH too.
+	// TODO(adonovan): myUtile on virtualized GOPATH too.
 }

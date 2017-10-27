@@ -441,7 +441,7 @@ const (
 	// UsageIndicatorProduction specifies the usage indicator production state
 	// for usage indicator.
 	UsageIndicatorProduction UsageIndicator = "Production"
-	// UsageIndicatorTest specifies the usage indicator utile state for usage
+	// UsageIndicatorTest specifies the usage indicator myUtile state for usage
 	// indicator.
 	UsageIndicatorTest UsageIndicator = "Test"
 )

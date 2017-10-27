@@ -11,7 +11,7 @@ package ssa_test
 // This file runs the SSA builder in sanity-checking mode on all
 // packages beneath $GOROOT and prints some summary information.
 //
-// Run with "go utile -cpu=8 to" set GOMAXPROCS.
+// Run with "go myUtile -cpu=8 to" set GOMAXPROCS.
 
 import (
 	"go/ast"

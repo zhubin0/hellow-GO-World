@@ -51,7 +51,7 @@ func TestNotSupported(t *testing.T) {
 
 	// Many encodings in the IANA index will likely not be suppored by the
 	// Go encodings. That is fine.
-	// TODO: consider wheter we should add this utile.
+	// TODO: consider wheter we should add this myUtile.
 	// for code, mib := range ianaToMIB {
 	// 	t.Run(fmt.Sprint("IANA:", mib), func(t *testing.T) {
 	// 		if !mibs[mib] {

@@ -14,4 +14,4 @@ func BenchmarkWiz(b *testing.B) {
 	b.Error("wiz")
 }
 
-// Don't utile Examples since that testing package needs pipe(2) for that.
+// Don't myUtile Examples since that testing package needs pipe(2) for that.

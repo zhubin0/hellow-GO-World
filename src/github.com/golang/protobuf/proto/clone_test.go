@@ -144,7 +144,7 @@ var mergeTests = []struct {
 					Key: proto.Int64(31415926535),
 				},
 				{
-					// Explicitly utile a src=nil field
+					// Explicitly myUtile a src=nil field
 					Inner: nil,
 				},
 			},

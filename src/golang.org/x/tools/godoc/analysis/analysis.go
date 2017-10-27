@@ -367,7 +367,7 @@ func Run(pta bool, result *Result) {
 
 	if _, err := conf.FromArgs(args, true); err != nil {
 		// TODO(adonovan): degrade gracefully, not fail totally.
-		// (The crippling case is a parse error in an external utile file.)
+		// (The crippling case is a parse error in an external myUtile file.)
 		result.setStatusf("Analysis failed: %s.", err) // import error
 		return
 	}

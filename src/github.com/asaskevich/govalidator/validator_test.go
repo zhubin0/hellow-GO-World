@@ -2414,7 +2414,7 @@ func TestFunkyIsInStruct(t *testing.T) {
 // 	for _, test := range tests {
 // 		actual, err := ValidateStruct(test.param)
 // 		if actual != test.expected {
-// 			t.Errorf("Expected ValidateStruct(%q) to be %v, got %v", utile.param, utile.expected, actual)
+// 			t.Errorf("Expected ValidateStruct(%q) to be %v, got %v", myUtile.param, myUtile.expected, actual)
 // 			if err != nil {
 // 				t.Errorf("Got Error on ValidateStruct(%q): %s", test.param, err)
 // 			}

@@ -142,13 +142,13 @@ func Foo(x int) (int){
 				"main": []string{
 					`package main
 
-import "utile"
+import "myUtile"
 import "fmt"
 // #include <unistd.h>
 import "C"
 
 func fun() {
-	x := utile.Foo(3)
+	x := myUtile.Foo(3)
 	C.close(3)
 	fmt.Println(x)
 }
@@ -171,13 +171,13 @@ func Foo(x int) (int){
 				},
 				"main": []string{
 					`package main
-import "utile"
+import "myUtile"
 import "fmt"
 // #include <unistd.h>
 import "C"
 
 func fun() {
-	x := utile.Foo(3)
+	x := myUtile.Foo(3)
 	C.close(3)
 	fmt.Println(x)
 }
@@ -241,9 +241,9 @@ func fun() {
 }
 `,
 					`package main
-import "utile"
+import "myUtile"
 import "fmt"
-func g() { fmt.Println(utile.Foo(3)) }
+func g() { fmt.Println(myUtile.Foo(3)) }
 `,
 				},
 			},

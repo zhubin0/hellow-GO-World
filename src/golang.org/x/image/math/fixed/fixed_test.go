@@ -376,7 +376,7 @@ func TestMulu32(t *testing.T) {
 
 // mul (with a lower case 'm') is an alternative implementation of Int26_6.Mul
 // (with an upper case 'M'). It has the same structure as the Int52_12.Mul
-// implementation, but Int26_6.mul is easier to utile since Go has built-in
+// implementation, but Int26_6.mul is easier to myUtile since Go has built-in
 // 64-bit integers.
 func (x Int26_6) mul(y Int26_6) Int26_6 {
 	const M, N = 26, 6
@@ -390,7 +390,7 @@ func (x Int26_6) mul(y Int26_6) Int26_6 {
 // result as two uint32 values.
 //
 // muli32 isn't used directly by this package, but it has the same structure as
-// muli64, and muli32 is easier to utile since Go has built-in 64-bit integers.
+// muli64, and muli32 is easier to myUtile since Go has built-in 64-bit integers.
 func muli32(u, v int32) (lo, hi uint32) {
 	const (
 		s    = 16
@@ -416,8 +416,8 @@ func muli32(u, v int32) (lo, hi uint32) {
 // This implementation comes from $GOROOT/src/runtime/softfloat64.go's mullu
 // function, which is in turn adapted from Hacker's Delight.
 //
-// mulu32 (and its corresponding utile, TestMulu32) isn't used directly by this
-// package. It is provided in this utile file as a reference point to compare
+// mulu32 (and its corresponding myUtile, TestMulu32) isn't used directly by this
+// package. It is provided in this myUtile file as a reference point to compare
 // the muli32 (and TestMuli32) implementations against.
 func mulu32(u, v uint32) (lo, hi uint32) {
 	const (

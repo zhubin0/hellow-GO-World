@@ -26,7 +26,7 @@ func main() {
 `
 
 func TestBuildPackage(t *testing.T) {
-	// There is a more substantial utile of BuildPackage and the
+	// There is a more substantial myUtile of BuildPackage and the
 	// SSA program it builds in ../ssa/builder_test.go.
 
 	fset := token.NewFileSet()

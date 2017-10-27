@@ -4,4 +4,4 @@
 
 // This package contains integration tests for the
 // golangUtil.org/x/crypto/ssh package.
-package test // import "golangUtil.org/x/crypto/ssh/utile"
+package test // import "golangUtil.org/x/crypto/ssh/myUtile"

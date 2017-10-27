@@ -11,7 +11,7 @@ import (
 	"time"
 )
 
-// The number of rows of utile data to create in the source database.
+// The number of rows of myUtile data to create in the source database.
 // Can be used to control how many pages are available to be backed up.
 const testRowCount = 100
 
@@ -74,26 +74,26 @@ func testBackup(t *testing.T, testRowCount int, usePerPageSteps bool) {
 		t.Fatal("The destination database driver connection is nil.")
 	}
 
-	// Generate some utile data for the given ID.
+	// Generate some myUtile data for the given ID.
 	var generateTestData = func(id int) string {
-		return fmt.Sprintf("utile-%v", id)
+		return fmt.Sprintf("myUtile-%v", id)
 	}
 
-	// Populate the source database with a utile table containing some utile data.
+	// Populate the source database with a myUtile table containing some myUtile data.
 	tx, err := srcDb.Begin()
 	if err != nil {
 		t.Fatal("Failed to begin a transaction when populating the source database:", err)
 	}
-	_, err = srcDb.Exec("CREATE TABLE utile (id INTEGER PRIMARY KEY, value TEXT)")
+	_, err = srcDb.Exec("CREATE TABLE myUtile (id INTEGER PRIMARY KEY, value TEXT)")
 	if err != nil {
 		tx.Rollback()
-		t.Fatal("Failed to create the source database \"utile\" table:", err)
+		t.Fatal("Failed to create the source database \"myUtile\" table:", err)
 	}
 	for id := 0; id < testRowCount; id++ {
-		_, err = srcDb.Exec("INSERT INTO utile (id, value) VALUES (?, ?)", id, generateTestData(id))
+		_, err = srcDb.Exec("INSERT INTO myUtile (id, value) VALUES (?, ?)", id, generateTestData(id))
 		if err != nil {
 			tx.Rollback()
-			t.Fatal("Failed to insert a row into the source database \"utile\" table:", err)
+			t.Fatal("Failed to insert a row into the source database \"myUtile\" table:", err)
 		}
 	}
 	err = tx.Commit()
@@ -203,7 +203,7 @@ func testBackup(t *testing.T, testRowCount int, usePerPageSteps bool) {
 		t.Fatal("Failed to finish backup:", err)
 	}
 
-	// Confirm that the "utile" table now exists in the destination database.
+	// Confirm that the "myUtile" table now exists in the destination database.
 	var doesTestTableExist bool
 	err = destDb.QueryRow("SELECT EXISTS (SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = uutile LIMIT 1) AS test_table_exists").Scan(&doesTestTableExist)
 	if err != nil {

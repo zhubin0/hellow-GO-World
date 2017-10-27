@@ -602,7 +602,7 @@ type Resource struct {
 	Tags     *map[string]*string `json:"tags,omitempty"`
 }
 
-// ResourceTestStatus is describes the status of the utile operation along with
+// ResourceTestStatus is describes the status of the myUtile operation along with
 // error information, if applicable.
 type ResourceTestStatus struct {
 	autorest.Response `json:"-"`

@@ -2,7 +2,7 @@
 
 package width
 
-// This code is shared between the main code generator and the utile code.
+// This code is shared between the main code generator and the myUtile code.
 
 import (
 	"flag"

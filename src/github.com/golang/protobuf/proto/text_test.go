@@ -116,7 +116,7 @@ func newTestMessage() *pb.MyMessage {
 	b = append(proto.EncodeVarint(201<<3|proto.WireBytes), b...)
 	proto.SetRawExtension(msg, 201, b)
 
-	// Extensions can be plain fields, too, so let's utile that.
+	// Extensions can be plain fields, too, so let's myUtile that.
 	b = append(proto.EncodeVarint(202<<3|proto.WireVarint), 19)
 	proto.SetRawExtension(msg, 202, b)
 
@@ -309,13 +309,13 @@ func TestStringEscaping(t *testing.T) {
 		out string
 	}{
 		{
-			// Test data from C++ utile (TextFormatTest.StringEscape).
+			// Test data from C++ myUtile (TextFormatTest.StringEscape).
 			// Single divergence: we don't escape apostrophes.
 			&pb.Strings{StringField: proto.String("\"A string with ' characters \n and \r newlines and \t tabs and \001 slashes \\ and  multiple   spaces")},
 			"string_field: \"\\\"A string with ' characters \\n and \\r newlines and \\t tabs and \\001 slashes \\\\ and  multiple   spaces\"\n",
 		},
 		{
-			// Test data from the same C++ utile.
+			// Test data from the same C++ myUtile.
 			&pb.Strings{StringField: proto.String("\350\260\267\346\255\214")},
 			"string_field: \"\\350\\260\\267\\346\\255\\214\"\n",
 		},

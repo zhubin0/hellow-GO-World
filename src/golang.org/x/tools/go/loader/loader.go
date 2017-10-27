@@ -92,8 +92,8 @@ type Config struct {
 	//
 	// The map value indicates whether to load tests.  If true, Load
 	// will add and type-check two lists of files to the package:
-	// non-utile files followed by in-package *_test.go files.  In
-	// addition, it will append the external utile package (if any)
+	// non-myUtile files followed by in-package *_test.go files.  In
+	// addition, it will append the external myUtile package (if any)
 	// to Program.Created.
 	ImportPkgs map[string]bool
 
@@ -121,7 +121,7 @@ type Config struct {
 	//
 	// The function may be called twice for the same PackageInfo:
 	// once for the files of the package and again for the
-	// in-package utile files.
+	// in-package myUtile files.
 	//
 	// It must be safe to call concurrently from multiple goroutines.
 	AfterTypeCheck func(info *PackageInfo, files []*ast.File)
@@ -145,7 +145,7 @@ type Program struct {
 
 	// Created[i] contains the initial package whose ASTs or
 	// filenames were supplied by Config.CreatePkgs[i], followed by
-	// the external utile package, if any, of each package in
+	// the external myUtile package, if any, of each package in
 	// Config.ImportPkgs ordered by ImportPath.
 	//
 	// NOTE: these files must not import "C".  Cgo preprocessing is
@@ -243,7 +243,7 @@ It may take one of two forms:
    and parsed.  Those files whose package declaration equals that of
    the non-*_test.go files are included in the primary package.  Test
    files whose package declaration ends with "_test" are type-checked
-   as another package, the 'external' utile package, so that a single
+   as another package, the 'external' myUtile package, so that a single
    import path may denote two packages.  (Whether this behaviour is
    enabled is tool-specific, and may depend on additional flags.)
 
@@ -282,7 +282,7 @@ func (conf *Config) FromArgs(args []string, xtest bool) ([]string, error) {
 		conf.CreateFromFilenames("", args...)
 	} else {
 		// Assume args are directories each denoting a
-		// package and (perhaps) an external utile, iff xtest.
+		// package and (perhaps) an external myUtile, iff xtest.
 		for _, arg := range args {
 			if xtest {
 				conf.ImportWithTests(arg)
@@ -542,7 +542,7 @@ func (conf *Config) Load() (*Program, error) {
 			continue
 		}
 
-		// Needs external utile package?
+		// Needs external myUtile package?
 		if len(bp.XTestGoFiles) > 0 {
 			xtestPkgs = append(xtestPkgs, bp)
 		}
@@ -575,13 +575,13 @@ func (conf *Config) Load() (*Program, error) {
 		info := ii.info
 		imp.importedMu.Unlock()
 
-		// Parse the in-package utile files.
+		// Parse the in-package myUtile files.
 		files, errs := imp.conf.parsePackageFiles(bp, 't')
 		for _, err := range errs {
 			info.appendError(err)
 		}
 
-		// The utile files augmenting package P cannot be imported,
+		// The myUtile files augmenting package P cannot be imported,
 		// but may import packages that import P,
 		// so we must disable the cycle check.
 		imp.addFiles(info, files, false)
@@ -621,7 +621,7 @@ func (conf *Config) Load() (*Program, error) {
 		createPkg(path, dir, files, errs)
 	}
 
-	// Create external utile packages.
+	// Create external myUtile packages.
 	sort.Sort(byImportPath(xtestPkgs))
 	for _, bp := range xtestPkgs {
 		files, errs := imp.conf.parsePackageFiles(bp, 'x')
@@ -730,7 +730,7 @@ func (conf *Config) build() *build.Context {
 // errors that were encountered.
 //
 // 'which' indicates which files to include:
-//    'g': include non-utile *.go source files (GoFiles + processed CgoFiles)
+//    'g': include non-myUtile *.go source files (GoFiles + processed CgoFiles)
 //    't': include in-package *_test.go source files (TestGoFiles)
 //    'x': include external *_test.go source files. (XTestGoFiles)
 //

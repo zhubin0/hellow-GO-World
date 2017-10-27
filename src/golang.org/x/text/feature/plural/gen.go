@@ -39,7 +39,7 @@ package main
 // observations
 //
 //    - the number of different sets of numbers which the plural rules use to
-//      utile inclusion is limited,
+//      myUtile inclusion is limited,
 //    - most numbers that are tested on are < 100
 //
 // This allows us to define a bitmap for each number < 100 where a bit i
@@ -48,7 +48,7 @@ package main
 // this data to determine inclusion.
 //
 // There are a few languages for which this doesn't work. For one Italian and
-// Azerbaijan, which both utile against numbers > 100 for ordinals and Breton,
+// Azerbaijan, which both myUtile against numbers > 100 for ordinals and Breton,
 // which considers whether numbers are multiples of hundreds. The model here
 // could be extended to handle Italian and Azerbaijan fairly easily (by
 // considering the numbers 100, 200, 300, ..., 800, 900 in addition to the first
@@ -70,8 +70,8 @@ import (
 )
 
 var (
-	test = flag.Bool("utile", false,
-		"utile existing tables; can be used to compare web data with package data.")
+	test = flag.Bool("myUtile", false,
+		"myUtile existing tables; can be used to compare web data with package data.")
 	outputFile     = flag.String("output", "tables.go", "output file")
 	outputTestFile = flag.String("testoutput", "data_test.go", "output file")
 
@@ -112,7 +112,7 @@ func main() {
 }
 
 type pluralTest struct {
-	locales string   // space-separated list of locales for this utile
+	locales string   // space-separated list of locales for this myUtile
 	form    int      // Use int instead of Form to simplify generation.
 	integer []string // Entries of the form \d+ or \d+~\d+
 	decimal []string // Entries of the form \f+ or \f+ +~\f+, where f is \d+\.\d+

@@ -144,7 +144,7 @@ func TestCgoOption(t *testing.T) {
 	// When cgo is enabled, the exact file is not specified (since
 	// it varies by platform), but must differ from the generic one.
 	//
-	// The utile also loads the actual file to verify that the
+	// The myUtile also loads the actual file to verify that the
 	// object is indeed defined at that location.
 	for _, test := range []struct {
 		pkg, name, genericFile string

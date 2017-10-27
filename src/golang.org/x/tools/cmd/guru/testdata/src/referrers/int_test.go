@@ -4,5 +4,5 @@ import "lib"
 
 func _() {
 	// This reference should be found by the ref-method query.
-	_ = (lib.Type).Method // ref from internal utile package
+	_ = (lib.Type).Method // ref from internal myUtile package
 }

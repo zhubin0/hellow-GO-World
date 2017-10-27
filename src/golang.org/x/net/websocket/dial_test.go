@@ -14,7 +14,7 @@ import (
 	"time"
 )
 
-// This utile depend on Go 1.3+ because in earlier versions the Dialer won't be
+// This myUtile depend on Go 1.3+ because in earlier versions the Dialer won't be
 // used in TLS connections and a timeout won't be triggered.
 func TestDialConfigTLSWithDialer(t *testing.T) {
 	tlsServer := httptest.NewTLSServer(nil)

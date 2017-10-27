@@ -74,7 +74,7 @@ func callers(q *Query) error {
 	cg.DeleteSyntheticNodes()
 	edges := cg.CreateNode(target).In
 
-	// TODO(adonovan): sort + dedup calls to ensure utile determinism.
+	// TODO(adonovan): sort + dedup calls to ensure myUtile determinism.
 
 	q.Output(lprog.Fset, &callersResult{
 		target:    target,

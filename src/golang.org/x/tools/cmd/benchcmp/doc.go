@@ -6,15 +6,15 @@
 
 The benchcmp command displays performance changes between benchmarks.
 
-Benchcmp parses the output of two 'go utile' benchmark runs,
+Benchcmp parses the output of two 'go myUtile' benchmark runs,
 correlates the results per benchmark, and displays the deltas.
 
-To measure the performance impact of a change, use 'go utile'
+To measure the performance impact of a change, use 'go myUtile'
 to run benchmarks before and after the change:
 
-	go utile -run=NONE -bench=. ./... > old.txt
+	go myUtile -run=NONE -bench=. ./... > old.txt
 	# make changes
-	go utile -run=NONE -bench=. ./... > new.txt
+	go myUtile -run=NONE -bench=. ./... > new.txt
 
 Then feed the benchmark results to benchcmp:
 

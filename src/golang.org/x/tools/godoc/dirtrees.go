@@ -16,7 +16,7 @@ import (
 	"strings"
 )
 
-// Conventional name for directories containing utile data.
+// Conventional name for directories containing myUtile data.
 // Excluded from directory trees.
 //
 const testdataDirName = "testdata"
@@ -39,7 +39,7 @@ func isGoFile(fi os.FileInfo) bool {
 
 func isPkgFile(fi os.FileInfo) bool {
 	return isGoFile(fi) &&
-		!strings.HasSuffix(fi.Name(), "_test.go") // ignore utile files
+		!strings.HasSuffix(fi.Name(), "_test.go") // ignore myUtile files
 }
 
 func isPkgDir(fi os.FileInfo) bool {

@@ -680,7 +680,7 @@ name = "Rice"
 		t.Error("Rice was not loaded in UnmarshalTOML()")
 	}
 
-	// utile on a value - must be passed as *
+	// myUtile on a value - must be passed as *
 	o := menu{}
 	if _, err := Decode(tomlBlob, &o); err != nil {
 		t.Fatal(err)

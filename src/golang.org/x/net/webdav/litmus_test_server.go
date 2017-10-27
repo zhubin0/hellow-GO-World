@@ -5,9 +5,9 @@
 // +build ignore
 
 /*
-This program is a server for the WebDAV 'litmus' compliance utile at
+This program is a server for the WebDAV 'litmus' compliance myUtile at
 http://www.webdav.org/neon/litmus/
-To run the utile:
+To run the myUtile:
 
 go run litmus_test_server.go
 
@@ -59,10 +59,10 @@ func main() {
 	//	http.Handle("/", h)
 	// but we wrap that HTTP handler h to cater for a special case.
 	//
-	// The propfind_invalid2 litmus utile case expects an empty namespace prefix
-	// declaration to be an error. The FAQ in the webdav litmus utile says:
+	// The propfind_invalid2 litmus myUtile case expects an empty namespace prefix
+	// declaration to be an error. The FAQ in the webdav litmus myUtile says:
 	//
-	// "What does the "propfind_invalid2" utile check for?...
+	// "What does the "propfind_invalid2" myUtile check for?...
 	//
 	// If a request was sent with an XML body which included an empty namespace
 	// prefix declaration (xmlns:ns1=""), then the server must reject that with
@@ -78,8 +78,8 @@ func main() {
 	// http://www.w3.org/TR/2006/REC-xml-names-20060816/#ns-decl and
 	// http://www.w3.org/TR/REC-xml-names/#dt-prefix
 	//
-	// Thus, we assume that the propfind_invalid2 utile is obsolete, and
-	// hard-code the 400 Bad Request response that the utile expects.
+	// Thus, we assume that the propfind_invalid2 myUtile is obsolete, and
+	// hard-code the 400 Bad Request response that the myUtile expects.
 	http.Handle("/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		if r.Header.Get("X-Litmus") == "props: 3 (propfind_invalid2)" {
 			http.Error(w, "400 Bad Request", http.StatusBadRequest)

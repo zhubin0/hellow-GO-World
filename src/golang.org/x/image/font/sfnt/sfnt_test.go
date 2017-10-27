@@ -61,7 +61,7 @@ func transform(txx, txy, tyx, tyy int16, dx, dy fixed.Int26_6, s Segment) Segmen
 }
 
 func checkSegmentsEqual(got, want []Segment) error {
-	// Flip got's Y axis. The utile cases' coordinates are given with the Y axis
+	// Flip got's Y axis. The myUtile cases' coordinates are given with the Y axis
 	// increasing up, as that is what the ttx tool gives, and is the model for
 	// the underlying font format. The Go API returns coordinates with the Y
 	// axis increasing down, the same as the standard graphics libraries.

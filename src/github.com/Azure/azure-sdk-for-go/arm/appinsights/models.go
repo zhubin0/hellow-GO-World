@@ -51,13 +51,13 @@ const (
 	Rest RequestSource = "rest"
 )
 
-// WebTestKind enumerates the values for web utile kind.
+// WebTestKind enumerates the values for web myUtile kind.
 type WebTestKind string
 
 const (
-	// Multistep specifies the multistep state for web utile kind.
+	// Multistep specifies the multistep state for web myUtile kind.
 	Multistep WebTestKind = "multistep"
-	// Ping specifies the ping state for web utile kind.
+	// Ping specifies the ping state for web myUtile kind.
 	Ping WebTestKind = "ping"
 )
 
@@ -166,7 +166,7 @@ type TagsResource struct {
 	Tags *map[string]*string `json:"tags,omitempty"`
 }
 
-// WebTest is an Application Insights web utile definition.
+// WebTest is an Application Insights web myUtile definition.
 type WebTest struct {
 	autorest.Response  `json:"-"`
 	ID                 *string             `json:"id,omitempty"`
@@ -178,13 +178,13 @@ type WebTest struct {
 	*WebTestProperties `json:"properties,omitempty"`
 }
 
-// WebTestGeolocation is geo-physical location to run a web utile from. You must
-// specify one or more locations for the utile to run from.
+// WebTestGeolocation is geo-physical location to run a web myUtile from. You must
+// specify one or more locations for the myUtile to run from.
 type WebTestGeolocation struct {
 	Location *string `json:"Id,omitempty"`
 }
 
-// WebTestListResult is a list of 0 or more Application Insights web utile
+// WebTestListResult is a list of 0 or more Application Insights web myUtile
 // definitions.
 type WebTestListResult struct {
 	autorest.Response `json:"-"`
@@ -204,7 +204,7 @@ func (client WebTestListResult) WebTestListResultPreparer() (*http.Request, erro
 		autorest.WithBaseURL(to.String(client.NextLink)))
 }
 
-// WebTestProperties is metadata describing a web utile for an Azure resource.
+// WebTestProperties is metadata describing a web myUtile for an Azure resource.
 type WebTestProperties struct {
 	SyntheticMonitorID *string                         `json:"SyntheticMonitorId,omitempty"`
 	WebTestName        *string                         `json:"Name,omitempty"`

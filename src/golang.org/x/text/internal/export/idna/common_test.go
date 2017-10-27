@@ -3,7 +3,7 @@
 package idna
 
 // This file contains code that is common between the generation code and the
-// package's utile code.
+// package's myUtile code.
 
 import (
 	"log"

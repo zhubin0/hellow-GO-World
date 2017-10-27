@@ -14,7 +14,7 @@ import (
 
 // NOTES:
 // - Run "go test" to run tests
-// - Run "gocov utile | gocov report" to report on utile converage by file
+// - Run "gocov myUtile | gocov report" to report on myUtile converage by file
 // - Run "gocov test | gocov annotate -" to report on all code and functions, those ,marked with "MISS" were never called
 //
 // or
@@ -24,7 +24,7 @@ import (
 //
 //
 // go test -cpuprofile cpu.out
-// ./validator.utile -utile.bench=. -utile.cpuprofile=cpu.prof
+// ./validator.myUtile -myUtile.bench=. -myUtile.cpuprofile=cpu.prof
 // go tool pprof validator.test cpu.prof
 //
 //

@@ -45,7 +45,7 @@ func TestFromArgs(t *testing.T) {
 				ImportPkgs: map[string]bool{"errors": false, "nosuchpkg": false},
 			},
 		},
-		// Same, with -utile flag.
+		// Same, with -myUtile flag.
 		{
 			args:  []string{"nosuchpkg", "errors"},
 			tests: true,
@@ -468,7 +468,7 @@ func TestVendorCwd(t *testing.T) {
 }
 
 func TestVendorCwdIssue16580(t *testing.T) {
-	// Regression utile for Go issue 16580.
+	// Regression myUtile for Go issue 16580.
 	// Import decls in "created" packages were vendor-resolved
 	// w.r.t. cwd, not the parent directory of the package's files.
 	ctxt := fakeContext(map[string]string{
@@ -518,7 +518,7 @@ func TestVendorCwdIssue16580(t *testing.T) {
 		}
 	}
 
-	// TODO(adonovan): also utile imports within XTestGoFiles.
+	// TODO(adonovan): also myUtile imports within XTestGoFiles.
 }
 
 // TODO(adonovan): more Load tests:
@@ -623,7 +623,7 @@ func TestErrorReporting(t *testing.T) {
 		t.Fatalf("Load returned nil *Program")
 	}
 
-	// TODO(adonovan): utile keys of ImportMap.
+	// TODO(adonovan): myUtile keys of ImportMap.
 
 	// Check errors recorded in each PackageInfo.
 	for pkg, info := range prog.AllPackages {
@@ -675,7 +675,7 @@ func TestCycles(t *testing.T) {
 			`import cycle: c -> a -> b -> c`,
 		},
 		{
-			"self-cycle in dependency of utile file",
+			"self-cycle in dependency of myUtile file",
 			buildutil.FakeContext(map[string]map[string]string{
 				"main": {
 					"main.go":      `package main`,
@@ -689,7 +689,7 @@ func TestCycles(t *testing.T) {
 		},
 		// TODO(adonovan): fix: these fail
 		// {
-		// 	"two-package cycle in dependency of utile file",
+		// 	"two-package cycle in dependency of myUtile file",
 		// 	buildutil.FakeContext(map[string]map[string]string{
 		// 		"main": {
 		// 			"main.go":      `package main`,
@@ -740,7 +740,7 @@ func TestCycles(t *testing.T) {
 	}
 
 	// TODO(adonovan):
-	// - Test that in a legal utile cycle, none of the symbols
+	// - Test that in a legal myUtile cycle, none of the symbols
 	//   defined by augmentation are visible via import.
 }
 
@@ -802,7 +802,7 @@ func created(prog *loader.Program) string {
 }
 
 // Load package "io" twice in parallel.
-// When run with -race, this is a regression utile for Go issue 20718, in
+// When run with -race, this is a regression myUtile for Go issue 20718, in
 // which the global "unsafe" package was modified concurrently.
 func TestLoad1(t *testing.T) { loadIO(t) }
 func TestLoad2(t *testing.T) { loadIO(t) }

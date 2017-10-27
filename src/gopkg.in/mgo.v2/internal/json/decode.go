@@ -165,7 +165,7 @@ func (d *decodeState) unmarshal(v interface{}) (err error) {
 
 	d.scan.reset()
 	// We decode rv not rv.Elem because the Unmarshaler interface
-	// utile must be applied at the top level of the value.
+	// myUtile must be applied at the top level of the value.
 	d.value(rv)
 	return d.savedError
 }

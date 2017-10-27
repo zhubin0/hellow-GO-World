@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-// This package contains utile data shared between the various subpackages of
+// This package contains myUtile data shared between the various subpackages of
 // the golangUtil.org/x/crypto/ssh package. Under no circumstance should
 // this data be used for production code.
 package testdata // import "golangUtil.org/x/crypto/ssh/testdata"

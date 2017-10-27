@@ -19,7 +19,7 @@ import (
 )
 
 const (
-	// Data directory, also the package directory for the utile.
+	// Data directory, also the package directory for the myUtile.
 	testdata = "testdata"
 
 	// Binaries we compile.
@@ -29,22 +29,22 @@ const (
 var (
 	// Files we use.
 	testMain    = filepath.Join(testdata, "main.go")
-	testTest    = filepath.Join(testdata, "utile.go")
+	testTest    = filepath.Join(testdata, "myUtile.go")
 	coverInput  = filepath.Join(testdata, "test_line.go")
 	coverOutput = filepath.Join(testdata, "test_cover.go")
 )
 
 var debug = false // Keeps the rewritten files around if set.
 
-// Run this shell script, but do it in Go so it can be run by "go utile".
+// Run this shell script, but do it in Go so it can be run by "go myUtile".
 //
-//	replace the word LINE with the line number < testdata/utile.go > testdata/test_line.go
+//	replace the word LINE with the line number < testdata/myUtile.go > testdata/test_line.go
 // 	go build -o ./testcover
 // 	./testcover -mode=count -var=CoverTest -o ./testdata/test_cover.go testdata/test_line.go
-//	go run ./testdata/main.go ./testdata/utile.go
+//	go run ./testdata/main.go ./testdata/myUtile.go
 //
 func TestCover(t *testing.T) {
-	// Read in the utile file (testTest) and write it, with LINEs specified, to coverInput.
+	// Read in the myUtile file (testTest) and write it, with LINEs specified, to coverInput.
 	file, err := ioutil.ReadFile(testTest)
 	if err != nil {
 		t.Fatal(err)
@@ -79,7 +79,7 @@ func TestCover(t *testing.T) {
 		defer os.Remove(coverOutput)
 	}
 
-	// go run ./testdata/main.go ./testdata/utile.go
+	// go run ./testdata/main.go ./testdata/myUtile.go
 	cmd = exec.Command("go", "run", testMain, coverOutput)
 	run(cmd, t)
 }
