@@ -1,0 +1,68 @@
+<component name="libraryTable">
+  <library name="GOPATH &lt;cache2go&gt;">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../.." />
+      <root url="file://$PROJECT_DIR$/../../../hello" />
+      <root url="file://$PROJECT_DIR$/../../../dudu-cms" />
+      <root url="file://$PROJECT_DIR$/../../../.git" />
+      <root url="file://$PROJECT_DIR$/../../../myproject" />
+      <root url="file://$PROJECT_DIR$/../../../golearn" />
+      <root url="file://$PROJECT_DIR$/../../../github.com_bak" />
+      <root url="file://$PROJECT_DIR$/../../../data-struct" />
+      <root url="file://$PROJECT_DIR$/../../../../../mygo2/src/github.com" />
+      <root url="file://$PROJECT_DIR$/../../../../../mygo2/src/.git" />
+      <root url="file://$PROJECT_DIR$/../../../../../mygo2/src/gopkg.in" />
+      <root url="file://$PROJECT_DIR$/../../../../../mygo2/src/code.google.com" />
+      <root url="file://$PROJECT_DIR$/../../../../../mygo2/src/golang.org" />
+      <root url="file://$PROJECT_DIR$/../../../../../mygo2/src/datamesh.com" />
+      <root url="file://$PROJECT_DIR$/../../../dudu-news-service" />
+      <root url="file://$PROJECT_DIR$/../../../dudu_cms_update" />
+      <root url="file://$PROJECT_DIR$/../../../go_runtime" />
+      <root url="file://$PROJECT_DIR$/../../../go_run" />
+      <root url="file://$PROJECT_DIR$/../../../singlecpu" />
+      <root url="file://$PROJECT_DIR$/../../../collections" />
+      <root url="file://$PROJECT_DIR$/../../../admin" />
+      <root url="file://$PROJECT_DIR$/../../../go-webhook" />
+      <root url="file://$PROJECT_DIR$/../../../gopkg.in" />
+      <root url="file://$PROJECT_DIR$/../../../google.golang.org" />
+      <root url="file://$PROJECT_DIR$/../../../exec" />
+      <root url="file://$PROJECT_DIR$/../../../golang.org" />
+      <root url="file://$PROJECT_DIR$/../../../cms" />
+      <root url="file://$PROJECT_DIR$/../../../code.google.com" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/../.." />
+      <root url="file://$PROJECT_DIR$/../../../hello" />
+      <root url="file://$PROJECT_DIR$/../../../dudu-cms" />
+      <root url="file://$PROJECT_DIR$/../../../.git" />
+      <root url="file://$PROJECT_DIR$/../../../myproject" />
+      <root url="file://$PROJECT_DIR$/../../../golearn" />
+      <root url="file://$PROJECT_DIR$/../../../github.com_bak" />
+      <root url="file://$PROJECT_DIR$/../../../data-struct" />
+      <root url="file://$PROJECT_DIR$/../../../../../mygo2/src/github.com" />
+      <root url="file://$PROJECT_DIR$/../../../../../mygo2/src/.git" />
+      <root url="file://$PROJECT_DIR$/../../../../../mygo2/src/gopkg.in" />
+      <root url="file://$PROJECT_DIR$/../../../../../mygo2/src/code.google.com" />
+      <root url="file://$PROJECT_DIR$/../../../../../mygo2/src/golang.org" />
+      <root url="file://$PROJECT_DIR$/../../../../../mygo2/src/datamesh.com" />
+      <root url="file://$PROJECT_DIR$/../../../dudu-news-service" />
+      <root url="file://$PROJECT_DIR$/../../../dudu_cms_update" />
+      <root url="file://$PROJECT_DIR$/../../../go_runtime" />
+      <root url="file://$PROJECT_DIR$/../../../go_run" />
+      <root url="file://$PROJECT_DIR$/../../../singlecpu" />
+      <root url="file://$PROJECT_DIR$/../../../collections" />
+      <root url="file://$PROJECT_DIR$/../../../admin" />
+      <root url="file://$PROJECT_DIR$/../../../go-webhook" />
+      <root url="file://$PROJECT_DIR$/../../../gopkg.in" />
+      <root url="file://$PROJECT_DIR$/../../../google.golang.org" />
+      <root url="file://$PROJECT_DIR$/../../../exec" />
+      <root url="file://$PROJECT_DIR$/../../../golang.org" />
+      <root url="file://$PROJECT_DIR$/../../../cms" />
+      <root url="file://$PROJECT_DIR$/../../../code.google.com" />
+    </SOURCES>
+    <excluded>
+      <root url="file://$PROJECT_DIR$" />
+    </excluded>
+  </library>
+</component>
